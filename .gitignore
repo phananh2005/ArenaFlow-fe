@@ -27,3 +27,11 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Agent state (phiên cá nhân, không commit)
+docs/agent/state/*/
+!docs/agent/state/_template/
+
+# Claude Code
+.claude/logs/
+.claude/settings.local.json
