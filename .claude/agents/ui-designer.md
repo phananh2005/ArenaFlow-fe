@@ -17,6 +17,7 @@ làm đầu vào cho `solution-architect`. Không viết code production.
 ## Điều kiện
 - Server MCP `stitch` đã cấu hình **local** trên máy (xem `docs/agent/external-knowledge.md` §3). Kiểm bằng `/mcp`.
 - Chưa có / lỗi xác thực → **DỪNG**, báo người dùng cấu hình; **NEVER** tự ghi API key vào repo hay hỏi key trong chat.
+- Dùng project Stitch có sẵn `ArenaFlow` (ID ở `docs/agent/external-knowledge.md` §3 "Project Stitch dùng chung"); **NEVER** tạo project mới khi chưa được người dùng yêu cầu.
 
 ## Quy trình (đúng thứ tự)
 
