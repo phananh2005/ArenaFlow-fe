@@ -131,6 +131,7 @@
 | 2026-11-03 | Secret scan bỏ sót key trong khoá có ngoặc kép (`"X-Goog-Api-Key": "…"`) | Kiểm tra luật `sensitive-assignment` khi cân nhắc `.mcp.json` | Thêm luật `quoted-key-assignment` + 4 fixture (bắt key thật, bỏ qua `${VAR}` và nhãn có khoảng trắng) | Chặn commit key dạng JSON/header | — |
 | 2026-11-03 | Cân nhắc `.mcp.json` + biến môi trường cho Stitch | Người dùng thử rồi chọn lại scope local (không muốn biến môi trường mức user) | Giữ Stitch ở `~/.claude.json` (scope local); không có `.mcp.json` | Key không vào repo, không vào biến môi trường | `.mcp.json` + `${STITCH_API_KEY}` |
 | 2026-11-03 | BE chưa cấu hình CORS | BE `config/WebMvcConfig.java` không có CORS | Dev gọi API qua Vite proxy `/api` → `VITE_DEV_PROXY_TARGET` | Không sửa BE trong phạm vi FE | Bỏ proxy khi BE bật CORS |
+| 2026-11-03 | Cần một project Stitch dùng chung cho mọi chức năng | Stitch đã có project `ArenaFlow`; người dùng chọn dùng project này + duyệt design system (LIGHT, `#16A34A`, Be Vietnam Pro, bo 8px) | Ghi project ID + design system ở `external-knowledge.md` §3; `ui-designer` không tạo project mới khi chưa được yêu cầu | Giữ giao diện nhất quán giữa các chức năng | Xoá mục "Project Stitch dùng chung" ở §3 và dòng điều kiện trong `ui-designer.md` |
 
 ## 13. Còn chờ xác nhận
 

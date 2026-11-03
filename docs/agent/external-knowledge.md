@@ -39,6 +39,27 @@ claude mcp add stitch --transport http https://stitch.googleapis.com/mcp --heade
 - Kiểm tra: `claude mcp list` hoặc `/mcp` trong phiên mới. Gỡ: `claude mcp remove stitch -s local`.
 - Đổi key / key bị lộ (dán vào chat, log, commit): thu hồi key trên trang quản lý key → `claude mcp remove stitch -s local` → `claude mcp add …` với key mới.
 
+### Project Stitch dùng chung
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Tên project | `ArenaFlow` |
+| Project ID | `2789586751825382546` (dạng tài nguyên: `projects/2789586751825382546`) |
+| Design system | `ArenaFlow` — `assets/17011466837528823159` |
+
+Theme đã duyệt (2026-11-03):
+
+| Token | Giá trị |
+|---|---|
+| Chế độ màu | `LIGHT` |
+| Màu gốc (seed) | `#16A34A` — xanh lá sân cỏ, `colorVariant: TONAL_SPOT`. **Không** dùng trực tiếp làm token màu trong code: Stitch phối ra bảng màu từ màu gốc, nên lấy màu thực tế từ HTML đã xuất ở `docs/agent/design/<MÃ>/ui/` |
+| Font tiêu đề / nội dung / nhãn | `BE_VIETNAM_PRO` |
+| Bo góc | `ROUND_EIGHT` (8px) |
+
+- Mọi màn hình của mọi chức năng **MUST** sinh trong project này; **NEVER** tạo project Stitch mới (`create_project`) khi chưa được người dùng yêu cầu.
+- Design system của project áp cho mọi màn hình — đổi design system → hỏi người dùng trước (ảnh hưởng mọi `UI_Design.md` đã duyệt); đổi xong → cập nhật bảng theme ở trên trong cùng thay đổi. Nguồn chuẩn là Stitch; bảng là bản chụp tại ngày duyệt.
+- Không truy cập được project (bị xoá / mất quyền) → **dừng**, báo người dùng; không tự tạo project thay thế.
+
 ### Quy tắc dùng
 
 - Chỉ `ui-designer` dùng Stitch; agent khác chỉ đọc kết quả đã lưu trong `docs/agent/design/<MÃ>/`.
