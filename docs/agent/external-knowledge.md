@@ -34,8 +34,10 @@ Người dùng tự chạy tại gốc repo, thay `<api-key>` bằng key của m
 claude mcp add stitch --transport http https://stitch.googleapis.com/mcp --header "X-Goog-Api-Key: <api-key>"
 ```
 
-- Scope mặc định `local`: cấu hình lưu ngoài repo, chỉ áp dụng cho máy này. Repo **không** có `.mcp.json`.
-- Kiểm tra: `claude mcp list` hoặc `/mcp` trong phiên. Gỡ: `claude mcp remove stitch`.
+- Scope mặc định `local`: lưu trong `~/.claude.json` (mục của project này), ngoài repo, chỉ áp dụng cho repo này trên máy này. Repo **không** có `.mcp.json`.
+- **Chạy lệnh trong terminal riêng, ngoài Claude Code** — chạy bằng `!` trong phiên thì key nằm lại trong lịch sử phiên.
+- Kiểm tra: `claude mcp list` hoặc `/mcp` trong phiên mới. Gỡ: `claude mcp remove stitch -s local`.
+- Đổi key / key bị lộ (dán vào chat, log, commit): thu hồi key trên trang quản lý key → `claude mcp remove stitch -s local` → `claude mcp add …` với key mới.
 
 ### Quy tắc dùng
 
