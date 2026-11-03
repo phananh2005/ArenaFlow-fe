@@ -8,6 +8,9 @@ const SECRET_PATTERNS = [
   { name: 'private-key', regex: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/g },
   { name: 'credential-url', regex: /\b[a-z][a-z0-9+.-]*:\/\/[^\s/:@]+:[^\s/@]+@/gi },
   { name: 'sensitive-assignment', regex: /(?:password|passwd|secret|api[_-]?key|access[_-]?token)\s*[:=]\s*(?:"[^"\r\n]{4,}"|'[^'\r\n]{4,}'|[A-Za-z0-9_+/=-]{8,})/gi },
+  // Khoá nằm trong ngoặc kép (JSON/object/header): "X-Goog-Api-Key": "…". Giá trị không khoảng trắng, ≥ 8 ký tự.
+  // Tên khoá chặn ≤ 64 ký tự mỗi phía để tránh backtracking trên dòng rất dài.
+  { name: 'quoted-key-assignment', regex: /["'][^"'\r\n]{0,64}(?:password|passwd|secret|api[_-]?key|access[_-]?token)[^"'\r\n]{0,64}["']\s*:\s*["']([^"'\s]{8,})["']/gi },
 ];
 const SAFE_VALUE = /^(?:\$\{?[A-Za-z_][A-Za-z0-9_]*(?::-[^}]*)?}?|\$\([^)]+\)|<[^>]+>|\{\{[^}]+}}|true|false|null|string|number)$/i;
 
@@ -89,6 +92,11 @@ function lineHasSecret(line, kind) {
   for (const match of line.matchAll(assignment)) {
     const value = match[0].replace(/^[^:=]*[:=]\s*/, '').replace(/^['"]|['"]$/g, '');
     if (value.length >= 4 && !SAFE_VALUE.test(value)) return true;
+  }
+  const quoted = SECRET_PATTERNS[4].regex;
+  quoted.lastIndex = 0;
+  for (const match of line.matchAll(quoted)) {
+    if (!SAFE_VALUE.test(match[1])) return true;
   }
   return false;
 }
@@ -172,6 +180,10 @@ function fixtureTests() {
     ['config', 'password=fakeSecret123 # allow-secret', false],
     ['env', 'VITE_API_KEY=fakeSecret123456', true], // allow-secret fixture giả để kiểm thử .env*.
     ['env', 'VITE_API_BASE_URL=/api/v1', false],
+    ['config', '"X-Goog-Api-Key": "AQ.fakeKey1234567890"', true], // allow-secret fixture giả cho khoá trong ngoặc kép.
+    ['config', '"X-Goog-Api-Key": "${STITCH_API_KEY}"', false],
+    ['code', "headers: { 'x-api-key': 'fakeKey123456' }", true], // allow-secret fixture giả cho header trong code.
+    ['config', '"apiKeyLabel": "Nhập API key"', false],
   ];
   for (const [kind, text, expected] of secrets) {
     const file = kind === 'env' ? '.env.local' : `fixture.${kind === 'config' ? 'json' : kind === 'docs' ? 'md' : 'ts'}`;

@@ -128,6 +128,8 @@
 | 2026-11-03 | Repo dùng GitHub | Người dùng xác nhận | Đổi thuật ngữ MR → PR trong skill/template dự án | Khớp nền tảng review | — |
 | 2026-11-03 | Người dùng tự chép SRS từ BE sang FE | Người dùng xác nhận | Tạo `docs/agent/business-spec/README.md`; agent đọc SRS local, API_Spec vẫn ở BE | Không cần BA ở FE | Đọc SRS từ BE như cũ |
 | 2026-11-03 | Thiết kế giao diện trước khi code bằng Stitch MCP | Người dùng xác nhận | Thêm agent `ui-designer` + template `UI_Design.md` + `ui/`; Stitch cấu hình **local** (không có `.mcp.json`), hướng dẫn ở `external-knowledge.md` §3 | Giữ API key ngoài repo | Bỏ `ui-designer` qua `workflow-adapt` |
+| 2026-11-03 | Secret scan bỏ sót key trong khoá có ngoặc kép (`"X-Goog-Api-Key": "…"`) | Kiểm tra luật `sensitive-assignment` khi cân nhắc `.mcp.json` | Thêm luật `quoted-key-assignment` + 4 fixture (bắt key thật, bỏ qua `${VAR}` và nhãn có khoảng trắng) | Chặn commit key dạng JSON/header | — |
+| 2026-11-03 | Cân nhắc `.mcp.json` + biến môi trường cho Stitch | Người dùng thử rồi chọn lại scope local (không muốn biến môi trường mức user) | Giữ Stitch ở `~/.claude.json` (scope local); không có `.mcp.json` | Key không vào repo, không vào biến môi trường | `.mcp.json` + `${STITCH_API_KEY}` |
 | 2026-11-03 | BE chưa cấu hình CORS | BE `config/WebMvcConfig.java` không có CORS | Dev gọi API qua Vite proxy `/api` → `VITE_DEV_PROXY_TARGET` | Không sửa BE trong phạm vi FE | Bỏ proxy khi BE bật CORS |
 
 ## 13. Còn chờ xác nhận
