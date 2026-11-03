@@ -52,12 +52,12 @@ Theme đã duyệt (2026-11-03):
 | Token | Giá trị |
 |---|---|
 | Chế độ màu | `LIGHT` |
-| Màu chính (seed) | `#16A34A` — xanh lá sân cỏ, `colorVariant: TONAL_SPOT` |
+| Màu gốc (seed) | `#16A34A` — xanh lá sân cỏ, `colorVariant: TONAL_SPOT`. **Không** dùng trực tiếp làm token màu trong code: Stitch phối ra bảng màu từ màu gốc, nên lấy màu thực tế từ HTML đã xuất ở `docs/agent/design/<MÃ>/ui/` |
 | Font tiêu đề / nội dung / nhãn | `BE_VIETNAM_PRO` |
 | Bo góc | `ROUND_EIGHT` (8px) |
 
 - Mọi màn hình của mọi chức năng **MUST** sinh trong project này; **NEVER** tạo project Stitch mới (`create_project`) khi chưa được người dùng yêu cầu.
-- Design system của project áp cho mọi màn hình — đổi design system → hỏi người dùng trước (ảnh hưởng mọi `UI_Design.md` đã duyệt).
+- Design system của project áp cho mọi màn hình — đổi design system → hỏi người dùng trước (ảnh hưởng mọi `UI_Design.md` đã duyệt); đổi xong → cập nhật bảng theme ở trên trong cùng thay đổi. Nguồn chuẩn là Stitch; bảng là bản chụp tại ngày duyệt.
 - Không truy cập được project (bị xoá / mất quyền) → **dừng**, báo người dùng; không tự tạo project thay thế.
 
 ### Quy tắc dùng

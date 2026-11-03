@@ -4,7 +4,7 @@
 |---|---|
 | Mã chức năng | `<MÃ>` |
 | Nguồn SRS | `docs/agent/business-spec/<MÃ>/` |
-| Công cụ | Stitch MCP — project id: `…` |
+| Công cụ | Stitch MCP — project `ArenaFlow` (ID ở `docs/agent/external-knowledge.md` §3) |
 | Thiết bị mục tiêu | web desktop / mobile / cả hai |
 | Trạng thái duyệt | Chờ duyệt / Đã duyệt `YYYY-MM-DD` |
 | Tác giả / Ngày / Phiên bản | `<tên>` / `YYYY-MM-DD` / `v1.0` |

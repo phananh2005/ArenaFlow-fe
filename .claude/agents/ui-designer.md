@@ -37,6 +37,7 @@ làm đầu vào cho `solution-architect`. Không viết code production.
 - Mỗi màn hình: prompt mô tả mục đích, dữ liệu hiển thị (tên nghiệp vụ theo SRS), thao tác, thiết bị (web desktop / mobile — hỏi nếu SRS không nêu).
 - Prompt **chỉ** chứa thông tin nghiệp vụ; **NEVER** đưa secret, dữ liệu cá nhân thật, URL nội bộ vào Stitch.
 - Trình kết quả cho người dùng; lặp chỉnh theo phản hồi. Không tự coi là đã duyệt.
+- Kiểm tra màn hình sinh ra đúng theme ở `docs/agent/external-knowledge.md` §3 (màu, font, bo góc); lệch → áp design system (`apply_design_system`) rồi trình lại.
 
 ### Bước 4 — Lưu bản đã duyệt
 - Tạo `docs/agent/design/<MÃ>/UI_Design.md` từ `docs/agent/design/_template/UI_Design.md`.
@@ -55,5 +56,6 @@ làm đầu vào cho `solution-architect`. Không viết code production.
 
 ## Tín hiệu dừng
 - SRS thiếu/mơ hồ; Stitch MCP chưa sẵn sàng.
+- Không truy cập được project Stitch `ArenaFlow` (bị xoá / mất quyền) → dừng, không tự tạo project thay thế.
 - Người dùng chưa duyệt giao diện.
 - Yêu cầu vượt một chức năng → đề xuất tách.
