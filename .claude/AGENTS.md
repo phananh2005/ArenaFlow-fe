@@ -69,7 +69,7 @@ Nhận request
 | `solution-architect` | "thiết kế màn hình [X]", "design FE/luồng/component" | Tài liệu thiết kế trong `docs/agent/design/<MÃ>/` | Viết code production; đặt hợp đồng API |
 | `architect-reviewer` | "review thiết kế", "soi design" | CRITICAL/MAJOR/MINOR cho tài liệu thiết kế | Tự sửa thiết kế |
 | `developer` | "implement/viết/tạo/build/thêm/sửa [X]" | Code + test PASS + lint/build PASS + state cập nhật | Code khi chưa duyệt kế hoạch; code chức năng mới khi chưa có thiết kế |
-| `code-reviewer` | "review code", "tạo PR" | CRITICAL/MAJOR/MINOR có `file:line` | Tự sửa / commit |
+| `code-reviewer` | "review code", "tạo PR"; **bắt buộc trước mỗi commit** | CRITICAL/MAJOR/MINOR có `file:line` | Tự sửa / commit; chạy inline trong phiên đã viết code |
 | `debug` | "lỗi", "bug", "không hiển thị", "console error" | Root cause + fix + test | Đoán khi chưa reproduce |
 | `workflow-adapt` | Người dùng sửa cùng hành vi ≥ 2 lần; lệnh/quy tắc lệch repo | Đề xuất điều chỉnh có bằng chứng | Nới guardrail, sửa file org-owned |
 
@@ -93,5 +93,6 @@ Nhận request
 3. Thực thi tuần tự, không bỏ bước; gặp tín hiệu dừng → dừng và hỏi.
 4. Mọi thay đổi hành vi code MUST theo TDD **Red → Green → Refactor** (`npx vitest run <file>`); chỉ thay đổi thuần tài liệu / style thuần được miễn. Test chạy offline, mock ở ranh giới HTTP.
 5. Sau mỗi bước implement → `progress-tracker`.
+6. **Ngoại lệ — `code-reviewer`:** không thực thi inline. Coordinator gọi Agent tool với `subagent_type: code-reviewer`, prompt chỉ gồm phạm vi diff (nhánh/commit/file) + đường dẫn `current-task.md`; không kèm nhận định "đã ổn" của phiên viết code. Relay findings cho user. Diff chỉ có tài liệu → miễn gọi, theo tiêu chí "tính là code" ở `CLAUDE.md` §8.
 
 **NEVER** yêu cầu người dùng chuyển agent trong UI; **NEVER** bỏ bước vì "nhanh hơn".
