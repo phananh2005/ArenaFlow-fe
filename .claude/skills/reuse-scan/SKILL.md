@@ -18,7 +18,7 @@ description: >
 ## Quy trình
 
 ### Bước 0 — Xác định nguồn quét
-- `src/` (đặc biệt `components/ui/`, `hooks/`, `lib/`, `api/`, `types/`) — quét bằng search text, symbol.
+- `src/` (đặc biệt `shared/`, `core/`, `modules/<domain>/` liên quan) — quét bằng search text, symbol.
 - Dependency trong `package.json` — thư viện đã cài có sẵn chức năng tương đương thì dùng lại, không viết tay.
 - Nguồn nào đọc được nội dung, nguồn nào không → ghi là **vùng mù**.
 

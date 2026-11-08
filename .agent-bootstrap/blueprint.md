@@ -39,7 +39,7 @@ Nhận request
 | `docs/agent/CLAUDE.md` | Kênh tuỳ biến dự án | `samples/rules/project-knowledge.md` | |
 | `docs/agent/README.md` | Cài đặt, điều kiện hook, ownership | BE `docs/agent/README.md` | |
 | `docs/agent/adaptation-rules.md` | Bản sao bản đồ thích ứng | `adapters/adaptation-rules.md` | |
-| `docs/agent/convention-frontend.md` | Cấu trúc `src/`, alias `@/`, đặt tên, test cạnh source `X.test.tsx`, Tailwind, env `VITE_*` | Khung hiện tại | |
+| `docs/agent/convention-frontend.md` | Cấu trúc `src/`, alias `@/`, đặt tên, test cạnh source `x.component.test.tsx`, Tailwind, env `VITE_*` | Khung hiện tại | |
 | `docs/agent/security-frontend.md` | XSS, lưu token, không log PII, env public | Mới | |
 | `docs/agent/non-functional-standards.md` | Chuẩn FE (ngưỡng chờ chốt) | `samples/knowledge/non-functional-standards.md` | |
 | `docs/agent/external-knowledge.md` | Nguồn BE: API_Spec, api-convention, business-spec; không suy đoán hợp đồng | `samples/knowledge/external-knowledge.md` | |

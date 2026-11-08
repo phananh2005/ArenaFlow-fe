@@ -20,7 +20,7 @@
 
 | Hàm | Đường dẫn | Request type | Response type |
 |---|---|---|---|
-| `getXxx` | `src/api/xxx.ts` | | |
+| `getXxx` | `src/modules/xxx/api/xxx.api.ts` | | |
 
 > Field của type trỏ tới API_Spec BE mục tương ứng — không chép bảng field vào đây.
 
@@ -29,7 +29,7 @@
 | State | Loại | Nơi giữ | Key / tên | Làm mới khi |
 |---|---|---|---|---|
 | Danh sách xxx | server | lớp data fetching (ADR) | `['xxx', params]` | sau tạo/sửa/xoá |
-| Phiên đăng nhập | client toàn cục | `src/stores/` | | |
+| Phiên đăng nhập | client toàn cục | `src/core/session/` | | |
 | Bộ lọc | URL | query string | `page`, `pageSize`, … | |
 
 ## 4. Luồng tương tác

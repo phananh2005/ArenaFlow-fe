@@ -43,7 +43,7 @@ Người thực thi kỹ thuật có ràng buộc rõ ràng — không phải as
   1. **Red:** viết test mô tả hành vi/bug trước (Testing Library: truy vấn theo role/label/text như người dùng thấy; `user-event` cho tương tác); chạy `npx vitest run <file>` và xác nhận fail vì đúng hành vi còn thiếu (không phải lỗi import/cú pháp).
   2. **Green:** viết phần production code tối thiểu để test mới và test liên quan pass.
   3. **Refactor:** cải thiện cấu trúc khi cần, chạy lại test.
-- Gọi API trong test → mock ở ranh giới HTTP (`src/lib/http.ts` hoặc `fetch`), **không** gọi BE thật; fixture response bám đúng envelope trong API_Spec BE.
+- Gọi API trong test → mock ở ranh giới HTTP (`src/core/services/http.service.ts` hoặc `fetch`), **không** gọi BE thật; fixture response bám đúng envelope trong API_Spec BE.
 - Không viết implementation trước test. Chỉ thay đổi thuần tài liệu / style thuần (class Tailwind không đổi hành vi) mới không cần TDD.
 - Code khác design (thêm/bớt/đổi component, props, route, store, query key, cách hiện thực) → ghi ngay 1 dòng vào bảng "Lệch thiết kế" của `current-task.md`; **không** sửa design lúc này. Lệch làm đổi hợp đồng API / luồng màn hình / nghiệp vụ → dừng, hỏi user trước.
 - Sau mỗi bước: gọi skill `progress-tracker`.
