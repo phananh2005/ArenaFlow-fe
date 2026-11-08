@@ -12,15 +12,15 @@
 
 ```mermaid
 graph TD
-  Page[pages/XxxPage] --> Feature[features/xxx/XxxPanel]
-  Feature --> UI[components/ui/Button]
+  Page[modules/xxx/pages/xxx-list.page] --> Feature[modules/xxx/components/xxx-panel.component]
+  Feature --> UI[shared/components/button.component]
 ```
 
 ## 2. Danh sách component
 
 | Component | Đường dẫn | Loại | Props chính | Trách nhiệm | Tái dùng / Mới |
 |---|---|---|---|---|---|
-| `XxxPage` | `src/pages/XxxPage.tsx` | page | — | Ghép layout + feature | Mới |
+| `XxxPage` | `src/modules/xxx/pages/xxx-list.page.tsx` | page | — | Ghép layout + feature | Mới |
 
 > Loại: `page` · `feature` · `ui` (dùng chung) · `layout`. Tái dùng phải trỏ tới component đã có.
 

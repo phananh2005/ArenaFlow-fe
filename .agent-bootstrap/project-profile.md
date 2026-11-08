@@ -138,7 +138,7 @@
 - [x] Tạo GitHub repo `phananh2005/ArenaFlow-fe` PUBLIC + protection `main` như BE — đã duyệt 2026-11-03; **chưa thực hiện** (auto mode chặn `gh repo create --public`).
 - [x] Áp dụng quy tắc nhánh / rebase / PR-only của BE — đã duyệt 2026-11-03 (`CLAUDE.md` §8).
 - [x] Ngưỡng phi chức năng FE — đã duyệt 2026-11-03 (`docs/agent/non-functional-standards.md`).
-- [x] Thư viện đã duyệt hướng: `react-router` v7 · `@tanstack/react-query` v5 · `zustand` · `react-hook-form` + `zod` · wrapper `src/lib/http.ts` — ghi ADR-0001 và cài ở chức năng đầu tiên.
+- [x] Thư viện đã duyệt hướng: `react-router` v7 · `@tanstack/react-query` v5 · `zustand` · `react-hook-form` + `zod` · wrapper `src/core/services/http.service.ts` — ghi ADR-0001 và cài ở chức năng đầu tiên.
 - [x] Lưu JWT: access trong bộ nhớ, refresh trong `localStorage` — ghi ADR-0002 ở chức năng đầu tiên (`docs/agent/security-frontend.md` §1).
 - [x] Commit khởi tạo `main` (`87d3112`).
 - [ ] Commit framework trên `chore/agent-framework-bootstrap` → push → PR — chờ có `origin` và người dùng yêu cầu.

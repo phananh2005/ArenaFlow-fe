@@ -8,7 +8,7 @@
 
 - Access token: giữ **trong bộ nhớ** (store/biến module), không ghi `localStorage`/`sessionStorage`.
 - Refresh token: `localStorage` (đánh đổi đã chấp nhận vì BE trả token trong body). Muốn chuyển sang httpOnly cookie → phải sửa BE qua luồng thiết kế BE.
-- Gắn header `Authorization: Bearer …` **chỉ** trong `src/lib/http.ts`, chỉ cho request tới `VITE_API_BASE_URL`.
+- Gắn header `Authorization: Bearer …` **chỉ** trong `src/core/services/http.service.ts`, chỉ cho request tới `VITE_API_BASE_URL`.
 - 401 → thử refresh một lần; thất bại → xoá token, chuyển về đăng nhập. Không retry vô hạn.
 - Đăng xuất → xoá cả access lẫn refresh token, xoá cache dữ liệu người dùng.
 - **NEVER** đưa token vào URL/query string, log, thông báo lỗi, hay state dễ bị serialize ra ngoài.
