@@ -45,7 +45,7 @@
 | Thiết kế giao diện | kiểm tra SRS → chưa có → dừng, yêu cầu chép SRS; đã có → `ui-designer` (Stitch MCP) → duyệt | vẽ UI khi chưa có SRS |
 | Thiết kế kỹ thuật FE | kiểm tra SRS + UI_Design đã duyệt + API_Spec BE → thiếu → làm bước còn thiếu trước; đủ → `solution-architect` → duyệt → `architect-reviewer` | bỏ qua thiết kế, code thẳng |
 | Implement chức năng mới | kiểm tra thiết kế FE → chưa có → `ui-designer` / `solution-architect`; đã có → `task-state-init` → `developer` | code chức năng mới khi chưa có thiết kế |
-| Sửa chức năng đã triển khai | `developer` → code & test → kiểm tra ảnh hưởng → cập nhật design FE (nếu có) → `architect-reviewer` (nếu sửa design) → `code-review` | bỏ qua cập nhật tài liệu khi có ảnh hưởng |
+| Sửa chức năng đã triển khai | `developer` → code & test → kiểm tra ảnh hưởng → cập nhật design FE (nếu có) → `architect-reviewer` (nếu sửa design) → agent `code-reviewer` | bỏ qua cập nhật tài liệu khi có ảnh hưởng |
 | Debug / lỗi | skill `debug` | đoán nguyên nhân khi chưa reproduce |
 | Review thiết kế | procedure `architect-reviewer` | tự sửa thiết kế |
 | Review code / chuẩn bị PR | procedure `code-reviewer` | commit khi chưa review |
@@ -64,7 +64,7 @@
 | `task-state-init` | Bắt đầu implement tính năng mới |
 | `progress-tracker` | Sau mỗi bước implement hoàn thành |
 | `reuse-scan` | Trước khi tạo thành phần dùng chung mới (component, hook, util, schema, type) |
-| `code-review` | Review nhanh trước commit |
+| `code-review` | Tự kiểm nhanh **trong lúc** code, khi user yêu cầu — **không** thay cổng review trước commit (§8) |
 | `debug` | Debug có hệ thống (reproduce → isolate → diagnose → fix) |
 | `workflow-adapt` | Điều chỉnh cách làm việc khi agent lệch quy ước repo |
 | `decisions-relevance` | Rà kho ADR khi có quyết định kiến trúc |
@@ -115,7 +115,9 @@
 - Màn hình gọi API / hiển thị danh sách / thêm thư viện → **MUST** đọc `docs/agent/non-functional-standards.md` **trước** khi lập kế hoạch; không đạt ngưỡng → dừng, chờ xác nhận.
 - Sau khi viết/sửa code → **MUST** chạy `npm test`, `npm run lint`, `npm run build`, dán output, xác nhận PASS. Chạy một file khi TDD: `npx vitest run <path>`. Test chạy offline — mock ở ranh giới HTTP, không cần BE.
 - Sau mỗi bước implement → **MUST** chạy `progress-tracker`.
-- Trước khi commit → **MUST** chạy `code-review`.
+- Trước khi commit → **MUST** gọi agent `code-reviewer` dưới dạng **subagent** (context độc lập — ngoại lệ của quy tắc "thực thi inline" ở §3): chỉ truyền phạm vi diff + đường dẫn `current-task.md`, **không** truyền kết luận/đánh giá của phiên đã viết code. CRITICAL/MAJOR → sửa → gọi lại subagent trên diff mới; chỉ commit khi không còn CRITICAL/MAJOR (hoặc user chấp nhận rõ). **NEVER** dùng skill `code-review` (tự review trong phiên) thay cho cổng này.
+  - **Miễn cổng khi diff không có code:** commit chỉ gồm tài liệu (`*.md`, `docs/agent/design/`, `docs/agent/business-spec/`, ảnh/HTML mockup trong `ui/`) → **không** cần gọi `code-reviewer`; nêu rõ "miễn review: không có thay đổi code" kèm danh sách file (`git diff --cached --name-only`).
+  - **Tính là code** (vẫn bắt buộc review): `src/**`, `index.html`, `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `.oxlintrc.json`, `.env.example`, `.claude/settings*.json`, `docs/agent/hooks/**`, `.githooks/**`, mọi file script (`*.js|*.cjs|*.mjs|*.ts|*.tsx|*.sh`). Diff lẫn code + tài liệu → review cả diff. Không chắc file thuộc nhóm nào → coi là code.
 - **Đồng bộ `main`** (chỉ khi đã có remote `origin`): trên **mọi nhánh khác `main`**, agent **MUST tự** chạy `git fetch origin && git rebase --autostash origin/main` tại 3 thời điểm: (1) trước khi bắt đầu triển khai một chức năng, (2) trước mỗi commit, (3) trước mỗi push.
   - Conflict khi rebase → `git rebase --abort`, **dừng**, báo danh sách file conflict; **NEVER** tự resolve. Conflict khi áp lại autostash → dừng, báo (stash vẫn còn trong `git stash list`).
   - `fetch` lỗi (mạng/quyền) → báo, **không** khẳng định đã đồng bộ.

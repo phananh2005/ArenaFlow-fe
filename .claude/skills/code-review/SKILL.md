@@ -1,20 +1,23 @@
 ---
 description: >
-  Review nhanh code theo 5 chiều (Security, Performance, Correctness, Style,
-  Reuse & Duplication) trong phiên, TRƯỚC khi commit. Kích hoạt khi implement xong, hoặc khi nghe
-  "review", "check code", "kiểm tra code". Review toàn diện trước PR →
-  agent code-reviewer.
+  Tự kiểm nhanh code theo 5 chiều (Security, Performance, Correctness, Style,
+  Reuse & Duplication) ngay trong phiên, TRONG LÚC code. Chỉ kích hoạt khi người dùng yêu cầu
+  "tự kiểm nhanh", "self-check". KHÔNG phải cổng trước commit — cổng đó là agent
+  code-reviewer chạy subagent (context độc lập).
 ---
 
-# Code Review (nhanh, trước commit)
+# Code Review (tự kiểm nhanh trong phiên)
 
 > Tiêu chí cụ thể lấy từ knowledge dự án. Skill chỉ định nghĩa 5 chiều — cùng bộ chiều với
 > agent `code-reviewer`, bản rút gọn để chạy trong phiên.
 
-## MUST trigger
-- Implement xong thay đổi — **trước khi commit**.
+> [!IMPORTANT]
+> Skill chạy trong chính phiên đã viết code ⇒ là **tự review**, không độc lập.
+> **NEVER** dùng skill này thay cổng review trước commit — cổng đó là agent `code-reviewer`
+> gọi dưới dạng subagent (`CLAUDE.md` §8).
 
-**NEVER** commit khi chưa chạy đủ 5 chiều.
+## Khi dùng
+- Người dùng yêu cầu tự kiểm nhanh giữa chừng (trước khi chạy cổng chính thức).
 
 ## Quy trình
 1. **Phạm vi:** diff nào? Người dùng đã chỉ định → bắt đầu luôn.
@@ -28,4 +31,4 @@ description: >
 4. **Đề xuất sửa:** mỗi CRITICAL/MAJOR kèm đoạn code gợi ý + `file:line`.
 
 ## Liên kết
-- Review trước PR → agent `code-reviewer`
+- Cổng trước commit / trước PR → agent `code-reviewer` (subagent)
