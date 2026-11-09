@@ -93,6 +93,6 @@ Nhận request
 3. Thực thi tuần tự, không bỏ bước; gặp tín hiệu dừng → dừng và hỏi.
 4. Mọi thay đổi hành vi code MUST theo TDD **Red → Green → Refactor** (`npx vitest run <file>`); chỉ thay đổi thuần tài liệu / style thuần được miễn. Test chạy offline, mock ở ranh giới HTTP.
 5. Sau mỗi bước implement → `progress-tracker`.
-6. **Ngoại lệ — `code-reviewer`:** không thực thi inline. Coordinator gọi Agent tool với `subagent_type: code-reviewer`, prompt chỉ gồm phạm vi diff (`git diff origin/main`, gồm file chưa track; review lại → chỉ phần sửa) + đường dẫn `current-task.md`; không kèm nhận định "đã ổn" của phiên viết code. Relay findings cho user. Cổng duy nhất, trước khi push để tạo PR — không gọi trước từng commit, không gọi lại sau khi tạo PR. Diff chỉ có tài liệu → miễn gọi, theo tiêu chí "tính là code" ở `CLAUDE.md` §8.
+6. **Ngoại lệ — `code-reviewer`:** không thực thi inline. Coordinator gọi Agent tool với `subagent_type: code-reviewer`, prompt chỉ gồm phạm vi diff (`git diff origin/main`, gồm file chưa track; review lại → chỉ phần sửa) + đường dẫn `current-task.md`; không kèm nhận định "đã ổn" của phiên viết code. Relay findings cho user. Cổng duy nhất, trước khi tạo PR — không gọi trước từng commit, không gọi lại sau khi tạo PR (kể cả khi push thêm code — rủi ro đã chấp nhận, `CLAUDE.md` §8). Diff chỉ có tài liệu → miễn gọi, theo tiêu chí "tính là code" ở `CLAUDE.md` §8.
 
 **NEVER** yêu cầu người dùng chuyển agent trong UI; **NEVER** bỏ bước vì "nhanh hơn".

@@ -63,7 +63,8 @@ Nhận request
 | Trước sửa | Có thiết kế FE đã duyệt (chức năng mới); kế hoạch trong `current-task.md`; đánh giá chuẩn phi chức năng | — |
 | Trong sửa | TDD Red → Green → Refactor | `npx vitest run <file>` |
 | Sau sửa | Test + lint + build PASS, dán output | `npm test` · `npm run lint` · `npm run build` |
-| Trước commit | Agent `code-reviewer` (subagent, context độc lập); secret scan pre-commit | `.githooks/pre-commit` |
+| Trước commit | Secret scan pre-commit | `.githooks/pre-commit` |
+| Trước khi tạo PR | Agent `code-reviewer` (subagent, context độc lập) trên `git diff origin/main` — cổng review duy nhất (`CLAUDE.md` §8) | — |
 
 ## 6. Không tạo
 
