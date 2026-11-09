@@ -118,7 +118,7 @@ Test FE chạy offline (jsdom, mock HTTP) — không cần BE hay DB. Không bá
 | `docs/agent/CLAUDE.md` | Dự án (kênh tuỳ biến) | Kiến thức dự án, ưu tiên hơn kiến thức tổ chức |
 | `docs/agent/non-functional-standards.md` | Dự án | Ngưỡng FE do người dùng chốt 2026-11-03 |
 | `docs/agent/adaptation-rules.md` | Dự án | Điều chỉnh sau khi có bằng chứng và được duyệt |
-| `docs/agent/upstream/` (submodule) | Repo `ArenaFlow-be` publish sang `ArenaFlow-spec` | Agent chỉ đọc (deny `Edit(...)` — bao cả Write/NotebookEdit); cập nhật con trỏ theo `external-knowledge.md` §2.2 |
+| `docs/agent/upstream/` (submodule) | Repo `ArenaFlow-be` publish sang `ArenaFlow-spec` | Agent chỉ đọc (deny `Edit(...)` — bao cả Write/NotebookEdit; giới hạn: xem `external-knowledge.md` §2); cập nhật con trỏ theo `external-knowledge.md` §2.2 |
 | `.gitmodules` | Dự án | Tính là code (review bắt buộc) |
 | Cấu hình Stitch MCP | Từng máy dev (scope local) | Không commit; API key không vào repo |
 | `package-lock.json` | npm | Chỉ đổi qua `npm install` |
