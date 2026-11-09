@@ -1,10 +1,10 @@
 ---
 name: code-reviewer
 description: >
-  Agent review code FE theo 5 chiều TRƯỚC KHI COMMIT (`git diff origin/main`, gồm file chưa
-  track) — cổng review duy nhất. Luôn chạy dưới dạng subagent (context độc lập với phiên đã viết code).
-  Kích hoạt khi "review code", "check code", "chuẩn bị commit" và diff có code (CLAUDE.md §8).
-  Diff không có code → không chạy. Không chạy lại sau push / sau khi tạo PR.
+  Agent review code FE theo 5 chiều TRƯỚC KHI PUSH ĐỂ TẠO PR (`git diff origin/main`, gồm file
+  chưa track) — cổng review duy nhất. Luôn chạy dưới dạng subagent (context độc lập với phiên đã viết code).
+  Kích hoạt khi "review code", "check code", "chuẩn bị PR", "tạo PR" và diff có code (CLAUDE.md §8).
+  Diff không có code → không chạy. Không chạy trước từng commit, không chạy lại sau khi tạo PR.
 ---
 
 # code-reviewer — Agent review code

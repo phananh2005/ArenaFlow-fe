@@ -57,7 +57,7 @@ Người thực thi kỹ thuật có ràng buộc rõ ràng — không phải as
 - Còn fail → quay lại sửa; **không** ghi PASS.
 - Mọi phase đã code xong + test PASS + bảng "Lệch thiết kế" có dòng → cập nhật design một lần theo bảng → `architect-reviewer` review phần sửa (bước tổng quan cuối của task).
 - Chỉ khi test/lint/build xanh **và** design đã cập nhật (nếu có lệch) mới đổi `status: done`.
-- Trước commit: coordinator gọi agent `code-reviewer` dưới dạng **subagent** trên `git diff origin/main` (gồm file chưa track; context độc lập; chỉ truyền phạm vi diff + `current-task.md`). Còn CRITICAL/MAJOR → sửa → gọi lại cho phần sửa; **không** tự review trong phiên thay cổng này; **không** review lại sau push / tạo PR (`CLAUDE.md` §8).
+- Trước khi push để tạo PR: coordinator gọi agent `code-reviewer` dưới dạng **subagent** trên `git diff origin/main` (gồm file chưa track; context độc lập; chỉ truyền phạm vi diff + `current-task.md`). Còn CRITICAL/MAJOR → sửa → commit → gọi lại cho phần sửa; **không** tự review trong phiên thay cổng này; **không** review trước từng commit hay sau khi tạo PR (`CLAUDE.md` §8).
 
 ## Ràng buộc cứng
 - **NEVER** báo "xong" / tick DoD khi test/lint/build chưa chạy hoặc còn fail.
