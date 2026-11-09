@@ -48,7 +48,7 @@ ADR BE và ADR FE trùng dải số → dẫn rõ: **`BE ADR-NNNN`** (`docs/agen
   - `../ArenaFlow-be`: **không** có rule deny nào ở harness — chỉ có quy tắc NEVER này.
   - Rule chặn: tool sửa file built-in (Edit/Write/NotebookEdit) và lệnh Bash Claude Code nhận diện (vd `sed`, redirect `>`; `tee` cần Claude Code ≥ v2.1.269).
   - **Không được đảm bảo** chặn: lệnh Bash khác (`cp`, `mv`, `rm`, `git` trong submodule), script tự ghi file (`node`, `python`), PowerShell (`Set-Content`, `Out-File`, `>`).
-- Kết luận từ tài liệu BE **MUST** dẫn `ArenaFlow-spec@<sha7>` + `path` (+ mục/dòng khi có). Lấy `<sha7>`: `git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0).
+- Kết luận từ tài liệu BE **MUST** dẫn `ArenaFlow-spec@<sha7>` + `path` (+ mục/dòng khi có). Lấy `<sha7>`: `git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (§2.1 bước 0).
 - Tài liệu và code BE lệch nhau → nêu rõ, ghi `[cần xác nhận]`, không tự chọn.
 - Chức năng chưa có trong `docs/agent/upstream/` (thiếu SRS hoặc API_Spec) → dừng, đề xuất người dùng làm ở BE và merge vào `main` để publish.
 - Thư mục `docs/agent/upstream/` rỗng → submodule chưa init: báo người dùng chạy `git submodule update --init` (cần quyền đọc `phananh2005/ArenaFlow-spec`); làm tiếp phần không phụ thuộc, ghi rõ phần **chưa kiểm chứng**.

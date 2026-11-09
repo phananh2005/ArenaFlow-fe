@@ -83,7 +83,7 @@
 
 - **PreToolUse** (`Bash`) → `docs/agent/hooks/agent-hooks.cjs guard` — chặn lệnh phá huỷ đã định nghĩa.
 - **PostToolUse** (`Bash|Write|Edit`) → `docs/agent/hooks/agent-hooks.cjs logger` — chỉ log thời gian và tên tool; không lưu nội dung/lệnh.
-- **SessionStart** (`startup|resume|clear`) → nhắc khi Git pre-commit chưa cài, hoặc submodule `docs/agent/upstream` chưa init.
+- **SessionStart** (`startup|resume|clear`) → nhắc khi Git pre-commit chưa cài, hoặc submodule `docs/agent/upstream` chưa init / đang checkout commit khác con trỏ của nhánh.
 - **Git pre-commit** (`.githooks/pre-commit`) → quét secret trong staged files (gồm `.env*`) bằng module chung `docs/agent/hooks/agent-hooks.cjs`.
 - **Điều kiện hook Claude Code chạy:** mở harness tại gốc repo · Node.js có trên PATH · workspace đã được trust.
 - **Lưu ý:** Git `core.hooksPath` là cấu hình local, không tự đi theo clone; xem `docs/agent/README.md`.

@@ -1,7 +1,7 @@
 # Blueprint Claude-framework — ArenaFlow-fe (mức `full`)
 
 > Bước 5 của `UNIVERSAL_AGENT_BOOTSTRAP_PROMPT.md`. Nguồn tham số: `project-profile.md`.
-> Trạng thái: **đã duyệt 2026-11-03 và đã triển khai**. Thay đổi sau duyệt (`ui-designer` + Stitch MCP, SRS trong `docs/agent/business-spec/`, `.gitattributes`) ghi ở `project-profile.md` §12.
+> Trạng thái: **đã duyệt 2026-11-03 và đã triển khai**. Thay đổi sau duyệt (`ui-designer` + Stitch MCP, SRS chép tay vào `docs/agent/business-spec/` — nay thay bằng submodule `docs/agent/upstream` theo FE ADR-0001, `.gitattributes`) ghi ở `project-profile.md` §12.
 
 ## 1. Mục tiêu & phạm vi
 
