@@ -12,8 +12,8 @@ description: >
 > Đi cặp với `solution-architect`.
 
 ## Đọc trước
-- Tài liệu thiết kế `docs/agent/design/<MÃ>/` (gồm `UI_Design.md` đã duyệt) + SRS `docs/agent/business-spec/<MÃ>/`.
-- Hợp đồng API `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` + `../ArenaFlow-be/docs/agent/api-convention.md`.
+- Tài liệu thiết kế `docs/agent/design/<MÃ>/` (gồm `UI_Design.md` đã duyệt) + SRS `docs/agent/upstream/business-spec/<SRS_DIR>/` (`<SRS_DIR>` tra theo mục lục `docs/agent/upstream/README.md` — `docs/agent/external-knowledge.md` §1.1; có thể là mã khác).
+- Hợp đồng API `docs/agent/upstream/api/<MÃ>/API_Spec.md` + `docs/agent/upstream/api/api-convention.md`; ADR BE `docs/agent/upstream/decisions/`.
 - Thiết kế FE liên quan đã có (cùng module / dùng chung route, component, store).
 - `docs/agent/design-standards.md`, `docs/agent/convention-frontend.md`, `docs/agent/security-frontend.md`, `docs/agent/non-functional-standards.md`, ADR liên quan.
 
@@ -30,6 +30,7 @@ description: >
 - [ ] Tên route / component / store / query key trùng khớp giữa 3 tài liệu kỹ thuật.
 - [ ] Mỗi màn hình `S<n>` trong `UI_Design.md` có route + component tương ứng; không có màn hình/thành phần ngoài UI đã duyệt mà không ghi `[cần xác nhận]`.
 - [ ] Endpoint, field, mã lỗi khớp API_Spec BE (mở file, không theo trí nhớ); xung đột → phải là `[cần xác nhận]`.
+- [ ] Header ghi `Căn cứ: ArenaFlow-spec@<sha7>`; khác con trỏ hiện tại (`git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0)) → soi thay đổi giữa hai bản (`git -C docs/agent/upstream log --oneline <cũ>..HEAD -- README.md business-spec/<SRS_DIR> api/<MÃ>`), thiết kế chưa phản ánh → MAJOR.
 - [ ] Khớp thiết kế FE liên quan đã có.
 
 ### 3. Tuân thủ chuẩn — soi từng mục với **file nguồn**

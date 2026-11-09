@@ -28,7 +28,7 @@ description: >
 
 ### Bước 3 — Diagnose
 - Tìm **root cause** (5 Whys), không dừng ở triệu chứng.
-- So cấu hình với biến môi trường (chỉ so **tên key**, không in giá trị): `VITE_API_BASE_URL`, `VITE_DEV_PROXY_TARGET`. Lỗi từ BE → đối chiếu mã lỗi ở `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` trước khi kết luận lỗi FE.
+- So cấu hình với biến môi trường (chỉ so **tên key**, không in giá trị): `VITE_API_BASE_URL`, `VITE_DEV_PROXY_TARGET`. Lỗi từ BE → đối chiếu mã lỗi ở `docs/agent/upstream/api/<MÃ>/API_Spec.md` trước khi kết luận lỗi FE.
 
 ### Bước 4 — Fix
 - Fix nhỏ nhất xử lý root cause; viết test chặn tái diễn; chạy test, dán output.

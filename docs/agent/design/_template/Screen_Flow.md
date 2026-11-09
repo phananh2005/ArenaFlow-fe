@@ -5,7 +5,8 @@
 | Mã chức năng | `<MÃ>` |
 | Phạm vi tầng | frontend (ArenaFlow-fe) — backend: ngoài phạm vi repo này |
 | Repo/stack | ArenaFlow-fe · React + TypeScript + Vite |
-| Nguồn SRS/UI/API | `docs/agent/business-spec/<MÃ>/` · `UI_Design.md` · `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` |
+| Nguồn SRS/UI/API | `docs/agent/upstream/business-spec/<SRS_DIR>/` · `UI_Design.md` · `docs/agent/upstream/api/<MÃ>/API_Spec.md` |
+| Căn cứ | `ArenaFlow-spec@<sha7>` · API_Spec `vX.Y` |
 | Quy ước áp dụng | `docs/agent/design-standards.md`, `docs/agent/convention-frontend.md`, `docs/agent/security-frontend.md` |
 | Tác giả / Ngày / Phiên bản | `<tên>` / `YYYY-MM-DD` / `v1.0` |
 

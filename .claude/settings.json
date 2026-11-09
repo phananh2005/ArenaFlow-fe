@@ -1,4 +1,9 @@
 {
+  "permissions": {
+    "deny": [
+      "Edit(/docs/agent/upstream/**)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -34,7 +39,7 @@
             "type": "command",
             "command": "node \"${CLAUDE_PROJECT_DIR:-.}/docs/agent/hooks/agent-hooks.cjs\" session-start",
             "timeout": 5,
-            "statusMessage": "Kiểm tra Git pre-commit"
+            "statusMessage": "Kiểm tra Git pre-commit và submodule tài liệu BE"
           }
         ]
       }

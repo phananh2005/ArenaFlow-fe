@@ -3,7 +3,8 @@
 | Mục | Giá trị |
 |---|---|
 | Mã chức năng | `<MÃ>` |
-| Nguồn SRS | `docs/agent/business-spec/<MÃ>/` |
+| Nguồn SRS | `docs/agent/upstream/business-spec/<SRS_DIR>/` |
+| Căn cứ | `ArenaFlow-spec@<sha7>` |
 | Công cụ | Stitch MCP — project `ArenaFlow` (ID ở `docs/agent/external-knowledge.md` §3) |
 | Thiết bị mục tiêu | web desktop / mobile / cả hai |
 | Trạng thái duyệt | Chờ duyệt / Đã duyệt `YYYY-MM-DD` |

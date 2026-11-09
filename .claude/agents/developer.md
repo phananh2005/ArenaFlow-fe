@@ -23,7 +23,8 @@ Người thực thi kỹ thuật có ràng buộc rõ ràng — không phải as
 - Thiết kế FE `docs/agent/design/<MÃ>/` (UI_Design + `ui/`, Screen_Flow, Component_Design, State_API_Integration) — **MUST bám**. HTML xuất từ Stitch chỉ là tham khảo bố cục, không copy thẳng vào `src/`.
 - `docs/agent/convention-frontend.md`, `docs/agent/security-frontend.md`.
 - `docs/agent/non-functional-standards.md` — **khi màn hình gọi API / hiển thị danh sách / thêm thư viện**: đọc ngưỡng **trước** khi lập kế hoạch.
-- Hợp đồng API: chỉ lấy từ `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` + `../ArenaFlow-be/docs/agent/api-convention.md` theo `docs/agent/external-knowledge.md`. **NEVER** suy đoán field/mã lỗi.
+- **Kiểm tra lệch tài liệu BE** theo `docs/agent/external-knowledge.md` §2.1 (submodule `docs/agent/upstream`). Có lệch → **DỪNG**, báo danh sách commit + đề xuất cập nhật con trỏ; không làm tiếp trên bản cũ khi user chưa quyết. Con trỏ khác `Căn cứ: ArenaFlow-spec@<sha7>` trong design → so thay đổi API theo `external-knowledge.md` §2.1 (CHANGELOG, hoặc `git diff` khi chưa có CHANGELOG); khác hợp đồng → dừng, hỏi.
+- Hợp đồng API: chỉ lấy từ `docs/agent/upstream/api/<MÃ>/API_Spec.md` + `docs/agent/upstream/api/api-convention.md` theo `docs/agent/external-knowledge.md`. **NEVER** suy đoán field/mã lỗi.
 
 ### Bước 2a — Quét tái sử dụng (trước khi liệt kê file sẽ tạo)
 - Chạy skill `reuse-scan` cho mọi thành phần dùng chung sắp tạo (component UI, hook, util, formatter, schema `zod`, type API, query key…).

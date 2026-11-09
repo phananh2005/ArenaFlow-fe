@@ -13,7 +13,7 @@ Thư mục `docs/agent/design/<MÃ>/` (mã trùng mã SRS), copy từ `docs/agen
 
 | Tài liệu | Trả lời | Bám nguồn | Do ai sinh |
 |---|---|---|---|
-| `UI_Design.md` + `ui/` | Giao diện từng màn hình (ảnh/HTML xuất từ Stitch), trạng thái, map tới SRS | SRS `docs/agent/business-spec/<MÃ>/` | `ui-designer` |
+| `UI_Design.md` + `ui/` | Giao diện từng màn hình (ảnh/HTML xuất từ Stitch), trạng thái, map tới SRS | SRS `docs/agent/upstream/business-spec/<SRS_DIR>/` (tra mục lục `docs/agent/upstream/README.md`) | `ui-designer` |
 | `Screen_Flow.md` | Màn hình nào, route nào, ai vào được, điều hướng ra sao | SRS, `UI_Design.md`, `docs/agent/security-frontend.md` §5 | `solution-architect` |
 | `Component_Design.md` | Cây component, props, component dùng chung tái dùng/tạo mới, form & validation | `UI_Design.md`, `docs/agent/convention-frontend.md` | `solution-architect` |
 | `State_API_Integration.md` | State (client/server), query key, endpoint mỗi màn hình, mapping field, xử lý lỗi, số API call | API_Spec BE, `api-convention.md` BE, `docs/agent/non-functional-standards.md` | `solution-architect` |

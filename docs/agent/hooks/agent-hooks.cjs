@@ -138,11 +138,40 @@ function logToolUse(input) {
   return 0;
 }
 
+const UPSTREAM_PATH = 'docs/agent/upstream';
+
+const UPSTREAM_PATH_LINE = new RegExp(`^\\s*path\\s*=\\s*${UPSTREAM_PATH.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}\\s*$`, 'm');
+
+// Trạng thái submodule ArenaFlow-spec: 'absent' (không khai báo) · 'uninit' (khai báo, chưa checkout)
+// · 'stale' (checkout commit khác gitlink của nhánh) · 'ok'. Chỉ thao tác cục bộ, không gọi mạng.
+function upstreamState(root) {
+  let gitmodules;
+  try {
+    gitmodules = fs.readFileSync(path.join(root, '.gitmodules'), 'utf8');
+  } catch {
+    return 'absent';
+  }
+  if (!UPSTREAM_PATH_LINE.test(gitmodules)) return 'absent';
+  if (!fs.existsSync(path.join(root, UPSTREAM_PATH, '.git'))) return 'uninit';
+  const status = spawnSync('git', ['submodule', 'status', '--', UPSTREAM_PATH], { cwd: root, encoding: 'utf8' });
+  if (status.status === 0 && status.stdout.startsWith('+')) return 'stale';
+  return 'ok';
+}
+
 function sessionReminder(input) {
   const root = projectRoot(input);
+  const messages = [];
   const configured = spawnSync('git', ['config', '--get', 'core.hooksPath'], { cwd: root, encoding: 'utf8' });
-  if (configured.status === 0 && configured.stdout.trim() === '.githooks') return 0;
-  process.stdout.write(JSON.stringify({ systemMessage: 'Git pre-commit chưa được cài cho bản clone này; kiểm tra docs/agent/README.md để biết hướng dẫn.' }));
+  if (!(configured.status === 0 && configured.stdout.trim() === '.githooks')) {
+    messages.push('Git pre-commit chưa được cài cho bản clone này; kiểm tra docs/agent/README.md để biết hướng dẫn.');
+  }
+  const upstream = upstreamState(root);
+  if (upstream === 'uninit') {
+    messages.push(`Submodule ${UPSTREAM_PATH} (ArenaFlow-spec: SRS/API_Spec/ADR của BE) chưa được tải; chạy \`git submodule update --init\` (xem docs/agent/README.md).`);
+  } else if (upstream === 'stale') {
+    messages.push(`Submodule ${UPSTREAM_PATH} đang checkout commit khác con trỏ của nhánh (tài liệu BE có thể sai phiên bản); chạy \`git submodule update\` trước khi đọc SRS/API_Spec.`);
+  }
+  if (messages.length) process.stdout.write(JSON.stringify({ systemMessage: messages.join(' ') }));
   return 0;
 }
 

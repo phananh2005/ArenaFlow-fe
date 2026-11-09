@@ -98,7 +98,7 @@ src/
 
 - Mọi request đi qua wrapper `src/core/services/http.service.ts` (một chỗ gắn `Authorization`, timeout, parse envelope, chuẩn hoá lỗi). **NEVER** gọi `fetch` trực tiếp trong component.
 - Base path lấy từ `import.meta.env.VITE_API_BASE_URL` (mặc định `/api/v1`, dev đi qua Vite proxy).
-- Envelope, mã lỗi, phân trang, sort, header auth: theo `../ArenaFlow-be/docs/agent/api-convention.md` §4.3–§4.4, §6–§9. Không chép lại quy tắc vào đây.
+- Envelope, mã lỗi, phân trang, sort, header auth: theo `docs/agent/upstream/api/api-convention.md` §4.3–§4.4, §6–§9. Không chép lại quy tắc vào đây.
 - Type request/response bám `API_Spec.md` của chức năng ở BE; field mới chưa có trong spec → `[cần xác nhận]`.
 
 ## 6. Style (Tailwind)

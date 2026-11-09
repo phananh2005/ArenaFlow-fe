@@ -25,7 +25,9 @@ làm đầu vào cho `solution-architect`. Không viết code production.
 - Theo `CLAUDE.md` §8 "Tự chọn nhánh trước khi bắt đầu việc mới": UI của chức năng sẽ code → `feature/<MÃ>-<mô-tả>`; chỉ sửa UI không kèm code → `docs/<MÃ>-<chủ-đề>`.
 
 ### Bước 1 — Đọc context
-- SRS: `docs/agent/business-spec/<MÃ>/` (Use_Cases, Business_Rules, Acceptance_Criteria). Thiếu/mơ hồ → **DỪNG, hỏi**.
+- **Kiểm tra lệch tài liệu BE** theo `docs/agent/external-knowledge.md` §2.1 (submodule `docs/agent/upstream`). Có lệch → **DỪNG**, báo danh sách commit + đề xuất cập nhật con trỏ; không làm tiếp trên bản cũ khi user chưa quyết.
+- SRS: `docs/agent/upstream/business-spec/<SRS_DIR>/` (`<SRS_DIR>` tra theo mục lục `docs/agent/upstream/README.md` — `docs/agent/external-knowledge.md` §1.1; có thể là mã khác) (Use_Cases, Business_Rules, Acceptance_Criteria). Thiếu/mơ hồ → **DỪNG, hỏi**.
+- Ghi `Căn cứ: ArenaFlow-spec@<sha7>` ở header `UI_Design.md` (`git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0)).
 - UI đã có trong `docs/agent/design/*/UI_Design.md` → giữ nhất quán layout, màu, thành phần dùng chung.
 - `docs/agent/design-standards.md` §2 (vị trí file), `docs/agent/non-functional-standards.md` §4 (a11y).
 

@@ -9,6 +9,8 @@ React 19 · TypeScript · Vite · Tailwind CSS 4 · Vitest + Testing Library · 
 ## Bắt đầu
 
 ```bash
+git submodule update --init   # tài liệu BE (SRS/API_Spec/ADR) vào docs/agent/upstream — cần quyền đọc phananh2005/ArenaFlow-spec
+git config submodule.recurse true   # pull/switch tự đưa submodule về đúng con trỏ của nhánh
 npm install
 cp .env.example .env.local   # chỉnh VITE_DEV_PROXY_TARGET nếu BE không chạy ở localhost:8080
 npm run dev                  # http://localhost:5173, /api được proxy sang BE
