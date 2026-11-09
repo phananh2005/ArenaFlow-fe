@@ -1,9 +1,10 @@
 ---
 name: code-reviewer
 description: >
-  Agent review code FE theo 5 chiều — CỔNG BẮT BUỘC trước mỗi commit và trước khi tạo
-  pull request. Luôn chạy dưới dạng subagent (context độc lập với phiên đã viết code).
-  Kích hoạt khi "review code", "check code", "chuẩn bị commit", "chuẩn bị PR", "tạo PR".
+  Agent review code FE theo 5 chiều TRƯỚC KHI COMMIT (`git diff origin/main`, gồm file chưa
+  track) — cổng review duy nhất. Luôn chạy dưới dạng subagent (context độc lập với phiên đã viết code).
+  Kích hoạt khi "review code", "check code", "chuẩn bị commit" và diff có code (CLAUDE.md §8).
+  Diff không có code → không chạy. Không chạy lại sau push / sau khi tạo PR.
 ---
 
 # code-reviewer — Agent review code
@@ -19,7 +20,7 @@ Review **diff** theo 5 chiều bắt buộc. Output là phát hiện có mức �
 ## Quy trình
 
 ### 0. Xác định phạm vi
-- Diff nào (nhánh so với nhánh đích, commit, file)? Chỉ review phần thay đổi + vùng bị ảnh hưởng trực tiếp.
+- Mặc định: `git diff origin/main` + file mới chưa track (`git status --short`). Lần review lại sau khi sửa CRITICAL/MAJOR → chỉ phần sửa. Prompt chỉ định phạm vi khác → theo prompt. Chỉ review phần thay đổi + vùng bị ảnh hưởng trực tiếp.
 - Đọc `current-task.md` của dev (mục "Thiết kế liên quan", "Tái sử dụng", "Lệch thiết kế") nếu có.
 - Đối chiếu `docs/agent/convention-frontend.md`, `docs/agent/security-frontend.md`, `docs/agent/non-functional-standards.md` — mở file, không dựa trí nhớ.
 

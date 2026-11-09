@@ -48,7 +48,7 @@
 | Sửa chức năng đã triển khai | `developer` → code & test → kiểm tra ảnh hưởng → cập nhật design FE (nếu có) → `architect-reviewer` (nếu sửa design) → agent `code-reviewer` | bỏ qua cập nhật tài liệu khi có ảnh hưởng |
 | Debug / lỗi | skill `debug` | đoán nguyên nhân khi chưa reproduce |
 | Review thiết kế | procedure `architect-reviewer` | tự sửa thiết kế |
-| Review code / chuẩn bị PR | procedure `code-reviewer` | commit khi chưa review |
+| Review code / chuẩn bị commit | agent `code-reviewer` (subagent, chỉ khi diff có code — §8) | commit code khi chưa review; review lại sau push / tạo PR |
 | Agent lệch quy ước repo (lặp lại) | skill `workflow-adapt` | tự nới guardrail |
 | Hỏi đáp / giải thích / tìm kiếm | xử lý trực tiếp | — |
 
@@ -115,7 +115,7 @@
 - Màn hình gọi API / hiển thị danh sách / thêm thư viện → **MUST** đọc `docs/agent/non-functional-standards.md` **trước** khi lập kế hoạch; không đạt ngưỡng → dừng, chờ xác nhận.
 - Sau khi viết/sửa code → **MUST** chạy `npm test`, `npm run lint`, `npm run build`, dán output, xác nhận PASS. Chạy một file khi TDD: `npx vitest run <path>`. Test chạy offline — mock ở ranh giới HTTP, không cần BE.
 - Sau mỗi bước implement → **MUST** chạy `progress-tracker`.
-- Trước khi commit → **MUST** gọi agent `code-reviewer` dưới dạng **subagent** (context độc lập — ngoại lệ của quy tắc "thực thi inline" ở §3): chỉ truyền phạm vi diff + đường dẫn `current-task.md`, **không** truyền kết luận/đánh giá của phiên đã viết code. CRITICAL/MAJOR → sửa → gọi lại subagent trên diff mới; chỉ commit khi không còn CRITICAL/MAJOR (hoặc user chấp nhận rõ). **NEVER** dùng skill `code-review` (tự review trong phiên) thay cho cổng này.
+- Trước khi commit → **MUST** gọi agent `code-reviewer` dưới dạng **subagent** (context độc lập — ngoại lệ của quy tắc "thực thi inline" ở §3) trên `git diff origin/main` (sau rebase; gồm cả file mới chưa track): chỉ truyền phạm vi diff + đường dẫn `current-task.md`, **không** truyền kết luận/đánh giá của phiên đã viết code. CRITICAL/MAJOR → sửa → gọi lại subagent cho phần sửa; chỉ commit khi không còn CRITICAL/MAJOR (hoặc user chấp nhận rõ). Đây là cổng review **duy nhất**: **không** review lại sau push / sau khi tạo PR. **NEVER** dùng skill `code-review` (tự review trong phiên) thay cho cổng này.
   - **Miễn cổng khi diff không có code:** commit chỉ gồm tài liệu (`*.md`, `docs/agent/design/`, con trỏ submodule `docs/agent/upstream`, ảnh/HTML mockup trong `ui/`) → **không** cần gọi `code-reviewer`; nêu rõ "miễn review: không có thay đổi code" kèm danh sách file (`git diff --cached --name-only`).
   - **Tính là code** (vẫn bắt buộc review): `src/**`, `index.html`, `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `.oxlintrc.json`, `.env.example`, `.gitmodules`, `.claude/settings*.json`, `docs/agent/hooks/**`, `.githooks/**`, mọi file script (`*.js|*.cjs|*.mjs|*.ts|*.tsx|*.sh`). Diff lẫn code + tài liệu → review cả diff. Không chắc file thuộc nhóm nào → coi là code.
 - **Đồng bộ `main`** (chỉ khi đã có remote `origin`): trên **mọi nhánh khác `main`**, agent **MUST tự** chạy `git fetch origin && git rebase --autostash origin/main` tại 3 thời điểm: (1) trước khi bắt đầu triển khai một chức năng, (2) trước mỗi commit, (3) trước mỗi push.
@@ -137,7 +137,7 @@
     2. Working tree còn thay đổi chưa commit **của việc khác** → **dừng**, hỏi user (commit hay stash); **NEVER** mang sang nhánh mới.
     3. `git fetch origin` → nhánh hiện tại **là** nhánh đích → `git rebase --autostash origin/main`; nhánh đích đã tồn tại → checkout rồi rebase; chưa có → `git switch -c <nhánh-đích> origin/main`.
   - Trước commit: thay đổi thuộc nhóm khác nhánh hiện tại (vd framework trên nhánh `feature/`) → **NEVER** commit lẫn; tách sang nhánh đúng nhóm, không rõ nhóm → hỏi user.
-- **Merge vào `main` chỉ qua GitHub Pull Request:** push nhánh → `gh pr create --base main` → `code-reviewer` → user tự merge trên GitHub **hoặc** yêu cầu agent merge bằng `gh pr merge <số> --squash` (chỉ khi user yêu cầu rõ PR nào; mặc định squash). **NEVER** `git merge` / `git rebase` / `git commit` / `git push` trực tiếp lên `main` local hay `origin/main`. Tạo PR vẫn chỉ khi user yêu cầu.
+- **Merge vào `main` chỉ qua GitHub Pull Request:** commit (diff có code thì đã qua `code-reviewer`, xem quy tắc commit ở trên) → push nhánh → `gh pr create --base main` → user tự merge trên GitHub **hoặc** yêu cầu agent merge bằng `gh pr merge <số> --squash` (chỉ khi user yêu cầu rõ PR nào; mặc định squash). **NEVER** `git merge` / `git rebase` / `git commit` / `git push` trực tiếp lên `main` local hay `origin/main`. Tạo PR vẫn chỉ khi user yêu cầu.
 - Debug → **MUST** reproduce trước khi nêu nguyên nhân.
 
 ### NEVER

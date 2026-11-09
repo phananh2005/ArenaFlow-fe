@@ -31,4 +31,4 @@ description: >
 4. **Đề xuất sửa:** mỗi CRITICAL/MAJOR kèm đoạn code gợi ý + `file:line`.
 
 ## Liên kết
-- Cổng trước commit / trước PR → agent `code-reviewer` (subagent)
+- Cổng trước commit (duy nhất, không review lại ở PR) → agent `code-reviewer` (subagent)
