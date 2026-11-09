@@ -43,7 +43,11 @@ ADR BE và ADR FE trùng dải số → dẫn rõ: **`BE ADR-NNNN`** (`docs/agen
 
 - **MUST** tra `docs/agent/upstream/` (bắt đầu từ mục lục §1.1) khi cần: field/DTO, mã lỗi, phân trang, quyền ở mức API, business rule.
 - **NEVER** suy đoán hợp đồng API ("chắc BE trả field này") — không tra được → `[cần xác nhận]`.
-- **NEVER** sửa file trong `docs/agent/upstream/` hay trong `../ArenaFlow-be` — kể cả qua Bash (`sed -i`, `>`, …): `.claude/settings.json` chỉ có deny `Edit(docs/agent/upstream/**)` (bao Edit/Write/NotebookEdit và một số lệnh Bash Claude Code nhận diện như `sed`, `tee`, redirect `>`), **không** chặn script tự ghi file (vd `node`, `python`). Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE.
+- **NEVER** sửa file trong `docs/agent/upstream/` hay trong `../ArenaFlow-be` — bằng **bất kỳ** cách nào (tool, Bash, PowerShell, script). **Ngoại lệ duy nhất:** đổi bản checkout bằng `git submodule update` theo §2.1/§2.2 khi người dùng đồng ý — không sửa nội dung file. Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE. Lớp chặn ở harness chỉ là một phần:
+  - `.claude/settings.json` có deny `Edit(/docs/agent/upstream/**)`. `/` đầu = neo theo **primary working directory** (thư mục khởi động phiên, hoặc thư mục đích sau khi chạy lệnh `/cd` của Claude Code), không theo thư mục hiện tại sau `cd` trong shell; chỉ trùng gốc repo khi phiên đang ở gốc repo (`CLAUDE.md` §6) → **không** `/cd` sang thư mục con. Trong worktree → neo theo gốc worktree.
+  - `../ArenaFlow-be`: **không** có rule deny nào ở harness — chỉ có quy tắc NEVER này.
+  - Rule chặn: tool sửa file built-in (Edit/Write/NotebookEdit) và lệnh Bash Claude Code nhận diện (vd `sed`, redirect `>`; `tee` cần Claude Code ≥ v2.1.269).
+  - **Không được đảm bảo** chặn: lệnh Bash khác (`cp`, `mv`, `rm`, `git` trong submodule), script tự ghi file (`node`, `python`), PowerShell (`Set-Content`, `Out-File`, `>`).
 - Kết luận từ tài liệu BE **MUST** dẫn `ArenaFlow-spec@<sha7>` + `path` (+ mục/dòng khi có). Lấy `<sha7>`: `git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0).
 - Tài liệu và code BE lệch nhau → nêu rõ, ghi `[cần xác nhận]`, không tự chọn.
 - Chức năng chưa có trong `docs/agent/upstream/` (thiếu SRS hoặc API_Spec) → dừng, đề xuất người dùng làm ở BE và merge vào `main` để publish.
