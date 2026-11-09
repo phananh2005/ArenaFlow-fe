@@ -140,7 +140,9 @@ function logToolUse(input) {
 
 const UPSTREAM_PATH = 'docs/agent/upstream';
 
-const UPSTREAM_PATH_LINE = new RegExp(`^\\s*path\\s*=\\s*${UPSTREAM_PATH.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}\\s*$`, 'm');
+// Dòng `path = docs/agent/upstream` trong .gitmodules; chấp nhận giá trị trong ngoặc kép (cú pháp git-config)
+// và CRLF (`\s*$` nuốt `\r`).
+const UPSTREAM_PATH_LINE = new RegExp(`^\\s*path\\s*=\\s*("?)${UPSTREAM_PATH.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}\\1\\s*$`, 'm');
 
 // Trạng thái submodule ArenaFlow-spec: 'absent' (không khai báo) · 'uninit' (khai báo, chưa checkout)
 // · 'stale' (checkout commit khác gitlink của nhánh) · 'ok'. Chỉ thao tác cục bộ, không gọi mạng.

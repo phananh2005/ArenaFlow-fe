@@ -69,6 +69,10 @@ const GITMODULES = '[submodule "docs/agent/upstream"]\n\tpath = docs/agent/upstr
 const sessionCases = [
   ['không khai báo submodule', () => {}, false],
   ['khai báo nhưng chưa init', (root) => fs.writeFileSync(path.join(root, '.gitmodules'), GITMODULES), true],
+  // core.autocrlf=true trên máy Windows có thể checkout .gitmodules với CRLF.
+  ['khai báo CRLF, chưa init', (root) => fs.writeFileSync(path.join(root, '.gitmodules'), GITMODULES.replace(/\n/g, '\r\n')), true],
+  // Cú pháp git-config cho phép giá trị trong ngoặc kép.
+  ['path trong ngoặc kép, chưa init', (root) => fs.writeFileSync(path.join(root, '.gitmodules'), GITMODULES.replace('path = docs/agent/upstream', 'path = "docs/agent/upstream"')), true],
   ['đã init (có .git trong submodule)', (root) => {
     fs.writeFileSync(path.join(root, '.gitmodules'), GITMODULES);
     fs.mkdirSync(path.join(root, 'docs/agent/upstream'), { recursive: true });
