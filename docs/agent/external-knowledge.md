@@ -43,7 +43,7 @@ ADR BE và ADR FE trùng dải số → dẫn rõ: **`BE ADR-NNNN`** (`docs/agen
 
 - **MUST** tra `docs/agent/upstream/` (bắt đầu từ mục lục §1.1) khi cần: field/DTO, mã lỗi, phân trang, quyền ở mức API, business rule.
 - **NEVER** suy đoán hợp đồng API ("chắc BE trả field này") — không tra được → `[cần xác nhận]`.
-- **NEVER** sửa file trong `docs/agent/upstream/` hay trong `../ArenaFlow-be` — kể cả qua Bash (`sed -i`, `>`, …): `.claude/settings.json` chỉ chặn công cụ Edit/Write, **không** chặn Bash. Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE.
+- **NEVER** sửa file trong `docs/agent/upstream/` hay trong `../ArenaFlow-be` — kể cả qua Bash (`sed -i`, `>`, …): `.claude/settings.json` chỉ có deny `Edit(docs/agent/upstream/**)` (bao Edit/Write/NotebookEdit và một số lệnh Bash Claude Code nhận diện như `sed`, `tee`, redirect `>`), **không** chặn script tự ghi file (vd `node`, `python`). Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE.
 - Kết luận từ tài liệu BE **MUST** dẫn `ArenaFlow-spec@<sha7>` + `path` (+ mục/dòng khi có). Lấy `<sha7>`: `git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0).
 - Tài liệu và code BE lệch nhau → nêu rõ, ghi `[cần xác nhận]`, không tự chọn.
 - Chức năng chưa có trong `docs/agent/upstream/` (thiếu SRS hoặc API_Spec) → dừng, đề xuất người dùng làm ở BE và merge vào `main` để publish.

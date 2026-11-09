@@ -1,8 +1,7 @@
 {
   "permissions": {
     "deny": [
-      "Edit(docs/agent/upstream/**)",
-      "Write(docs/agent/upstream/**)"
+      "Edit(docs/agent/upstream/**)"
     ]
   },
   "hooks": {
