@@ -6,14 +6,14 @@
 ## §1 — Decision tree
 
 > Repo một tầng (`frontend`) → bỏ bước xác định tầng, bỏ hậu tố tầng.
-> SRS do người dùng chép vào `docs/agent/business-spec/<MÃ>/`; API_Spec ở repo `ArenaFlow-be` (xem `docs/agent/external-knowledge.md`).
+> SRS, API_Spec, ADR của BE đọc từ submodule `docs/agent/upstream/` (repo `ArenaFlow-spec`, BE tự publish khi merge `main`) — xem `docs/agent/external-knowledge.md`.
 > Luồng chức năng mới: **SRS → ui-designer (Stitch) → solution-architect → architect-reviewer → developer**.
 
 ```text
 Nhận request
-├── Phân tích yêu cầu / làm SRS               → người dùng làm ở BE, chép SRS vào docs/agent/business-spec/<MÃ>/
+├── Phân tích yêu cầu / làm SRS               → người dùng làm ở BE, merge main để publish → cập nhật con trỏ docs/agent/upstream
 ├── Thiết kế giao diện / mockup / Stitch      → kiểm tra SRS:
-│   ├── Chưa có SRS                           → dừng, yêu cầu chép SRS
+│   ├── Chưa có SRS trong docs/agent/upstream → dừng, yêu cầu BE publish
 │   └── Đã có SRS                             → ui-designer → người dùng duyệt
 ├── Thiết kế kỹ thuật FE                      → kiểm tra đầu vào:
 │   ├── Thiếu SRS / UI_Design đã duyệt        → làm bước còn thiếu trước
@@ -79,7 +79,7 @@ Nhận request
 |---|---|
 | Giải thích code, tra cứu, tóm tắt, so sánh | ✅ |
 | Đọc log / console error | ✅ — nhưng sửa lỗi phải qua `debug` |
-| Phân tích yêu cầu nghiệp vụ | ✗ → người dùng làm ở BE, chép SRS sang |
+| Phân tích yêu cầu nghiệp vụ | ✗ → người dùng làm ở BE, publish sang `ArenaFlow-spec` |
 | Thiết kế giao diện | ✗ → `ui-designer` |
 | Thiết kế kỹ thuật chức năng FE mới | ✗ → `solution-architect` |
 | Viết / sửa code production | ✗ → `developer` (chức năng mới phải có thiết kế trước) |

@@ -21,8 +21,8 @@ _(Chưa có file kiến trúc/thuật ngữ — thêm khi dự án phát triển
 | Viết/sửa code trong `src/` | `docs/agent/convention-frontend.md` |
 | Xác thực, token, render dữ liệu người dùng, biến môi trường | `docs/agent/security-frontend.md` |
 | Màn hình gọi API / danh sách / thêm thư viện | `docs/agent/non-functional-standards.md` |
-| Cần SRS (spec nghiệp vụ) | `docs/agent/business-spec/<MÃ>/` |
-| Cần hợp đồng API | `docs/agent/external-knowledge.md` → `../ArenaFlow-be` |
+| Cần SRS (spec nghiệp vụ) | Mục lục `docs/agent/upstream/README.md` → `docs/agent/upstream/business-spec/<SRS_DIR>/` (submodule `ArenaFlow-spec`, chỉ đọc; `external-knowledge.md` §1.1) |
+| Cần hợp đồng API / ADR BE | `docs/agent/external-knowledge.md` → `docs/agent/upstream/api/`, `docs/agent/upstream/decisions/` |
 | Thiết kế giao diện (Stitch MCP) | `.claude/agents/ui-designer.md`, `docs/agent/external-knowledge.md` §3 |
 | Thiết kế kỹ thuật chức năng FE mới | `docs/agent/design-standards.md`, `docs/agent/design/_template/` |
 | Review tài liệu thiết kế | `docs/agent/design-standards.md`, thiết kế đã có trong `docs/agent/design/` |

@@ -4,7 +4,8 @@
 |---|---|
 | Mã chức năng | `<MÃ>` |
 | Phạm vi tầng | frontend (ArenaFlow-fe) — hợp đồng API thuộc BE |
-| Nguồn API | `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` · `../ArenaFlow-be/docs/agent/api-convention.md` |
+| Nguồn API | `docs/agent/upstream/api/<MÃ>/API_Spec.md` · `docs/agent/upstream/api/api-convention.md` |
+| Căn cứ | `ArenaFlow-spec@<sha7>` · API_Spec `vX.Y` |
 | Quy ước áp dụng | `docs/agent/convention-frontend.md` §5, `docs/agent/non-functional-standards.md`, `docs/agent/security-frontend.md` |
 | Tác giả / Ngày / Phiên bản | `<tên>` / `YYYY-MM-DD` / `v1.0` |
 

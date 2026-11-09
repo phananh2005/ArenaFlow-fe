@@ -20,9 +20,10 @@ description: >
 - Tự chọn/tạo nhánh theo `CLAUDE.md` §8 "Tự chọn nhánh trước khi bắt đầu việc mới": thiết kế chức năng sẽ code → `feature/<MÃ>-<mô-tả>`; sửa thiết kế/ADR không kèm code → `docs/<MÃ>-<chủ-đề>`. Tạo từ `origin/main` (chưa có `origin` → từ `main`); thay đổi chưa commit của việc khác → dừng, hỏi.
 
 ### Bước 1 — Đọc context
-- SRS: `docs/agent/business-spec/<MÃ>/` (người dùng chép từ BE). Thiếu/mơ hồ → **DỪNG, hỏi**.
+- **Kiểm tra lệch tài liệu BE** theo `docs/agent/external-knowledge.md` §2.1 (submodule `docs/agent/upstream`). Có lệch → **DỪNG**, báo danh sách commit + đề xuất cập nhật con trỏ; không làm tiếp trên bản cũ khi user chưa quyết.
+- SRS: `docs/agent/upstream/business-spec/<SRS_DIR>/` (`<SRS_DIR>` tra theo mục lục `docs/agent/upstream/README.md` — `docs/agent/external-knowledge.md` §1.1; có thể là mã khác). Thiếu/mơ hồ → **DỪNG, hỏi**.
 - Giao diện đã duyệt: `docs/agent/design/<MÃ>/UI_Design.md` + `ui/`. Chưa có hoặc chưa duyệt → **DỪNG**, đề xuất chạy `ui-designer` trước.
-- Hợp đồng API: `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` + `../ArenaFlow-be/docs/agent/api-convention.md`, theo `docs/agent/external-knowledge.md`. Endpoint cần dùng chưa có → `[cần xác nhận]`, **không** tự đặt hợp đồng.
+- Hợp đồng API: `docs/agent/upstream/api/<MÃ>/API_Spec.md` (+ `CHANGELOG.md` cùng thư mục) + `docs/agent/upstream/api/api-convention.md`, ADR BE `docs/agent/upstream/decisions/`, theo `docs/agent/external-knowledge.md`. Ghi `Căn cứ: ArenaFlow-spec@<sha7> · API_Spec vX.Y` ở header Screen_Flow / State_API_Integration. Endpoint cần dùng chưa có → `[cần xác nhận]`, **không** tự đặt hợp đồng.
 - `docs/agent/design-standards.md` (chuẩn viết thiết kế FE).
 - Quy ước FE: `docs/agent/convention-frontend.md`, `docs/agent/security-frontend.md`, `docs/agent/non-functional-standards.md`.
 - ADR đã có trong `docs/agent/decisions/` (thư viện routing/data/state/form, lưu token).

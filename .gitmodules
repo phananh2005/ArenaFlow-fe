@@ -1,0 +1,4 @@
+[submodule "docs/agent/upstream"]
+	path = docs/agent/upstream
+	url = https://github.com/phananh2005/ArenaFlow-spec.git
+	branch = main

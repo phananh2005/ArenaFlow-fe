@@ -1,28 +1,85 @@
 # Tra cứu tri thức ngoài repo — ArenaFlow-be & Stitch MCP
 
-> SRS đã được người dùng chép vào FE (`docs/agent/business-spec/<MÃ>/`). Hợp đồng API vẫn là **một nguồn sự thật**
-> ở repo anh em `ArenaFlow-be`, đặt cạnh repo này (`../ArenaFlow-be`). Không ghi URL nội bộ, token, API key vào file này.
+> SRS, hợp đồng API và ADR của BE đến FE qua repo chỉ-đọc **`ArenaFlow-spec`**, gắn làm git submodule tại
+> `docs/agent/upstream/`. Nguồn sự thật vẫn là `ArenaFlow-be`: workflow `publish-spec` của BE tự đẩy tài liệu sang
+> `ArenaFlow-spec` khi merge vào `main`. Không ghi URL nội bộ, token, API key vào file này.
 
 ## 1. Nguồn có sẵn
 
 | Nguồn | Đường dẫn / tên | Dùng cho |
 |---|---|---|
-| SRS (trong FE) | `docs/agent/business-spec/<MÃ>/` | Use case, business rule, quyền, acceptance criteria |
-| Hợp đồng API | `../ArenaFlow-be/docs/agent/design/<MÃ>/API_Spec.md` | Endpoint, request/response, mã lỗi của chức năng |
-| Quy ước API chung | `../ArenaFlow-be/docs/agent/api-convention.md` | Base URL, envelope, mã lỗi, phân trang, sort, header auth |
-| ADR BE | `../ArenaFlow-be/docs/agent/decisions/` | Quyết định ảnh hưởng FE (vd JWT) |
-| Code BE | `../ArenaFlow-be/src/` | Xác nhận hành vi thực tế khi tài liệu nghi đã cũ |
-| SRS gốc (BE) | `../ArenaFlow-be/docs/agent/business-spec/<MÃ>/` | Đối chiếu khi nghi SRS trong FE đã cũ |
+| **Mục lục** | `docs/agent/upstream/README.md` | **Tra đầu tiên** — mã → thư mục SRS, API_Spec, phiên bản, CHANGELOG (§1.1) |
+| SRS | `docs/agent/upstream/business-spec/<SRS_DIR>/` | Use case, business rule, quyền, acceptance criteria |
+| Hợp đồng API | `docs/agent/upstream/api/<MÃ>/API_Spec.md` | Endpoint, request/response, mã lỗi của chức năng |
+| Lịch sử hợp đồng API | `docs/agent/upstream/api/<MÃ>/CHANGELOG.md` (có thể chưa có) | Thay đổi MAJOR/MINOR giữa các phiên bản API_Spec |
+| Quy ước API chung | `docs/agent/upstream/api/api-convention.md` | Base URL, envelope, mã lỗi, phân trang, sort, header auth |
+| ADR BE | `docs/agent/upstream/decisions/` | Quyết định ảnh hưởng FE (vd JWT, 409, upload ảnh) |
+| Commit BE nguồn | `docs/agent/upstream/SOURCE` | SHA commit `ArenaFlow-be` của lần publish đang gắn |
+| Code BE (tuỳ chọn) | `../ArenaFlow-be/src/` | Xác nhận hành vi thực tế khi nghi tài liệu đã cũ — cần clone BE cạnh FE |
 | Stitch MCP | server `stitch` (cấu hình local) | Thiết kế giao diện — chỉ dùng trong `ui-designer` |
 
-## 2. Quy tắc tra BE
+### 1.1 Tra theo mã chức năng
 
-- **MUST** tra BE khi cần: field/DTO, mã lỗi, phân trang, quyền ở mức API.
+1. Mở mục lục `docs/agent/upstream/README.md`, tìm dòng `<MÃ>`.
+2. Cột **SRS** cho `<SRS_DIR>` — **có thể là mã khác** (ghi "SRS trong X" → `<SRS_DIR>` = `X`). Vd tại `ArenaFlow-spec@ac24f0c`: `USER-001`, `VENUE-001` → `SYSTEM-001`; `USER-002` → `USER-002`.
+3. Cột **API_Spec / CHANGELOG** có thể là `—` (chưa có). Không có `<MÃ>` trong mục lục, hoặc thiếu SRS/API_Spec cần dùng → dừng, đề xuất làm ở BE (§2).
+4. **NEVER** ghép cứng `business-spec/<MÃ>/` khi chưa tra mục lục.
+
+### 1.2 Đường dẫn bên trong tài liệu BE
+
+Tài liệu trong `upstream/` giữ nguyên đường dẫn theo bố cục repo BE. Khi gặp, đổi như sau — **không** đọc nhầm sang thư mục cùng tên của FE:
+
+| Đường dẫn ghi trong tài liệu BE | Đọc ở FE |
+|---|---|
+| `docs/agent/business-spec/<X>/` | `docs/agent/upstream/business-spec/<X>/` |
+| `docs/agent/design/<X>/API_Spec.md`, `CHANGELOG.md` | `docs/agent/upstream/api/<X>/…` |
+| `docs/agent/api-convention.md` | `docs/agent/upstream/api/api-convention.md` |
+| `docs/agent/decisions/NNNN-…` | `docs/agent/upstream/decisions/NNNN-…` |
+| `docs/agent/design/<X>/` khác (Processing_Flow, Component_Class_Design), `src/`, `docs/database/` | Không publish — nội bộ BE; cần thì đọc `../ArenaFlow-be` (tuỳ chọn) |
+
+ADR BE và ADR FE trùng dải số → dẫn rõ: **`BE ADR-NNNN`** (`docs/agent/upstream/decisions/`) và **`FE ADR-NNNN`** (`docs/agent/decisions/`).
+
+## 2. Quy tắc tra tài liệu BE
+
+- **MUST** tra `docs/agent/upstream/` (bắt đầu từ mục lục §1.1) khi cần: field/DTO, mã lỗi, phân trang, quyền ở mức API, business rule.
 - **NEVER** suy đoán hợp đồng API ("chắc BE trả field này") — không tra được → `[cần xác nhận]`.
-- **NEVER** sửa file trong `../ArenaFlow-be` từ phiên FE. Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE.
-- Kết luận từ BE **MUST** dẫn `ArenaFlow-be` + `path` (+ mục/dòng khi có); ghi commit BE khi kết luận phụ thuộc phiên bản (`git -C ../ArenaFlow-be log -1 --oneline`).
-- Tài liệu và code BE lệch nhau, hoặc SRS FE lệch SRS BE → nêu rõ, ghi `[cần xác nhận]`, không tự chọn.
-- Không có `../ArenaFlow-be` → báo người dùng (clone BE cạnh FE), làm tiếp phần không phụ thuộc, ghi rõ phần **chưa kiểm chứng**.
+- **NEVER** sửa file trong `docs/agent/upstream/` hay trong `../ArenaFlow-be` — kể cả qua Bash (`sed -i`, `>`, …): `.claude/settings.json` chỉ chặn công cụ Edit/Write, **không** chặn Bash. Cần đổi SRS/hợp đồng → đề xuất, người dùng làm ở repo BE.
+- Kết luận từ tài liệu BE **MUST** dẫn `ArenaFlow-spec@<sha7>` + `path` (+ mục/dòng khi có). Lấy `<sha7>`: `git -C docs/agent/upstream rev-parse --short HEAD` — chỉ sau khi `git submodule status -- docs/agent/upstream` không có `+`/`-` (`external-knowledge.md` §2.1 bước 0).
+- Tài liệu và code BE lệch nhau → nêu rõ, ghi `[cần xác nhận]`, không tự chọn.
+- Chức năng chưa có trong `docs/agent/upstream/` (thiếu SRS hoặc API_Spec) → dừng, đề xuất người dùng làm ở BE và merge vào `main` để publish.
+- Thư mục `docs/agent/upstream/` rỗng → submodule chưa init: báo người dùng chạy `git submodule update --init` (cần quyền đọc `phananh2005/ArenaFlow-spec`); làm tiếp phần không phụ thuộc, ghi rõ phần **chưa kiểm chứng**.
+
+### 2.1 Kiểm tra lệch (MUST khi bắt đầu `ui-designer`, `solution-architect`, `developer`)
+
+```sh
+git submodule status -- docs/agent/upstream    # bước 0: bản đang checkout = con trỏ của nhánh?
+git -C docs/agent/upstream fetch origin
+git -C docs/agent/upstream log --oneline HEAD..origin/main -- \
+  README.md business-spec/<SRS_DIR> api/<MÃ> api/api-convention.md decisions
+```
+
+- **Bước 0:** dòng bắt đầu bằng `+` → thư mục submodule đang ở commit khác con trỏ của nhánh (vd sau `git pull`/`git switch` khi chưa bật `submodule.recurse`) → **dừng**, báo người dùng chạy `git submodule update`; bắt đầu bằng `-` → chưa init. Chỉ khi không có `+`/`-` thì `git -C docs/agent/upstream rev-parse --short HEAD` mới đúng là `<sha7>` để ghi `Căn cứ`.
+- `<SRS_DIR>` tra theo §1.1 (từ mục lục của **cả** bản đang gắn và `origin/main` — nếu khác nhau, đưa cả hai vào lệnh).
+- Không có output → khớp bản mới nhất, làm tiếp.
+- Có output → **dừng, báo người dùng** danh sách commit + đề xuất cập nhật con trỏ (§2.2). Đánh giá mức thay đổi API:
+  - Có `api/<MÃ>/CHANGELOG.md` → xem mục mới; có **MAJOR** → nêu rõ, thiết kế/code FE của `<MÃ>` phải rà lại.
+  - Không có CHANGELOG → so trực tiếp: `git -C docs/agent/upstream diff HEAD origin/main -- api/<MÃ>`; tự phân loại không được → coi như MAJOR, hỏi người dùng.
+- `fetch` lỗi (mạng/quyền) → báo, **không** khẳng định đã khớp.
+
+### 2.2 Cập nhật con trỏ submodule
+
+```sh
+git submodule update --remote docs/agent/upstream
+git diff --submodule=diff -- docs/agent/upstream   # xem toàn bộ thay đổi tài liệu
+git add docs/agent/upstream
+git commit -m "docs(spec): đồng bộ ArenaFlow-spec lên <sha7>"
+```
+
+- Chỉ cập nhật khi người dùng đồng ý; commit vẫn theo `CLAUDE.md` §8 (chỉ khi được yêu cầu).
+- Nhánh: đang làm chức năng → ngay trên `feature/<MÃ>-…`, commit riêng; cập nhật đứng riêng → `docs/spec-sync-<yyyymmdd>`.
+- Con trỏ là **tài liệu** (miễn `code-reviewer`); `.gitmodules` là **code**.
+- Một lần cập nhật kéo theo tài liệu của **mọi** chức năng → rà ảnh hưởng tới mọi `docs/agent/design/<MÃ>/` đã có (so `Căn cứ: ArenaFlow-spec@<sha7>` ở header từng design).
+- Rebase gặp conflict ở con trỏ submodule → `git rebase --abort`, dừng, báo (như §8).
 
 ## 3. Stitch MCP (thiết kế giao diện)
 
