@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S12 Giải tán đội dạng bottom sheet (mobile web 390px)</title>
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#16a34a',
+              dark: '#15803d',
+              light: '#dcfce7',
+              bg: '#f8faf9',
+            },
+            error: {
+              DEFAULT: '#a73b21',
+              light: '#fef2f2',
+              bg: '#fff5f3',
+              border: '#fecaca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f1f3f4;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <!-- Mobile Frame 390px -->
+  <div class="w-[390px] h-[844px] bg-[#f8faf9] rounded-[40px] shadow-2xl border-[8px] border-slate-900 overflow-hidden relative flex flex-col select-none">
+
+    <!-- BACKGROUND: Trang chi tiết đội FC Sao Mai (mờ và tối với overlay đen 50%) -->
+    <div class="absolute inset-0 flex flex-col pointer-events-none select-none">
+      <!-- App Header -->
+      <div class="h-14 bg-white/95 px-4 flex items-center justify-between border-b border-gray-100">
+        <div class="p-1">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <div class="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center text-white">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+          <span class="font-bold text-gray-900 tracking-tight text-base">ArenaFlow</span>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-[#16a34a]/15 text-[#16a34a] font-semibold text-xs flex items-center justify-center">
+          TH
+        </div>
+      </div>
+
+      <!-- Content behind bottom sheet -->
+      <div class="p-4 flex-1 overflow-hidden space-y-3">
+        <div class="text-xs text-gray-500 font-medium">Đội của tôi &rsaquo; <span class="text-gray-800 font-semibold">FC Sao Mai</span></div>
+        
+        <!-- Team Card -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100/80 shadow-sm flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-500 flex items-center justify-center mb-2">
+            <svg class="w-8 h-8 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          </div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <h2 class="text-lg font-bold text-gray-900">FC Sao Mai</h2>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Hoạt động
+            </span>
+          </div>
+          <p class="text-[11px] text-gray-500 mb-2">Tạo ngày 02/11/2026 &bull; Đội trưởng: <span class="font-semibold text-gray-700">Nguyễn Văn A</span></p>
+          <div class="flex gap-1.5 mb-3">
+            <span class="px-2 py-0.5 rounded-md text-[10px] bg-gray-100 text-gray-600">Nhiệt tình</span>
+            <span class="px-2 py-0.5 rounded-md text-[10px] bg-gray-100 text-gray-600">Rèn luyện</span>
+          </div>
+          <div class="w-full h-8 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center text-xs text-gray-400">
+            Quản lý đội
+          </div>
+        </div>
+
+        <!-- Team tabs -->
+        <div class="flex gap-2">
+          <div class="px-3 py-1.5 bg-emerald-800 text-white rounded-lg text-xs font-medium">Thành viên (5)</div>
+          <div class="px-3 py-1.5 bg-white text-gray-600 rounded-lg text-xs font-medium border border-gray-200">Lịch sử đội trưởng</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERLAY ĐEN 50% & MỜ -->
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-[1px] z-10 transition-opacity"></div>
+
+    <!-- BOTTOM SHEET: từ đáy, nền trắng, bo góc trên 16px, có thanh kéo nhỏ -->
+    <div class="absolute inset-x-0 bottom-0 z-20 bg-white rounded-t-2xl shadow-2xl flex flex-col px-5 pt-3 pb-6 max-h-[92%]">
+      
+      <!-- Thanh kéo nhỏ (Drag Handle) -->
+      <div class="w-9 h-1 bg-gray-300 rounded-full mx-auto mb-4"></div>
+
+      <!-- Icon tròn màu error nhạt với icon cảnh báo -->
+      <div class="flex justify-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-[#a73b21]/10 flex items-center justify-center text-[#a73b21]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Tiêu đề "Giải tán đội FC Sao Mai?" -->
+      <h3 class="text-[17px] font-bold text-gray-900 text-center mb-3">
+        Giải tán đội FC Sao Mai?
+      </h3>
+
+      <!-- Alert màu error có icon -->
+      <div class="rounded-xl bg-[#fff5f3] border border-[#fecaca] p-3 flex items-start gap-2.5 mb-3.5">
+        <div class="text-[#a73b21] shrink-0 mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+            <line x1="12" y1="8" x2="12" y2="12" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="16" x2="12.01" y2="16" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="text-[11.5px] leading-relaxed text-[#a73b21] font-normal">
+          Giải tán là vĩnh viễn và không thể khôi phục. Mọi thành viên (kể cả bạn) sẽ rời đội, các lời mời đang chờ sẽ bị huỷ.
+        </p>
+      </div>
+
+      <!-- Textarea "Lý do (không bắt buộc)" -->
+      <div class="mb-4">
+        <label class="block text-xs font-semibold text-gray-800 mb-1.5">
+          Lý do (không bắt buộc)
+        </label>
+        
+        <!-- Ô nhập chứa câu dài 2–3 dòng, viền màu error #a73b21 -->
+        <textarea 
+          rows="3" 
+          readonly
+          class="w-full rounded-xl border-2 border-[#a73b21] p-3 text-xs text-gray-800 leading-relaxed outline-none resize-none bg-white font-normal"
+        >Đội bóng không còn đủ quân số để duy trì tập luyện và sinh hoạt định kỳ vào tối thứ 4 hàng tuần như trước nữa.</textarea>
+        
+        <!-- Hàng dưới: chữ lỗi bên trái, bộ đếm màu error bên phải -->
+        <div class="flex items-center justify-between mt-1 text-[11px]">
+          <span class="flex items-center gap-1 text-[#a73b21] font-medium">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
+            </svg>
+            Lý do tối đa 100 ký tự
+          </span>
+          <span class="text-[#a73b21] font-semibold">112/100</span>
+        </div>
+
+        <!-- Chú thích xám -->
+        <p class="text-[11px] text-gray-500 mt-1 leading-normal">
+          Để trống sẽ ghi lý do mặc định &ldquo;Đội trưởng giải tán đội&rdquo;.
+        </p>
+      </div>
+
+      <!-- Hai nút xếp dọc full-width -->
+      <div class="flex flex-col gap-2.5">
+        <!-- Nút nền đỏ "Giải tán đội" ở trên -->
+        <button type="button" class="w-full py-2.5 px-4 rounded-xl bg-[#a73b21] text-white text-sm font-semibold hover:bg-[#8f321b] active:scale-[0.99] transition shadow-sm text-center">
+          Giải tán đội
+        </button>
+
+        <!-- Nút viền "Huỷ" ở dưới -->
+        <button type="button" class="w-full py-2.5 px-4 rounded-xl border border-gray-300 bg-white text-gray-700 text-sm font-semibold hover:bg-gray-50 active:scale-[0.99] transition text-center">
+          Huỷ
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

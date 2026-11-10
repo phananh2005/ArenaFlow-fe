@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S14 Admin lịch sử thành viên đội</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #e5e7eb;
+      margin: 0;
+      padding: 32px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mobile-container {
+      width: 390px;
+      background-color: #f8faf3;
+      min-height: 844px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-container">
+    <!-- Header thu gọn nền trắng -->
+    <header class="bg-white border-b border-gray-100 px-4 py-3.5 flex items-center justify-between sticky top-0 z-10">
+      <button type="button" aria-label="Quay lại" class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors -ml-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+      <h1 class="text-[17px] font-semibold text-gray-900 tracking-tight text-center flex-1 pr-8">
+        Lịch sử thành viên
+      </h1>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main class="p-4 flex-1 flex flex-col">
+      <!-- Hàng thông tin đội -->
+      <section class="mb-4">
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <!-- Logo đội nhỏ -->
+          <div class="w-8 h-8 rounded-full bg-[#f0f4ec] border border-[#e2ebd7] flex items-center justify-center flex-shrink-0 text-[#3d6943]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <!-- Tên đội -->
+          <h2 class="text-base font-bold text-gray-900">FC Sấm Sét</h2>
+          <!-- Badge Đã giải tán -->
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+            Đã giải tán
+          </span>
+        </div>
+        <!-- Dòng phụ -->
+        <p class="text-[13px] leading-relaxed text-gray-500">
+          Gồm mọi người đã từng tham gia đội; không gồm lời mời.
+        </p>
+      </section>
+
+      <!-- Danh sách thẻ 1 cột (5 thẻ) -->
+      <div class="flex flex-col gap-2.5 mb-5">
+        <!-- Thẻ 1: Người dùng đã xóa -->
+        <article class="bg-white rounded-[8px] p-3.5 border border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-9 h-9 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <span class="text-[14px] italic text-gray-400 truncate">
+                Người dùng đã xóa
+              </span>
+            </div>
+            <!-- Badges -->
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#fcf5dd] text-[#855700]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                Đội trưởng
+              </span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-600">
+                Đã rời
+              </span>
+            </div>
+          </div>
+          <div class="text-[12px] text-gray-500 pl-[46px]">
+            Tham gia 01/10/2026 • Rời 10/10/2026
+          </div>
+        </article>
+
+        <!-- Thẻ 2: Lê Quốc Bảo -->
+        <article class="bg-white rounded-[8px] p-3.5 border border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-9 h-9 rounded-full bg-[#e8efe9] text-[#3d6943] text-xs font-semibold flex items-center justify-center flex-shrink-0">
+                LQC
+              </div>
+              <span class="text-[14px] font-semibold text-gray-900 truncate">
+                Lê Quốc Bảo
+              </span>
+            </div>
+            <!-- Badges -->
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#fcf5dd] text-[#855700]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                Đội trưởng
+              </span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-600">
+                Đã rời
+              </span>
+            </div>
+          </div>
+          <div class="text-[12px] text-gray-500 pl-[46px]">
+            Tham gia 02/10/2026 • Rời 09/11/2026
+          </div>
+        </article>
+
+        <!-- Thẻ 3: Phạm Minh Đức -->
+        <article class="bg-white rounded-[8px] p-3.5 border border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-9 h-9 rounded-full bg-[#dcfce7] text-[#166534] text-xs font-semibold flex items-center justify-center flex-shrink-0">
+                PMĐ
+              </div>
+              <span class="text-[14px] font-semibold text-gray-900 truncate">
+                Phạm Minh Đức
+              </span>
+            </div>
+            <!-- Badges -->
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#fcf5dd] text-[#855700]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                Đội trưởng
+              </span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-600">
+                Đã rời
+              </span>
+            </div>
+          </div>
+          <div class="text-[12px] text-gray-500 pl-[46px]">
+            Tham gia 03/10/2026 • Rời 09/11/2026
+          </div>
+        </article>
+
+        <!-- Thẻ 4: Vũ Đức Anh -->
+        <article class="bg-white rounded-[8px] p-3.5 border border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-9 h-9 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold flex items-center justify-center flex-shrink-0">
+                VĐA
+              </div>
+              <span class="text-[14px] font-semibold text-gray-900 truncate">
+                Vũ Đức Anh
+              </span>
+            </div>
+            <!-- Badges -->
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-700">
+                Thành viên
+              </span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-600">
+                Đã rời
+              </span>
+            </div>
+          </div>
+          <div class="text-[12px] text-gray-500 pl-[46px]">
+            Tham gia 05/10/2026 • Rời 15/10/2026
+          </div>
+        </article>
+
+        <!-- Thẻ 5: Đỗ Minh Khoa -->
+        <article class="bg-white rounded-[8px] p-3.5 border border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold flex items-center justify-center flex-shrink-0">
+                ĐMK
+              </div>
+              <span class="text-[14px] font-semibold text-gray-900 truncate">
+                Đỗ Minh Khoa
+              </span>
+            </div>
+            <!-- Badges -->
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-700">
+                Thành viên
+              </span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-600">
+                Đã rời
+              </span>
+            </div>
+          </div>
+          <div class="text-[12px] text-gray-500 pl-[46px]">
+            Tham gia 06/10/2026 • Rời 09/11/2026
+          </div>
+        </article>
+      </div>
+
+      <!-- Phân trang và số lượng -->
+      <footer class="mt-auto pt-2 pb-4 flex items-center justify-between text-xs text-gray-500 border-t border-gray-200/60">
+        <div>
+          Hiển thị 5 trên 5
+        </div>
+        <nav aria-label="Phân trang" class="flex items-center gap-1">
+          <button type="button" disabled class="px-2.5 py-1.5 rounded-[6px] border border-gray-200 text-gray-300 bg-white cursor-not-allowed">
+            Trước
+          </button>
+          <span class="px-3 py-1.5 rounded-[6px] bg-[#3d6943] text-white font-medium">
+            1
+          </span>
+          <button type="button" disabled class="px-2.5 py-1.5 rounded-[6px] border border-gray-200 text-gray-300 bg-white cursor-not-allowed">
+            Sau
+          </button>
+        </nav>
+      </footer>
+    </main>
+  </div>
+
+</body>
+</html>

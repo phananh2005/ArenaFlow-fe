@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — Quản lý đội — Lịch sử thành viên FC Sấm Sét</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#f8faf3",
+            "primary-container": "#bdefbf",
+            "surface-container": "#eaf0e6",
+            "on-secondary-fixed-variant": "#4e604e",
+            "on-primary": "#e9ffe6",
+            "on-tertiary": "#f6ffbc",
+            "on-surface-variant": "#596158",
+            "error-container": "#fd795a",
+            "on-error": "#fff7f6",
+            "error-dim": "#791903",
+            "on-primary-fixed-variant": "#39653f",
+            "surface": "#f8faf3",
+            "surface-container-high": "#e4eae0",
+            "on-tertiary-fixed": "#484f1e",
+            "on-secondary-container": "#445645",
+            "secondary": "#526451",
+            "on-surface": "#2d342c",
+            "inverse-on-surface": "#9b9e98",
+            "inverse-surface": "#0c0f0b",
+            "tertiary": "#5c6330",
+            "surface-container-highest": "#dde5d9",
+            "outline-variant": "#acb4a9",
+            "surface-container-low": "#f1f5ec",
+            "on-primary-fixed": "#1c4825",
+            "on-primary-container": "#2f5b36",
+            "on-secondary": "#eaffe7",
+            "tertiary-container": "#f4fcba",
+            "on-tertiary-fixed-variant": "#656c38",
+            "background": "#f8faf3",
+            "tertiary-fixed": "#f4fcba",
+            "secondary-dim": "#465846",
+            "primary": "#3d6943",
+            "on-secondary-fixed": "#324433",
+            "surface-tint": "#3d6943",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#6e1400",
+            "primary-fixed": "#bdefbf",
+            "surface-dim": "#d4dcd1",
+            "inverse-primary": "#c8fbca",
+            "primary-dim": "#315c38",
+            "surface-variant": "#dde5d9",
+            "on-tertiary-container": "#5a612e",
+            "tertiary-dim": "#505725",
+            "primary-fixed-dim": "#afe1b1",
+            "secondary-fixed-dim": "#c6dac3",
+            "secondary-container": "#d4e8d1",
+            "on-background": "#2d342c",
+            "outline": "#757d73",
+            "secondary-fixed": "#d4e8d1",
+            "error": "#a73b21",
+            "tertiary-fixed-dim": "#e5eead"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen antialiased flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- 1. Header / Top Navigation -->
+<header class="bg-surface-container-lowest border-b border-outline-variant/30 px-8 py-3.5 flex items-center justify-between sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<!-- Logo ArenaFlow & Badge Quản trị -->
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-xl" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<span class="font-display text-xl font-bold tracking-tight text-primary">ArenaFlow</span>
+</a>
+<span class="bg-surface-container-high text-on-surface-variant px-2.5 py-0.5 rounded-full text-xs font-medium border border-outline-variant/40">
+          Quản trị
+        </span>
+</div>
+<!-- Menu: Quản lý đội -->
+<nav class="flex items-center space-x-6">
+<a class="text-primary font-semibold text-sm border-b-2 border-primary pb-1 inline-flex items-center transition-colors" href="#">
+          Quản lý đội
+        </a>
+</nav>
+</div>
+<!-- Góc phải: Avatar & Tên Admin -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-semibold text-xs border border-outline-variant/30">
+<span class="material-symbols-outlined text-lg" data-icon="shield_person">shield_person</span>
+</div>
+<span class="text-sm font-medium text-on-surface">Admin</span>
+</div>
+</header>
+<!-- Main Content Canvas (Desktop viewport optimized) -->
+<main class="w-full max-w-[1440px] mx-auto flex-1 pb-16">
+<!-- 2. Breadcrumb -->
+<div class="px-8 pt-6 pb-2 text-sm text-on-surface-variant flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Quản lý đội</a>
+<span class="text-outline-variant text-xs select-none">›</span>
+<a class="hover:text-primary transition-colors" href="#">FC Sấm Sét</a>
+<span class="text-outline-variant text-xs select-none">›</span>
+<span class="text-on-surface font-medium">Lịch sử thành viên</span>
+</div>
+<!-- 3. Hàng tiêu đề đội bóng -->
+<div class="px-8 py-4">
+<div class="flex items-center gap-3">
+<!-- Shield icon container for FC Sấm Sét -->
+<div class="w-9 h-9 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center shadow-xs border border-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-xl" data-icon="bolt">bolt</span>
+</div>
+<h1 class="text-2xl font-bold text-on-surface tracking-tight">FC Sấm Sét</h1>
+<span class="bg-surface-container-high text-on-surface-variant px-2.5 py-0.5 rounded-full text-xs font-medium border border-outline-variant/40">
+          Đã giải tán
+        </span>
+</div>
+<p class="text-sm text-on-surface-variant mt-1.5">
+        Gồm mọi người đã từng tham gia đội; không gồm lời mời.
+      </p>
+</div>
+<!-- 4. Thẻ bảng danh sách thành viên -->
+<div class="mx-8 my-4 bg-surface-container-lowest rounded-lg border border-outline-variant/40 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-outline-variant/30 text-xs font-semibold text-on-surface-variant uppercase tracking-wider">
+<th class="py-3.5 px-6" scope="col">Thành viên</th>
+<th class="py-3.5 px-6" scope="col">Vai trò</th>
+<th class="py-3.5 px-6" scope="col">Trạng thái</th>
+<th class="py-3.5 px-6" scope="col">Ngày tham gia</th>
+<th class="py-3.5 px-6" scope="col">Ngày rời</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 text-sm">
+<!-- Hàng 1: Người dùng đã xóa -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-6 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-lg opacity-60" data-icon="person">person</span>
+</div>
+<span class="italic text-outline font-normal">Người dùng đã xóa</span>
+</div>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 bg-tertiary-container/60 text-on-tertiary-fixed border border-tertiary-fixed-dim px-2.5 py-1 rounded-full text-xs font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="military_tech">military_tech</span>
+                  Đội trưởng
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full text-xs font-medium">
+                  Đã rời
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">01/10/2026</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">10/10/2026</td>
+</tr>
+<!-- Hàng 2: Lê Quốc Bảo -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-6 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container font-semibold text-xs flex items-center justify-center">
+                    LQB
+                  </div>
+<span class="font-medium text-on-surface">Lê Quốc Bảo</span>
+</div>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 bg-tertiary-container/60 text-on-tertiary-fixed border border-tertiary-fixed-dim px-2.5 py-1 rounded-full text-xs font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="military_tech">military_tech</span>
+                  Đội trưởng
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full text-xs font-medium">
+                  Đã rời
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">02/10/2026</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">09/11/2026</td>
+</tr>
+<!-- Hàng 3: Phạm Minh Đức -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-6 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container font-semibold text-xs flex items-center justify-center">
+                    PMĐ
+                  </div>
+<span class="font-medium text-on-surface">Phạm Minh Đức</span>
+</div>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 bg-tertiary-container/60 text-on-tertiary-fixed border border-tertiary-fixed-dim px-2.5 py-1 rounded-full text-xs font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="military_tech">military_tech</span>
+                  Đội trưởng
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full text-xs font-medium">
+                  Đã rời
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">03/10/2026</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">09/11/2026</td>
+</tr>
+<!-- Hàng 4: Vũ Đức Anh -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-6 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant font-semibold text-xs flex items-center justify-center">
+                    VĐA
+                  </div>
+<span class="font-medium text-on-surface">Vũ Đức Anh</span>
+</div>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container text-on-secondary-container px-2.5 py-1 rounded-full text-xs font-medium">
+                  Thành viên
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full text-xs font-medium">
+                  Đã rời
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">05/10/2026</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">15/10/2026</td>
+</tr>
+<!-- Hàng 5: Đỗ Minh Khoa -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-6 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant font-semibold text-xs flex items-center justify-center">
+                    ĐMK
+                  </div>
+<span class="font-medium text-on-surface">Đỗ Minh Khoa</span>
+</div>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container text-on-secondary-container px-2.5 py-1 rounded-full text-xs font-medium">
+                  Thành viên
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap">
+<span class="inline-flex items-center bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full text-xs font-medium">
+                  Đã rời
+                </span>
+</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">06/10/2026</td>
+<td class="py-4 px-6 whitespace-nowrap text-on-surface-variant">09/11/2026</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Phân trang đáy thẻ bảng -->
+<div class="py-4 px-6 border-t border-outline-variant/30 flex items-center justify-between text-sm text-on-surface-variant">
+<div>
+          Hiển thị 5 trên 5
+        </div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded text-outline cursor-not-allowed opacity-50 select-none font-medium" disabled="" type="button">
+            Trước
+          </button>
+<span class="bg-primary text-on-primary rounded px-3 py-1 font-medium select-none shadow-xs">
+            1
+          </span>
+<button class="px-3 py-1 rounded text-outline cursor-not-allowed opacity-50 select-none font-medium" disabled="" type="button">
+            Sau
+          </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

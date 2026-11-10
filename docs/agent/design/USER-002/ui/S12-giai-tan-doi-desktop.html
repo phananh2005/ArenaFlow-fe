@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — S12 Dialog giải tán đội</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#bdefbf",
+            "surface-tint": "#3d6943",
+            "secondary-fixed": "#d4e8d1",
+            "on-primary-container": "#2f5b36",
+            "tertiary-fixed-dim": "#e5eead",
+            "primary-dim": "#315c38",
+            "tertiary-dim": "#505725",
+            "error": "#a73b21",
+            "on-primary": "#e9ffe6",
+            "tertiary-fixed": "#f4fcba",
+            "surface-dim": "#d4dcd1",
+            "inverse-surface": "#0c0f0b",
+            "surface-container": "#eaf0e6",
+            "error-container": "#fd795a",
+            "secondary-container": "#d4e8d1",
+            "on-tertiary-fixed-variant": "#656c38",
+            "on-surface-variant": "#596158",
+            "surface": "#f8faf3",
+            "error-dim": "#791903",
+            "on-error": "#fff7f6",
+            "surface-container-high": "#e4eae0",
+            "on-secondary": "#eaffe7",
+            "on-primary-fixed-variant": "#39653f",
+            "on-secondary-fixed": "#324433",
+            "primary-fixed": "#bdefbf",
+            "inverse-on-surface": "#9b9e98",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#757d73",
+            "on-secondary-container": "#445645",
+            "outline-variant": "#acb4a9",
+            "inverse-primary": "#c8fbca",
+            "surface-variant": "#dde5d9",
+            "on-tertiary-fixed": "#484f1e",
+            "on-tertiary-container": "#5a612e",
+            "tertiary": "#5c6330",
+            "primary-fixed-dim": "#afe1b1",
+            "secondary-fixed-dim": "#c6dac3",
+            "tertiary-container": "#f4fcba",
+            "background": "#f8faf3",
+            "surface-container-low": "#f1f5ec",
+            "on-surface": "#2d342c",
+            "primary": "#3d6943",
+            "surface-container-highest": "#dde5d9",
+            "on-error-container": "#6e1400",
+            "on-background": "#2d342c",
+            "secondary-dim": "#465846",
+            "on-secondary-fixed-variant": "#4e604e",
+            "on-primary-fixed": "#1c4825",
+            "on-tertiary": "#f6ffbc",
+            "secondary": "#526451",
+            "surface-bright": "#f8faf3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen relative overflow-hidden flex flex-col justify-between">
+<!-- BACKGROUND: FC Sao Mai Team Detail Page -->
+<div class="relative w-full min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-10">
+<div class="w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5">
+<!-- Logo Brand & Single Nav Link -->
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+<span class="font-display text-xl font-bold tracking-tight text-primary">ArenaFlow</span>
+</div>
+<!-- Single Nav Link "Đội của tôi" (active) -->
+<nav class="flex items-center">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 text-sm flex items-center gap-1.5 transition duration-150" href="#">
+<span>Đội của tôi</span>
+</a>
+</nav>
+</div>
+<!-- User Profile (Nguyễn Văn A) -->
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full overflow-hidden border border-outline-variant/50">
+<img alt="Nguyễn Văn A" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+</div>
+<span class="text-sm font-medium text-on-surface">Nguyễn Văn A</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas (Background page under modal) -->
+<main class="w-full max-w-7xl mx-auto px-6 py-6 flex-1 flex flex-col gap-6">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 text-sm text-on-surface-variant font-medium">
+<a class="hover:text-primary transition-colors" href="#">Đội của tôi</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">FC Sao Mai</span>
+</nav>
+<!-- Team Header Card -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex items-start md:items-center gap-5">
+<!-- Team Logo Badge -->
+<div class="w-20 h-20 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-2xl border border-primary/20 shrink-0">
+            SM
+          </div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-on-surface">FC Sao Mai</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-container text-on-primary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Hoạt động
+              </span>
+</div>
+<p class="text-xs text-on-surface-variant font-medium">
+              Ngày tạo 02/11/2026 • Đội trưởng: Nguyễn Văn A
+            </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="px-2.5 py-0.5 rounded-md text-xs bg-surface-container-low text-secondary font-medium">Nhiệt tình</span>
+<span class="px-2.5 py-0.5 rounded-md text-xs bg-surface-container-low text-secondary font-medium">Rèn luyện</span>
+<span class="px-2.5 py-0.5 rounded-md text-xs bg-surface-container-low text-secondary font-medium">Đã có kinh nghiệm</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-2 text-sm text-on-surface-variant max-w-sm">
+<p class="text-xs text-left md:text-right line-clamp-2">
+            Đội bóng phong trào đá giao lưu sân 7 người khu vực Cầu Giấy - Mỹ Đình, tinh thần thể thao văn minh, tôn trọng đối thủ.
+          </p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="border-b border-outline-variant/30 flex items-center gap-8 text-sm font-medium">
+<button class="text-primary border-b-2 border-primary py-3 px-1 font-semibold flex items-center gap-1.5">
+<span>Thành viên (5)</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface py-3 px-1 transition-colors">
+<span>Lịch sử đội trưởng</span>
+</button>
+</div>
+<!-- Dummy Content Canvas Underlay -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 opacity-40">
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/30 h-32"></div>
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/30 h-32"></div>
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/30 h-32"></div>
+</div>
+</main>
+</div>
+<!-- MODAL BACKDROP (50% Dark Overlay) -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40 flex items-center justify-center p-4">
+<!-- MODAL DIALOG CONTAINER -->
+<div aria-labelledby="dialog-title" aria-modal="true" class="bg-surface-container-lowest rounded-lg shadow-2xl w-full max-w-[520px] p-6 md:p-7 relative z-50 border border-outline-variant/20 transform transition-all animate-in fade-in zoom-in-95 duration-200" role="dialog">
+<!-- 1. Warning Icon Header -->
+<div class="w-12 h-12 rounded-full bg-[#fdf2f0] flex items-center justify-center text-error mb-1">
+<span class="material-symbols-outlined text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">
+          warning
+        </span>
+</div>
+<!-- 2. Modal Title -->
+<h2 class="font-bold text-xl text-neutral-900 mt-3 leading-snug" id="dialog-title">
+        Giải tán đội FC Sao Mai?
+      </h2>
+<!-- 3. Alert Box -->
+<div class="bg-[#fef2f2] border border-[#fecaca] rounded-lg p-3.5 flex items-start gap-3 mt-4">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">
+          error
+        </span>
+<p class="text-xs leading-relaxed text-error font-medium">
+          Giải tán là vĩnh viễn và không thể khôi phục. Mọi thành viên (kể cả bạn) sẽ rời đội, các lời mời đang chờ sẽ bị huỷ.
+        </p>
+</div>
+<!-- 4. Textarea Section -->
+<div class="mt-5">
+<label class="block text-sm font-medium text-neutral-800 mb-1.5" for="disband-reason">
+          Lý do (không bắt buộc)
+        </label>
+<textarea class="w-full border-2 border-error rounded-lg p-3 text-sm text-neutral-900 outline-none focus:ring-1 focus:ring-error bg-surface-container-lowest resize-none leading-relaxed" id="disband-reason" rows="3">Đội bóng không còn đủ quân số để duy trì tập luyện và sinh hoạt định kỳ vào tối thứ 4 hàng tuần như trước nữa.</textarea>
+<!-- Under Textarea Row (Error & Counter) -->
+<div class="flex justify-between items-center text-xs mt-1.5 font-medium">
+<span class="text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span>
+            Lý do tối đa 100 ký tự
+          </span>
+<span class="text-error tracking-tight font-semibold">
+            112/100
+          </span>
+</div>
+<!-- Sub-hint below the error row -->
+<p class="text-xs text-neutral-500 mt-1">
+          Để trống sẽ ghi lý do mặc định “Đội trưởng giải tán đội”.
+        </p>
+</div>
+<!-- 5. Dialog Footer Actions -->
+<div class="mt-6 pt-2 flex justify-end items-center gap-3">
+<!-- Outlined secondary button: "Huỷ" -->
+<button class="border border-neutral-300 text-neutral-700 font-medium px-5 py-2.5 rounded-lg hover:bg-neutral-50 transition duration-150 text-sm active:scale-95 focus:outline-none" type="button">
+          Huỷ
+        </button>
+<!-- Solid error primary button: "Giải tán đội" -->
+<button class="bg-error hover:bg-[#8e321b] text-white font-medium px-5 py-2.5 rounded-lg shadow-sm whitespace-nowrap text-sm transition duration-150 active:scale-95 focus:outline-none" type="button">
+          Giải tán đội
+        </button>
+</div>
+</div>
+</div>
+</body></html>
