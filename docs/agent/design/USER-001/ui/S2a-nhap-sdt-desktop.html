@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — S2a Đăng nhập bằng số điện thoại, bước 1</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#39653f",
+            "on-secondary-fixed": "#324433",
+            "secondary": "#526451",
+            "outline": "#757d73",
+            "surface-container-high": "#e4eae0",
+            "on-surface": "#2d342c",
+            "secondary-fixed": "#d4e8d1",
+            "primary-fixed-dim": "#afe1b1",
+            "tertiary-container": "#f4fcba",
+            "on-tertiary": "#f6ffbc",
+            "error": "#a73b21",
+            "primary-dim": "#315c38",
+            "surface-variant": "#dde5d9",
+            "inverse-on-surface": "#9b9e98",
+            "tertiary-fixed": "#f4fcba",
+            "surface-container-highest": "#dde5d9",
+            "on-secondary": "#eaffe7",
+            "error-container": "#fd795a",
+            "background": "#f8faf3",
+            "surface": "#f8faf3",
+            "primary-container": "#bdefbf",
+            "surface-dim": "#d4dcd1",
+            "on-primary-fixed": "#1c4825",
+            "error-dim": "#791903",
+            "surface-tint": "#3d6943",
+            "secondary-dim": "#465846",
+            "on-primary-container": "#2f5b36",
+            "on-secondary-fixed-variant": "#4e604e",
+            "on-tertiary-fixed-variant": "#656c38",
+            "inverse-primary": "#c8fbca",
+            "on-error": "#fff7f6",
+            "on-tertiary-container": "#5a612e",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-container-low": "#f1f5ec",
+            "outline-variant": "#acb4a9",
+            "on-surface-variant": "#596158",
+            "surface-container": "#eaf0e6",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#6e1400",
+            "tertiary-dim": "#505725",
+            "primary": "#3d6943",
+            "on-secondary-container": "#445645",
+            "secondary-fixed-dim": "#c6dac3",
+            "on-background": "#2d342c",
+            "inverse-surface": "#0c0f0b",
+            "tertiary-fixed-dim": "#e5eead",
+            "tertiary": "#5c6330",
+            "surface-bright": "#f8faf3",
+            "secondary-container": "#d4e8d1",
+            "on-primary": "#e9ffe6",
+            "primary-fixed": "#bdefbf"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-surface-container-lowest text-on-surface font-body antialiased overflow-hidden">
+<div class="h-screen w-full flex flex-col md:flex-row">
+<!-- Left Column: Rich Dark Athletic Green Column with Pitch Lines Overlay -->
+<div class="relative w-full md:w-1/2 bg-[#14532D] text-white flex flex-col justify-between p-10 lg:p-16 overflow-hidden select-none">
+<!-- Subtle Tactical Pitch Graphic Background -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center p-8">
+<svg class="w-full h-full max-w-xl max-h-[500px] stroke-white/[0.12] stroke-[1.5] fill-none" viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+<!-- Pitch Outer Boundary -->
+<rect height="460" rx="8" width="760" x="20" y="20"></rect>
+<!-- Halfway Line -->
+<line x1="400" x2="400" y1="20" y2="480"></line>
+<!-- Center Circle & Spot -->
+<circle cx="400" cy="250" r="70"></circle>
+<circle cx="400" cy="250" fill="white" fill-opacity="0.2" r="3"></circle>
+<!-- Left Penalty Area & Goal Area -->
+<rect height="240" width="130" x="20" y="130"></rect>
+<rect height="120" width="45" x="20" y="190"></rect>
+<path d="M 150 210 A 60 60 0 0 1 150 290"></path>
+<!-- Right Penalty Area & Goal Area -->
+<rect height="240" width="130" x="650" y="130"></rect>
+<rect height="120" width="45" x="735" y="190"></rect>
+<path d="M 650 210 A 60 60 0 0 0 650 290"></path>
+<!-- Corner Arcs -->
+<path d="M 20 35 A 15 15 0 0 0 35 20"></path>
+<path d="M 765 20 A 15 15 0 0 0 780 35"></path>
+<path d="M 20 465 A 15 15 0 0 1 35 480"></path>
+<path d="M 765 480 A 15 15 0 0 0 780 465"></path>
+</svg>
+</div>
+<!-- Top: Brand Logo -->
+<div class="relative z-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#bdefbf] text-[#14532D] flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-2xl" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<span class="font-display text-2xl font-bold tracking-tight text-white">ArenaFlow</span>
+</div>
+<!-- Centered Content: Heading & Concise Description -->
+<div class="relative z-10 my-auto max-w-lg">
+<h1 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-white mb-6">
+          Tạo kèo, ghép đội, đá bóng dễ dàng.
+        </h1>
+<p class="font-body text-base sm:text-lg text-emerald-100/90 leading-relaxed font-normal">
+          Tìm đối thủ ngang trình độ, tuyển thêm người chơi và xây dựng uy tín cho đội của bạn.
+        </p>
+</div>
+<!-- Left Column Anchor Placeholder -->
+<div class="relative z-10 h-6"></div>
+</div>
+<!-- Right Column: Pure Clean White Background with Centered Auth Card -->
+<div class="w-full md:w-1/2 bg-white flex items-center justify-center p-6 sm:p-12 lg:p-16 h-full">
+<div class="w-full max-w-md mx-auto">
+<!-- Back Link -->
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 cursor-pointer mb-8 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg leading-none">arrow_back</span>
+  Quay lại
+</a>
+<!-- Auth Header -->
+<div class="mb-6 text-left">
+<h2 class="font-headline text-2xl font-bold text-slate-900 tracking-tight mb-2">
+    Nhập số điện thoại
+  </h2>
+<p class="font-body text-sm text-slate-500">
+    Chúng tôi sẽ gửi mã xác thực gồm 6 chữ số tới số này
+  </p>
+</div>
+<!-- Phone Input Form -->
+<form onsubmit="return false;">
+<div class="mb-6">
+<label class="text-sm font-medium text-slate-700 block mb-2" for="phone">
+      Số điện thoại
+    </label>
+<input class="w-full px-4 py-3 rounded-lg border border-red-500 text-slate-900 text-base focus:ring-2 focus:ring-red-500/20 focus:border-red-500 outline-none transition-all shadow-sm" id="phone" name="phone" type="text" value="098765432"/>
+<div class="text-xs text-red-500 mt-2 flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-sm shrink-0">error</span>
+<span>Số điện thoại phải gồm 10 chữ số và bắt đầu bằng 0</span>
+</div>
+</div>
+<button class="w-full py-3.5 px-4 rounded-lg font-semibold text-white shadow-sm mt-4 cursor-pointer text-center bg-[#16a34a] hover:bg-[#15803d] active:bg-[#166534] transition-all" type="submit">
+    Gửi mã xác thực
+  </button>
+</form>
+</div>
+</div>
+</div>
+</body></html>

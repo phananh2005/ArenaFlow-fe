@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — S1 Đăng nhập v2</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#39653f",
+            "on-secondary-fixed": "#324433",
+            "secondary": "#526451",
+            "outline": "#757d73",
+            "surface-container-high": "#e4eae0",
+            "on-surface": "#2d342c",
+            "secondary-fixed": "#d4e8d1",
+            "primary-fixed-dim": "#afe1b1",
+            "tertiary-container": "#f4fcba",
+            "on-tertiary": "#f6ffbc",
+            "error": "#a73b21",
+            "primary-dim": "#315c38",
+            "surface-variant": "#dde5d9",
+            "inverse-on-surface": "#9b9e98",
+            "tertiary-fixed": "#f4fcba",
+            "surface-container-highest": "#dde5d9",
+            "on-secondary": "#eaffe7",
+            "error-container": "#fd795a",
+            "background": "#f8faf3",
+            "surface": "#f8faf3",
+            "primary-container": "#bdefbf",
+            "surface-dim": "#d4dcd1",
+            "on-primary-fixed": "#1c4825",
+            "error-dim": "#791903",
+            "surface-tint": "#3d6943",
+            "secondary-dim": "#465846",
+            "on-primary-container": "#2f5b36",
+            "on-secondary-fixed-variant": "#4e604e",
+            "on-tertiary-fixed-variant": "#656c38",
+            "inverse-primary": "#c8fbca",
+            "on-error": "#fff7f6",
+            "on-tertiary-container": "#5a612e",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-container-low": "#f1f5ec",
+            "outline-variant": "#acb4a9",
+            "on-surface-variant": "#596158",
+            "surface-container": "#eaf0e6",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#6e1400",
+            "tertiary-dim": "#505725",
+            "primary": "#3d6943",
+            "on-secondary-container": "#445645",
+            "secondary-fixed-dim": "#c6dac3",
+            "on-background": "#2d342c",
+            "inverse-surface": "#0c0f0b",
+            "tertiary-fixed-dim": "#e5eead",
+            "tertiary": "#5c6330",
+            "surface-bright": "#f8faf3",
+            "secondary-container": "#d4e8d1",
+            "on-primary": "#e9ffe6",
+            "primary-fixed": "#bdefbf"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-surface-container-lowest text-on-surface font-body antialiased overflow-hidden">
+<div class="h-screen w-full flex flex-col md:flex-row">
+<!-- Left Column: Rich Dark Athletic Green Column with Pitch Lines Overlay -->
+<div class="relative w-full md:w-1/2 bg-[#14532D] text-white flex flex-col justify-between p-10 lg:p-16 overflow-hidden select-none">
+<!-- Subtle Tactical Pitch Graphic Background -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.07] flex items-center justify-center">
+<svg class="w-[140%] h-[140%] stroke-white stroke-[2] fill-none" viewbox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<!-- Pitch Outer Boundary -->
+<rect height="500" rx="4" width="700" x="50" y="50"></rect>
+<!-- Halfway Line -->
+<line x1="400" x2="400" y1="50" y2="550"></line>
+<!-- Center Circle & Spot -->
+<circle cx="400" cy="300" r="75"></circle>
+<circle cx="400" cy="300" fill="white" r="4"></circle>
+<!-- Left Penalty Area & Goal Area -->
+<rect height="280" width="130" x="50" y="160"></rect>
+<rect height="150" width="45" x="50" y="225"></rect>
+<path d="M 180 255 A 75 75 0 0 1 180 345"></path>
+<!-- Right Penalty Area & Goal Area -->
+<rect height="280" width="130" x="620" y="160"></rect>
+<rect height="150" width="45" x="705" y="225"></rect>
+<path d="M 620 255 A 75 75 0 0 0 620 345"></path>
+<!-- Corner Arcs -->
+<path d="M 50 65 A 15 15 0 0 0 65 50"></path>
+<path d="M 735 50 A 15 15 0 0 0 750 65"></path>
+<path d="M 50 535 A 15 15 0 0 1 65 550"></path>
+<path d="M 750 535 A 15 15 0 0 0 735 550"></path>
+</svg>
+</div>
+<!-- Top: Brand Logo -->
+<div class="relative z-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-2xl" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<span class="font-display text-2xl font-bold tracking-tight text-white">ArenaFlow</span>
+</div>
+<!-- Centered Content: Heading & Concise Description -->
+<div class="relative z-10 my-auto max-w-xl">
+<h1 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white mb-6">
+          Tạo kèo, ghép đội, đá bóng dễ dàng.
+        </h1>
+<p class="font-body text-base sm:text-lg text-emerald-100/90 leading-relaxed font-normal">
+          Tìm đối thủ ngang trình độ, tuyển thêm người chơi và xây dựng uy tín cho đội của bạn.
+        </p>
+</div>
+<!-- Left Column Anchor Placeholder (Self-balanced layout with absolutely nothing else) -->
+<div class="relative z-10 h-6"></div>
+</div>
+<!-- Right Column: Pure Clean White Background with Centered Auth Card -->
+<div class="w-full md:w-1/2 bg-surface-container-lowest flex items-center justify-center p-6 sm:p-12 lg:p-16 h-full">
+<div class="w-full max-w-md mx-auto">
+<!-- Auth Header -->
+<div class="mb-8 text-center sm:text-left">
+<h2 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mb-2">
+            Đăng nhập hoặc đăng ký
+          </h2>
+<p class="font-body text-sm text-on-surface-variant">
+            Tài khoản mới sẽ được tạo tự động ở lần đăng nhập đầu tiên
+          </p>
+</div>
+<!-- Error Alert Banner -->
+<div class="mb-6 p-4 rounded-xl bg-error-container/20 border border-error-container/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5" data-icon="warning">warning</span>
+<p class="text-sm font-medium text-error leading-snug">
+            Đăng ký thất bại, vui lòng thử lại
+          </p>
+</div>
+<!-- 3 Full-Width Stacked Action Buttons -->
+<div class="flex flex-col gap-3.5">
+<!-- Button 1: Google (Loading state with spinner, disabled) -->
+<button class="relative w-full h-12 px-5 flex items-center justify-center rounded-xl bg-surface-container-low text-outline border border-outline-variant/40 cursor-not-allowed select-none opacity-80" disabled="" type="button">
+<!-- Google "G" Icon -->
+<svg class="w-5 h-5 shrink-0 absolute left-4 opacity-50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<!-- Loading Spinner & Label -->
+<div class="flex items-center justify-center gap-2.5">
+<svg class="animate-spin h-4 w-4 text-outline" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+<span class="font-headline font-semibold text-sm">Tiếp tục với Google</span>
+</div>
+</button>
+<!-- Button 2: Facebook (Disabled) -->
+<button class="relative w-full h-12 px-5 flex items-center justify-center rounded-xl bg-surface-container-low text-outline border border-outline-variant/40 cursor-not-allowed select-none opacity-80" disabled="" type="button">
+<!-- Facebook "f" Icon -->
+<svg class="w-5 h-5 shrink-0 absolute left-4 opacity-50 fill-[#1877F2]" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+<span class="font-headline font-semibold text-sm">Tiếp tục với Facebook</span>
+</button>
+<!-- Button 3: Phone (Disabled) -->
+<button class="relative w-full h-12 px-5 flex items-center justify-center rounded-xl bg-surface-container-low text-outline border border-outline-variant/40 cursor-not-allowed select-none opacity-80" disabled="" type="button">
+<span class="material-symbols-outlined text-xl absolute left-4 opacity-50" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-headline font-semibold text-sm">Tiếp tục bằng số điện thoại</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

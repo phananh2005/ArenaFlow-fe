@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ArenaFlow — S8a Chi tiết đội (mobile web 390px)</title>
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2d5033',
+              light: '#eef5ef',
+            },
+            appBg: '#f8faf3',
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8faf3] min-h-screen flex justify-center text-[#1e293b]">
+
+  <!-- Mobile Screen Container: 390px fixed width -->
+  <div class="w-[390px] min-h-screen bg-[#f8faf3] flex flex-col shadow-sm">
+
+    <!-- 1. Header thu gọn nền trắng -->
+    <header class="w-full bg-white border-b border-gray-100 px-4 h-14 flex items-center justify-between sticky top-0 z-30">
+      <!-- Nút ☰ bên trái -->
+      <button type="button" class="w-10 h-10 flex items-center justify-center text-gray-700 hover:text-[#3d6943] active:bg-gray-50 rounded-lg -ml-1 transition-colors" aria-label="Menu">
+        <span class="material-symbols-outlined text-[26px]">menu</span>
+      </button>
+
+      <!-- Logo "ArenaFlow" (icon quả bóng) ở giữa -->
+      <div class="flex items-center gap-1.5 font-bold text-lg text-[#3d6943] tracking-tight">
+        <span class="material-symbols-outlined text-[#3d6943] text-[22px]">sports_soccer</span>
+        <span>ArenaFlow</span>
+      </div>
+
+      <!-- Avatar tròn (ảnh người) bên phải -->
+      <div class="w-10 h-10 flex items-center justify-end -mr-1">
+        <img 
+          src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" 
+          alt="Nguyễn Văn A" 
+          class="w-8 h-8 rounded-full object-cover ring-2 ring-[#3d6943]/20"
+        />
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-3.5 space-y-3.5">
+
+      <!-- 2. Breadcrumb nhỏ: "Đội của tôi › FC Sao Mai" -->
+      <nav class="flex items-center text-xs text-gray-500 font-medium">
+        <span class="hover:text-[#3d6943] cursor-pointer">Đội của tôi</span>
+        <span class="mx-1.5 text-gray-400">›</span>
+        <span class="text-gray-900 font-semibold truncate">FC Sao Mai</span>
+      </nav>
+
+      <!-- 3. Thẻ header đội (xếp dọc, căn giữa) -->
+      <section class="bg-white rounded-[8px] border border-gray-100 p-5 shadow-sm flex flex-col items-center text-center">
+        <!-- Logo đội tròn -->
+        <div class="w-20 h-20 rounded-full border-2 border-emerald-500/40 bg-emerald-50/70 flex items-center justify-center relative mb-3">
+          <span class="material-symbols-outlined text-[36px] text-[#3d6943]">stars</span>
+          <!-- Sub-icon badge soccer ball on crest -->
+          <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-xs">
+            <span class="material-symbols-outlined text-[14px] text-[#3d6943]">sports_soccer</span>
+          </div>
+        </div>
+
+        <!-- Tên đội & Badge hoạt động -->
+        <div class="flex items-center justify-center gap-2 mb-1.5">
+          <h1 class="text-xl font-bold text-gray-900 tracking-tight">FC Sao Mai</h1>
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+            • Hoạt động
+          </span>
+        </div>
+
+        <!-- Meta info: Tạo ngày & Đội trưởng -->
+        <div class="flex flex-col items-center gap-1 text-[12px] text-gray-500 mb-2.5">
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-[15px] text-gray-400">calendar_today</span>
+            <span>Tạo ngày 02/11/2026</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-[15px] text-gray-400">military_tech</span>
+            <span>Đội trưởng: <strong class="text-gray-700 font-semibold">Nguyễn Văn A</strong></span>
+          </div>
+        </div>
+
+        <!-- 3 chips trình độ -->
+        <div class="flex flex-wrap items-center justify-center gap-1.5 mb-3">
+          <span class="px-2.5 py-1 rounded-[6px] bg-[#f8faf3] border border-gray-200/80 text-[11px] font-medium text-gray-700">
+            Nhiệt tình
+          </span>
+          <span class="px-2.5 py-1 rounded-[6px] bg-[#f8faf3] border border-gray-200/80 text-[11px] font-medium text-gray-700">
+            Rèn luyện
+          </span>
+          <span class="px-2.5 py-1 rounded-[6px] bg-[#f8faf3] border border-gray-200/80 text-[11px] font-medium text-gray-700">
+            Đã có kinh nghiệm
+          </span>
+        </div>
+
+        <!-- Mô tả 2 dòng -->
+        <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed px-1 mb-4">
+          Đội bóng sinh hoạt hàng tuần tối thứ 4 và chủ nhật khu vực Cầu Giấy - Thanh Xuân. Tinh thần giao lưu học hỏi, rèn luyện sức khỏe, fair-play và không cay cú.
+        </p>
+
+        <!-- Nút hành động góc nhìn Đội trưởng -->
+        <div class="w-full space-y-2">
+          <!-- Nút chính full-width "Mời thành viên" -->
+          <button type="button" class="w-full h-10 rounded-[8px] bg-[#3d6943] hover:bg-[#2d5033] active:scale-[0.99] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs">
+            <span class="material-symbols-outlined text-[18px]">person_add</span>
+            <span>Mời thành viên</span>
+          </button>
+
+          <!-- Dưới là nút viền "Sửa thông tin" và nút icon "⋮" (Menu ⋮ ĐANG ĐÓNG) -->
+          <div class="flex items-center gap-2">
+            <button type="button" class="flex-1 h-9 rounded-[8px] border border-gray-300 bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-700 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+              <span class="material-symbols-outlined text-[16px] text-gray-600">edit</span>
+              <span>Sửa thông tin</span>
+            </button>
+            <button type="button" class="w-9 h-9 rounded-[8px] border border-gray-300 bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-700 flex items-center justify-center transition-colors" aria-label="Thêm tuỳ chọn">
+              <span class="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Tabs chia đôi: "Thành viên (5)" (đang chọn) và "Lịch sử đội trưởng" -->
+      <div class="w-full bg-white rounded-[8px] border border-gray-100 p-1 flex shadow-sm">
+        <button type="button" class="flex-1 py-2 text-center text-xs font-semibold rounded-[6px] bg-[#3d6943] text-white transition-all">
+          Thành viên (5)
+        </button>
+        <button type="button" class="flex-1 py-2 text-center text-xs font-medium text-gray-600 hover:text-gray-900 rounded-[6px] transition-all">
+          Lịch sử đội trưởng
+        </button>
+      </div>
+
+      <!-- 5. Danh sách thành viên -->
+      <section class="bg-white rounded-[8px] border border-gray-100 p-4 shadow-sm">
+        <!-- Tiêu đề nhỏ "Thành viên đang hoạt động" -->
+        <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 pb-2 border-b border-gray-100">
+          Thành viên đang hoạt động
+        </h2>
+
+        <!-- Danh sách dạng list: 5 dòng -->
+        <div class="divide-y divide-gray-100">
+          <!-- 1. Nguyễn Văn A (Bạn, Đội trưởng, 02/11/2026) -->
+          <div class="py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0 pr-2">
+              <img 
+                src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" 
+                alt="Nguyễn Văn A" 
+                class="w-10 h-10 rounded-full object-cover flex-shrink-0 ring-1 ring-emerald-300"
+              />
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-xs font-bold text-gray-900 truncate">Nguyễn Văn A</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-[#3d6943] border border-emerald-200">
+                    Bạn
+                  </span>
+                </div>
+                <p class="text-[11px] text-gray-400 mt-0.5">Tham gia 02/11/2026</p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200/80">
+                <span class="material-symbols-outlined text-[13px] fill">military_tech</span>
+                Đội trưởng
+              </span>
+            </div>
+          </div>
+
+          <!-- 2. Trần Hoàng Nam (Thành viên, 05/11/2026) -->
+          <div class="py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0 pr-2">
+              <!-- Avatar người dạng SVG vector sạch sẽ -->
+              <div class="w-10 h-10 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center flex-shrink-0 text-blue-700 font-semibold text-xs">
+                THN
+              </div>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-gray-900 truncate">Trần Hoàng Nam</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Tham gia 05/11/2026</p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[11px] font-medium bg-gray-100 text-gray-700">
+                <span class="material-symbols-outlined text-[13px]">person</span>
+                Thành viên
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. Lê Quốc Bảo (Thành viên, 06/11/2026) -->
+          <div class="py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0 pr-2">
+              <!-- Avatar người dạng SVG vector sạch sẽ -->
+              <div class="w-10 h-10 rounded-full bg-indigo-100 border border-indigo-200 flex items-center justify-center flex-shrink-0 text-indigo-700 font-semibold text-xs">
+                LQB
+              </div>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-gray-900 truncate">Lê Quốc Bảo</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Tham gia 06/11/2026</p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[11px] font-medium bg-gray-100 text-gray-700">
+                <span class="material-symbols-outlined text-[13px]">person</span>
+                Thành viên
+              </span>
+            </div>
+          </div>
+
+          <!-- 4. Phạm Minh Đức (Thành viên, 07/11/2026) -->
+          <div class="py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0 pr-2">
+              <!-- Avatar người dạng SVG vector sạch sẽ -->
+              <div class="w-10 h-10 rounded-full bg-teal-100 border border-teal-200 flex items-center justify-center flex-shrink-0 text-teal-700 font-semibold text-xs">
+                PMĐ
+              </div>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-gray-900 truncate">Phạm Minh Đức</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Tham gia 07/11/2026</p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[11px] font-medium bg-gray-100 text-gray-700">
+                <span class="material-symbols-outlined text-[13px]">person</span>
+                Thành viên
+              </span>
+            </div>
+          </div>
+
+          <!-- 5. "Người dùng đã xóa" (chữ xám nghiêng, avatar xám mặc định, Thành viên, 08/11/2026) -->
+          <div class="py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0 pr-2">
+              <!-- Avatar xám mặc định -->
+              <div class="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0 text-gray-400">
+                <span class="material-symbols-outlined text-[20px]">person_off</span>
+              </div>
+              <div class="min-w-0">
+                <p class="text-xs italic text-gray-400 truncate">Người dùng đã xóa</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Tham gia 08/11/2026</p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[11px] font-medium bg-gray-100 text-gray-500">
+                <span class="material-symbols-outlined text-[13px]">person</span>
+                Thành viên
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Phân trang & số lượng -->
+        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col items-center gap-2">
+          <p class="text-[11px] text-gray-500">
+            Hiển thị 5 trên 5 thành viên
+          </p>
+          <div class="flex items-center gap-1">
+            <button type="button" disabled class="px-2.5 py-1 rounded-[6px] border border-gray-200 text-xs text-gray-300 bg-gray-50 cursor-not-allowed">
+              Trước
+            </button>
+            <button type="button" class="w-7 h-7 rounded-[6px] bg-[#3d6943] text-white text-xs font-semibold flex items-center justify-center">
+              1
+            </button>
+            <button type="button" disabled class="px-2.5 py-1 rounded-[6px] border border-gray-200 text-xs text-gray-300 bg-gray-50 cursor-not-allowed">
+              Sau
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

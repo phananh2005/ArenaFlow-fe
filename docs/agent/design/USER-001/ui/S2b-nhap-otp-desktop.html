@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nhập mã xác thực - ArenaFlow</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary": "#5c6330",
+            "on-surface-variant": "#596158",
+            "secondary-fixed": "#d4e8d1",
+            "surface-variant": "#dde5d9",
+            "on-error-container": "#6e1400",
+            "secondary-dim": "#465846",
+            "tertiary-fixed-dim": "#e5eead",
+            "inverse-surface": "#0c0f0b",
+            "on-secondary-fixed": "#324433",
+            "error-dim": "#791903",
+            "on-surface": "#2d342c",
+            "on-secondary": "#eaffe7",
+            "on-primary-fixed": "#1c4825",
+            "tertiary-dim": "#505725",
+            "error": "#a73b21",
+            "primary-container": "#bdefbf",
+            "on-primary-fixed-variant": "#39653f",
+            "on-error": "#fff7f6",
+            "inverse-on-surface": "#9b9e98",
+            "primary": "#3d6943",
+            "on-tertiary-fixed-variant": "#656c38",
+            "secondary-container": "#d4e8d1",
+            "primary-dim": "#315c38",
+            "surface-container": "#eaf0e6",
+            "primary-fixed": "#bdefbf",
+            "tertiary-fixed": "#f4fcba",
+            "on-background": "#2d342c",
+            "surface-dim": "#d4dcd1",
+            "surface": "#f8faf3",
+            "primary-fixed-dim": "#afe1b1",
+            "outline": "#757d73",
+            "on-primary-container": "#2f5b36",
+            "background": "#f8faf3",
+            "on-primary": "#e9ffe6",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#526451",
+            "on-tertiary": "#f6ffbc",
+            "surface-container-low": "#f1f5ec",
+            "secondary-fixed-dim": "#c6dac3",
+            "tertiary-container": "#f4fcba",
+            "on-secondary-fixed-variant": "#4e604e",
+            "surface-container-highest": "#dde5d9",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-tint": "#3d6943",
+            "on-secondary-container": "#445645",
+            "surface-container-high": "#e4eae0",
+            "inverse-primary": "#c8fbca",
+            "on-tertiary-container": "#5a612e",
+            "surface-bright": "#f8faf3",
+            "outline-variant": "#acb4a9",
+            "error-container": "#fd795a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            headline: ["Be Vietnam Pro", "sans-serif"],
+            display: ["Be Vietnam Pro", "sans-serif"],
+            body: ["Be Vietnam Pro", "sans-serif"],
+            label: ["Be Vietnam Pro", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-on-surface antialiased">
+<div class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Column: Dark Football Pitch Panel (#14532D) -->
+<div class="relative w-full md:w-1/2 bg-[#14532D] text-white p-8 md:p-14 lg:p-16 flex flex-col justify-between overflow-hidden min-h-[420px] md:min-h-screen">
+<!-- Soccer Pitch SVG Overlay -->
+<svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none stroke-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Outer boundary pitch lines -->
+<rect height="88%" rx="20" stroke-width="2" width="88%" x="6%" y="6%"></rect>
+<!-- Half-way line -->
+<line stroke-width="2" x1="6%" x2="94%" y1="50%" y2="50%"></line>
+<!-- Center circle and mark -->
+<circle cx="50%" cy="50%" r="14%" stroke-width="2"></circle>
+<circle cx="50%" cy="50%" fill="white" r="3.5"></circle>
+<!-- Penalty areas / Boxes -->
+<rect height="36%" stroke-width="2" width="24%" x="38%" y="6%"></rect>
+<rect height="36%" stroke-width="2" width="24%" x="38%" y="58%"></rect>
+<!-- Penalty arcs -->
+<path d="M 43% 42% A 12% 12% 0 0 0 57% 42%" stroke-width="2"></path>
+<path d="M 43% 58% A 12% 12% 0 0 1 57% 58%" stroke-width="2"></path>
+</svg>
+<!-- Top: ArenaFlow Brand Logo -->
+<div class="relative z-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="font-display font-bold text-2xl tracking-tight text-white">ArenaFlow</span>
+</div>
+<!-- Center: Main Headline & Subtitle -->
+<div class="relative z-10 my-auto max-w-lg py-10 md:py-0">
+<h1 class="font-headline font-bold text-3xl md:text-5xl lg:text-[52px] leading-[1.15] text-white tracking-tight mb-5">
+          Tạo kèo, ghép đội,<br/>đá bóng dễ dàng.
+        </h1>
+<p class="font-body text-base md:text-lg text-emerald-100/90 leading-relaxed font-normal">
+          Tìm đối thủ ngang trình độ, tuyển thêm người chơi và xây dựng uy tín cho đội của bạn.
+        </p>
+</div>
+<!-- Bottom Spacer -->
+<div class="relative z-10 h-2"></div>
+</div>
+<!-- Right Column: Verification Code Form -->
+<div class="w-full md:w-1/2 bg-white flex items-center justify-center p-8 sm:p-12 md:p-16 min-h-[500px]">
+<div class="w-full max-w-[420px]">
+<!-- Link "← Quay lại" -->
+<div class="mb-8">
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Quay lại</span>
+</a>
+</div>
+<!-- Title -->
+<h2 class="font-headline font-bold text-3xl md:text-[32px] text-slate-900 mb-2.5 tracking-tight">
+          Nhập mã xác thực
+        </h2>
+<!-- Subtitle with Phone Number & Edit Link -->
+<div class="font-body text-sm text-slate-600 mb-8 leading-relaxed">
+          Mã gồm 6 chữ số đã được gửi tới số <span class="font-semibold text-slate-900">0987654321</span>
+<a class="ml-1 text-sm font-semibold text-primary hover:text-primary-dim hover:underline" href="#">
+            Đổi số điện thoại
+          </a>
+</div>
+<!-- 6-digit OTP Inputs (Contains 4, 8, 2, 1, 9, 3 with red error border) -->
+<div class="flex items-center justify-between gap-2 sm:gap-3 mb-2.5">
+<input aria-label="Số thứ 1" autocomplete="one-time-code" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="4"/>
+<input aria-label="Số thứ 2" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="8"/>
+<input aria-label="Số thứ 3" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="2"/>
+<input aria-label="Số thứ 4" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="1"/>
+<input aria-label="Số thứ 5" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="9"/>
+<input aria-label="Số thứ 6" class="w-12 h-14 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl font-bold rounded-lg border-2 border-error bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-error/20" maxlength="1" readonly="" type="text" value="3"/>
+</div>
+<!-- Error message -->
+<p class="font-body text-sm font-medium text-error mb-8">
+          Mã xác thực không đúng
+        </p>
+<!-- Primary Action Button: Xác nhận -->
+<button class="w-full rounded-lg py-3.5 px-4 bg-primary hover:bg-primary-dim text-white font-label text-base font-semibold shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center cursor-pointer" type="button">
+          Xác nhận
+        </button>
+</div>
+</div>
+</div>
+</body></html>
