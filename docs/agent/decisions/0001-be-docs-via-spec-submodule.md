@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Trạng thái** | Proposed |
+| **Trạng thái** | Accepted (2026-11-10 — chốt qua PR #6) |
 | **Ngày** | 2026-11-09 |
 | **Người quyết định** | Product Owner (chọn mô hình BE là nguồn, repo spec là bản phản chiếu) |
 | **Liên quan** | `docs/agent/external-knowledge.md` §1–§2 · workflow `publish-spec` ở repo `ArenaFlow-be` |

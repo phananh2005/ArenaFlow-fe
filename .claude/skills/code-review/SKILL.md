@@ -2,7 +2,7 @@
 description: >
   Tự kiểm nhanh code theo 5 chiều (Security, Performance, Correctness, Style,
   Reuse & Duplication) ngay trong phiên, TRONG LÚC code. Chỉ kích hoạt khi người dùng yêu cầu
-  "tự kiểm nhanh", "self-check". KHÔNG phải cổng trước commit — cổng đó là agent
+  "tự kiểm nhanh", "self-check". KHÔNG phải cổng trước PR — cổng đó là agent
   code-reviewer chạy subagent (context độc lập).
 ---
 
@@ -13,7 +13,7 @@ description: >
 
 > [!IMPORTANT]
 > Skill chạy trong chính phiên đã viết code ⇒ là **tự review**, không độc lập.
-> **NEVER** dùng skill này thay cổng review trước commit — cổng đó là agent `code-reviewer`
+> **NEVER** dùng skill này thay cổng review trước PR — cổng đó là agent `code-reviewer`
 > gọi dưới dạng subagent (`CLAUDE.md` §8).
 
 ## Khi dùng
@@ -31,4 +31,4 @@ description: >
 4. **Đề xuất sửa:** mỗi CRITICAL/MAJOR kèm đoạn code gợi ý + `file:line`.
 
 ## Liên kết
-- Cổng trước commit / trước PR → agent `code-reviewer` (subagent)
+- Cổng trước PR (duy nhất, `CLAUDE.md` §8) → agent `code-reviewer` (subagent)

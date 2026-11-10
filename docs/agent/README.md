@@ -75,7 +75,7 @@ ArenaFlow-fe/
 5. **Sửa nhỏ:** thẳng `developer`.
 6. Khi implement: skill `task-state-init` → procedure `developer` → `progress-tracker` sau mỗi bước.
 7. Kết thúc phiên: `/af-handoff`; tiếp tục phiên: `/af-resume`.
-8. Trước commit có thay đổi code: agent `code-reviewer` chạy subagent (context độc lập, không tự review trong phiên); commit thuần tài liệu được miễn (`CLAUDE.md` §8). Git pre-commit quét secret trong staged content.
+8. Trước khi tạo PR (`CLAUDE.md` §8), diff có code: agent `code-reviewer` chạy subagent trên `git diff origin/main` (context độc lập, không tự review trong phiên) — cổng review duy nhất, không review trước từng commit hay sau khi tạo PR; diff thuần tài liệu được miễn. Git pre-commit quét secret trong staged content.
 9. Rà ADR khi cần bằng skill `decisions-relevance`.
 
 ## Hooks
@@ -84,7 +84,7 @@ Claude Code hooks được cấu hình trong `.claude/settings.json`:
 
 - `PreToolUse` cho `Bash`: chặn force-push vào `main`/`master`, xoá đệ quy target nguy hiểm, `TRUNCATE TABLE`, `DROP` không có `IF EXISTS`.
 - `PostToolUse` cho `Bash|Write|Edit`: chỉ ghi thời gian và tên tool vào `.claude/logs/tool-use.jsonl`; không lưu lệnh hoặc nội dung file; log được làm rỗng khi vượt 1 MiB.
-- `SessionStart`: nhắc nếu clone chưa cấu hình Git hook, hoặc submodule `docs/agent/upstream` chưa init.
+- `SessionStart`: nhắc nếu clone chưa cấu hình Git hook, hoặc submodule `docs/agent/upstream` chưa init / đang checkout commit khác con trỏ của nhánh.
 
 Git pre-commit dùng cùng module secret-scan (gồm file `.env*`). Cấu hình local cho clone hiện tại:
 
