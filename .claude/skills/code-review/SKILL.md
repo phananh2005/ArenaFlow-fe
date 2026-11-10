@@ -31,4 +31,4 @@ description: >
 4. **Đề xuất sửa:** mỗi CRITICAL/MAJOR kèm đoạn code gợi ý + `file:line`.
 
 ## Liên kết
-- Cổng trước PR (duy nhất, trước khi push) → agent `code-reviewer` (subagent)
+- Cổng trước PR (duy nhất, `CLAUDE.md` §8) → agent `code-reviewer` (subagent)
