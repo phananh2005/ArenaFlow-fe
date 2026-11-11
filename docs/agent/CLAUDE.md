@@ -26,6 +26,8 @@ _(Chưa có file kiến trúc/thuật ngữ — thêm khi dự án phát triển
 | Thiết kế giao diện (Stitch MCP) | `.claude/agents/ui-designer.md`, `docs/agent/external-knowledge.md` §3 |
 | Thiết kế kỹ thuật chức năng FE mới | `docs/agent/design-standards.md`, `docs/agent/design/_template/` |
 | Review tài liệu thiết kế | `docs/agent/design-standards.md`, thiết kế đã có trong `docs/agent/design/` |
+| Làm việc với USER-001 (tài khoản & đội) | `docs/agent/design/USER-001/` |
+| Làm việc với USER-002 (giải tán đội, xoá tài khoản đội trưởng) | `docs/agent/design/USER-002/` |
 | Rà quyết định kiến trúc (thư viện, lưu token) | `docs/agent/decisions/` |
 | Điều chỉnh cách làm việc agent | `docs/agent/adaptation-rules.md` |
 | Cài hook, ownership, kiểm chứng hạ tầng agent | `docs/agent/README.md` |
