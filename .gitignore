@@ -28,8 +28,8 @@ dist-ssr
 .env.*
 !.env.example
 
-# Agent state (phiên cá nhân, không commit)
-docs/agent/state/*/
+# Agent state
+!docs/agent/state/*/
 !docs/agent/state/_template/
 
 # Claude Code
