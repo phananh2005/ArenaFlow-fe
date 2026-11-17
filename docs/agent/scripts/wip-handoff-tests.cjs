@@ -889,6 +889,63 @@ test('FE-R1: có stash cũ + --stash khi chỉ lệch con trỏ submodule → st
   assert.equal(fs.existsSync(path.join(b, 'old.md')), false, 'stash cũ không bị pop');
 });
 
+test('FE-R2: máy nhận bật submodule.recurse, con trỏ ở main khác nhánh đích và đang lệch → vẫn áp được, con trỏ giữ nguyên', () => {
+  const { dir, origin, a, b } = setup();
+  addUpstreamSubmodule(dir, a); // feature/X: con trỏ spec v1
+  const spec = path.join(dir, 'spec');
+  commitFile(spec, 'README.md', 'spec v2\n', 'spec v2');
+  const c = path.join(dir, 'c'); // máy C gắn submodule vào main ở spec v2
+  git(dir, 'clone', '-q', origin, c);
+  git(c, '-c', 'protocol.file.allow=always', 'submodule', 'add', '-q', spec, 'docs/agent/upstream');
+  git(c, 'commit', '-q', '-m', 'chore: add upstream on main');
+  git(c, 'push', '-q', 'origin', 'main');
+  write(a, 'note.md', 'dở từ A\n');
+  assert.equal(run(a, 'push').status, 0);
+
+  git(b, 'fetch', '-q', 'origin');
+  git(b, 'merge', '-q', '--ff-only', 'origin/main');
+  git(b, '-c', 'protocol.file.allow=always', 'submodule', 'update', '-q', '--init');
+  git(b, 'config', 'submodule.recurse', 'true');
+  const sub = path.join(b, 'docs/agent/upstream');
+  const drifted = commitFile(sub, 'R3.md', 'spec mới ở B\n', 'spec v3 ở B');
+  write(b, 'README.md', 'B đang sửa\n');
+
+  const result = run(b, 'apply', 'feature/X-001-demo', '--stash');
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(git(b, 'branch', '--show-current'), 'feature/X-001-demo');
+  assert.equal(read(b, 'note.md'), 'dở từ A\n');
+  assert.equal(git(sub, 'rev-parse', 'HEAD'), drifted, 'con trỏ submodule giữ như trên máy này');
+  assert.match(tryGit(b, 'stash', 'list').stdout, /wip-handoff/, 'việc dở của B nằm trong stash');
+});
+
+test('FE-MINOR: stashForApply chỉ trả true khi refs/stash thật sự đổi', () => {
+  const { b } = setup();
+  const { stashForApply } = loadModule();
+  write(b, 'old.md', 'cũ\n');
+  git(b, 'stash', 'push', '-q', '--include-untracked', '-m', 'stash cũ');
+  const before = tryGit(b, 'stash', 'list').stdout;
+  assert.equal(stashForApply(b, 'refs/wip/x'), false, 'không có gì để cất → false');
+  assert.equal(tryGit(b, 'stash', 'list').stdout, before);
+  write(b, 'README.md', 'B dở\n');
+  assert.equal(stashForApply(b, 'refs/wip/x'), true);
+  assert.match(tryGit(b, 'stash', 'list').stdout, /^stash@\{0\}: On main: wip-handoff/m);
+});
+
+test('FE-R2: switchForApply lỗi → đi qua đường khôi phục (lấy lại stash) rồi báo lỗi', () => {
+  const { b } = setup();
+  const { switchForApply } = loadModule();
+  write(b, 'README.md', 'B dở\n');
+  const origHead = git(b, 'rev-parse', 'HEAD');
+  git(b, 'stash', 'push', '-q', '-m', 'wip-handoff: test');
+  assert.throws(
+    () => switchForApply(b, 'nhanh-khong-ton-tai', { currentBranch: 'main', origHead, stashed: true, local: 'same' }),
+    err => /nhanh-khong-ton-tai/.test(err.message) && /lấy lại stash/.test(err.message),
+  );
+  assert.equal(git(b, 'branch', '--show-current'), 'main');
+  assert.equal(read(b, 'README.md'), 'B dở\n');
+  assert.equal(tryGit(b, 'stash', 'list').stdout, '');
+});
+
 test('tham số sai (cơ bản) → exit 2', () => {
   const { a } = setup();
   assert.equal(run(a).status, 2);

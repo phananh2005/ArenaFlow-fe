@@ -39,7 +39,8 @@ node docs/agent/scripts/wip-handoff.cjs list
   `git stash` kèm message `wip-handoff: …`, lấy lại được) hay dừng. **NEVER** tự bỏ thay đổi.
 - Con trỏ submodule `docs/agent/upstream` lệch (`git submodule status` có dấu `+`) **không** tính là thay đổi chưa commit:
   vẫn áp được, không cần `--stash` (stash không cất con trỏ submodule). Nói rõ với user ngay ở bước này; sau khi áp,
-  con trỏ submodule vẫn giữ như trên máy này.
+  con trỏ submodule vẫn giữ như trên máy này — kể cả khi máy bật `submodule.recurse true`: mọi lệnh git đổi checkout của
+  bước áp chạy với `-c submodule.recurse=false`.
 
 ### Bước 3 — Áp (chỉ ảnh chụp user đã chọn; các ảnh chụp chỉ-commit trước, ảnh chụp có file dở sau cùng)
 ```bash

@@ -421,25 +421,49 @@ function list(root, { json }) {
 // Working tree đã sạch trước khi áp → reset --merge đưa về trạng thái đó. Chỉ lấy lại stash khi HEAD đúng là commit
 // lúc cất (không chỉ đúng tên nhánh — nhánh có thể đã fast-forward), để không đổ stash lên commit khác.
 // Trả các ghi chú về những gì đã/không khôi phục (rỗng nếu không có gì).
+// Lệnh git đổi checkout khi áp/khôi phục: KHÔNG đệ quy vào submodule (dù máy bật submodule.recurse) — con trỏ
+// submodule (vd docs/agent/upstream) giữ nguyên như trên máy này.
+const NO_RECURSE = ['-c', 'submodule.recurse=false'];
+
 function restoreAfterFailedApply(root, { currentBranch, origHead, branch, stashed, local }) {
-  git(root, ['reset', '--merge', '--quiet'], { allowFail: true });
+  git(root, [...NO_RECURSE, 'reset', '--merge', '--quiet'], { allowFail: true });
   git(root, ['cherry-pick', '--quit'], { allowFail: true });
   const notes = [];
   if (currentBranch !== branch) {
     const back = currentBranch
-      ? git(root, ['switch', '--quiet', currentBranch], { allowFail: true })
-      : git(root, ['switch', '--quiet', '--detach', origHead], { allowFail: true });
+      ? git(root, [...NO_RECURSE, 'switch', '--quiet', currentBranch], { allowFail: true })
+      : git(root, [...NO_RECURSE, 'switch', '--quiet', '--detach', origHead], { allowFail: true });
     const where = currentBranch ? `nhánh ${currentBranch}` : `commit ${origHead.slice(0, 7)}`;
     notes.push(back.status === 0 ? `đã về lại ${where}` : `KHÔNG về lại được ${where} — đang ở ${branch}`);
   }
   const onOriginal = tryRev(root, 'HEAD') === origHead;
   if (stashed) {
     if (!onOriginal) notes.push('stash của lượt này vẫn ở stash@{0} (chưa lấy lại vì HEAD không còn là commit lúc cất)');
-    else notes.push(git(root, ['stash', 'pop', '--quiet'], { allowFail: true }).status === 0 ? 'đã lấy lại stash' : 'stash vẫn ở stash@{0} (pop lỗi — lấy tay)');
+    else notes.push(git(root, [...NO_RECURSE, 'stash', 'pop', '--quiet'], { allowFail: true }).status === 0 ? 'đã lấy lại stash' : 'stash vẫn ở stash@{0} (pop lỗi — lấy tay)');
   }
   if (local === 'missing') notes.push(`nhánh ${branch} vừa tạo vẫn còn`);
   if (local === 'behind') notes.push(`nhánh ${branch} đã được fast-forward tới base của ảnh chụp`);
   return notes;
+}
+
+// Cất thay đổi hiện tại trước khi áp. Trả true chỉ khi refs/stash thật sự đổi — `stash push` không có gì để cất
+// (vd chỉ lệch con trỏ submodule) vẫn exit 0, khi đó không được coi là đã stash (tránh pop nhầm stash cũ).
+function stashForApply(root, ref) {
+  const before = tryRev(root, 'refs/stash');
+  git(root, [...NO_RECURSE, 'stash', 'push', '--include-untracked', '-m', `wip-handoff: cất trước khi áp ${ref} (${nowLocal()})`]);
+  const after = tryRev(root, 'refs/stash');
+  return Boolean(after) && after !== before;
+}
+
+// Chuyển sang nhánh cần áp; lỗi → khôi phục (về nhánh cũ, lấy lại stash của lượt này) rồi báo lỗi kèm ghi chú.
+function switchForApply(root, branch, { currentBranch, origHead, stashed, local }) {
+  const switched = git(root, [...NO_RECURSE, 'switch', '--quiet', branch], { allowFail: true });
+  if (switched.status === 0) return;
+  const restored = restoreAfterFailedApply(root, { currentBranch, origHead, branch, stashed, local });
+  throw new Refusal([
+    `Không chuyển được sang nhánh ${branch} để áp — chưa áp gì${restored.length ? `; ${restored.join('; ')}` : ''}.`,
+    (switched.stderr || '').trim(),
+  ].join('\n'));
 }
 
 function apply(root, branch, { stash, skip }) {
@@ -498,11 +522,7 @@ function apply(root, branch, { stash, skip }) {
     if (!stash) {
       throw new Refusal('Working tree đang có thay đổi chưa commit (có thể từ ảnh chụp vừa áp — mỗi working tree chỉ chứa được một ảnh chụp có file dở) — không áp. Commit/stash trước, hoặc chạy lại với --stash.');
     }
-    // Chỉ coi là đã stash khi refs/stash thật sự đổi — `stash push` không có gì để cất vẫn exit 0.
-    const stashBefore = tryRev(root, 'refs/stash');
-    git(root, ['stash', 'push', '--include-untracked', '-m', `wip-handoff: cất trước khi áp ${ref} (${nowLocal()})`]);
-    const stashAfter = tryRev(root, 'refs/stash');
-    stashed = Boolean(stashAfter) && stashAfter !== stashBefore;
+    stashed = stashForApply(root, ref);
     if (stashed) console.log('Đã cất thay đổi hiện tại vào git stash (xem: git stash list).');
   }
 
@@ -512,13 +532,13 @@ function apply(root, branch, { stash, skip }) {
     git(root, ['branch', branch, snap.onto ? snap.originTip : snap.base]);
     if (snap.originTip) git(root, ['branch', '--quiet', `--set-upstream-to=${REMOTE}/${branch}`, branch]);
   } else if (snap.local === 'behind') {
-    if (currentBranch === branch) git(root, ['merge', '--ff-only', '--quiet', snap.base]);
+    if (currentBranch === branch) git(root, [...NO_RECURSE, 'merge', '--ff-only', '--quiet', snap.base]);
     else git(root, ['update-ref', `${HEADS_PREFIX}${branch}`, snap.base, snap.head]);
   }
 
   if (snap.dirty) {
-    if (currentBranch !== branch) git(root, ['switch', '--quiet', branch]);
-    const picked = git(root, ['cherry-pick', '--no-commit', snap.sha], { allowFail: true });
+    if (currentBranch !== branch) switchForApply(root, branch, { currentBranch, origHead, stashed, local: snap.local });
+    const picked = git(root, [...NO_RECURSE, 'cherry-pick', '--no-commit', snap.sha], { allowFail: true });
     if (picked.status !== 0) {
       const restored = restoreAfterFailedApply(root, { currentBranch, origHead, branch, stashed, local: snap.local });
       throw new Refusal([
@@ -527,7 +547,7 @@ function apply(root, branch, { stash, skip }) {
         `Ảnh chụp vẫn còn trên ${REMOTE}; áp tay: git cherry-pick --no-commit ${ref} rồi git reset.`,
       ].join('\n'));
     }
-    git(root, ['reset', '--quiet']);
+    git(root, [...NO_RECURSE, 'reset', '--quiet']);
   }
   git(root, ['update-ref', `${SEEN_PREFIX}${branch}`, snap.sha]);
   console.log(snap.dirty
@@ -560,4 +580,4 @@ function main(argv) {
 }
 
 if (require.main === module) process.exitCode = main(process.argv.slice(2));
-else module.exports = { restoreAfterFailedApply };
+else module.exports = { restoreAfterFailedApply, stashForApply, switchForApply };
