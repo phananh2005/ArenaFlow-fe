@@ -90,8 +90,11 @@ function worktrees(root) {
   return { byBranch, detached, missing };
 }
 
-function isDirty(cwd) {
-  return git(cwd, ['status', '--porcelain']).length > 0;
+// ignoreSubmodules: bỏ qua con trỏ/nội dung submodule (vd docs/agent/upstream vừa `submodule update --remote`) —
+// ảnh chụp không mang con trỏ submodule, và `git stash` cũng không cất được nó.
+function isDirty(cwd, { ignoreSubmodules = false } = {}) {
+  const args = ['status', '--porcelain', ...(ignoreSubmodules ? ['--ignore-submodules=all'] : [])];
+  return git(cwd, args).length > 0;
 }
 
 // Quét secret trên file thêm/sửa giữa from..to bằng bộ quét của Git pre-commit. Không fail-open.
@@ -491,13 +494,16 @@ function apply(root, branch, { stash, skip }) {
   }
 
   let stashed = false;
-  if (touchesWorkingTree && isDirty(root)) {
+  if (touchesWorkingTree && isDirty(root, { ignoreSubmodules: true })) {
     if (!stash) {
       throw new Refusal('Working tree đang có thay đổi chưa commit (có thể từ ảnh chụp vừa áp — mỗi working tree chỉ chứa được một ảnh chụp có file dở) — không áp. Commit/stash trước, hoặc chạy lại với --stash.');
     }
+    // Chỉ coi là đã stash khi refs/stash thật sự đổi — `stash push` không có gì để cất vẫn exit 0.
+    const stashBefore = tryRev(root, 'refs/stash');
     git(root, ['stash', 'push', '--include-untracked', '-m', `wip-handoff: cất trước khi áp ${ref} (${nowLocal()})`]);
-    stashed = true;
-    console.log('Đã cất thay đổi hiện tại vào git stash (xem: git stash list).');
+    const stashAfter = tryRev(root, 'refs/stash');
+    stashed = Boolean(stashAfter) && stashAfter !== stashBefore;
+    if (stashed) console.log('Đã cất thay đổi hiện tại vào git stash (xem: git stash list).');
   }
 
   // Đưa nhánh local tới base (hoặc đầu origin khi áp lên đầu nhánh): tạo mới kèm upstream, hoặc fast-forward

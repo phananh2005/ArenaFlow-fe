@@ -37,6 +37,9 @@ node docs/agent/scripts/wip-handoff.cjs list
 - `LỆCH lịch sử` → **không áp**; nêu lý do, hỏi user xử lý tay.
 - Working tree hiện tại có thay đổi chưa commit và cần áp ảnh chụp có file dở → hỏi: **stash** (`--stash`, cất vào
   `git stash` kèm message `wip-handoff: …`, lấy lại được) hay dừng. **NEVER** tự bỏ thay đổi.
+- Con trỏ submodule `docs/agent/upstream` lệch (`git submodule status` có dấu `+`) **không** tính là thay đổi chưa commit:
+  vẫn áp được, không cần `--stash` (stash không cất con trỏ submodule). Nói rõ với user ngay ở bước này; sau khi áp,
+  con trỏ submodule vẫn giữ như trên máy này.
 
 ### Bước 3 — Áp (chỉ ảnh chụp user đã chọn; các ảnh chụp chỉ-commit trước, ảnh chụp có file dở sau cùng)
 ```bash

@@ -62,7 +62,7 @@ node docs/agent/scripts/wip-handoff.cjs push
 ### Bước 4 — Báo
 - Bảng: nhánh · ảnh chụp (7 ký tự) · có file dở / số commit chưa push · nhánh đang làm.
 - Cảnh báo con trỏ submodule `docs/agent/upstream` (nếu có) → chuyển nguyên cho user.
-- Nhắc: máy này **vẫn giữ** file đang sửa; `.env*` không đi theo (tự chép nếu máy kia chưa có);
+- Nhắc: máy này **vẫn giữ** file đang sửa; `.env`, `.env.*` (trừ `.env.example` — file này có track nên đi theo khi đang sửa) không đi theo (tự chép nếu máy kia chưa có);
   máy kia gõ `/af-resume-pull`. Quay lại máy này sau khi đã làm tiếp ở máy kia → cũng dùng `/af-resume-pull`
   (nó đề nghị stash bản cũ) **trước khi** `/af-handoff-push` lần nữa.
 

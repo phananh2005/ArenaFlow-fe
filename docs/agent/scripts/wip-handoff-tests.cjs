@@ -850,6 +850,45 @@ test('FE: commit chưa push có đổi con trỏ submodule → quét secret bỏ
   assert.equal(git(a, 'rev-parse', `${snap}^`), git(a, 'rev-parse', 'HEAD'));
 });
 
+// Máy B checkout feature/X kèm submodule rồi cập nhật submodule lên commit mới → con trỏ lệch HEAD (chưa commit).
+function receiverWithDriftedSubmodule(b) {
+  git(b, 'fetch', '-q', 'origin'); // B clone trước khi A gắn submodule
+  git(b, 'switch', '-q', '-c', 'feature/X-001-demo', 'origin/feature/X-001-demo');
+  git(b, '-c', 'protocol.file.allow=always', 'submodule', 'update', '-q', '--init');
+  commitFile(path.join(b, 'docs/agent/upstream'), 'README.md', 'spec mới ở B\n', 'spec mới ở B');
+  assert.match(tryGit(b, 'status', '--porcelain').stdout, /docs\/agent\/upstream/, 'tiền điều kiện: con trỏ lệch');
+}
+
+test('FE-R1: máy nhận chỉ lệch con trỏ submodule → áp được, không đụng stash', () => {
+  const { dir, a, b } = setup();
+  addUpstreamSubmodule(dir, a);
+  write(a, 'note.md', 'dở từ A\n');
+  assert.equal(run(a, 'push').status, 0);
+  receiverWithDriftedSubmodule(b);
+
+  const result = run(b, 'apply', 'feature/X-001-demo');
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(read(b, 'note.md'), 'dở từ A\n');
+  assert.equal(tryGit(b, 'stash', 'list').stdout, '');
+});
+
+test('FE-R1: có stash cũ + --stash khi chỉ lệch con trỏ submodule → stash cũ còn nguyên, không báo "đã cất"', () => {
+  const { dir, a, b } = setup();
+  addUpstreamSubmodule(dir, a);
+  write(a, 'note.md', 'dở từ A\n');
+  assert.equal(run(a, 'push').status, 0);
+  receiverWithDriftedSubmodule(b);
+  write(b, 'old.md', 'stash cũ của user\n');
+  git(b, 'stash', 'push', '-q', '--include-untracked', '-m', 'stash cũ của user');
+  const before = tryGit(b, 'stash', 'list').stdout;
+
+  const result = run(b, 'apply', 'feature/X-001-demo', '--stash');
+  assert.equal(result.status, 0, result.stderr);
+  assert.doesNotMatch(result.stdout, /Đã cất/);
+  assert.equal(tryGit(b, 'stash', 'list').stdout, before, 'stash cũ không được đổi');
+  assert.equal(fs.existsSync(path.join(b, 'old.md')), false, 'stash cũ không bị pop');
+});
+
 test('tham số sai (cơ bản) → exit 2', () => {
   const { a } = setup();
   assert.equal(run(a).status, 2);
