@@ -417,19 +417,21 @@ function list(root, { json }) {
   return 0;
 }
 
-// Khôi phục sau khi cherry-pick lỗi (hiếm — đụng độ đã thử trước bằng merge-tree; vd file chưa track sẽ bị ghi đè).
-// Working tree đã sạch trước khi áp → reset --merge đưa về trạng thái đó. Chỉ lấy lại stash khi HEAD đúng là commit
-// lúc cất (không chỉ đúng tên nhánh — nhánh có thể đã fast-forward), để không đổ stash lên commit khác.
-// Trả các ghi chú về những gì đã/không khôi phục (rỗng nếu không có gì).
 // Lệnh git đổi checkout khi áp/khôi phục: KHÔNG đệ quy vào submodule (dù máy bật submodule.recurse) — con trỏ
 // submodule (vd docs/agent/upstream) giữ nguyên như trên máy này.
 const NO_RECURSE = ['-c', 'submodule.recurse=false'];
 
+// Khôi phục sau khi chuyển nhánh hoặc cherry-pick lỗi (hiếm — đụng độ đã thử trước bằng merge-tree; vd file chưa track
+// sẽ bị ghi đè). Working tree đã sạch trước khi áp → reset --merge đưa về trạng thái đó. Chỉ chuyển về chỗ cũ khi thực
+// sự đã rời đi. Chỉ lấy lại stash khi HEAD đúng là commit lúc cất (không chỉ đúng tên nhánh — nhánh có thể đã
+// fast-forward), để không đổ stash lên commit khác. Trả các ghi chú về những gì đã/không khôi phục (rỗng nếu không có gì).
 function restoreAfterFailedApply(root, { currentBranch, origHead, branch, stashed, local }) {
   git(root, [...NO_RECURSE, 'reset', '--merge', '--quiet'], { allowFail: true });
   git(root, ['cherry-pick', '--quit'], { allowFail: true });
   const notes = [];
-  if (currentBranch !== branch) {
+  const here = currentBranchOf(root);
+  const atOriginal = currentBranch ? here === currentBranch : !here && tryRev(root, 'HEAD') === origHead;
+  if (!atOriginal) {
     const back = currentBranch
       ? git(root, [...NO_RECURSE, 'switch', '--quiet', currentBranch], { allowFail: true })
       : git(root, [...NO_RECURSE, 'switch', '--quiet', '--detach', origHead], { allowFail: true });

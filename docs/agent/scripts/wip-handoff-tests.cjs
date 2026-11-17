@@ -939,7 +939,8 @@ test('FE-R2: switchForApply lỗi → đi qua đường khôi phục (lấy lạ
   git(b, 'stash', 'push', '-q', '-m', 'wip-handoff: test');
   assert.throws(
     () => switchForApply(b, 'nhanh-khong-ton-tai', { currentBranch: 'main', origHead, stashed: true, local: 'same' }),
-    err => /nhanh-khong-ton-tai/.test(err.message) && /lấy lại stash/.test(err.message),
+    err => /nhanh-khong-ton-tai/.test(err.message) && /lấy lại stash/.test(err.message)
+      && !/về lại/.test(err.message), // chưa từng rời main → không được báo "đã về lại"
   );
   assert.equal(git(b, 'branch', '--show-current'), 'main');
   assert.equal(read(b, 'README.md'), 'B dở\n');
