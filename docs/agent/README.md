@@ -27,7 +27,9 @@ ArenaFlow-fe/
 │   │   └── decisions-relevance/SKILL.md
 │   └── commands/
 │       ├── af-handoff.md
-│       └── af-resume.md
+│       ├── af-resume.md
+│       ├── af-handoff-push.md          # Handoff + đẩy ảnh chụp việc dở lên refs/wip/*
+│       └── af-resume-pull.md           # Lấy ảnh chụp refs/wip/* về + resume
 ├── .githooks/pre-commit                # Secret scan staged
 ├── docs/agent/
 │   ├── CLAUDE.md                       # Kiến thức dự án
@@ -55,9 +57,12 @@ ArenaFlow-fe/
 │   │   ├── session-handoff.md
 │   │   ├── decisions-log.md
 │   │   └── tech-debt.md
-│   └── hooks/
-│       ├── agent-hooks.cjs
-│       └── fixture-tests.cjs
+│   ├── hooks/
+│   │   ├── agent-hooks.cjs
+│   │   └── fixture-tests.cjs
+│   └── scripts/
+│       ├── wip-handoff.cjs             # Ảnh chụp việc dở ↔ refs/wip/* (push/list/apply)
+│       └── wip-handoff-tests.cjs
 └── .agent-bootstrap/project-profile.md # Hồ sơ dự án
 ```
 
@@ -74,7 +79,7 @@ ArenaFlow-fe/
 4. **Chức năng FE mới:** `ui-designer` (Stitch) → duyệt → `solution-architect` → duyệt → `architect-reviewer` → duyệt → `developer`.
 5. **Sửa nhỏ:** thẳng `developer`.
 6. Khi implement: skill `task-state-init` → procedure `developer` → `progress-tracker` sau mỗi bước.
-7. Kết thúc phiên: `/af-handoff`; tiếp tục phiên: `/af-resume`.
+7. Kết thúc phiên: `/af-handoff`; tiếp tục phiên: `/af-resume`. Chuyển sang máy khác: `/af-handoff-push` trên máy đang làm → `/af-resume-pull` trên máy kia. Ảnh chụp nằm ở ref ẩn `refs/wip/<nhánh>` (xem: `git ls-remote origin 'refs/wip/*'`; xoá khi không cần: `git push origin --delete refs/wip/<nhánh>`); `.env`, `.env.*` (trừ `.env.example` — file này có track nên đi theo khi đang sửa) không đi theo; con trỏ submodule `docs/agent/upstream` chưa commit không đi theo (máy kia chạy lại `git submodule update`). Cần **Git ≥ 2.40** (áp việc dở lên đầu nhánh mới hơn dùng `git merge-tree --merge-base`; Git cũ hơn → lệnh từ chối, áp tay). Ref local `refs/wip-seen/*` và `refs/wip-skipped/*` chỉ nằm trên máy, không push. `secret-scan-diff <from> <to>` của `agent-hooks.cjs` (dùng cho ảnh chụp) không fail-open và bỏ qua gitlink.
 8. Trước khi tạo PR (`CLAUDE.md` §8), diff có code: agent `code-reviewer` chạy subagent trên `git diff origin/main` (context độc lập, không tự review trong phiên) — cổng review duy nhất, không review trước từng commit hay sau khi tạo PR; diff thuần tài liệu được miễn. Git pre-commit quét secret trong staged content.
 9. Rà ADR khi cần bằng skill `decisions-relevance`.
 
@@ -104,6 +109,7 @@ git config --local --unset core.hooksPath
 
 ```sh
 node docs/agent/hooks/fixture-tests.cjs
+node docs/agent/scripts/wip-handoff-tests.cjs
 node docs/agent/hooks/agent-hooks.cjs test
 npm test && npm run lint && npm run build
 ```

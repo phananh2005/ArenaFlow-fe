@@ -106,24 +106,56 @@ function scanContent(content, file) {
   return String(content).split(/\r?\n/).flatMap((line, index) => lineHasSecret(line, kind) ? [{ line: index + 1 }] : []);
 }
 
+// Quét các file trong `files`; `objectPrefix` + tên file là object git chứa nội dung (":" = index, "<rev>:" = commit/tree).
+// strict: đọc file lỗi (kể cả quá lớn) → trả 3 thay vì bỏ qua file đó.
+function scanFiles(root, files, objectPrefix, label, strict = false) {
+  const findings = [];
+  for (const file of files) {
+    const maxBuffer = (strict ? 256 : 10) * 1024 * 1024;
+    const content = spawnSync('git', ['show', `${objectPrefix}${file}`], { cwd: root, encoding: 'utf8', maxBuffer });
+    if (content.status !== 0) {
+      if (!strict) continue;
+      process.stderr.write(`Không đọc được ${file} để quét secret (${content.error?.code || `git exit ${content.status}`}); secret scan thất bại.\n`);
+      return 3;
+    }
+    for (const finding of scanContent(content.stdout, file)) findings.push(`${file}:${finding.line}`);
+  }
+  if (findings.length) {
+    process.stderr.write(`Có thể có secret trong ${label} (${findings.join(', ')}). Hãy kiểm tra và thay bằng biến môi trường/placeholder.\n`);
+    return 1;
+  }
+  return 0;
+}
+
 function scanStaged(root) {
   const listed = spawnSync('git', ['diff', '--cached', '--name-only', '-z'], { cwd: root, encoding: 'buffer' });
   if (listed.status !== 0) {
     process.stderr.write('Không đọc được danh sách file staged; bỏ qua secret scan.\n');
     return 0;
   }
-  const files = listed.stdout.toString('utf8').split('\0').filter(Boolean);
-  const findings = [];
-  for (const file of files) {
-    const content = spawnSync('git', ['show', `:${file}`], { cwd: root, encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
-    if (content.status !== 0) continue;
-    for (const finding of scanContent(content.stdout, file)) findings.push(`${file}:${finding.line}`);
+  return scanFiles(root, listed.stdout.toString('utf8').split('\0').filter(Boolean), ':', 'staged diff');
+}
+
+// Quét file thêm/sửa giữa hai commit/tree. Khác pre-commit: lỗi môi trường trả 3 (không fail-open) để bên gọi từ chối.
+// Bỏ qua gitlink (mode 160000 — con trỏ submodule như docs/agent/upstream): object nằm ở repo khác, không có nội dung để quét.
+function scanDiff(root, from, to) {
+  if (!from || !to) {
+    process.stderr.write('Dùng: agent-hooks.cjs secret-scan-diff <from> <to>\n');
+    return 3;
   }
-  if (findings.length) {
-    process.stderr.write(`Có thể có secret trong staged diff (${findings.join(', ')}). Hãy kiểm tra và thay bằng biến môi trường/placeholder.\n`);
-    return 1;
+  const listed = spawnSync('git', ['diff', '--raw', '-z', '--no-renames', '--diff-filter=d', '--no-abbrev', from, to, '--'], { cwd: root, encoding: 'buffer' });
+  if (listed.status !== 0) {
+    process.stderr.write(`Không đọc được diff ${from}..${to}; secret scan thất bại.\n`);
+    return 3;
   }
-  return 0;
+  // --raw -z: ":<srcmode> <dstmode> <srcsha> <dstsha> <status>\0<path>\0" lặp lại.
+  const parts = listed.stdout.toString('utf8').split('\0');
+  const files = [];
+  for (let i = 0; i + 1 < parts.length; i += 2) {
+    const dstMode = parts[i].split(' ')[1];
+    if (dstMode !== '160000') files.push(parts[i + 1]);
+  }
+  return scanFiles(root, files, `${to}:`, `diff ${from.slice(0, 12)}..${to.slice(0, 12)}`, true);
 }
 
 function logToolUse(input) {
@@ -237,6 +269,7 @@ const input = parseInput();
 let status = 0;
 if (command === 'guard') status = runGuard(input);
 else if (command === 'secret-scan') status = scanStaged(projectRoot(input || {}));
+else if (command === 'secret-scan-diff') status = scanDiff(projectRoot(input || {}), process.argv[3], process.argv[4]);
 else if (command === 'logger') status = logToolUse(input || {});
 else if (command === 'session-start') status = sessionReminder(input || {});
 else if (command === 'test') fixtureTests();

@@ -95,6 +95,7 @@
 - Thư mục state: `docs/agent/state/local-dev/` (copy từ `docs/agent/state/_template/`). **Một giá trị duy nhất** ở mọi file.
 - State cá nhân được gitignore bằng `docs/agent/state/*/`; template `_template/` được giữ trong Git.
 - `/af-handoff` lưu phiên · `/af-resume` đọc lại và **hỏi trước khi code tiếp**.
+- Làm trên nhiều máy: `/af-handoff-push` = `/af-handoff` + đẩy ảnh chụp mọi nhánh local chưa đồng bộ lên ref ẩn `refs/wip/<nhánh>` (không phải nhánh, không tạo PR, nhánh thật không đổi; con trỏ submodule `docs/agent/upstream` chưa commit không đi theo) · máy kia `/af-resume-pull` lấy về, **hỏi** rồi áp, rồi chạy `/af-resume`. Logic: `docs/agent/scripts/wip-handoff.cjs`.
 
 ---
 
@@ -118,7 +119,9 @@
 - Trước khi tạo PR (trước lần push đầu để tạo PR; nhánh đã push trước đó, vd để backup → trước `gh pr create`) → **MUST** gọi agent `code-reviewer` dưới dạng **subagent** (context độc lập — ngoại lệ của quy tắc "thực thi inline" ở §3) trên `git diff origin/main` (sau rebase; gồm cả file mới chưa track): chỉ truyền phạm vi diff + đường dẫn `current-task.md`, **không** truyền kết luận/đánh giá của phiên đã viết code. CRITICAL/MAJOR → sửa → commit → gọi lại subagent cho phần sửa; chỉ tạo PR (và lần push đầu để tạo PR) khi không còn CRITICAL/MAJOR (hoặc user chấp nhận rõ). Đây là cổng review **duy nhất**: commit trên nhánh **không** review từng lần; code commit / push thêm sau khi PR đã mở (vd sửa theo comment trên PR) **không** được review lại — rủi ro người dùng đã chấp nhận (2026-11-10). **NEVER** dùng skill `code-review` (tự review trong phiên) thay cho cổng này.
   - **Miễn cổng khi diff không có code:** `git diff origin/main` chỉ gồm tài liệu (`*.md`, `docs/agent/design/`, con trỏ submodule `docs/agent/upstream`, ảnh/HTML mockup trong `ui/`) → **không** cần gọi `code-reviewer`; nêu rõ "miễn review: không có thay đổi code" kèm danh sách file (`git diff --name-only origin/main`).
   - **Tính là code** (vẫn bắt buộc review): `src/**`, `index.html`, `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `.oxlintrc.json`, `.env.example`, `.gitmodules`, `.claude/settings*.json`, `docs/agent/hooks/**`, `.githooks/**`, mọi file script (`*.js|*.cjs|*.mjs|*.ts|*.tsx|*.sh`). Diff lẫn code + tài liệu → review cả diff. Không chắc file thuộc nhóm nào → coi là code.
+  - Ảnh chụp `refs/wip/*` (`/af-handoff-push`) không phải push nhánh / tạo PR → **không** qua cổng này; secret scan vẫn chạy trên file dở và commit chưa push.
 - **Đồng bộ `main`** (chỉ khi đã có remote `origin`): trên **mọi nhánh khác `main`**, agent **MUST tự** chạy `git fetch origin && git rebase --autostash origin/main` tại 3 thời điểm: (1) trước khi bắt đầu triển khai một chức năng, (2) trước mỗi commit, (3) trước mỗi push.
+  - Không áp dụng cho ảnh chụp `refs/wip/*` của `/af-handoff-push` (không commit lên nhánh, không push nhánh); rebase vẫn làm khi commit/push thật.
   - Conflict khi rebase → `git rebase --abort`, **dừng**, báo danh sách file conflict; **NEVER** tự resolve. Conflict khi áp lại autostash → dừng, báo (stash vẫn còn trong `git stash list`).
   - `fetch` lỗi (mạng/quyền) → báo, **không** khẳng định đã đồng bộ.
   - Rebase kéo về commit mới → chạy lại test liên quan trước khi commit/push.
