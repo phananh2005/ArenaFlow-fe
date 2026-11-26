@@ -45,7 +45,8 @@ Người thực thi kỹ thuật có ràng buộc rõ ràng — không phải as
   2. **Green:** viết phần production code tối thiểu để test mới và test liên quan pass.
   3. **Refactor:** cải thiện cấu trúc khi cần, chạy lại test.
 - Gọi API trong test → mock ở ranh giới HTTP (`src/core/services/http.service.ts` hoặc `fetch`), **không** gọi BE thật; fixture response bám đúng envelope trong API_Spec BE.
-- Không viết implementation trước test. Chỉ thay đổi thuần tài liệu / style thuần (class Tailwind không đổi hành vi) mới không cần TDD.
+- Không viết implementation trước test. Chỉ thay đổi thuần tài liệu / style thuần (class Tailwind không đổi hành vi) / thuần comment mới không cần TDD.
+- Viết comment tiếng Việt theo `docs/agent/convention-frontend.md` §10 (JSDoc cho mọi component, hook, hàm, type mới hoặc sửa; không trỏ tài liệu).
 - Code khác design (thêm/bớt/đổi component, props, route, store, query key, cách hiện thực) → ghi ngay 1 dòng vào bảng "Lệch thiết kế" của `current-task.md`; **không** sửa design lúc này. Lệch làm đổi hợp đồng API / luồng màn hình / nghiệp vụ → dừng, hỏi user trước.
 - Sau mỗi bước: gọi skill `progress-tracker`.
 
@@ -55,9 +56,12 @@ Người thực thi kỹ thuật có ràng buộc rõ ràng — không phải as
   - `npm run lint`
   - `npm run build` (gồm `tsc -b`)
 - Còn fail → quay lại sửa; **không** ghi PASS.
-- Mọi phase đã code xong + test PASS + bảng "Lệch thiết kế" có dòng → cập nhật design một lần theo bảng → `architect-reviewer` review phần sửa (bước tổng quan cuối của task).
+- Mọi phase đã code xong + test/lint/build PASS → coordinator gọi **`code-reviewer`** dưới dạng **subagent** trên phần chưa review (`git diff HEAD` + file mới chưa track; nhánh còn commit code chưa review → thêm `git diff origin/main...HEAD`; chỉ truyền phạm vi diff + `current-task.md`). Còn CRITICAL/MAJOR → sửa theo TDD, test lại, review lại phần sửa. **Không** tự review trong phiên thay cổng này.
+- Sau đó **mới** tự đối chiếu code với design (route / cây component / state / mapping API / giao diện) + bảng "Lệch thiết kế" → bổ sung dòng lệch còn sót → cập nhật design một lần theo bảng → `architect-reviewer` review phần sửa (bước tổng quan cuối của task). Có ảnh hưởng giao diện → cập nhật `UI_Design.md` qua `ui-designer`.
+- Đối chiếu / review design dẫn tới sửa code → test/lint/build lại → `code-reviewer` phần sửa → lặp tới khi `architect-reviewer` và `code-reviewer` không còn finding được chọn sửa. `code-reviewer` luôn là bước cuối cùng trước commit có code.
+- **Sửa chức năng đã có** (sau `code-reviewer`): có ảnh hưởng design FE → chạy xong **vòng lặp design** như trên; ảnh hưởng nghiệp vụ / hợp đồng API → dừng, đề xuất sửa ở repo BE. Tiêu chí ảnh hưởng: `.claude/AGENTS.md` §1.
 - Chỉ khi test/lint/build xanh **và** design đã cập nhật (nếu có lệch) mới đổi `status: done`.
-- Trước khi tạo PR (`CLAUDE.md` §8): coordinator gọi agent `code-reviewer` dưới dạng **subagent** trên `git diff origin/main` (gồm file chưa track; context độc lập; chỉ truyền phạm vi diff + `current-task.md`). Còn CRITICAL/MAJOR → sửa → commit → gọi lại cho phần sửa; **không** tự review trong phiên thay cổng này; **không** review trước từng commit hay sau khi tạo PR.
+- Mỗi commit có code (kể cả commit giữa chừng) → `code-reviewer` ngay trước commit trên phần chưa review; còn CRITICAL/MAJOR → sửa, review lại phần sửa rồi mới commit. Mọi commit đã qua review → trước push / tạo PR không review lại. Không có code hoặc chỉ đổi comment → không review (`CLAUDE.md` §8).
 
 ## Ràng buộc cứng
 - **NEVER** báo "xong" / tick DoD khi test/lint/build chưa chạy hoặc còn fail.

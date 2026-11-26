@@ -22,15 +22,17 @@ Nhận request
 ├── Implement chức năng mới                   → kiểm tra thiết kế FE:
 │   ├── Chưa có UI_Design / thiết kế kỹ thuật → ui-designer / solution-architect trước → duyệt → developer
 │   └── Đã có đủ                              → task-state-init → developer
-├── Sửa chức năng đã triển khai               → developer → sau khi code & test PASS:
+├── Sửa chức năng đã triển khai               → developer → sau khi code & test PASS → code-reviewer (nếu có code):
 │   ├── Ảnh hưởng giao diện                   → cập nhật UI_Design qua ui-designer
 │   ├── Ảnh hưởng design FE (route/component/state/mapping API)
-│   │   └── CÓ ảnh hưởng                      → cập nhật design → architect-reviewer (chỉ review phần sửa)
+│   │   └── CÓ ảnh hưởng                      → vòng lặp design: cập nhật design → architect-reviewer (chỉ phần sửa)
+│   │                                           → có sửa code → test + code-reviewer phần sửa
+│   │                                           → lặp tới khi không còn finding được chọn sửa
 │   └── Ảnh hưởng nghiệp vụ / hợp đồng API
 │       └── CÓ ảnh hưởng                      → dừng, đề xuất cập nhật SRS / API_Spec ở repo BE
 ├── Debug / lỗi / không chạy                  → skill debug
 ├── Review thiết kế                            → procedure architect-reviewer
-├── Review code / chuẩn bị PR                 → agent code-reviewer (subagent, chỉ khi diff có code)
+├── Review code / trước commit                → agent code-reviewer (subagent, ngay trước mỗi commit có code)
 ├── Rà ADR / quyết định kiến trúc              → skill decisions-relevance
 ├── Agent làm lệch quy ước repo (lặp lại)     → skill workflow-adapt
 └── Hỏi đáp / giải thích / tìm kiếm           → xử lý trực tiếp
@@ -69,7 +71,7 @@ Nhận request
 | `solution-architect` | "thiết kế màn hình [X]", "design FE/luồng/component" | Tài liệu thiết kế trong `docs/agent/design/<MÃ>/` | Viết code production; đặt hợp đồng API |
 | `architect-reviewer` | "review thiết kế", "soi design" | CRITICAL/MAJOR/MINOR cho tài liệu thiết kế | Tự sửa thiết kế |
 | `developer` | "implement/viết/tạo/build/thêm/sửa [X]" | Code + test PASS + lint/build PASS + state cập nhật | Code khi chưa duyệt kế hoạch; code chức năng mới khi chưa có thiết kế |
-| `code-reviewer` | "review code", "chuẩn bị PR", "tạo PR"; **bắt buộc trước khi tạo PR** (`CLAUDE.md` §8) khi diff có code (`git diff origin/main`) — cổng duy nhất | CRITICAL/MAJOR/MINOR có `file:line` | Tự sửa / commit; chạy inline trong phiên đã viết code; chạy trước từng commit hay sau khi tạo PR |
+| `code-reviewer` | "review code"; code xong + test PASS (trước khi đối chiếu lệch design); ngay trước **mỗi** commit có code (`CLAUDE.md` §8) — cổng duy nhất | CRITICAL/MAJOR/MINOR có `file:line` | Tự sửa / commit; chạy inline trong phiên đã viết code; review comment; review lại trước push / PR phần đã review |
 | `debug` | "lỗi", "bug", "không hiển thị", "console error" | Root cause + fix + test | Đoán khi chưa reproduce |
 | `workflow-adapt` | Người dùng sửa cùng hành vi ≥ 2 lần; lệnh/quy tắc lệch repo | Đề xuất điều chỉnh có bằng chứng | Nới guardrail, sửa file org-owned |
 
@@ -84,7 +86,7 @@ Nhận request
 | Thiết kế kỹ thuật chức năng FE mới | ✗ → `solution-architect` |
 | Viết / sửa code production | ✗ → `developer` (chức năng mới phải có thiết kế trước) |
 | Review thiết kế | ✗ → `architect-reviewer` |
-| Review code trước PR | ✗ → `code-reviewer` (subagent) |
+| Review code trước commit | ✗ → `code-reviewer` (subagent, commit có code) |
 
 ## §4 — Cách thực thi một procedure
 
@@ -93,6 +95,6 @@ Nhận request
 3. Thực thi tuần tự, không bỏ bước; gặp tín hiệu dừng → dừng và hỏi.
 4. Mọi thay đổi hành vi code MUST theo TDD **Red → Green → Refactor** (`npx vitest run <file>`); chỉ thay đổi thuần tài liệu / style thuần được miễn. Test chạy offline, mock ở ranh giới HTTP.
 5. Sau mỗi bước implement → `progress-tracker`.
-6. **Ngoại lệ — `code-reviewer`:** không thực thi inline. Coordinator gọi Agent tool với `subagent_type: code-reviewer`, prompt chỉ gồm phạm vi diff (`git diff origin/main`, gồm file chưa track; review lại → chỉ phần sửa) + đường dẫn `current-task.md`; không kèm nhận định "đã ổn" của phiên viết code. Relay findings cho user. Cổng duy nhất, trước khi tạo PR — không gọi trước từng commit hay sau khi tạo PR (code push thêm sau khi PR mở không được review lại — rủi ro đã chấp nhận, `CLAUDE.md` §8). Diff chỉ có tài liệu → miễn gọi, theo tiêu chí "tính là code" ở `CLAUDE.md` §8.
+6. **Ngoại lệ — `code-reviewer`:** không thực thi inline. Coordinator gọi Agent tool với `subagent_type: code-reviewer`, không `isolation: "worktree"`; prompt chỉ gồm phạm vi diff (phần chưa review = `git diff HEAD` + file chưa track; review lại → chỉ phần sửa) + đường dẫn `current-task.md`; không kèm nhận định "đã ổn" của phiên viết code. Relay findings cho user chọn sửa / bỏ qua. Cổng duy nhất, ngay trước mỗi commit có code — mọi commit đã review → trước push / PR không review lại (`CLAUDE.md` §8). Phần chưa review chỉ có tài liệu hoặc chỉ đổi comment → miễn gọi, theo tiêu chí ở `CLAUDE.md` §8.
 
 **NEVER** yêu cầu người dùng chuyển agent trong UI; **NEVER** bỏ bước vì "nhanh hơn".

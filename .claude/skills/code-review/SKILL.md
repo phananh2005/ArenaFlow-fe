@@ -2,7 +2,7 @@
 description: >
   Tự kiểm nhanh code theo 5 chiều (Security, Performance, Correctness, Style,
   Reuse & Duplication) ngay trong phiên, TRONG LÚC code. Chỉ kích hoạt khi người dùng yêu cầu
-  "tự kiểm nhanh", "self-check". KHÔNG phải cổng trước PR — cổng đó là agent
+  "tự kiểm nhanh", "self-check". KHÔNG phải cổng trước commit có code — cổng đó là agent
   code-reviewer chạy subagent (context độc lập).
 ---
 
@@ -13,7 +13,7 @@ description: >
 
 > [!IMPORTANT]
 > Skill chạy trong chính phiên đã viết code ⇒ là **tự review**, không độc lập.
-> **NEVER** dùng skill này thay cổng review trước PR — cổng đó là agent `code-reviewer`
+> **NEVER** dùng skill này thay cổng review trước commit có code — cổng đó là agent `code-reviewer`
 > gọi dưới dạng subagent (`CLAUDE.md` §8).
 
 ## Khi dùng
@@ -25,10 +25,10 @@ description: >
    - **Security** — secret/token trong code hoặc `VITE_*`, XSS (`dangerouslySetInnerHTML`, URL `javascript:`), log lộ token/PII, lưu token theo `docs/agent/security-frontend.md`.
    - **Performance** — ngưỡng `docs/agent/non-functional-standards.md` (số API call/màn hình, phân trang, bundle), re-render thừa, request trong vòng lặp/effect lặp.
    - **Correctness** — null/biên, loading/empty/error state, dependency của hook, race condition khi gọi API, test đã chạy PASS.
-   - **Style** — `docs/agent/convention-frontend.md` (cấu trúc `src/`, đặt tên, Tailwind), a11y cơ bản, kiểu TypeScript chặt (không `any`).
+   - **Style** — `docs/agent/convention-frontend.md` (cấu trúc `src/`, đặt tên, Tailwind), a11y cơ bản, kiểu TypeScript chặt (không `any`). Không xét comment / JSDoc (như `code-reviewer`).
    - **Reuse** — Reuse Report có chưa (khi tạo thành phần dùng chung), trùng với thứ đã có, logic lặp.
 3. **Phân loại:** CRITICAL (security hole, mất dữ liệu, logic sai) · MAJOR (hiệu năng, bảo trì) · MINOR (style).
 4. **Đề xuất sửa:** mỗi CRITICAL/MAJOR kèm đoạn code gợi ý + `file:line`.
 
 ## Liên kết
-- Cổng trước PR (duy nhất, `CLAUDE.md` §8) → agent `code-reviewer` (subagent)
+- Cổng trước commit có code (duy nhất, `CLAUDE.md` §8) → agent `code-reviewer` (subagent)
