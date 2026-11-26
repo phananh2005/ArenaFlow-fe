@@ -19,11 +19,12 @@ _Khung do `task-state-init` điền, điều chỉnh nhẹ theo đánh giá sơ 
 - [ ] 2. Lập kế hoạch chi tiết — file cần sửa
 - [ ] 3. Triển khai code + test
 - [ ] 4. Chạy test & xác nhận PASS (dán output)
-- [ ] 5. Review & chuẩn bị PR
-- [ ] 6. (Chức năng có thiết kế) **Sau cùng:** cập nhật design theo bảng "Lệch thiết kế" → `architect-reviewer` review phần sửa
+- [ ] 5. `code-reviewer` (subagent) trên phần chưa review → sửa CRITICAL/MAJOR, test lại
+- [ ] 6. (Chức năng có thiết kế) Đối chiếu code với design → cập nhật design theo bảng "Lệch thiết kế" → `architect-reviewer` review phần sửa
+- [ ] 7. Bước 6 có sửa code → test/lint/build lại + `code-reviewer` phần sửa → lặp tới khi hết finding được chọn sửa → commit (`code-reviewer` là bước cuối trước commit có code)
 
 ## Lệch thiết kế
-_Ghi ngay khi code khác design; KHÔNG sửa design giữa chừng — cập nhật một lần ở bước cuối (`CLAUDE.md` §8). Trống = code khớp design._
+_Ghi ngay khi code khác design; KHÔNG sửa design giữa chừng — cập nhật một lần sau `code-reviewer` (bước 6, `CLAUDE.md` §8). Trống = code khớp design._
 
 | # | Phase | Design | Code thực tế | Lý do | Sửa ở |
 |---|---|---|---|---|---|

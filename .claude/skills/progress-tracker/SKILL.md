@@ -22,7 +22,7 @@ description: >
 ### Bước 2 — Đánh giá
 - Tick DoD, bước tổng quan, bước con trong "Kế hoạch chi tiết" đã xong (dựa trên code đã viết + output đã chạy).
 - "Kế hoạch chi tiết" còn trống → nhắc `developer` điền trước.
-- Bước vừa xong có code khác design mà bảng "Lệch thiết kế" chưa ghi → nhắc ghi ngay. Không tick bước cập nhật design cho tới khi design đã sửa theo bảng và `architect-reviewer` đã review.
+- Bước vừa xong có code khác design mà bảng "Lệch thiết kế" chưa ghi → nhắc ghi ngay. Không tick bước cập nhật design cho tới khi code đã qua `code-reviewer`, design đã sửa theo bảng và `architect-reviewer` đã review; review design có kéo theo sửa code → chỉ tick khi phần sửa đã test lại + qua `code-reviewer`.
 - Ước tính % theo bước con (nếu có), không thì theo bước tổng quan.
 
 ### Bước 3 — Ghi `progress.md` (ghi đè)

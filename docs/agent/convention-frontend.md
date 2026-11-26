@@ -116,8 +116,34 @@ src/
 ## 8. Biến môi trường
 
 - Chỉ biến tiền tố `VITE_*` được đưa vào bundle → **công khai**; xem `docs/agent/security-frontend.md`.
-- Thêm biến mới → cập nhật `.env.example` + khai báo type trong `src/vite-env.d.ts`.
+- Thêm biến mới → cập nhật `.env.example` (kèm comment theo §10.2) + khai báo type trong `src/vite-env.d.ts`.
 
 ## 9. File không sửa tay
 
 - `package-lock.json` — chỉ đổi qua `npm install` / `npm uninstall`.
+
+## 10. Comment & JSDoc
+
+> Comment **không** qua `code-reviewer` (`CLAUDE.md` §8) — người viết code tự chịu trách nhiệm đạt mục này.
+
+### 10.1. Comment trong `src/`
+
+- **Mọi** comment — JSDoc `/** */`, khối `/* */`, dòng `//`, `{/* */}` trong JSX — viết **tiếng Việt có dấu**, cả code lẫn test. Giữ nguyên định danh kỹ thuật (tên component/hàm/type, HTTP, `{@link …}`) và chỉ thị công cụ (`@ts-expect-error`, `oxlint-disable-next-line`, `allow-secret`). Chuỗi hiển thị trên UI không thuộc quy tắc này.
+- JSDoc giải thích **tại sao / hợp đồng**, không lặp lại code.
+- **Bắt buộc JSDoc** (trừ file `*.test.ts(x)`) để người đọc nắm được code mà không phải dò thân hàm:
+  - **Mọi component**, **hook**, **hàm** (kể cả không export), hàm gọi API trong `*.api.ts`, action của store — 1 câu nói vai trò (vd "Form đăng nhập bằng email và mật khẩu").
+  - **Mọi type / interface** — 1 câu; field có ý nghĩa không hiển nhiên từ tên (đơn vị, định dạng, `null` nghĩa là gì, giờ Việt Nam…) có JSDoc riêng trên field. Mọi field của `Props` component dùng chung (`shared/`) có JSDoc.
+  - **Hằng export** — 1 câu (vd "Số bản ghi mỗi trang mặc định").
+  - Hàm / hook có hợp đồng không hiển nhiên ghi thêm: endpoint gọi, mã lỗi xử lý và cách hiển thị, query key / invalidate, timeout / thử lại, huỷ request khi unmount hoặc đổi tham số; hàm hiển nhiên chỉ cần 1 câu.
+- **Miễn**: handler / callback ẩn danh ngắn trong JSX hoặc truyền cho `map` / `filter`; giá trị union / enum tự đủ nghĩa (`'ACTIVE'`); file chỉ re-export.
+- **Test**: bắt buộc 1 comment trên `describe` ngoài cùng (hoặc đầu file) nói test kiểm cái gì; `it` / `test` không bắt buộc — tên mô tả hành vi.
+- **Phạm vi áp dụng**: code **mới hoặc bị sửa** trong diff phải đạt; file cũ được chạm tới → bổ sung JSDoc còn thiếu cho phần export của file đó.
+- **NEVER** trỏ sang bất kỳ tài liệu nào trong comment: ADR (`ADR-0001`), đường dẫn / mục tài liệu thiết kế / spec (`USER-002 API_Spec §2.4`, `Screen_Flow`), mã neo nghiệp vụ / thiết kế (`BR-T12`, `W6`). Viết mô tả tự đủ nghĩa thay thế — người đọc (dev / AI) không phải mở tài liệu khác. Mã lỗi BE (`TEAM_014`) được dùng vì xuất hiện trong code.
+
+### 10.2. Comment trong file cấu hình
+
+- `.env.example` (và mọi file `.env*`): **mọi biến** có comment `#` tiếng Việt ngay phía trên, nói **mục đích**; **định dạng** (URL, đường dẫn…); **giá trị mặc định / khi nào bắt buộc**; biến `VITE_*` nhắc là **công khai** (vào bundle). Nhiều biến cùng nhóm dùng chung một comment đầu nhóm.
+- `vite.config.ts`: option không hiển nhiên (proxy, alias, cấu hình test) có comment.
+- File JSON thuần (`package.json`, `.oxlintrc.json`) không comment được → miễn.
+- **NEVER** ghi giá trị secret trong comment; ví dụ chỉ dùng chuỗi giả (`<khoá>`). `.env`, `.env.local` không vào Git: agent chỉ thêm / sửa **dòng comment**, không đọc ra hay in giá trị biến.
+- Không trỏ tài liệu trong comment (như §10.1).
