@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — MATCH-001 S1 Tìm kèo (mobile web 390px)</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2d5032',
+              light: '#eef5ee',
+              border: '#d3e2d5',
+            },
+            canvasBg: '#f8faf3',
+            danger: '#a73b21',
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f0f2eb;
+      margin: 0;
+      padding: 24px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Hide scrollbars for chips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+<!-- Mobile Screen Frame (390px width) -->
+<div class="w-[390px] bg-[#f8faf3] shadow-2xl rounded-2xl overflow-hidden border border-[#e2e8dc] flex flex-col min-h-[844px]">
+<!-- Top App Bar / Header -->
+<header class="bg-white border-b border-[#e5e9de] px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+<div class="flex items-center gap-3">
+<!-- Menu Icon -->
+<button aria-label="Menu" class="p-1.5 -ml-1 text-[#2d3748] hover:bg-[#f1f5eb] rounded-lg transition-colors">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+<!-- Logo -->
+<div class="flex items-center gap-1.5">
+<div class="w-7 h-7 rounded-full bg-[#3d6943] flex items-center justify-center text-white shadow-sm">
+<!-- Soccer ball icon -->
+<svg class="w-4 h-4 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polygon fill="currentColor" points="12 6 15.5 8.5 14 12.5 10 12.5 8.5 8.5 12 6"></polygon>
+<line x1="12" x2="12" y1="2" y2="6"></line>
+<line x1="12" x2="12" y1="22" y2="18"></line>
+<line x1="2" x2="6.5" y1="12" y2="12"></line>
+<line x1="22" x2="17.5" y1="12" y2="12"></line>
+<line x1="4.93" x2="8.5" y1="4.93" y2="8.5"></line>
+<line x1="19.07" x2="15.5" y1="4.93" y2="8.5"></line>
+<line x1="19.07" x2="15.5" y1="19.07" y2="15.5"></line>
+<line x1="4.93" x2="8.5" y1="19.07" y2="15.5"></line>
+</svg>
+</div>
+<span class="font-bold text-[18px] tracking-tight text-[#1a2e1d]">ArenaFlow</span>
+</div>
+</div>
+<!-- Right Action: Message with unread red badge -->
+<button aria-label="Tin nhắn" class="relative p-2 text-[#4a5568] hover:bg-[#f1f5eb] rounded-lg transition-colors">
+<svg class="w-6 h-6 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+</svg>
+<!-- Red unread badge dot -->
+<span class="absolute top-2 right-2 w-2.5 h-2.5 bg-[#dc2626] border-2 border-white rounded-full"></span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-4 py-4 flex flex-col gap-3.5">
+<!-- Title & CTA Button Row -->
+<div class="flex items-center justify-between">
+<h1 class="text-[20px] font-bold text-[#142316] tracking-tight">Tìm kèo</h1>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#3d6943] hover:bg-[#2d5032] active:scale-95 text-white text-[13px] font-semibold rounded-[8px] shadow-sm transition-all">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span>Tạo kèo</span>
+</button>
+</div>
+<!-- Horizontal Scrollable Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 py-1">
+<!-- Filter count button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#3d6943] text-[#3d6943] text-[13px] font-medium rounded-[8px] shrink-0 shadow-xs hover:bg-[#f3f8f4] transition-colors">
+<svg class="w-3.5 h-3.5 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+</svg>
+<span>Bộ lọc (3)</span>
+</button>
+<!-- Active / Filter Chips -->
+<button class="flex items-center gap-1 px-3 py-1.5 bg-[#eaf2eb] border border-[#3d6943]/30 text-[#2d5032] text-[13px] font-medium rounded-[8px] shrink-0">
+<span>Đã có sân</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-[#eaf2eb] border border-[#3d6943]/30 text-[#2d5032] text-[13px] font-medium rounded-[8px] shrink-0">
+<span>Sân 7</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-[#eaf2eb] border border-[#3d6943]/30 text-[#2d5032] text-[13px] font-medium rounded-[8px] shrink-0">
+<span>Gần tôi · 10 km</span>
+</button>
+</div>
+<!-- Result Count Line -->
+<div class="text-[13px] font-medium text-[#556358] px-0.5">
+        Tìm thấy <span class="font-bold text-[#142316]">24 kèo</span>
+</div>
+<!-- Match Cards List (1 column) -->
+<div class="flex flex-col gap-3">
+<!-- Card 1: FC Sao Mai -->
+<article class="bg-white rounded-[8px] border border-[#e2e8dc] p-3.5 shadow-sm flex flex-col gap-2.5 transition-shadow hover:shadow-md">
+<!-- Top Row: Team Avatar, Name, Reputation badge & Pitch status badge -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<!-- Team Avatar -->
+<div class="w-10 h-10 rounded-full bg-[#e8f3ea] border border-[#c6dfca] flex items-center justify-center text-[#2d5032] font-bold text-[13px] shrink-0">
+                SM
+              </div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-bold text-[15px] text-[#1a2e1d] truncate">FC Sao Mai</h2>
+</div>
+<!-- Reputation Badge -->
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#f0f7f1] border border-[#cfe4d2] text-[#2d5032] rounded text-[11px] font-medium mt-0.5">
+<svg class="w-3 h-3 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+<span>Uy tín 80/100</span>
+</div>
+</div>
+</div>
+<!-- Pitch Badge: Đã có sân -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[12px] font-semibold bg-[#e7f5ea] text-[#1b6a2e] border border-[#bce3c4] shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
+              Đã có sân
+            </span>
+</div>
+<div class="border-t border-[#f1f4ed] my-0.5"></div>
+<!-- Match Details -->
+<div class="flex flex-col gap-1.5 text-[13px]">
+<!-- Sport & Pitch Size -->
+<div class="flex items-center gap-2 font-medium text-[#334155]">
+<span class="inline-block w-2 h-2 rounded-full bg-[#3d6943]"></span>
+<span class="font-semibold text-[#1e293b]">Bóng đá · Sân 7</span>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>18:00 – 20:00 · T7 05/12/2026</span>
+</div>
+<!-- Location & Distance -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+<span class="truncate">Sân bóng Hoa Lư · 1,2 km</span>
+</div>
+</div>
+<!-- Bottom Row: Skill Chip & Negotiation Deadline -->
+<div class="flex items-center justify-between pt-1 border-t border-[#f1f4ed] text-[12px]">
+<span class="px-2 py-0.5 rounded bg-[#f3f6f0] text-[#475569] font-medium border border-[#e2e7dc]">
+              Nhiệt tình
+            </span>
+<span class="text-[#64748b] text-[11.5px]">
+              Hạn nhận đối: 12:00 05/12
+            </span>
+</div>
+</article>
+<!-- Card 2: Team Alpha -->
+<article class="bg-white rounded-[8px] border border-[#e2e8dc] p-3.5 shadow-sm flex flex-col gap-2.5 transition-shadow hover:shadow-md">
+<!-- Top Row: Team Avatar, Name, Reputation badge & Pitch status badge -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<!-- Team Avatar -->
+<div class="w-10 h-10 rounded-full bg-[#f4ece3] border border-[#e3d1c1] flex items-center justify-center text-[#874917] font-bold text-[13px] shrink-0">
+                TA
+              </div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-bold text-[15px] text-[#1a2e1d] truncate">Team Alpha</h2>
+</div>
+<!-- Reputation Badge -->
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#f0f7f1] border border-[#cfe4d2] text-[#2d5032] rounded text-[11px] font-medium mt-0.5">
+<svg class="w-3 h-3 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+<span>Uy tín 80/100</span>
+</div>
+</div>
+</div>
+<!-- Pitch Badge: Chưa có sân -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[12px] font-semibold bg-[#fef3c7] text-[#92400e] border border-[#fde68a] shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#d97706]"></span>
+              Chưa có sân
+            </span>
+</div>
+<div class="border-t border-[#f1f4ed] my-0.5"></div>
+<!-- Match Details -->
+<div class="flex flex-col gap-1.5 text-[13px]">
+<!-- Sport & Pitch Size -->
+<div class="flex items-center gap-2 font-medium text-[#334155]">
+<span class="inline-block w-2 h-2 rounded-full bg-[#d97706]"></span>
+<span class="font-semibold text-[#1e293b]">Bóng đá · Sân 5</span>
+</div>
+<!-- Flexible Time / Slots -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>Từ 19:00 – 21:00 · CN 06/12/2026</span>
+</div>
+<!-- Flexible Location Options -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+<span class="truncate">2 lựa chọn địa điểm · 3 khung giờ</span>
+</div>
+</div>
+<!-- Bottom Row: Skill Chip & Negotiation Deadline -->
+<div class="flex items-center justify-between pt-1 border-t border-[#f1f4ed] text-[12px]">
+<span class="px-2 py-0.5 rounded bg-[#f3f6f0] text-[#475569] font-medium border border-[#e2e7dc]">
+              Mọi trình độ
+            </span>
+<span class="text-[#64748b] text-[11.5px]">
+              Hạn nhận đối: 12:00 05/12
+            </span>
+</div>
+</article>
+<!-- Card 3: Bóng Đá Cầu Giấy -->
+<article class="bg-white rounded-[8px] border border-[#e2e8dc] p-3.5 shadow-sm flex flex-col gap-2.5 transition-shadow hover:shadow-md">
+<!-- Top Row: Team Avatar, Name, Reputation badge & Pitch status badge -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<!-- Team Avatar -->
+<div class="w-10 h-10 rounded-full bg-[#e1eaf5] border border-[#bcd2ea] flex items-center justify-center text-[#1e4a78] font-bold text-[13px] shrink-0">
+                CG
+              </div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-bold text-[15px] text-[#1a2e1d] truncate">Bóng Đá Cầu Giấy</h2>
+</div>
+<!-- Reputation Badge -->
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#f0f7f1] border border-[#cfe4d2] text-[#2d5032] rounded text-[11px] font-medium mt-0.5"><svg class="w-3 h-3 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span>Uy tín 92/100</span></div>
+</div>
+</div>
+<!-- Pitch Badge: Đã có sân -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[6px] text-[12px] font-semibold bg-[#e7f5ea] text-[#1b6a2e] border border-[#bce3c4] shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
+              Đã có sân
+            </span>
+</div>
+<div class="border-t border-[#f1f4ed] my-0.5"></div>
+<!-- Match Details -->
+<div class="flex flex-col gap-1.5 text-[13px]">
+<!-- Sport & Pitch Size -->
+<div class="flex items-center gap-2 font-medium text-[#334155]">
+<span class="inline-block w-2 h-2 rounded-full bg-[#3d6943]"></span>
+<span class="font-semibold text-[#1e293b]">Bóng đá · Sân 11</span>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>18:00 – 20:00 · T7 05/12/2026</span>
+</div>
+<!-- Location & Distance -->
+<div class="flex items-center gap-2 text-[#475569]">
+<svg class="w-4 h-4 text-[#64748b] shrink-0 stroke-current fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+<span class="truncate">Sân Thành Long · 3,8 km</span>
+</div>
+</div>
+<!-- Bottom Row: Skill Chip & Negotiation Deadline -->
+<div class="flex items-center justify-between pt-1 border-t border-[#f1f4ed] text-[12px]">
+<span class="px-2 py-0.5 rounded bg-[#f3f6f0] text-[#475569] font-medium border border-[#e2e7dc]">
+              Nhiệt tình
+            </span>
+<span class="text-[#64748b] text-[11.5px]">
+              Hạn nhận đối: 12:00 05/12
+            </span>
+</div>
+</article>
+</div>
+<!-- Pagination Section: Trước | 1 | 2 | Sau -->
+<nav aria-label="Phân trang" class="flex items-center justify-center gap-1.5 pt-3 pb-6 mt-1 text-[13px]">
+<button class="px-3 py-1.5 rounded-[8px] bg-white border border-[#d9e1d5] text-[#556358] hover:bg-[#f1f6ec] transition-colors font-medium">
+          Trước
+        </button>
+<button aria-current="page" class="w-8 h-8 rounded-[8px] bg-[#3d6943] text-white font-semibold flex items-center justify-center shadow-xs">
+          1
+        </button>
+<button class="w-8 h-8 rounded-[8px] bg-white border border-[#d9e1d5] text-[#334155] hover:bg-[#f1f6ec] transition-colors font-medium flex items-center justify-center">
+          2
+        </button>
+<button class="px-3 py-1.5 rounded-[8px] bg-white border border-[#d9e1d5] text-[#334155] hover:bg-[#f1f6ec] transition-colors font-medium">
+          Sau
+        </button>
+</nav>
+</main>
+</div>
+</body>
+</html>

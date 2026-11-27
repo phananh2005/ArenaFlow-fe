@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior:none;font-family:'Be Vietnam Pro',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#2d342c", "tertiary": "#5c6330", "background": "#f8faf3", "surface-dim": "#d4dcd1", "tertiary-container": "#f4fcba", "error-container": "#fd795a", "surface-variant": "#dde5d9", "outline-variant": "#acb4a9", "outline": "#757d73", "secondary-fixed-dim": "#c6dac3", "primary-dim": "#315c38", "primary-fixed": "#bdefbf", "inverse-surface": "#0c0f0b", "on-tertiary-container": "#5a612e", "on-background": "#2d342c", "on-tertiary": "#f6ffbc", "primary-fixed-dim": "#afe1b1", "inverse-primary": "#c8fbca", "surface-tint": "#3d6943", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#9b9e98", "on-secondary": "#eaffe7", "surface": "#f8faf3", "on-error": "#fff7f6", "on-tertiary-fixed": "#484f1e", "on-tertiary-fixed-variant": "#656c38", "on-secondary-container": "#445645", "secondary-fixed": "#d4e8d1", "surface-container-low": "#f1f5ec", "error-dim": "#791903", "on-secondary-fixed": "#324433", "tertiary-fixed-dim": "#e5eead", "on-secondary-fixed-variant": "#4e604e", "tertiary-dim": "#505725", "error": "#a73b21", "surface-bright": "#f8faf3", "tertiary-fixed": "#f4fcba", "primary-container": "#bdefbf", "on-primary-container": "#2f5b36", "on-primary-fixed-variant": "#39653f", "primary": "#3d6943", "surface-container-high": "#e4eae0", "on-primary": "#e9ffe6", "surface-container": "#eaf0e6", "on-error-container": "#6e1400", "secondary-container": "#d4e8d1", "surface-container-highest": "#dde5d9", "on-surface-variant": "#596158", "secondary-dim": "#465846", "on-primary-fixed": "#1c4825", "secondary": "#526451" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": {}, "fontFamily": { "headline": ["Be Vietnam Pro"], "display": ["Be Vietnam Pro"], "body": ["Be Vietnam Pro"], "label": ["Be Vietnam Pro"] }, "fontSize": {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-background text-on-surface font-body antialiased flex flex-col min-h-screen"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-14 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><a class="flex items-center gap-1.5 focus:outline-none" data-path="recruitment-dashboard" href="#"><div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold text-sm tracking-tighter">AF</div><span class="font-headline font-bold text-lg text-primary tracking-tight">ArenaFlow</span></a></div><div class="flex items-center gap-1.5"><button aria-label="Menu" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors focus:outline-none" type="button"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-background"><div class="flex flex-col w-full min-h-[850px] bg-background text-on-surface">
+<!-- Desktop Navigation Bar Custom Override for this View as requested -->
+<div class="hidden lg:flex items-center justify-between px-8 py-3 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary tracking-tight">ArenaFlow</span>
+</div>
+<nav class="flex items-center gap-1">
+<a class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">Tìm kèo</a>
+<a class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">Kèo của đội</a>
+<a class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">Đội của tôi</a>
+<a class="px-4 py-2 rounded-lg text-sm font-semibold bg-primary-container text-on-primary-container relative" href="#">
+          Tin nhắn
+          <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2.5 bg-surface-container-low px-3 py-1.5 rounded-full">
+<div class="w-8 h-8 rounded-full bg-primary-dim flex items-center justify-center text-on-primary font-semibold text-xs">
+          NV
+        </div>
+<span class="text-sm font-medium text-on-surface pr-2">Nguyễn Văn A</span>
+</div>
+</div>
+</div>
+<!-- Main Split Layout -->
+<div class="flex-1 flex overflow-hidden max-w-[1440px] mx-auto w-full h-[calc(100vh-80px)] p-6 gap-6">
+<!-- LEFT PANEL: Tin nhắn (340px) -->
+<div class="w-[340px] flex-shrink-0 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Search & Header -->
+<div class="p-4 border-b border-surface-variant/50">
+<div class="flex items-center justify-between mb-3">
+<h1 class="font-headline font-bold text-lg text-on-surface">Tin nhắn</h1>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-low text-on-surface text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary placeholder:text-outline-variant" placeholder="Tìm kiếm hội thoại, đội bóng..." type="text"/>
+</div>
+</div>
+<!-- Conversation List -->
+<div class="flex-1 overflow-y-auto divide-y divide-surface-variant/20">
+<!-- Item 1: FC Sao Mai (Active) -->
+<div class="p-3.5 bg-primary-container/30 cursor-pointer relative transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start gap-3">
+<div class="relative flex-shrink-0">
+<div class="w-11 h-11 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-sm shadow-inner">
+                SM
+              </div>
+<div class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-primary rounded-full border-2 border-surface-container-lowest"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-semibold text-sm text-on-surface truncate">FC Sao Mai</h3>
+<span class="text-[11px] text-outline flex-shrink-0">09:20</span>
+</div>
+<div class="text-[11px] font-medium text-primary mb-1">Kèo · 18:00 05/12</div>
+<p class="text-xs text-on-surface-variant truncate">Minh: Ok, tiền sân chia đôi nhé.</p>
+</div>
+</div>
+</div>
+<!-- Item 2: Team Beta -->
+<div class="p-3.5 hover:bg-surface-container-low/60 cursor-pointer transition-colors">
+<div class="flex items-start gap-3">
+<div class="relative flex-shrink-0">
+<div class="w-11 h-11 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-bold text-sm">
+                TB
+              </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-medium text-sm text-on-surface truncate">Team Beta</h3>
+<span class="text-[11px] text-outline flex-shrink-0">Hôm qua</span>
+</div>
+<div class="text-[11px] font-medium text-secondary mb-1">Thách đấu · Sân Thượng Thụy Khuê</div>
+<p class="text-xs text-outline truncate">Bạn: Hẹn gặp ở sân nhé</p>
+</div>
+</div>
+</div>
+<!-- Item 3: Hội Ve Chai FC -->
+<div class="p-3.5 hover:bg-surface-container-low/60 cursor-pointer transition-colors opacity-80">
+<div class="flex items-start gap-3">
+<div class="relative flex-shrink-0">
+<div class="w-11 h-11 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold text-sm">
+                VC
+              </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-medium text-sm text-on-surface truncate">Hội Ve Chai FC</h3>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-surface-variant text-on-surface-variant font-medium">Chỉ xem</span>
+</div>
+<div class="text-[11px] text-outline mb-1">Giải phong trào S12</div>
+<p class="text-xs text-outline italic truncate">Chưa có tin nhắn</p>
+</div>
+</div>
+</div>
+<!-- Item 4: Trần Văn Bình -->
+<div class="p-3.5 hover:bg-surface-container-low/60 cursor-pointer transition-colors">
+<div class="flex items-start gap-3">
+<div class="relative flex-shrink-0">
+<div class="w-11 h-11 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold text-sm">
+                VB
+              </div>
+<div class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-error rounded-full border-2 border-surface-container-lowest"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-semibold text-sm text-on-surface truncate">Trần Văn Bình</h3>
+<span class="text-[11px] text-error font-medium flex-shrink-0">08:15</span>
+</div>
+<div class="text-[11px] font-medium text-tertiary mb-1">Đơn ứng tuyển · 20:00 06/12</div>
+<p class="text-xs font-semibold text-on-surface truncate">Xin chào đội trưởng, em muốn ứng vào vị trí...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Chat Room Workspace -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Chat Header -->
+<div class="px-6 py-3.5 bg-surface border-b border-surface-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-sm shadow-sm">
+            SM
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline font-bold text-base text-on-surface">FC Sao Mai</h2>
+<span class="px-2 py-0.5 text-[10px] font-semibold bg-primary-container text-on-primary-container rounded-full">Đối thủ chính thức</span>
+</div>
+<p class="text-xs text-on-surface-variant">Đội trưởng: Minh · Bạn nhắn với tư cách <span class="font-medium text-primary">Bóng Đá Cầu Giấy</span> (Đội trưởng: Nam)</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant transition-colors" title="Gọi điện">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant transition-colors" title="Thông tin chi tiết">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant transition-colors" title="Tùy chọn khác">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Match Context Banner -->
+<div class="bg-primary-container/25 px-6 py-2.5 border-b border-primary-container/40 flex items-center justify-between text-xs">
+<div class="flex items-center gap-2 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-primary text-[18px]">event</span>
+<span>Kèo · 18:00 T7 05/12/2026 · Sân bóng Hoa Lư</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-tertiary-container text-on-tertiary-container ml-1">Đang chờ</span>
+</div>
+<a class="font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+          Xem kèo
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Message Area -->
+<div class="flex-1 p-6 overflow-y-auto space-y-6 bg-gradient-to-b from-surface/50 to-background/30">
+<!-- Date Divider -->
+<div class="flex items-center justify-center my-2">
+<div class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-[11px] font-medium shadow-2xs">
+            Hôm nay
+          </div>
+</div>
+<!-- Message from Opponent (Left) -->
+<div class="flex items-start gap-3 max-w-[75%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-xs flex-shrink-0 mt-0.5">
+            SM
+          </div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs font-semibold text-on-surface">FC Sao Mai · Minh</span>
+<span class="text-[10px] text-outline">09:12</span>
+</div>
+<div class="p-3.5 bg-surface-container rounded-2xl rounded-tl-sm text-sm text-on-surface shadow-2xs">
+              Chào bạn, đội bạn đá sân 7 quen chưa?
+            </div>
+</div>
+</div>
+<!-- Message from User (Right) -->
+<div class="flex items-start gap-3 max-w-[75%] ml-auto flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-xs flex-shrink-0 mt-0.5">
+            NV
+          </div>
+<div>
+<div class="flex items-center gap-2 mb-1 justify-end">
+<span class="text-[10px] text-outline">09:15</span>
+<span class="text-xs font-semibold text-primary">Bạn</span>
+</div>
+<div class="p-3.5 bg-primary text-on-primary rounded-2xl rounded-tr-sm text-sm shadow-sm">
+              Quen rồi anh, bên em 9 người.
+            </div>
+</div>
+</div>
+<!-- Message from Opponent (Left) -->
+<div class="flex items-start gap-3 max-w-[75%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-xs flex-shrink-0 mt-0.5">
+            SM
+          </div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs font-semibold text-on-surface">FC Sao Mai · Minh</span>
+<span class="text-[10px] text-outline">09:20</span>
+</div>
+<div class="p-3.5 bg-surface-container rounded-2xl rounded-tl-sm text-sm text-on-surface shadow-2xs">
+              Ok, tiền sân chia đôi như bài đăng nhé.
+            </div>
+</div>
+</div>
+</div>
+<!-- Chat Input Footer -->
+<div class="p-4 bg-surface border-t border-surface-variant/40">
+<div class="flex items-center gap-2 mb-2 px-1">
+<button class="text-outline hover:text-primary transition-colors p-1" title="Đính kèm tệp">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors p-1" title="Chèn hình ảnh">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors p-1" title="Biểu tượng cảm xúc">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<div class="h-4 w-[1px] bg-surface-variant mx-1"></div>
+<span class="text-[11px] text-outline">Nhấn Shift + Enter để xuống dòng</span>
+</div>
+<div class="flex items-end gap-3 bg-surface-container-low p-2 rounded-xl focus-within:ring-1 focus-within:ring-primary transition-all">
+<textarea class="flex-1 bg-transparent border-none text-on-surface text-sm focus:outline-none resize-none px-2 py-1.5 placeholder:text-outline-variant max-h-32" placeholder="Nhập tin nhắn..." rows="1"></textarea>
+<div class="flex items-center gap-2 pb-1">
+<span class="text-[11px] text-outline">0/1000</span>
+<button aria-label="Gửi tin nhắn" class="w-9 h-9 rounded-lg bg-primary hover:bg-primary-dim text-on-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></body></html>
