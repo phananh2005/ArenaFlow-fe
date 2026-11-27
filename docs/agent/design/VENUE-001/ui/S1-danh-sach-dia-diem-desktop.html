@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — VENUE-001 S1 Danh sách / tìm địa điểm sân (desktop)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2f5235',
+              light: '#eaf2eb',
+              border: '#d4dfd5'
+            },
+            bgApp: '#f8faf3',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1a1f1b;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</link></head>
+<body class="min-h-screen flex flex-col bg-[#f8faf3]">
+<!-- Top Navigation Bar -->
+<header class="w-full bg-white border-b border-[#e2e8df] sticky top-0 z-30">
+<div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Left: Logo & Main Navigation -->
+<div class="flex items-center space-x-10">
+<!-- Logo -->
+<a class="flex items-center space-x-2.5" href="#">
+<div class="w-9 h-9 rounded-lg bg-[#3d6943] flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-[#1a1f1b]">ArenaFlow</span>
+</a>
+<!-- Menu Tabs -->
+<nav class="flex items-center space-x-8 text-[15px] font-medium pt-0.5">
+<a class="text-[#59635b] hover:text-[#1a1f1b] transition-colors py-5" href="#">
+            Đội của tôi
+          </a>
+<a class="text-[#3d6943] font-semibold border-b-2 border-[#3d6943] py-5" href="#">
+            Địa điểm
+          </a>
+</nav>
+</div>
+<!-- Right: User Profile Menu -->
+<div class="flex items-center space-x-3 cursor-pointer group hover:opacity-90 transition-opacity">
+<div class="w-9 h-9 rounded-full overflow-hidden border border-[#d4dfd5] bg-gray-100 flex-shrink-0">
+<img alt="Nguyễn Văn A" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+</div>
+<span class="text-sm font-semibold text-[#1a1f1b]">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-[18px] text-[#59635b] group-hover:text-[#1a1f1b]">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Body Content -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-6 py-8">
+<!-- Page Header (Title + CTA Button) -->
+<div class="flex items-center justify-between mb-6">
+<div>
+<h1 class="text-2xl font-bold text-[#141b15] tracking-tight">Địa điểm sân</h1>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#3d6943] hover:bg-[#2f5235] text-white text-sm font-semibold shadow-sm transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Thêm địa điểm</span>
+</button>
+</div>
+<!-- Search & Filter Controls Card -->
+<div class="bg-white border border-[#e2e8df] rounded-lg p-4 mb-3 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+<div class="flex flex-wrap items-center gap-3">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[320px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#79837a] text-[20px]">
+            search
+          </span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-[#fbfdfa] text-sm text-[#1a1f1b] placeholder-[#859086] border border-[#d6ded5] rounded-lg focus:outline-none focus:border-[#3d6943] focus:ring-1 focus:ring-[#3d6943] transition-all" placeholder="Tìm theo tên hoặc địa chỉ sân" type="text"/>
+</div>
+<!-- Filter: "Gần tôi" Active Button -->
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#3d6943] text-white text-sm font-semibold shadow-xs hover:bg-[#2f5235] transition-colors flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px] fill">near_me</span>
+<span>Gần tôi</span>
+</button>
+<!-- Filter: Radius Selector -->
+<div class="relative flex-shrink-0">
+<select class="appearance-none bg-[#fbfdfa] border border-[#d6ded5] text-sm font-medium text-[#1a1f1b] rounded-lg pl-3.5 pr-9 py-2.5 focus:outline-none focus:border-[#3d6943] cursor-pointer shadow-xs">
+<option value="1">Trong 1 km</option>
+<option value="3">Trong 3 km</option>
+<option selected="" value="5">Trong 5 km</option>
+<option value="10">Trong 10 km</option>
+<option value="20">Trong 20 km</option>
+<option value="50">Trong 50 km</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[#59635b] text-[18px] pointer-events-none">
+            expand_more
+          </span>
+</div>
+</div>
+</div>
+<!-- Subtitle indicator -->
+<div class="flex items-center gap-1.5 text-xs text-[#59635b] font-medium mb-6 px-1">
+<span class="material-symbols-outlined text-[15px] text-[#3d6943]">sort</span>
+<span>Đang sắp xếp theo khoảng cách gần nhất</span>
+</div>
+<!-- Venue Cards Grid: 3 columns, 6 cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Sân bóng Hoa Lư -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<!-- 16:9 Image Container -->
+<div class="w-full aspect-[16/9] relative overflow-hidden bg-gray-100">
+<img alt="Sân bóng Hoa Lư" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg">
+</img></div>
+<!-- Card Details -->
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân bóng Hoa Lư
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">2 Đinh Tiên Hoàng, Phường Đa Kao, Quận 1, TP.HCM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 5</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 7</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 11</span>
+</div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>1,24 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Sân Chảo Lửa -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<div class="w-full aspect-[16/9] relative overflow-hidden bg-gray-100">
+<img alt="Sân Chảo Lửa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân Chảo Lửa
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">30 Phan Thúc Duyện, Phường 4, Tân Bình, TP.HCM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 5</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 7</span>
+</div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>2,10 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Sân Thành Phát -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<div class="w-full aspect-[16/9] relative overflow-hidden bg-gray-100">
+<img alt="Sân Thành Phát" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân Thành Phát
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">Số 2 Hoàng Minh Giám, Trung Hoà, Cầu Giấy, Hà Nội</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 7</span>
+</div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>2,85 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Sân K34 (Thẻ không có ảnh - placeholder chuẩn) -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<!-- Placeholder khi chưa có ảnh -->
+<div class="w-full aspect-[16/9] relative bg-[#f1f4ef] flex flex-col items-center justify-center text-[#7e8b7f] border-b border-[#e2e8df]">
+<span class="material-symbols-outlined text-[36px] text-[#9aaba0] mb-1">stadium</span>
+<span class="text-xs font-medium text-[#7e8b7f]">Chưa có ảnh</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân K34
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">K34 Bạch Đằng, Phường 2, Tân Bình, TP.HCM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 5</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 7</span>
+</div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>3,42 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5: Sân Phú Thọ (Thẻ không có chip loại sân theo yêu cầu) -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<div class="w-full aspect-[16/9] relative overflow-hidden bg-gray-100">
+<img alt="Sân Phú Thọ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân Phú Thọ
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">219 Lý Thường Kiệt, Phường 15, Quận 11, TP.HCM</span>
+</div>
+</div>
+<!-- Không có chip loại sân -->
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div></div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>4,15 km</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 6: Sân Tao Đàn -->
+<article class="bg-white border border-[#e2e8df] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-[#b8cbb9] transition-all cursor-pointer group flex flex-col">
+<div class="w-full aspect-[16/9] relative overflow-hidden bg-gray-100">
+<img alt="Sân Tao Đàn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-[#141b15] group-hover:text-[#3d6943] transition-colors mb-1.5 leading-snug">
+              Sân Tao Đàn
+            </h2>
+<div class="flex items-start gap-1.5 text-[#59635b] text-xs mb-3">
+<span class="material-symbols-outlined text-[16px] text-[#79837a] mt-0.5 flex-shrink-0">location_on</span>
+<span class="line-clamp-1">1 Huyền Trân Công Chúa, Bến Thành, Quận 1, TP.HCM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-[#f0f4ee]">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 5</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#eaf2eb] text-[#3d6943]">Sân 7</span>
+</div>
+<div class="flex items-center gap-1 text-xs font-semibold text-[#3d6943] flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+<span>4,80 km</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-10 flex items-center justify-center gap-1.5">
+<button class="px-3.5 py-1.5 text-xs font-medium text-[#9da69e] bg-white border border-[#e2e8df] rounded-lg cursor-not-allowed" disabled="" type="button">
+        Trước
+      </button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-semibold text-white bg-[#3d6943] rounded-lg shadow-xs" type="button">
+        1
+      </button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-medium text-[#1a1f1b] bg-white border border-[#e2e8df] hover:border-[#3d6943] rounded-lg transition-colors" type="button">
+        2
+      </button>
+<button class="px-3.5 py-1.5 text-xs font-medium text-[#1a1f1b] bg-white border border-[#e2e8df] hover:border-[#3d6943] rounded-lg transition-colors" type="button">
+        Sau
+      </button>
+</div>
+</main>
+</body>
+</html>
