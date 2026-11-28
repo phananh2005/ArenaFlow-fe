@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-error": "#fff7f6", "outline-variant": "#acb4a9", "on-secondary-fixed-variant": "#4e604e", "error-dim": "#791903", "primary-dim": "#315c38", "tertiary-container": "#f4fcba", "surface-container-lowest": "#ffffff", "surface-tint": "#3d6943", "surface-container-highest": "#dde5d9", "on-secondary": "#eaffe7", "surface-dim": "#d4dcd1", "on-primary-container": "#2f5b36", "secondary-fixed": "#d4e8d1", "on-tertiary": "#f6ffbc", "surface-bright": "#f8faf3", "background": "#f8faf3", "primary-fixed-dim": "#afe1b1", "inverse-surface": "#0c0f0b", "tertiary-fixed-dim": "#e5eead", "on-surface": "#2d342c", "secondary": "#526451", "surface-container-low": "#f1f5ec", "primary-container": "#bdefbf", "on-primary-fixed-variant": "#39653f", "primary-fixed": "#bdefbf", "outline": "#757d73", "secondary-fixed-dim": "#c6dac3", "surface-container": "#eaf0e6", "on-tertiary-container": "#5a612e", "on-primary-fixed": "#1c4825", "on-secondary-fixed": "#324433", "inverse-primary": "#c8fbca", "surface-variant": "#dde5d9", "on-primary": "#e9ffe6", "on-secondary-container": "#445645", "on-tertiary-fixed-variant": "#656c38", "tertiary": "#5c6330", "error-container": "#fd795a", "on-surface-variant": "#596158", "on-background": "#2d342c", "on-error-container": "#6e1400", "tertiary-fixed": "#f4fcba", "surface": "#f8faf3", "on-tertiary-fixed": "#484f1e", "surface-container-high": "#e4eae0", "secondary-dim": "#465846", "tertiary-dim": "#505725", "secondary-container": "#d4e8d1", "primary": "#3d6943", "error": "#a73b21", "inverse-on-surface": "#9b9e98" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: {}, fontFamily: { headline: ["Be Vietnam Pro"], display: ["Be Vietnam Pro"], body: ["Be Vietnam Pro"], label: ["Be Vietnam Pro"] }, fontSize: {} } } }</style><style>@layer base { .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } body { overscroll-behavior-y: none; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-surface text-on-surface font-body antialiased flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-3 flex items-center justify-between"><div class="flex items-center gap-1 min-w-[44px]"><button onclick="history.back()" aria-label="Quay lại" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface active:bg-surface-container transition-colors"><span class="text-2xl font-light leading-none -mt-0.5 select-none">‹</span></button><h1 class="text-base font-headline font-bold text-on-surface tracking-tight ml-1">Tạo Kèo</h1></div><div class="flex items-center gap-2"><button aria-label="Hỗ trợ" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant active:bg-surface-container"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16"><div class="flex flex-col w-full pb-24">
+  <!-- Header / Title Section -->
+  <div class="px-4 pt-4 pb-3 flex items-center justify-between">
+    <div>
+      <h2 class="text-xl font-headline font-bold text-on-surface tracking-tight">Kèo của đội</h2>
+      <p class="text-xs text-on-surface-variant mt-0.5">Quản lý toàn bộ trận đấu và lời mời giao lưu</p>
+    </div>
+    <button onclick="openCreateModal()" class="flex items-center gap-1.5 bg-primary text-on-primary px-3 py-2 rounded-xl text-xs font-semibold shadow-sm active:scale-95 transition-transform">
+      <span class="material-symbols-outlined text-[16px]">add</span>
+      <span>Tạo kèo</span>
+    </button>
+  </div>
+
+  <!-- Team Selector & Quick Link -->
+  <div class="px-4 mb-3 flex items-center justify-between gap-3">
+    <div class="relative flex-1">
+      <button class="w-full flex items-center justify-between bg-surface-container-high px-3.5 py-2.5 rounded-xl text-xs font-semibold text-on-surface active:bg-surface-container-highest transition-colors">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-xs font-bold">S</div>
+          <span class="truncate">FC Sao Mai</span>
+          <span class="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded-md font-medium">Đội chính</span>
+        </div>
+        <span class="material-symbols-outlined text-on-surface-variant text-[18px]">expand_more</span>
+      </button>
+    </div>
+    <a href="#" class="flex items-center gap-1 text-xs font-medium text-primary bg-primary-container/40 px-3 py-2.5 rounded-xl whitespace-nowrap active:bg-primary-container/60 transition-colors">
+      <span>Yêu cầu đã gửi</span>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    </a>
+  </div>
+
+  <!-- Horizontal Filter Tabs -->
+  <div class="overflow-x-auto no-scrollbar px-4 mb-3 flex gap-2">
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary text-on-primary whitespace-nowrap shadow-sm">Tất cả</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Đang tìm đối</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Đã ghép</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Chờ đánh giá</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Hoàn thành</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Hết hạn</button>
+    <button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant whitespace-nowrap active:bg-surface-container-highest transition-colors">Đã huỷ</button>
+  </div>
+
+  <!-- Role Filter Chips -->
+  <div class="px-4 mb-4 flex items-center gap-2">
+    <button class="flex items-center gap-1 bg-surface-container px-3 py-1 rounded-lg text-[11px] font-medium text-on-surface active:bg-surface-container-high transition-colors">
+      <span class="material-symbols-outlined text-[14px]">filter_list</span>
+      <span>Tất cả vai trò</span>
+      <span class="material-symbols-outlined text-[14px]">expand_more</span>
+    </button>
+    <button class="flex items-center gap-1 bg-surface-container px-3 py-1 rounded-lg text-[11px] font-medium text-on-surface-variant active:bg-surface-container-high transition-colors">
+      <span>Đội tạo kèo</span>
+    </button>
+    <button class="flex items-center gap-1 bg-surface-container px-3 py-1 rounded-lg text-[11px] font-medium text-on-surface-variant active:bg-surface-container-high transition-colors">
+      <span>Đội đã ghép</span>
+    </button>
+  </div>
+
+  <!-- Match Cards List -->
+  <div class="px-4 flex flex-col gap-3">
+    
+    <!-- Card 1: Đã ghép -->
+    <div class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm relative overflow-hidden active:scale-[0.99] transition-transform">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/5 to-transparent rounded-bl-full pointer-events-none"></div>
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-0.5 rounded">Đã ghép</span>
+            <span class="bg-surface-container text-on-surface-variant text-[10px] font-medium px-2 py-0.5 rounded">Đội tạo kèo</span>
+          </div>
+          <h3 class="text-sm font-headline font-bold text-on-surface">FC Sao Mai vs Team Beta</h3>
+        </div>
+        <button aria-label="Tùy chọn" class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container">
+          <span class="material-symbols-outlined text-[18px]">more_vert</span>
+        </button>
+      </div>
+
+      <div class="space-y-1.5 text-xs text-on-surface-variant mb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">sports_soccer</span>
+          <span>Bóng đá · Sân 7</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+          <span>18:00 – 20:00 · T7 05/12/2026</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">location_on</span>
+          <span class="truncate">Sân bóng Hoa Lư, Quận 1, TP.HCM</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-surface-container/60">
+        <div class="flex items-center -space-x-1.5">
+          <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary text-[10px] font-bold">SM</div>
+          <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px] font-bold">TB</div>
+          <span class="text-[11px] text-on-surface-variant ml-2 font-medium">Đã xác nhận đối thủ</span>
+        </div>
+        <button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5">
+          <span>Chi tiết</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 2: Đang tìm đối -->
+    <div class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm relative overflow-hidden active:scale-[0.99] transition-transform">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-tertiary-container/30 to-transparent rounded-bl-full pointer-events-none"></div>
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded">Đang tìm đối</span>
+            <span class="bg-surface-container text-on-surface-variant text-[10px] font-medium px-2 py-0.5 rounded">Đội tạo kèo</span>
+          </div>
+          <h3 class="text-sm font-headline font-bold text-on-surface">Bóng đá · Sân 5 · Chưa có sân</h3>
+        </div>
+        <button aria-label="Tùy chọn" class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container">
+          <span class="material-symbols-outlined text-[18px]">more_vert</span>
+        </button>
+      </div>
+
+      <div class="space-y-1.5 text-xs text-on-surface-variant mb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+          <span>Từ 19:00 · CN 06/12/2026</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">pin_drop</span>
+          <span>2 lựa chọn địa điểm · 3 khung giờ</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-surface-container/60">
+        <div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+          <span class="material-symbols-outlined text-[14px] text-primary animate-pulse">radar</span>
+          <span>Đang nhận yêu cầu ghép (3 đội đề xuất)</span>
+        </div>
+        <button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5">
+          <span>Xem đề xuất</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 3: Đã huỷ -->
+    <div class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm relative overflow-hidden opacity-85 active:scale-[0.99] transition-transform">
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded">Đã huỷ</span>
+            <span class="bg-surface-container text-on-surface-variant text-[10px] font-medium px-2 py-0.5 rounded">Đội đã ghép</span>
+          </div>
+          <h3 class="text-sm font-headline font-bold text-on-surface line-through text-on-surface-variant">Hội Ve Chai FC vs FC Sao Mai</h3>
+        </div>
+        <button aria-label="Tùy chọn" class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container">
+          <span class="material-symbols-outlined text-[18px]">more_vert</span>
+        </button>
+      </div>
+
+      <div class="space-y-1.5 text-xs text-on-surface-variant mb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px]">sports_soccer</span>
+          <span>Bóng đá · Sân 7</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px]">schedule</span>
+          <span>18:00 · T6 20/11/2026</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-surface-container/60 text-[11px] text-on-surface-variant">
+        <span>Đã huỷ bởi đội chủ nhà do trời mưa lớn</span>
+        <button class="text-xs font-semibold text-primary hover:underline">Tạo lại kèo</button>
+      </div>
+    </div>
+
+    <!-- Card 4: Hoàn thành -->
+    <div class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm relative overflow-hidden active:scale-[0.99] transition-transform">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full pointer-events-none"></div>
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <div>
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-0.5 rounded">Hoàn thành</span>
+            <span class="bg-surface-container text-on-surface-variant text-[10px] font-medium px-2 py-0.5 rounded">Đội tạo kèo</span>
+          </div>
+          <h3 class="text-sm font-headline font-bold text-on-surface">FC Sao Mai vs Bóng Đá Cầu Giấy</h3>
+        </div>
+        <button aria-label="Tùy chọn" class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container">
+          <span class="material-symbols-outlined text-[18px]">more_vert</span>
+        </button>
+      </div>
+
+      <div class="space-y-1.5 text-xs text-on-surface-variant mb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">sports_soccer</span>
+          <span>Bóng đá · Sân 7 · Tỷ số: <strong class="text-on-surface">4 - 3</strong></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+          <span>07:00 · CN 15/11/2026</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-surface-container/60">
+        <div class="flex items-center gap-1 text-[11px] text-amber-600 font-medium">
+          <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span>Đã đánh giá đối thủ (5.0)</span>
+        </div>
+        <button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5">
+          <span>Xem biên bản</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pagination Bar -->
+  <div class="px-4 py-6 flex items-center justify-center gap-4 text-xs font-medium text-on-surface-variant">
+    <button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface opacity-50 cursor-not-allowed">Trước</button>
+    <div class="flex items-center gap-1">
+      <button class="w-7 h-7 rounded-lg bg-primary text-on-primary font-bold flex items-center justify-center shadow-sm">1</button>
+      <button class="w-7 h-7 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface">2</button>
+      <button class="w-7 h-7 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface">3</button>
+    </div>
+    <button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Sau</button>
+  </div>
+</div>
+
+<script>
+  // Simple interaction for creating a match toast or alert
+  function openCreateModal() {
+    // Delightful micro-interaction placeholder
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-xl text-xs font-medium shadow-xl z-50 flex items-center gap-2 animate-bounce';
+    toast.innerHTML = '<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: \'FILL\' 1;">add_circle</span><span>Mở bảng tạo kèo nhanh...</span>';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
+</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body></body></html>
