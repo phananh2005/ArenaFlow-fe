@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — Sửa hồ sơ cá nhân</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-dim": "#315c38",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f8faf3",
+            "surface-container-low": "#f1f5ec",
+            "tertiary-fixed": "#f4fcba",
+            "primary-fixed-dim": "#afe1b1",
+            "secondary": "#526451",
+            "on-primary-fixed-variant": "#39653f",
+            "tertiary-container": "#f4fcba",
+            "on-surface": "#2d342c",
+            "surface-dim": "#d4dcd1",
+            "on-tertiary-fixed": "#484f1e",
+            "on-tertiary": "#f6ffbc",
+            "surface-container": "#eaf0e6",
+            "on-tertiary-container": "#5a612e",
+            "tertiary": "#5c6330",
+            "on-error": "#fff7f6",
+            "inverse-on-surface": "#9b9e98",
+            "surface-variant": "#dde5d9",
+            "inverse-surface": "#0c0f0b",
+            "surface-container-highest": "#dde5d9",
+            "on-background": "#2d342c",
+            "on-error-container": "#6e1400",
+            "on-primary-container": "#2f5b36",
+            "tertiary-dim": "#505725",
+            "error-container": "#fd795a",
+            "inverse-primary": "#c8fbca",
+            "outline-variant": "#acb4a9",
+            "background": "#f8faf3",
+            "surface-bright": "#f8faf3",
+            "outline": "#757d73",
+            "on-tertiary-fixed-variant": "#656c38",
+            "on-secondary-container": "#445645",
+            "on-primary-fixed": "#1c4825",
+            "on-secondary-fixed-variant": "#4e604e",
+            "error-dim": "#791903",
+            "primary-container": "#bdefbf",
+            "secondary-container": "#d4e8d1",
+            "secondary-fixed": "#d4e8d1",
+            "error": "#a73b21",
+            "on-surface-variant": "#596158",
+            "secondary-dim": "#465846",
+            "on-secondary-fixed": "#324433",
+            "tertiary-fixed-dim": "#e5eead",
+            "surface-tint": "#3d6943",
+            "on-secondary": "#eaffe7",
+            "on-primary": "#e9ffe6",
+            "primary-fixed": "#bdefbf",
+            "primary": "#3d6943",
+            "surface-container-high": "#e4eae0",
+            "secondary-fixed-dim": "#c6dac3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-flex;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between">
+<!-- Khung Navbar Trên Cùng -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-30 shadow-sm">
+<div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Bên Trái: Logo + Menu duy nhất "Đội của tôi" -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2.5 text-decoration-none group" href="#">
+<div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm transition-transform duration-150 group-hover:scale-105">
+<span class="material-symbols-outlined text-[20px]" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<span class="font-display text-xl font-bold tracking-tight text-primary">ArenaFlow</span>
+</a>
+<!-- Đúng một mục menu duy nhất: "Đội của tôi" (trạng thái bình thường, không active/không chọn) -->
+<nav class="flex items-center">
+<a class="font-headline text-sm font-medium text-on-surface-variant hover:text-primary transition-colors py-1" href="#">
+            Đội của tôi
+          </a>
+</nav>
+</div>
+<!-- Bên Phải: Avatar, Tên & Mũi tên Dropdown (KHÔNG chuông, KHÔNG menu khác) -->
+<div class="flex items-center">
+<button class="flex items-center gap-3 p-1 rounded-full hover:bg-surface-container-low transition-colors duration-150 focus:outline-none" type="button">
+<img alt="Avatar" class="w-9 h-9 rounded-full object-cover border border-outline-variant/40 shadow-xs" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="font-body text-sm font-semibold text-on-surface hidden sm:inline-block">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Bố Cục Nội Dung Chính (Max-w 800px, py-8 px-4) -->
+<main class="flex-grow w-full max-w-[800px] mx-auto py-8 px-4">
+<!-- 1. Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-1.5 text-xs text-outline mb-3 font-body">
+<a class="hover:text-primary transition-colors" href="#">Hồ sơ cá nhân</a>
+<span class="text-outline-variant select-none">›</span>
+<span aria-current="page" class="text-on-surface font-medium">Sửa hồ sơ</span>
+</nav>
+<!-- 2. Tiêu đề trang -->
+<h1 class="font-headline text-[26px] font-bold text-on-surface mb-6 leading-tight">
+      Sửa hồ sơ
+    </h1>
+<!-- 3. Thẻ Form Nền Trắng -->
+<section class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm p-6 sm:p-8">
+<form action="#" class="space-y-6" method="POST" onsubmit="event.preventDefault();">
+<!-- Phần Ảnh đại diện -->
+<div class="flex items-center gap-5 pb-2">
+<div class="relative shrink-0">
+<img alt="Ảnh đại diện hiện tại" class="w-[88px] h-[88px] rounded-full object-cover border-2 border-surface-container-low ring-1 ring-outline-variant/30 shadow-sm" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+</div>
+<div class="flex flex-col items-start gap-1">
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm font-medium hover:bg-surface-container-low hover:border-outline transition-colors shadow-xs" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="photo_camera">photo_camera</span>
+<span>Đổi ảnh</span>
+</button>
+<span class="text-xs text-outline">Định dạng JPG, PNG dung lượng dưới 5MB</span>
+</div>
+</div>
+<!-- Tên hiển thị * -->
+<div class="space-y-1.5">
+<label class="block font-headline text-sm font-semibold text-on-surface" for="displayName">
+            Tên hiển thị <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-outline-variant" id="displayName" maxlength="100" name="displayName" type="text" value="Nguyễn Văn A"/>
+</div>
+<div class="flex justify-end">
+<span class="text-xs text-outline font-body">12/100</span>
+</div>
+</div>
+<!-- Tiểu sử -->
+<div class="space-y-1.5">
+<label class="block font-headline text-sm font-semibold text-on-surface" for="bio">
+            Tiểu sử
+          </label>
+<div class="relative">
+<textarea class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none placeholder:text-outline-variant leading-relaxed" id="bio" maxlength="1000" name="bio" rows="3">Đá sân 7 tối thứ 4, thích đá cánh.</textarea>
+</div>
+<div class="flex justify-end">
+<span class="text-xs text-outline font-body">34/1000</span>
+</div>
+</div>
+<!-- Vị trí chơi ưa thích (Single-select chips) -->
+<div class="space-y-2">
+<label class="block font-headline text-sm font-semibold text-on-surface">
+            Vị trí chơi ưa thích
+          </label>
+<div class="flex flex-wrap items-center gap-2.5 pt-0.5">
+<!-- Thủ môn -->
+<button class="px-4 py-2 rounded-full border border-outline-variant/60 bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-surface-container-low transition-colors" type="button">
+              Thủ môn
+            </button>
+<!-- Hậu vệ -->
+<button class="px-4 py-2 rounded-full border border-outline-variant/60 bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-surface-container-low transition-colors" type="button">
+              Hậu vệ
+            </button>
+<!-- Tiền vệ (Active) -->
+<button class="px-4 py-2 rounded-full border border-primary bg-primary text-white text-sm font-medium shadow-xs focus:outline-none" type="button">
+              Tiền vệ
+            </button>
+<!-- Tiền đạo -->
+<button class="px-4 py-2 rounded-full border border-outline-variant/60 bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-surface-container-low transition-colors" type="button">
+              Tiền đạo
+            </button>
+</div>
+</div>
+<!-- Hai cột cùng một hàng: Ngày sinh & Giới tính -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+<!-- Cột 1: Ngày sinh (Error state) -->
+<div class="space-y-1.5">
+<label class="block font-headline text-sm font-semibold text-on-surface" for="birthDate">
+              Ngày sinh
+            </label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-red-500 bg-surface-container-lowest text-on-surface text-sm focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none transition-all pr-10" id="birthDate" name="birthDate" type="text" value="15/05/2020"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-red-500">
+<span class="material-symbols-outlined text-[20px]" data-icon="error">error</span>
+</div>
+</div>
+<!-- Dòng thông báo lỗi chữ đỏ kèm icon cảnh báo nhỏ -->
+<div class="flex items-center gap-1 text-red-500 text-xs mt-1 font-medium">
+<span class="material-symbols-outlined text-[15px]" data-icon="warning">warning</span>
+<span>Bạn phải đủ 13 tuổi</span>
+</div>
+</div>
+<!-- Cột 2: Giới tính (Dropdown select) -->
+<div class="space-y-1.5">
+<label class="block font-headline text-sm font-semibold text-on-surface" for="gender">
+              Giới tính
+            </label>
+<div class="relative">
+<select class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all appearance-none cursor-pointer pr-10" id="gender" name="gender">
+<option selected="" value="Nam">Nam</option>
+<option value="Nu">Nữ</option>
+<option value="Khac">Khác</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Khu vực (phường/xã) -->
+<div class="space-y-1.5">
+<label class="block font-headline text-sm font-semibold text-on-surface" for="wardSearch">
+            Khu vực (phường/xã)
+          </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</div>
+<input class="w-full pl-10 pr-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-outline" id="wardSearch" name="wardSearch" placeholder="Chọn phường/xã" type="text"/>
+</div>
+</div>
+<!-- Chân form căn phải: Nút viền "Huỷ" và nút chính "Lưu thay đổi" -->
+<div class="flex items-center justify-end gap-3 pt-6 mt-6 border-t border-surface-container">
+<button class="px-5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-sm font-semibold hover:bg-surface-container-low hover:border-outline transition-colors duration-150 focus:outline-none" type="button">
+            Huỷ
+          </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-dim active:scale-95 transition-all duration-150 shadow-sm focus:outline-none whitespace-nowrap" type="submit">
+            Lưu thay đổi
+          </button>
+</div>
+</form>
+</section>
+</main>
+<div class="h-8"></div>
+</body></html>

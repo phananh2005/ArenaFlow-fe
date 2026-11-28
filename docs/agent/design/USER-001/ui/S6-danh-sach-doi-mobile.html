@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S6 Danh sách đội (mobile web 390px)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2d4e32',
+              light: '#eaf2eb',
+              border: '#d1e3d4'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Ẩn scrollbar cho chip filter cuộn ngang */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#f0f2f5] min-h-screen flex items-center justify-center p-0 md:p-6 font-sans antialiased text-[#1a1f1b]">
+
+  <!-- Khung mobile web 390px -->
+  <div class="w-[390px] min-h-[844px] bg-[#f8faf3] shadow-2xl flex flex-col relative overflow-hidden">
+
+    <!-- Header thu gọn nền trắng -->
+    <header class="bg-white px-4 py-3 border-b border-[#e5e7eb] flex items-center justify-between sticky top-0 z-30">
+      <!-- Nút hamburger ☰ -->
+      <button type="button" aria-label="Menu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 text-[#1a1f1b] transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Logo ArenaFlow (icon quả bóng) ở giữa -->
+      <div class="flex items-center space-x-2">
+        <div class="w-7 h-7 rounded-full bg-[#3d6943] flex items-center justify-center text-white">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m4.93 4.93 4.24 4.24" />
+            <path d="m14.83 9.17 4.24-4.24" />
+            <path d="m14.83 14.83 4.24 4.24" />
+            <path d="m9.17 14.83-4.24 4.24" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </div>
+        <span class="font-bold text-lg text-[#1a1f1b] tracking-tight">ArenaFlow</span>
+      </div>
+
+      <!-- Avatar tròn (ảnh người) bên phải -->
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-[#e5e7eb] flex-shrink-0">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" alt="Avatar" class="w-full h-full object-cover">
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 py-4 space-y-4">
+
+      <!-- Hàng tiêu đề: "Đội bóng" bên trái, nút chính nhỏ "+ Tạo đội" bên phải -->
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold text-[#111827] tracking-tight">Đội bóng</h1>
+        <button type="button" class="inline-flex items-center space-x-1 bg-[#3d6943] hover:bg-[#2d4e32] text-white text-xs font-semibold px-3 py-2 rounded-[8px] shadow-sm transition-colors active:scale-95">
+          <span>+ Tạo đội</span>
+        </button>
+      </div>
+
+      <!-- Thẻ "Lời mời đang chờ (1)" -->
+      <div class="bg-white border border-[#e5e7eb] rounded-[8px] p-3.5 shadow-sm space-y-3">
+        <div class="flex items-start space-x-3">
+          <!-- Logo đội tròn -->
+          <div class="w-11 h-11 rounded-full bg-[#eaf2eb] border border-[#d1e3d4] flex items-center justify-center flex-shrink-0 text-[#3d6943]">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <!-- Thông tin lời mời -->
+          <div class="flex-1 min-w-0">
+            <span class="inline-block text-[11px] font-semibold text-[#3d6943] bg-[#eaf2eb] px-2 py-0.5 rounded mb-1">
+              Lời mời đang chờ (1)
+            </span>
+            <h2 class="text-sm font-bold text-[#111827] leading-snug">FC Hoàng Gia mời bạn vào đội</h2>
+            <p class="text-xs text-[#6b7280] mt-0.5">Mời ngày 08/11/2026</p>
+          </div>
+        </div>
+
+        <!-- Hai nút chia đôi: Chấp nhận & Từ chối -->
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button type="button" class="w-full py-2 px-3 bg-[#3d6943] hover:bg-[#2d4e32] text-white text-xs font-semibold rounded-[8px] text-center transition-colors">
+            Chấp nhận
+          </button>
+          <button type="button" class="w-full py-2 px-3 bg-white border border-[#d1d5db] hover:bg-gray-50 text-[#374151] text-xs font-semibold rounded-[8px] text-center transition-colors">
+            Từ chối
+          </button>
+        </div>
+      </div>
+
+      <!-- Thanh lọc dạng chip cuộn ngang -->
+      <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-0.5">
+        <button type="button" class="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium bg-white text-[#4b5563] border border-[#e5e7eb] hover:bg-gray-50">
+          Đang hoạt động
+        </button>
+        <button type="button" class="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium bg-white text-[#4b5563] border border-[#e5e7eb] hover:bg-gray-50">
+          Bị khoá
+        </button>
+        <button type="button" class="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium bg-white text-[#4b5563] border border-[#e5e7eb] hover:bg-gray-50">
+          Đã giải tán
+        </button>
+        <!-- Chip "Tất cả" (đang chọn) -->
+        <button type="button" class="flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#3d6943] text-white shadow-sm">
+          Tất cả
+        </button>
+      </div>
+
+      <!-- Danh sách thẻ đội 1 cột (4 thẻ) -->
+      <div class="space-y-3">
+
+        <!-- Thẻ 1: FC Sao Mai -->
+        <div class="bg-white border border-[#e5e7eb] rounded-[8px] p-3.5 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-[#eaf2eb] border border-[#c1d9c5] flex items-center justify-center text-[#3d6943] font-bold text-sm">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-[#111827]">FC Sao Mai</h3>
+              </div>
+            </div>
+            <!-- Badge trạng thái: Hoạt động -->
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#ecfdf5] text-[#065f46] border border-[#a7f3d0]">
+              <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-[#10b981]"></span>
+              Hoạt động
+            </span>
+          </div>
+
+          <!-- Chip trình độ -->
+          <div class="flex flex-wrap gap-1.5 pt-0.5">
+            <span class="text-[11px] bg-[#f3f4f6] text-[#4b5563] px-2 py-0.5 rounded">Nhiệt tình</span>
+            <span class="text-[11px] bg-[#f3f4f6] text-[#4b5563] px-2 py-0.5 rounded">Rèn luyện</span>
+          </div>
+
+          <!-- Đội trưởng & Thành viên -->
+          <div class="flex items-center justify-between text-xs text-[#4b5563] pt-1 border-t border-[#f3f4f6]">
+            <div class="flex items-center space-x-1">
+              <span class="text-[#6b7280]">Đội trưởng:</span>
+              <span class="font-medium text-[#1f2937]">Nguyễn Văn A</span>
+            </div>
+            <div class="flex items-center space-x-1 text-[#6b7280]">
+              <span>5 thành viên</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 2: Cầu Giấy United (Bị khoá - cam/vàng đất) -->
+        <div class="bg-white border border-[#e5e7eb] rounded-[8px] p-3.5 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-[#fef3c7] border border-[#fde68a] flex items-center justify-center text-[#b45309] font-bold text-sm">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-[#111827]">Cầu Giấy United</h3>
+              </div>
+            </div>
+            <!-- Badge trạng thái: Bị khoá -->
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#fffbeb] text-[#92400e] border border-[#fcd34d]">
+              <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-[#f59e0b]"></span>
+              Bị khoá
+            </span>
+          </div>
+
+          <!-- Chip trình độ -->
+          <div class="flex flex-wrap gap-1.5 pt-0.5">
+            <span class="text-[11px] bg-[#f3f4f6] text-[#4b5563] px-2 py-0.5 rounded">Chill</span>
+            <span class="text-[11px] bg-[#f3f4f6] text-[#4b5563] px-2 py-0.5 rounded">Vui chơi</span>
+          </div>
+
+          <!-- Đội trưởng & Thành viên -->
+          <div class="flex items-center justify-between text-xs text-[#4b5563] pt-1 border-t border-[#f3f4f6]">
+            <div class="flex items-center space-x-1">
+              <span class="text-[#6b7280]">Đội trưởng:</span>
+              <span class="font-medium text-[#1f2937]">Lê Quốc Bảo</span>
+            </div>
+            <div class="flex items-center space-x-1 text-[#6b7280]">
+              <span>6 thành viên</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 3: FC Sấm Sét (Đã giải tán - xám, thẻ mờ) -->
+        <div class="bg-white/70 border border-[#e5e7eb] rounded-[8px] p-3.5 shadow-sm space-y-2.5 opacity-60">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-[#f3f4f6] border border-[#e5e7eb] flex items-center justify-center text-[#6b7280]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-[#4b5563] line-through">FC Sấm Sét</h3>
+              </div>
+            </div>
+            <!-- Badge trạng thái: Đã giải tán -->
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#f3f4f6] text-[#4b5563] border border-[#e5e7eb]">
+              Đã giải tán
+            </span>
+          </div>
+
+          <!-- Chip trình độ -->
+          <div class="flex flex-wrap gap-1.5 pt-0.5">
+            <span class="text-[11px] bg-[#f3f4f6] text-[#6b7280] px-2 py-0.5 rounded">Máu lửa</span>
+          </div>
+
+          <!-- Người giải tán & 0 thành viên -->
+          <div class="flex items-center justify-between text-xs text-[#6b7280] pt-1 border-t border-[#f3f4f6]">
+            <div class="flex items-center space-x-1">
+              <span>Người giải tán:</span>
+              <span class="font-medium text-[#4b5563]">Phạm Minh Đức</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span>0 thành viên</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 4: Team Alpha -->
+        <div class="bg-white border border-[#e5e7eb] rounded-[8px] p-3.5 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-[#eaf2eb] border border-[#c1d9c5] flex items-center justify-center text-[#3d6943] font-bold text-sm">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-[#111827]">Team Alpha</h3>
+              </div>
+            </div>
+            <!-- Badge trạng thái: Hoạt động -->
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#ecfdf5] text-[#065f46] border border-[#a7f3d0]">
+              <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-[#10b981]"></span>
+              Hoạt động
+            </span>
+          </div>
+
+          <!-- Chip trình độ -->
+          <div class="flex flex-wrap gap-1.5 pt-0.5">
+            <span class="text-[11px] bg-[#f3f4f6] text-[#4b5563] px-2 py-0.5 rounded">Thi đấu</span>
+          </div>
+
+          <!-- Đội trưởng & Thành viên -->
+          <div class="flex items-center justify-between text-xs text-[#4b5563] pt-1 border-t border-[#f3f4f6]">
+            <div class="flex items-center space-x-1">
+              <span class="text-[#6b7280]">Đội trưởng:</span>
+              <span class="font-medium text-[#1f2937]">Trần Hoàng Nam</span>
+            </div>
+            <div class="flex items-center space-x-1 text-[#6b7280]">
+              <span>8 thành viên</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Phân trang: Trước / 1 / 2 / Sau -->
+      <div class="pt-2 pb-6 flex items-center justify-center space-x-1.5 text-xs">
+        <button type="button" class="px-2.5 py-1.5 rounded-[8px] border border-[#e5e7eb] bg-white text-[#9ca3af] cursor-not-allowed">
+          Trước
+        </button>
+        <button type="button" class="w-8 h-8 rounded-[8px] bg-[#3d6943] text-white font-semibold flex items-center justify-center shadow-sm">
+          1
+        </button>
+        <button type="button" class="w-8 h-8 rounded-[8px] border border-[#e5e7eb] bg-white text-[#374151] hover:bg-gray-50 flex items-center justify-center">
+          2
+        </button>
+        <button type="button" class="px-2.5 py-1.5 rounded-[8px] border border-[#e5e7eb] bg-white text-[#374151] hover:bg-gray-50 font-medium">
+          Sau
+        </button>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

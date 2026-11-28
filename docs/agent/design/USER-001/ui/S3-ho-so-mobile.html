@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S3 Hồ sơ cá nhân (mobile web 390px)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2c4e32',
+              light: '#eaf2ec',
+            },
+            arenaBg: '#f8faf3',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f1f3ee;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 390px;
+      min-height: 100vh;
+      background-color: #f8faf3;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body class="bg-[#e9ebe6] flex justify-center items-start min-h-screen sm:py-8">
+
+  <!-- Mobile container 390px -->
+  <main class="mobile-frame bg-[#f8faf3] text-neutral-800">
+
+    <!-- Header thu gọn nền trắng -->
+    <header class="bg-white border-b border-neutral-200/80 px-4 h-14 flex items-center justify-between sticky top-0 z-20">
+      <!-- Nút hamburger bên trái -->
+      <button type="button" aria-label="Menu" class="w-9 h-9 flex items-center justify-center text-neutral-700 hover:bg-neutral-100 rounded-lg transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Logo ArenaFlow ở giữa -->
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full bg-[#3d6943] text-white flex items-center justify-center">
+          <!-- Icon quả bóng -->
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="12 6 15 9 14 13 10 13 9 9"></polygon>
+            <line x1="12" y1="6" x2="12" y2="2"></line>
+            <line x1="15" y1="9" x2="18.5" y2="7"></line>
+            <line x1="14" y1="13" x2="17" y2="16"></line>
+            <line x1="10" y1="13" x2="7" y2="16"></line>
+            <line x1="9" y1="9" x2="5.5" y2="7"></line>
+          </svg>
+        </div>
+        <span class="font-bold text-lg tracking-tight text-[#1a2d1d]">ArenaFlow</span>
+      </div>
+
+      <!-- Avatar tròn bên phải -->
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-neutral-200 flex-shrink-0">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" alt="Avatar" class="w-full h-full object-cover">
+      </div>
+    </header>
+
+    <!-- Nội dung chính -->
+    <div class="px-4 py-5 flex-1 flex flex-col gap-4">
+
+      <!-- Tiêu đề trang -->
+      <h1 class="text-xl font-bold text-neutral-900 tracking-tight">Hồ sơ cá nhân</h1>
+
+      <!-- Thẻ hồ sơ trắng: bo 8px -->
+      <section class="bg-white rounded-[8px] border border-neutral-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] p-4 flex flex-col items-center">
+        <!-- Avatar tròn lớn căn giữa -->
+        <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-neutral-200 shadow-sm mt-1">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" alt="Nguyễn Văn A" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Tên Nguyễn Văn A -->
+        <h2 class="text-lg font-bold text-neutral-900 mt-3 text-center">Nguyễn Văn A</h2>
+
+        <!-- Nút viền full-width Sửa hồ sơ -->
+        <button type="button" class="w-full mt-4 py-2 px-4 rounded-[8px] border border-neutral-300 text-neutral-700 font-semibold text-sm hover:bg-neutral-50 active:bg-neutral-100 transition-colors flex items-center justify-center gap-1.5">
+          <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+          </svg>
+          Sửa hồ sơ
+        </button>
+
+        <!-- Danh sách nhãn – giá trị xếp dọc, ngăn bằng đường kẻ mảnh -->
+        <div class="w-full mt-4 divide-y divide-neutral-100 border-t border-neutral-100">
+          
+          <!-- Tiểu sử -->
+          <div class="py-3">
+            <span class="block text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Tiểu sử</span>
+            <p class="text-sm text-neutral-800 leading-relaxed font-normal">Đá sân 7 tối thứ 4, thích đá cánh.</p>
+          </div>
+
+          <!-- Vị trí chơi ưa thích -->
+          <div class="py-3">
+            <span class="block text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Vị trí chơi ưa thích</span>
+            <p class="text-sm text-neutral-800 font-medium">Tiền vệ</p>
+          </div>
+
+          <!-- Ngày sinh -->
+          <div class="py-3">
+            <span class="block text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Ngày sinh</span>
+            <p class="text-sm text-neutral-800 font-medium">15/05/1995</p>
+          </div>
+
+          <!-- Giới tính -->
+          <div class="py-3">
+            <span class="block text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Giới tính</span>
+            <p class="text-sm text-neutral-800 font-medium">Nam</p>
+          </div>
+
+          <!-- Khu vực -->
+          <div class="pt-3 pb-1">
+            <span class="block text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1">Khu vực</span>
+            <p class="text-sm text-neutral-400 italic">Chưa cập nhật</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Thẻ riêng viền màu error nhạt: bo 8px -->
+      <section class="bg-white rounded-[8px] border border-red-200/90 shadow-[0_1px_3px_rgba(239,68,68,0.04)] p-4 flex flex-col">
+        <h3 class="text-base font-bold text-red-600 mb-1.5">Xoá tài khoản</h3>
+        <p class="text-xs text-neutral-600 leading-relaxed mb-4">
+          Bạn sẽ bị đăng xuất và rời mọi đội đang tham gia. Nếu đang là đội trưởng, bạn cần chuyển quyền hoặc giải tán đội trước.
+        </p>
+
+        <!-- Nút viền đỏ full-width Xoá tài khoản -->
+        <button type="button" class="w-full py-2.5 px-4 rounded-[8px] border border-red-400 text-red-600 font-semibold text-sm hover:bg-red-50 active:bg-red-100 transition-colors flex items-center justify-center">
+          Xoá tài khoản
+        </button>
+      </section>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

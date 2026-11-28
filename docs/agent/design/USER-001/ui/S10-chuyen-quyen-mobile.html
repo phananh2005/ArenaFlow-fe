@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow - Chuyển quyền đội trưởng</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#f4fcba",
+            "secondary-container": "#d4e8d1",
+            "surface": "#f8faf3",
+            "tertiary-dim": "#505725",
+            "surface-container": "#eaf0e6",
+            "background": "#f8faf3",
+            "primary-fixed-dim": "#afe1b1",
+            "surface-tint": "#3d6943",
+            "on-tertiary-fixed": "#484f1e",
+            "on-tertiary": "#f6ffbc",
+            "surface-container-high": "#e4eae0",
+            "primary-fixed": "#bdefbf",
+            "surface-container-low": "#f1f5ec",
+            "tertiary-container": "#f4fcba",
+            "on-primary": "#e9ffe6",
+            "error-container": "#fd795a",
+            "secondary-fixed-dim": "#c6dac3",
+            "on-primary-container": "#2f5b36",
+            "on-surface-variant": "#596158",
+            "surface-dim": "#d4dcd1",
+            "error": "#a73b21",
+            "primary": "#3d6943",
+            "secondary": "#526451",
+            "secondary-dim": "#465846",
+            "on-tertiary-fixed-variant": "#656c38",
+            "secondary-fixed": "#d4e8d1",
+            "on-tertiary-container": "#5a612e",
+            "on-secondary-fixed": "#324433",
+            "on-error-container": "#6e1400",
+            "primary-dim": "#315c38",
+            "inverse-surface": "#0c0f0b",
+            "surface-container-highest": "#dde5d9",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#dde5d9",
+            "on-background": "#2d342c",
+            "on-primary-fixed-variant": "#39653f",
+            "error-dim": "#791903",
+            "surface-bright": "#f8faf3",
+            "on-secondary": "#eaffe7",
+            "on-secondary-fixed-variant": "#4e604e",
+            "on-primary-fixed": "#1c4825",
+            "primary-container": "#bdefbf",
+            "on-surface": "#2d342c",
+            "on-error": "#fff7f6",
+            "on-secondary-container": "#445645",
+            "inverse-primary": "#c8fbca",
+            "inverse-on-surface": "#9b9e98",
+            "tertiary-fixed-dim": "#e5eead",
+            "tertiary": "#5c6330",
+            "outline": "#757d73",
+            "outline-variant": "#acb4a9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro"],
+            "display": ["Be Vietnam Pro"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Be Vietnam Pro"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-[#f4f5f6] min-h-screen flex items-center justify-center font-body antialiased p-0 sm:p-6 text-on-surface">
+<!-- Khung giả lập điện thoại 390px -->
+<div class="relative w-full max-w-[390px] h-[844px] max-h-[1024px] bg-surface overflow-hidden shadow-2xl rounded-[32px] sm:border-[8px] sm:border-gray-800 flex flex-col">
+<!-- Trang nền chi tiết FC Sao Mai (bị làm mờ và phủ overlay đen 50%) -->
+<div class="absolute inset-0 z-0 flex flex-col bg-surface-container-low select-none pointer-events-none">
+<!-- Header trang chi tiết ArenaFlow -->
+<header class="bg-surface-container-lowest px-4 py-3 border-b border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-xl">arrow_back</span>
+<span class="font-display font-bold text-base text-primary">ArenaFlow</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">share</span>
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</div>
+</header>
+<!-- Nội dung chi tiết đội FC Sao Mai ở nền -->
+<div class="p-4 space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-sm flex gap-3 items-center">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-xl">
+            SM
+          </div>
+<div>
+<h2 class="font-headline font-bold text-base text-on-surface">FC Sao Mai</h2>
+<p class="text-xs text-on-surface-variant">Sân bóng Trung Kính Hạ, Cầu Giấy</p>
+<div class="flex gap-1.5 mt-1.5">
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-secondary-container text-on-secondary-container font-medium">Bóng 7 người</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-surface-container-high text-on-surface-variant">14 Thành viên</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/20 space-y-2">
+<div class="h-3 w-1/3 bg-surface-container-high rounded"></div>
+<div class="h-10 bg-surface-container rounded-lg"></div>
+<div class="h-10 bg-surface-container rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- Lớp phủ overlay đen 50% & làm mờ -->
+<div class="absolute inset-0 z-10 bg-black/50 backdrop-blur-sm"></div>
+<!-- Bottom Sheet trượt lên từ đáy -->
+<div class="relative z-20 mt-auto w-full bg-white rounded-t-2xl shadow-2xl flex flex-col max-h-[92%] overflow-hidden">
+<!-- Drag handle -->
+<div class="pt-3 pb-2 shrink-0">
+<div class="w-10 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+</div>
+<!-- Vùng nội dung cuộn bên trong Bottom Sheet -->
+<div class="px-5 pb-6 overflow-y-auto space-y-4">
+<!-- 1. Tiêu đề -->
+<h1 class="text-xl font-bold text-gray-900 font-headline leading-tight">
+          Chuyển quyền đội trưởng
+        </h1>
+<!-- 2. Alert cảnh báo -->
+<div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-3 flex gap-2.5 items-start text-xs leading-relaxed">
+<span class="material-symbols-outlined text-amber-600 text-base shrink-0 mt-0.5">warning</span>
+<p>Người được chọn sẽ trở thành đội trưởng ngay lập tức và không thể từ chối. Bạn sẽ trở thành thành viên thường.</p>
+</div>
+<!-- 3. Nhãn danh sách thành viên -->
+<div>
+<div class="text-sm font-semibold text-gray-700 mb-2">
+            Chọn thành viên đang hoạt động
+          </div>
+<!-- 4. Danh sách radio các thành viên hoạt động -->
+<div class="space-y-2.5" role="radiogroup">
+<!-- Mục 1: Đang được chọn -->
+<label class="flex items-center justify-between p-3 rounded-xl border-2 border-primary bg-primary-container/20 cursor-pointer transition">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-sm">
+                  TH
+                </div>
+<div>
+<div class="text-sm font-semibold text-gray-900">Trần Hoàng Nam</div>
+<div class="text-xs text-gray-500">Tham gia 05/11/2026</div>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+<input checked="" class="sr-only" name="captain_member" type="radio" value="tran_hoang_nam"/>
+</label>
+<!-- Mục 2: Chưa chọn -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 cursor-pointer transition">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center font-semibold text-sm border border-gray-200">
+                  LQ
+                </div>
+<div>
+<div class="text-sm font-medium text-gray-800">Lê Quốc Bảo</div>
+<div class="text-xs text-gray-500">Tham gia 06/11/2026</div>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center"></div>
+<input class="sr-only" name="captain_member" type="radio" value="le_quoc_bao"/>
+</label>
+<!-- Mục 3: Chưa chọn -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 cursor-pointer transition">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center font-semibold text-sm border border-gray-200">
+                  PM
+                </div>
+<div>
+<div class="text-sm font-medium text-gray-800">Phạm Minh Đức</div>
+<div class="text-xs text-gray-500">Tham gia 07/11/2026</div>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center"></div>
+<input class="sr-only" name="captain_member" type="radio" value="pham_minh_duc"/>
+</label>
+</div>
+</div>
+<!-- 5. Textarea Lý do -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1.5" for="transfer-reason">
+            Lý do (không bắt buộc)
+          </label>
+<textarea class="w-full h-24 p-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition" id="transfer-reason" maxlength="500" placeholder="Ví dụ: Bận công tác dài ngày"></textarea>
+<div class="text-xs text-gray-400 text-right mt-1">
+            0/500
+          </div>
+</div>
+<!-- 6. Hai nút hành động xếp dọc full-width -->
+<div class="pt-2 pb-1">
+<button class="w-full py-3 bg-primary text-white font-medium text-sm rounded-xl text-center shadow-sm hover:bg-primary-dim active:scale-[0.98] transition" type="button">
+            Chuyển quyền
+          </button>
+<button class="w-full py-3 mt-2.5 bg-white text-gray-700 border border-gray-300 font-medium text-sm rounded-xl text-center hover:bg-gray-50 active:scale-[0.98] transition" type="button">
+            Huỷ
+          </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

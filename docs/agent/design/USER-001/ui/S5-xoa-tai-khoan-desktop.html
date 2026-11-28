@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — Xoá tài khoản</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#c6dac3",
+            "on-tertiary": "#f6ffbc",
+            "on-tertiary-container": "#5a612e",
+            "tertiary": "#5c6330",
+            "on-secondary-fixed": "#324433",
+            "on-tertiary-fixed-variant": "#656c38",
+            "background": "#f8faf3",
+            "outline": "#757d73",
+            "surface-container-highest": "#dde5d9",
+            "primary-fixed": "#bdefbf",
+            "secondary-dim": "#465846",
+            "error": "#a73b21",
+            "tertiary-container": "#f4fcba",
+            "surface-dim": "#d4dcd1",
+            "on-error-container": "#6e1400",
+            "surface-tint": "#3d6943",
+            "on-background": "#2d342c",
+            "inverse-on-surface": "#9b9e98",
+            "surface-bright": "#f8faf3",
+            "on-error": "#fff7f6",
+            "surface-variant": "#dde5d9",
+            "tertiary-fixed-dim": "#e5eead",
+            "secondary-container": "#d4e8d1",
+            "outline-variant": "#acb4a9",
+            "on-secondary-container": "#445645",
+            "primary-fixed-dim": "#afe1b1",
+            "error-container": "#fd795a",
+            "on-tertiary-fixed": "#484f1e",
+            "on-primary": "#e9ffe6",
+            "error-dim": "#791903",
+            "surface": "#f8faf3",
+            "on-secondary": "#eaffe7",
+            "on-primary-fixed-variant": "#39653f",
+            "surface-container-low": "#f1f5ec",
+            "inverse-surface": "#0c0f0b",
+            "surface-container": "#eaf0e6",
+            "secondary-fixed": "#d4e8d1",
+            "inverse-primary": "#c8fbca",
+            "on-primary-fixed": "#1c4825",
+            "primary": "#3d6943",
+            "on-surface-variant": "#596158",
+            "tertiary-fixed": "#f4fcba",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#2d342c",
+            "on-primary-container": "#2f5b36",
+            "tertiary-dim": "#505725",
+            "primary-dim": "#315c38",
+            "surface-container-high": "#e4eae0",
+            "primary-container": "#bdefbf",
+            "secondary": "#526451",
+            "on-secondary-fixed-variant": "#4e604e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body h-full overflow-hidden select-none">
+<!-- 1. Background Content: Trang Hồ sơ cá nhân -->
+<div class="h-full w-full flex flex-col bg-surface-container-low">
+<!-- Top Header -->
+<header class="bg-surface-container-lowest shadow-sm w-full z-10">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Logo & Navigation -->
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined fill text-primary text-2xl" data-icon="sports_soccer">sports_soccer</span>
+<span class="font-display text-xl font-bold tracking-tight text-primary">ArenaFlow</span>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-sm font-medium text-on-surface hover:text-primary transition-colors" href="#">Đội của tôi</a>
+</nav>
+</div>
+<!-- User Info (No bell, single line name) -->
+<div class="flex items-center gap-3">
+<img alt="Nguyễn Văn A" class="w-9 h-9 rounded-full object-cover border border-outline-variant/40 shadow-xs" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="text-sm font-medium text-on-surface">Nguyễn Văn A</span>
+</div>
+</div>
+</header>
+<!-- Main Profile Content Canvas -->
+<main class="flex-1 max-w-4xl w-full mx-auto px-6 py-10">
+<h1 class="font-headline text-2xl font-bold text-on-surface mb-6">Hồ sơ cá nhân</h1>
+<!-- Profile Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 p-8 space-y-8">
+<!-- Header Profile Card -->
+<div class="flex items-center gap-6 pb-6 border-b border-outline-variant/20">
+<img alt="Nguyễn Văn A" class="w-20 h-20 rounded-full object-cover shadow-sm ring-4 ring-surface-container" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<div>
+<h2 class="text-xl font-bold text-on-surface">Nguyễn Văn A</h2>
+<p class="text-sm text-on-surface-variant mt-0.5">Tiền đạo cắm (ST) • FC Gò Vấp</p>
+</div>
+</div>
+<!-- Details Grid -->
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="text-xs font-medium text-on-surface-variant">Tiểu sử</label>
+<p class="text-sm text-on-surface bg-surface-container-low p-3 rounded-lg border border-outline-variant/20">Đam mê bóng đá sân 7, tìm kiếm đội giao lưu cuối tuần tại khu vực Bình Thạnh và Gò Vấp.</p>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-medium text-on-surface-variant">Vị trí chơi</label>
+<p class="text-sm text-on-surface bg-surface-container-low p-3 rounded-lg border border-outline-variant/20">Tiền đạo / Tiền vệ cánh</p>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-medium text-on-surface-variant">Ngày sinh</label>
+<p class="text-sm text-on-surface bg-surface-container-low p-3 rounded-lg border border-outline-variant/20">15/08/1998</p>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-medium text-on-surface-variant">Giới tính</label>
+<p class="text-sm text-on-surface bg-surface-container-low p-3 rounded-lg border border-outline-variant/20">Nam</p>
+</div>
+</div>
+<!-- Danger Zone Action -->
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between">
+<div>
+<h3 class="text-sm font-semibold text-error">Xoá tài khoản</h3>
+<p class="text-xs text-on-surface-variant">Vĩnh viễn xoá dữ liệu hoạt động và tài khoản cá nhân của bạn.</p>
+</div>
+<button class="px-4 py-2 bg-error text-white text-sm font-medium rounded-lg shadow-xs" type="button">
+            Xoá tài khoản
+          </button>
+</div>
+</div>
+</main>
+</div>
+<!-- 2. Dark Overlay with backdrop-blur -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity"></div>
+<!-- 3. Modal Dialog ở chính giữa màn hình (z-50) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+<div class="bg-white w-full max-w-[480px] rounded-lg shadow-2xl p-6 border border-outline-variant/20 transform transition-all">
+<!-- Content Stack -->
+<div class="space-y-4">
+<!-- Header with Warning Icon & Title -->
+<div class="flex items-start gap-3.5">
+<!-- Icon cảnh báo hình tròn màu error -->
+<div class="w-11 h-11 rounded-full bg-[#fdf2f0] flex items-center justify-center flex-shrink-0 text-error">
+<span class="material-symbols-outlined text-2xl fill" data-icon="report_problem">report_problem</span>
+</div>
+<div class="pt-0.5">
+<!-- Tiêu đề đậm rõ ràng -->
+<h2 class="text-xl font-bold text-gray-900 tracking-tight leading-snug">
+              Xoá tài khoản?
+            </h2>
+<!-- Mô tả chi tiết -->
+<p class="text-sm text-gray-600 leading-relaxed mt-2">Bạn sẽ bị đăng xuất và rời mọi đội đang tham gia. Các lời mời vào đội đang chờ sẽ bị từ chối. Các đơn ứng tuyển mercenary đang chờ hoặc đã được duyệt của trận chưa bắt đầu sẽ tự rút, không bị trừ điểm uy tín. Ở lịch sử các đội, tên bạn sẽ hiển thị là “Người dùng đã xóa”.</p>
+</div>
+</div>
+<!-- Khối cảnh báo Alert màu error -->
+<div class="bg-[#fef2f2] border border-[#fecaca] text-error rounded-lg p-3 text-sm flex items-start gap-2.5"><span class="material-symbols-outlined text-lg flex-shrink-0 mt-0.5 text-error fill" data-icon="warning">warning</span><div class="flex flex-col gap-1"><span class="leading-normal font-medium text-xs md:text-sm text-error">Bạn phải chuyển quyền đội trưởng hoặc giải tán đội trước khi xóa tài khoản</span><a class="text-xs md:text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1 cursor-pointer" href="#">Xem các đội bạn đang làm đội trưởng →</a></div></div>
+<!-- Chân dialog (footer dialog) căn lề phải -->
+<div class="flex justify-end items-center gap-3 pt-3">
+<!-- Nút viền: Huỷ -->
+<button class="border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 active:scale-95 transition-all rounded-lg px-4 py-2 text-sm font-medium shadow-xs" type="button">
+            Huỷ
+          </button>
+<!-- Nút màu đỏ (error): Xoá tài khoản -->
+<button class="bg-[#a73b21] hover:bg-[#8f321b] active:scale-95 text-white rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap shadow-sm transition-all" type="button">
+            Xoá tài khoản
+          </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

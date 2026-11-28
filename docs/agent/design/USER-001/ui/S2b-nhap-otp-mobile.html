@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S2b Đăng nhập bằng số điện thoại, bước 2 (mobile web 390px)</title>
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brandDark: '#14532D',
+            brandBtn: '#3d6943',
+            brandError: '#DC2626',
+            brandBorderError: '#DC2626',
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 390px;
+      min-height: 844px;
+      background-color: #ffffff;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .field-lines {
+      background-image: 
+        radial-gradient(circle at 50% 100%, transparent 45px, rgba(255,255,255,0.12) 46px, rgba(255,255,255,0.12) 47px, transparent 48px),
+        linear-gradient(to right, transparent calc(50% - 1px), rgba(255,255,255,0.12) calc(50% - 1px), rgba(255,255,255,0.12) calc(50% + 1px), transparent calc(50% + 1px));
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-frame">
+    <!-- Dải đầu trang thấp nền xanh lá đậm (#14532D) có họa tiết đường kẻ sân bóng mờ, chỉ có logo "ArenaFlow" (icon quả bóng trong ô vuông bo góc) -->
+    <div class="relative bg-brandDark text-white px-5 py-5 overflow-hidden flex items-center field-lines">
+      <!-- Decorative field corner lines -->
+      <div class="absolute top-2 left-2 w-12 h-12 border-t border-l border-white/20 rounded-tl-sm pointer-events-none"></div>
+      <div class="absolute top-2 right-2 w-12 h-12 border-t border-r border-white/20 rounded-tr-sm pointer-events-none"></div>
+      
+      <!-- Logo ArenaFlow -->
+      <div class="relative z-10 flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-custom bg-white/10 border border-white/25 flex items-center justify-center shadow-inner">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m4.93 4.93 4.24 4.24"></path>
+            <path d="m14.83 9.17 4.24-4.24"></path>
+            <path d="m14.83 14.83 4.24 4.24"></path>
+            <path d="m9.17 14.83-4.24 4.24"></path>
+            <circle cx="12" cy="12" r="4"></circle>
+          </svg>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-white">ArenaFlow</span>
+      </div>
+    </div>
+
+    <!-- Phần dưới nền trắng -->
+    <div class="flex-1 bg-white px-6 pt-6 pb-8 flex flex-col">
+      <!-- Link ← Quay lại -->
+      <div class="mb-5">
+        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
+          <span class="mr-1.5 text-base">←</span> Quay lại
+        </a>
+      </div>
+
+      <!-- Tiêu đề "Nhập mã xác thực" -->
+      <h1 class="text-[26px] font-bold text-gray-900 tracking-tight leading-snug mb-2">
+        Nhập mã xác thực
+      </h1>
+
+      <!-- Dòng phụ & link đổi số -->
+      <p class="text-[14px] text-gray-600 leading-relaxed mb-7">
+        Mã gồm 6 chữ số đã được gửi tới số <span class="font-semibold text-gray-800">0987654321</span>
+        <a href="#" class="text-brandDark font-medium ml-1.5 hover:underline">Đổi số điện thoại</a>
+      </p>
+
+      <!-- Form container -->
+      <div class="space-y-4">
+        <!-- Hàng 6 ô vuông mỗi ô 1 chữ số, đã điền "4 8 2 1 9 3", cả 6 ô viền màu error -->
+        <div class="flex items-center justify-between gap-2">
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            4
+          </div>
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            8
+          </div>
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            2
+          </div>
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            1
+          </div>
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            9
+          </div>
+          <div class="w-12 h-14 rounded-custom border-2 border-brandBorderError bg-white flex items-center justify-center text-xl font-bold text-gray-900 shadow-sm">
+            3
+          </div>
+        </div>
+
+        <!-- Chữ lỗi màu error "Mã xác thực không đúng" -->
+        <div class="text-[13px] font-medium text-brandError pt-0.5">
+          Mã xác thực không đúng
+        </div>
+
+        <!-- Nút chính full-width màu #3d6943 "Xác nhận" -->
+        <div class="pt-3">
+          <button type="button" class="w-full h-12 bg-brandBtn hover:bg-[#345b3a] active:scale-[0.99] transition-all text-white font-medium text-[15px] rounded-custom shadow flex items-center justify-center">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

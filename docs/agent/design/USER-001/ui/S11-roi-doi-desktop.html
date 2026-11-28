@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — S11 Dialog rời đội (desktop)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3d6943',
+              dark: '#2e5133',
+              light: '#eef6f0',
+            },
+            error: {
+              DEFAULT: '#a73b21',
+              light: '#fdf2f0',
+              border: '#f5c6cb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-[#f7f8f6] text-neutral-800 antialiased min-h-screen relative overflow-hidden select-none">
+
+  <!-- BACKGROUND: Trang chi tiết đội FC Sao Mai (góc nhìn thành viên Trần Hoàng Nam) -->
+  <div class="min-h-screen flex flex-col pointer-events-none" aria-hidden="true">
+    <!-- Navbar -->
+    <header class="bg-white border-b border-neutral-200 sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center space-x-8">
+          <div class="flex items-center space-x-2 text-primary font-bold text-xl tracking-tight">
+            <span class="material-symbols-outlined text-2xl">sports_soccer</span>
+            <span>ArenaFlow</span>
+          </div>
+          <nav class="flex items-center space-x-6">
+            <span class="text-primary font-semibold text-sm border-b-2 border-primary py-5">Đội của tôi</span>
+          </nav>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-semibold text-xs ring-2 ring-emerald-100">
+            TH
+          </div>
+          <span class="text-sm font-medium text-neutral-800">Trần Hoàng Nam</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-6 py-6 w-full flex-1">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center space-x-2 text-xs text-neutral-500 mb-5">
+        <span>Đội của tôi</span>
+        <span>›</span>
+        <span class="text-neutral-800 font-medium">FC Sao Mai</span>
+      </nav>
+
+      <!-- Team Header Card -->
+      <div class="bg-white rounded-lg border border-neutral-200/80 p-6 shadow-sm mb-6 flex items-center justify-between">
+        <div class="flex items-start space-x-5">
+          <!-- Logo FC Sao Mai -->
+          <div class="w-20 h-20 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-4xl">stars</span>
+          </div>
+
+          <div>
+            <div class="flex items-center space-x-3">
+              <h1 class="text-2xl font-bold text-neutral-900">FC Sao Mai</h1>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Hoạt động</span>
+            </div>
+            
+            <div class="flex items-center space-x-4 mt-2 text-xs text-neutral-500">
+              <span>Ngày tạo 02/11/2026</span>
+              <span>•</span>
+              <span>Đội trưởng: <strong class="text-neutral-700 font-semibold">Nguyễn Văn A</strong></span>
+            </div>
+
+            <div class="flex items-center space-x-2 mt-3">
+              <span class="px-2.5 py-1 rounded bg-neutral-100 text-neutral-600 text-xs font-medium">Nhiệt tình</span>
+              <span class="px-2.5 py-1 rounded bg-neutral-100 text-neutral-600 text-xs font-medium">Rèn luyện</span>
+              <span class="px-2.5 py-1 rounded bg-neutral-100 text-neutral-600 text-xs font-medium">Đã có kinh nghiệm</span>
+            </div>
+
+            <p class="text-xs text-neutral-500 mt-3 max-w-2xl leading-relaxed">
+              Đội bóng sinh hoạt hàng tuần tối thứ 4 và chủ nhật khu vực Cầu Giấy - Thanh Xuân. Tinh thần giao lưu học hỏi, rèn luyện sức khỏe, fair-play và không cay cú.
+            </p>
+          </div>
+        </div>
+
+        <!-- Góc phải header: CHỈ có một nút viền đỏ "Rời đội" cho thành viên thường -->
+        <div class="flex items-center">
+          <button class="px-4 py-2 rounded border border-[#a73b21] text-[#a73b21] text-sm font-medium hover:bg-red-50 transition flex items-center space-x-1.5">
+            <span class="material-symbols-outlined text-base">logout</span>
+            <span>Rời đội</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabs placeholder in background -->
+      <div class="border-b border-neutral-200 mb-6 flex space-x-6 text-sm">
+        <span class="font-semibold text-primary pb-3 border-b-2 border-primary flex items-center space-x-1.5">
+          <span>Thành viên (5)</span>
+        </span>
+        <span class="text-neutral-500 pb-3">Lịch sử đội trưởng</span>
+      </div>
+
+      <!-- Member list sample background -->
+      <div class="bg-white rounded-lg border border-neutral-200/80 p-5 shadow-sm">
+        <div class="h-6 w-44 bg-neutral-200 rounded mb-4"></div>
+        <div class="space-y-3">
+          <div class="h-12 bg-neutral-50 rounded border border-neutral-100"></div>
+          <div class="h-12 bg-neutral-50 rounded border border-neutral-100"></div>
+          <div class="h-12 bg-neutral-50 rounded border border-neutral-100"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- OVERLAY MỜ TỐI 50% -->
+  <div class="fixed inset-0 bg-black/50 z-40 transition-opacity"></div>
+
+  <!-- DIALOG MODAL GIỮA MÀN HÌNH -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-[440px] rounded-[8px] shadow-2xl border border-neutral-100 overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-150">
+      
+      <div class="p-6">
+        <!-- Icon tròn màu error nhạt với icon logout -->
+        <div class="w-12 h-12 rounded-full bg-[#fdf2f0] border border-[#f5c6cb] flex items-center justify-center text-[#a73b21] mb-4">
+          <span class="material-symbols-outlined text-2xl">logout</span>
+        </div>
+
+        <!-- Tiêu đề Dialog -->
+        <h2 class="text-lg font-bold text-neutral-900 tracking-tight mb-2">
+          Rời đội FC Sao Mai?
+        </h2>
+
+        <!-- Nội dung Dialog -->
+        <p class="text-sm text-neutral-600 leading-relaxed">
+          Bạn sẽ không còn là thành viên của đội. Muốn quay lại, bạn cần được đội trưởng mời lại.
+        </p>
+      </div>
+
+      <!-- Chân Dialog căn phải: Nút viền "Huỷ" và nút nền đỏ "Rời đội" -->
+      <div class="px-6 py-4 bg-neutral-50/60 border-t border-neutral-100 flex items-center justify-end space-x-3">
+        <button type="button" class="px-4 py-2 text-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-[8px] hover:bg-neutral-50 active:scale-95 transition-all">
+          Huỷ
+        </button>
+        <button type="button" class="px-4 py-2 text-sm font-medium text-white bg-[#a73b21] hover:bg-[#91321b] active:scale-95 transition-all rounded-[8px] whitespace-nowrap shadow-sm">
+          Rời đội
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

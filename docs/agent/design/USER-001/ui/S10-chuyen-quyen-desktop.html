@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — Chuyển quyền đội trưởng</title>
+<!-- Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#fd795a",
+            "secondary": "#526451",
+            "secondary-fixed-dim": "#c6dac3",
+            "on-tertiary-fixed-variant": "#656c38",
+            "inverse-surface": "#0c0f0b",
+            "outline": "#757d73",
+            "surface-container-low": "#f1f5ec",
+            "outline-variant": "#acb4a9",
+            "surface-variant": "#dde5d9",
+            "on-primary": "#e9ffe6",
+            "tertiary-fixed-dim": "#e5eead",
+            "inverse-on-surface": "#9b9e98",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#f4fcba",
+            "surface-container": "#eaf0e6",
+            "tertiary-fixed": "#f4fcba",
+            "on-secondary": "#eaffe7",
+            "on-background": "#2d342c",
+            "on-surface": "#2d342c",
+            "secondary-fixed": "#d4e8d1",
+            "on-tertiary-container": "#5a612e",
+            "surface-container-highest": "#dde5d9",
+            "primary": "#3d6943",
+            "secondary-dim": "#465846",
+            "error": "#a73b21",
+            "primary-dim": "#315c38",
+            "primary-container": "#bdefbf",
+            "surface-tint": "#3d6943",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-container-high": "#e4eae0",
+            "surface": "#f8faf3",
+            "on-error-container": "#6e1400",
+            "primary-fixed": "#bdefbf",
+            "inverse-primary": "#c8fbca",
+            "secondary-container": "#d4e8d1",
+            "on-primary-container": "#2f5b36",
+            "surface-bright": "#f8faf3",
+            "on-error": "#fff7f6",
+            "background": "#f8faf3",
+            "on-secondary-container": "#445645",
+            "on-secondary-fixed": "#324433",
+            "on-primary-fixed-variant": "#39653f",
+            "on-primary-fixed": "#1c4825",
+            "on-secondary-fixed-variant": "#4e604e",
+            "surface-dim": "#d4dcd1",
+            "tertiary": "#5c6330",
+            "on-surface-variant": "#596158",
+            "primary-fixed-dim": "#afe1b1",
+            "on-tertiary": "#f6ffbc",
+            "error-dim": "#791903",
+            "tertiary-dim": "#505725"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro"],
+            "display": ["Be Vietnam Pro"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Be Vietnam Pro"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen relative overflow-hidden select-none">
+<!-- ========================================== -->
+<!-- 1. NỀN PHÍA SAU (BACKGROUND PAGE CONTENT) -->
+<!-- ========================================== -->
+<div aria-hidden="true" class="min-h-screen flex flex-col bg-surface-container-low">
+<!-- TopNavBar màu trắng -->
+<header class="bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-10">
+<div class="w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5">
+<!-- Bên trái: Logo + Menu Đội của tôi -->
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="sports_soccer">sports_soccer</span>
+<span class="font-display text-xl font-bold tracking-tight text-primary">ArenaFlow</span>
+</div>
+<nav class="hidden md:flex items-center">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 text-sm" href="#">Đội của tôi</a>
+</nav>
+</div>
+<!-- Góc phải: Avatar tròn + Tên Nguyễn Văn A (không có chữ phụ, không có chuông) -->
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant/40 shadow-sm" data-alt="A clean portrait photo of a Vietnamese male football team captain named Nguyen Van A, wearing a casual athletic dark green collared shirt against a soft neutral studio background with gentle light-mode illumination and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkIQFuPmHlxrX7ncVX5SFg1JXLTu0E3MC5NibCFUtjoBsGs8v6bns41mauKSTaqpFTB3GZRIAk1rB516MLPtA9nH9mm1KWGvxCoGCoX0RA09oBYfCSXip59pvSauzDdsRVoN3mSTGxrqZH3RXRJzxDWpyNqfqcokzYd0VghxpvcocKjYsL5Xn5hb-21Cr2zxNScv2-R5tqQA4CZXsdHd5sW8NxeMBq9kFTtEyTd5UYESh6FfLN6fIeZvFOt4DtYTSVR1fWU1f1IGc"/>
+<span class="text-sm font-semibold text-on-surface">Nguyễn Văn A</span>
+</div>
+</div>
+</header>
+<!-- Main Content Background Area -->
+<main class="w-full max-w-7xl mx-auto px-6 py-6 flex-1 flex flex-col gap-6">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+<span>Đội của tôi</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">FC Sao Mai</span>
+</nav>
+<!-- Thẻ Header thông tin đội bóng "FC Sao Mai" -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-6 shadow-sm">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/20">
+<div class="flex items-center gap-5">
+<!-- Logo tròn FC Sao Mai -->
+<div class="w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-4xl" data-icon="shield">shield</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-display font-bold text-on-surface tracking-tight">FC Sao Mai</h1>
+<span class="bg-primary/15 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full border border-primary/30">Hoạt động</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-4">
+<span>Ngày tạo: 02/11/2026</span>
+<span>•</span>
+<span>Đội trưởng: <strong class="text-on-surface font-medium">Nguyễn Văn A</strong></span>
+</p>
+<!-- Badges/Tags -->
+<div class="flex items-center gap-2 pt-1">
+<span class="bg-surface-container text-xs px-2.5 py-1 rounded-md text-on-surface font-medium">Nhiệt tình</span>
+<span class="bg-surface-container text-xs px-2.5 py-1 rounded-md text-on-surface font-medium">Rèn luyện</span>
+<span class="bg-surface-container text-xs px-2.5 py-1 rounded-md text-on-surface font-medium">Đã có kinh nghiệm</span>
+</div>
+</div>
+</div>
+<!-- Các nút thao tác mờ -->
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-xs font-medium border border-outline-variant/60 rounded-lg text-on-surface bg-surface-container-lowest shadow-sm" type="button">Quản lý đội</button>
+<button class="px-4 py-2 text-xs font-medium rounded-lg text-on-primary bg-primary shadow-sm" type="button">Tạo kèo đấu</button>
+</div>
+</div>
+<div class="pt-4">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+            Đội bóng phong trào tập hợp anh em đam mê bóng đá sân 7 khu vực Cầu Giấy - Mỹ Đình, giao lưu lành mạnh cuối tuần, đề cao tinh thần cống hiến và tính thể thao trung thực.
+          </p>
+</div>
+<!-- Tabs -->
+<div class="flex gap-8 border-b border-outline-variant/20 mt-6 -mb-6">
+<button class="pb-3 text-sm font-semibold text-primary border-b-2 border-primary">Thành viên (5)</button>
+<button class="pb-3 text-sm font-medium text-on-surface-variant hover:text-on-surface">Lịch sử đội trưởng</button>
+</div>
+</div>
+</main>
+</div>
+<!-- ========================================== -->
+<!-- BACKDROP OVERLAY MỜ TỐI (rgba(0,0,0,0.5)) -->
+<!-- ========================================== -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-40 transition-opacity"></div>
+<!-- ========================================== -->
+<!-- 2. DIALOG MODAL NỔI BẬT Ở GIỮA MÀN HÌNH    -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+<div class="bg-surface-container-lowest w-full max-w-[520px] rounded-lg shadow-2xl border border-gray-100 flex flex-col p-6 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<!-- Header Dialog -->
+<div class="flex items-center justify-between pb-3">
+<h2 class="font-display font-semibold text-lg text-gray-900 tracking-tight">Chuyển quyền đội trưởng</h2>
+<button aria-label="Đóng" class="text-gray-400 hover:text-gray-700 transition-colors p-1 rounded-md inline-flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<div class="space-y-4 pt-1">
+<!-- Khối Alert cảnh báo (Warning Alert) -->
+<div class="bg-amber-50 border border-amber-200 rounded-lg p-3.5 flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-600 text-xl flex-shrink-0 mt-0.5" data-icon="warning">warning</span>
+<p class="text-xs md:text-sm text-amber-800 leading-snug">
+            Người được chọn sẽ trở thành đội trưởng ngay lập tức và không thể từ chối. Bạn sẽ trở thành thành viên thường.
+          </p>
+</div>
+<!-- Khối chọn thành viên -->
+<div>
+<label class="block font-medium text-sm text-gray-700 mb-2.5">
+            Chọn thành viên đang hoạt động
+          </label>
+<div class="space-y-2">
+<!-- Dòng 1: ĐANG ĐƯỢC CHỌN (Active state) -->
+<label class="flex items-center justify-between p-3 rounded-lg border-2 border-primary bg-primary/5 cursor-pointer transition-colors shadow-xs">
+<div class="flex items-center gap-3">
+<!-- Checked Radio Xanh lá -->
+<div class="w-4 h-4 rounded-full border-2 border-primary flex items-center justify-center bg-primary flex-shrink-0">
+<div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+</div>
+<!-- Avatar Trần Hoàng Nam -->
+<img class="w-10 h-10 rounded-full object-cover border border-primary/20 flex-shrink-0" data-alt="Close-up avatar of Tran Hoang Nam, a confident athletic Asian young man with a slight smile and athletic jersey, set in crisp, bright sports photography lighting within a soft neutral studio ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdPTYKP43msS-irG2vsQVPVONMuekRwJ-8ZrvF65a1zGPqAQfeBdKGSq7BufM3CiKF5JU0x7MENeJmLE5UopHFyFm7WGHAr1ptqlGehf8x__nrDj5xXOeAYBWlDZRvJrqVY8CpW3EJVOU2KjN_E5-NX2IgIj9sPyJ7uYDqObKKZvQWbxgCTL2xCm_NYiCs9oe9WusHhKkTxrlMRIVnTWLempwHU3qJ2_Ws06OGOxJ-SpLIONf8Gu1Y8onKMKbDVzKNxsyuX0VOFkc"/>
+<div>
+<div class="text-sm font-medium text-gray-900">Trần Hoàng Nam</div>
+<div class="text-xs text-gray-500">Tham gia 05/11/2026</div>
+</div>
+</div>
+<input checked="" class="hidden" name="selected_captain" type="radio"/>
+</label>
+<!-- Dòng 2: Lê Quốc Bảo -->
+<label class="flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:border-gray-300 bg-white cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<!-- Unchecked Radio -->
+<div class="w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white flex-shrink-0"></div>
+<!-- Avatar Lê Quốc Bảo -->
+<img class="w-10 h-10 rounded-full object-cover border border-gray-200 flex-shrink-0" data-alt="Avatar portrait of Le Quoc Bao, a Vietnamese young adult soccer team midfielder wearing a training athletic jersey in high-key natural sunlight with high clarity and a modern sporty look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfPjnWI-iX9shZlg7WZd5tHnIry5sQ7htmqMAn6AdRBrxvGVEPLBSOEcVmzCZjEY6LfN2zaFIn_6mtyiuZy-NBWl8dVJ7CiW14AYG9hZxYtMoZ5rrA7FTLQrx6sNQHFYJdFQrFOblbmnk-srbA5hZ9MheC02QrHF3v-afxgBdhTOIQsD-BCfYI9wuRnCdWr3KRUaQX_6CsjXKeWhiIchABgKrpntH8t9CRA8E2WbEd3fLDnWhuckbeHNs4Om0KVaniaUkmmEch264"/>
+<div>
+<div class="text-sm font-medium text-gray-900">Lê Quốc Bảo</div>
+<div class="text-xs text-gray-500">Tham gia 06/11/2026</div>
+</div>
+</div>
+<input class="hidden" name="selected_captain" type="radio"/>
+</label>
+<!-- Dòng 3: Phạm Minh Đức -->
+<label class="flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:border-gray-300 bg-white cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<!-- Unchecked Radio -->
+<div class="w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white flex-shrink-0"></div>
+<!-- Avatar Phạm Minh Đức -->
+<img class="w-10 h-10 rounded-full object-cover border border-gray-200 flex-shrink-0" data-alt="Portrait photography of Pham Minh Duc, a friendly Vietnamese male amateur football player with athletic posture and bright studio rim lighting, neutral light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD7TMEvCeXcBi7iiSpomFEVt2FDAUV_6NNowc7dfuDR6ydNbpsjO38V-nPjklEAvOUHgJHLzalVkFTwLNgQliRo8g51kU_gWHkl9kqyfb-4oZo2TC_70WXRDxRXNfl23rOYDONOh3CYEOxsqWJsiNCzCoYm9s-2V7uH2Afw3PDVANRJly4fCqDey9Zn4-pPle5blDcRcNUU3k4tbMbO3sMIWUgEiFKu7bo38udJMWzZqUyew8jjveHQKXt7IALvA-TFUFiYInX88Q"/>
+<div>
+<div class="text-sm font-medium text-gray-900">Phạm Minh Đức</div>
+<div class="text-xs text-gray-500">Tham gia 07/11/2026</div>
+</div>
+</div>
+<input class="hidden" name="selected_captain" type="radio"/>
+</label>
+</div>
+</div>
+<!-- Khối nhập lý do -->
+<div>
+<label class="block font-medium text-sm text-gray-700 mb-1.5" for="transfer_reason">
+            Lý do (không bắt buộc)
+          </label>
+<div class="relative">
+<textarea class="w-full text-sm border border-gray-300 rounded-lg p-3 text-gray-900 placeholder:text-gray-400 focus:ring-1 focus:ring-primary focus:border-primary transition resize-none" id="transfer_reason" placeholder="Ví dụ: Bận công tác dài ngày" rows="3"></textarea>
+</div>
+<div class="flex justify-end pt-1">
+<span class="text-xs text-gray-400 font-mono">0/500</span>
+</div>
+</div>
+</div>
+<!-- Chân Dialog (Dialog Footer) -->
+<div class="flex justify-end items-center gap-3 pt-4 border-t border-gray-100 mt-2">
+<button class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-5 py-2.5 rounded-lg text-sm font-medium transition active:scale-95" type="button">
+          Huỷ
+        </button>
+<button class="bg-primary hover:bg-[#325637] text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-sm whitespace-nowrap transition active:scale-95" type="button">
+          Chuyển quyền
+        </button>
+</div>
+</div>
+</div>
+</body></html>

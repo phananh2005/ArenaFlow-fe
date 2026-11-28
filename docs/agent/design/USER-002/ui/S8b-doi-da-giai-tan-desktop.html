@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — S8b Chi tiết đội ĐÃ GIẢI TÁN</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#656c38",
+            "on-primary-container": "#2f5b36",
+            "error-dim": "#791903",
+            "secondary-dim": "#465846",
+            "primary-fixed": "#bdefbf",
+            "outline-variant": "#acb4a9",
+            "tertiary": "#5c6330",
+            "surface-tint": "#3d6943",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-variant": "#dde5d9",
+            "surface-container-low": "#f1f5ec",
+            "on-primary": "#e9ffe6",
+            "primary": "#3d6943",
+            "surface-container-high": "#e4eae0",
+            "surface-container-highest": "#dde5d9",
+            "on-tertiary": "#f6ffbc",
+            "on-surface": "#2d342c",
+            "on-surface-variant": "#596158",
+            "surface-bright": "#f8faf3",
+            "on-error": "#fff7f6",
+            "primary-container": "#bdefbf",
+            "surface-container": "#eaf0e6",
+            "surface-dim": "#d4dcd1",
+            "surface": "#f8faf3",
+            "on-background": "#2d342c",
+            "secondary": "#526451",
+            "on-primary-fixed": "#1c4825",
+            "on-secondary-fixed": "#324433",
+            "on-secondary-fixed-variant": "#4e604e",
+            "tertiary-dim": "#505725",
+            "on-tertiary-container": "#5a612e",
+            "on-secondary-container": "#445645",
+            "background": "#f8faf3",
+            "secondary-fixed-dim": "#c6dac3",
+            "secondary-fixed": "#d4e8d1",
+            "on-primary-fixed-variant": "#39653f",
+            "inverse-primary": "#c8fbca",
+            "tertiary-container": "#f4fcba",
+            "on-error-container": "#6e1400",
+            "primary-fixed-dim": "#afe1b1",
+            "primary-dim": "#315c38",
+            "secondary-container": "#d4e8d1",
+            "inverse-surface": "#0c0f0b",
+            "inverse-on-surface": "#9b9e98",
+            "tertiary-fixed": "#f4fcba",
+            "tertiary-fixed-dim": "#e5eead",
+            "surface-container-lowest": "#ffffff",
+            "error": "#a73b21",
+            "outline": "#757d73",
+            "error-container": "#fd795a",
+            "on-secondary": "#eaffe7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro", "sans-serif"],
+            "display": ["Be Vietnam Pro", "sans-serif"],
+            "body": ["Be Vietnam Pro", "sans-serif"],
+            "label": ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- 1. Top Navigation Bar -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Brand & Single Active Menu -->
+<div class="flex items-center gap-10">
+<!-- Logo -->
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="font-display font-bold text-xl tracking-tight text-primary">ArenaFlow</span>
+</a>
+<!-- Navigation: CHỈ CÓ ĐÚNG MỘT mục "Đội của tôi" đang được active -->
+<nav class="flex items-center">
+<a class="text-sm font-semibold text-primary border-b-2 border-primary py-5 inline-flex items-center gap-1.5 transition-colors" href="#">
+            Đội của tôi
+          </a>
+</nav>
+</div>
+<!-- User Profile (No notification bell, No sub-role) -->
+<div class="flex items-center gap-3 pl-4">
+<button class="flex items-center gap-3 p-1 rounded-full hover:bg-surface-container transition-colors" type="button">
+<img alt="Nguyễn Văn A" class="w-9 h-9 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="text-sm font-medium text-on-surface">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 max-w-6xl w-full mx-auto px-6 py-6 space-y-5">
+<!-- 2. Breadcrumb -->
+<nav class="flex items-center gap-2 text-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Đội của tôi</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="text-on-surface font-medium">FC Sấm Sét</span>
+</nav>
+<!-- 3. Team Header Card (Trạng thái ĐÃ GIẢI TÁN - muted/grayscale phong cách tinh tế) -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-6 opacity-95 shadow-sm">
+<div class="flex flex-col md:flex-row items-start md:items-center gap-5">
+<!-- Logo đội: Khung tròn grayscale xám -->
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/40 text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined text-4xl text-outline">bolt</span>
+</div>
+<!-- Team Details -->
+<div class="flex-1 min-w-0 space-y-2">
+<!-- Name + Disbanded Status Badge + Level Chip -->
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="text-2xl font-bold text-on-surface/80 tracking-tight">FC Sấm Sét</h1>
+<!-- Badge trạng thái: Đã giải tán -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-highest text-on-surface-variant border border-outline-variant/40">
+              Đã giải tán
+            </span>
+<!-- Chip trình độ: đúng 1 chip "Máu lửa" (màu xám nhạt/muted) -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant/80 border border-outline-variant/30">
+              Máu lửa
+            </span>
+</div>
+<!-- Metadata -->
+<p class="text-xs text-on-surface-variant">
+            Tạo ngày 01/10/2026 <span class="mx-1">•</span> Người giải tán: Phạm Minh Đức
+          </p>
+<!-- 1-line description -->
+<p class="text-sm text-on-surface-variant/90 leading-relaxed truncate max-w-3xl">
+            Đội bóng phong trào khu vực Thanh Xuân, giao lưu cuối tuần.
+          </p>
+</div>
+</div>
+</div>
+<!-- 4. Disband Info Banner -->
+<div class="bg-surface-container rounded-lg border border-outline-variant/30 px-4 py-3 flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-on-surface-variant text-xl flex-shrink-0">info</span>
+<p class="text-on-surface leading-snug">
+        Đội đã giải tán ngày 09/11/2026. Lý do: Đội trưởng giải tán đội
+      </p>
+</div>
+<!-- 5. Khu vực Tabs -->
+<div class="border-b border-outline-variant/30 flex items-center gap-8">
+<button class="pb-3 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" type="button">
+        Thành viên (0)
+      </button>
+<button class="pb-3 text-sm font-semibold text-primary border-b-2 border-primary -mb-px flex items-center gap-2" type="button">
+<span>Lịch sử đội trưởng</span>
+</button>
+</div>
+<!-- 6. Thẻ nội dung chính (White Card bo góc 8px): "Lịch sử đội trưởng" -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-6 md:p-8 shadow-sm">
+<!-- Section Header -->
+<div class="mb-6 pb-4 border-b border-outline-variant/20 flex items-center justify-between">
+<div>
+<h2 class="text-base font-semibold text-on-surface">Nhật ký chuyển giao ban cán sự</h2>
+<p class="text-xs text-on-surface-variant mt-0.5">Lưu trữ toàn bộ các mốc thay đổi vị trí Đội trưởng từ thời điểm thành lập</p>
+</div>
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-md">
+          3 bản ghi
+        </span>
+</div>
+<!-- Vertical Timeline -->
+<div class="relative pl-6 sm:pl-8 border-l-2 border-outline-variant/30 space-y-8 ml-3 py-1">
+<!-- Timeline Item 1 (Mới nhất) -->
+<div class="relative group">
+<!-- Marker Node -->
+<div class="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container-lowest flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></div>
+</div>
+<!-- Content Box -->
+<div class="bg-surface-container-low/60 rounded-lg p-4 border border-outline-variant/25 transition-all hover:bg-surface-container-low">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+<div class="flex items-center gap-2 font-medium text-sm text-on-surface">
+<span class="text-on-surface font-semibold">Lê Quốc Bảo</span>
+<span class="material-symbols-outlined text-sm text-primary">arrow_forward</span>
+<span class="text-primary font-semibold">Phạm Minh Đức</span>
+</div>
+<time class="text-xs text-on-surface-variant tabular-nums flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                20/10/2026 14:00
+              </time>
+</div>
+<div class="text-xs text-on-surface-variant flex items-start gap-1.5 pt-1">
+<span class="font-medium text-on-surface">Lý do:</span>
+<span>Bận công tác dài ngày</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative group">
+<!-- Marker Node -->
+<div class="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-secondary ring-4 ring-surface-container-lowest flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></div>
+</div>
+<!-- Content Box -->
+<div class="bg-surface-container-low/40 rounded-lg p-4 border border-outline-variant/20 transition-all hover:bg-surface-container-low">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+<div class="flex items-center gap-2 font-medium text-sm text-on-surface">
+<span class="text-on-surface-variant italic font-normal">Người dùng đã xóa</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">arrow_forward</span>
+<span class="text-on-surface font-semibold">Lê Quốc Bảo</span>
+</div>
+<time class="text-xs text-on-surface-variant tabular-nums flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                10/10/2026 09:30
+              </time>
+</div>
+<div class="text-xs text-on-surface-variant flex items-start gap-1.5 pt-1">
+<span class="font-medium text-on-surface">Lý do:</span>
+<span class="text-outline">—</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3 (Ban đầu) -->
+<div class="relative group">
+<!-- Marker Node -->
+<div class="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-outline ring-4 ring-surface-container-lowest flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></div>
+</div>
+<!-- Content Box -->
+<div class="bg-surface-container-low/30 rounded-lg p-4 border border-outline-variant/20 transition-all hover:bg-surface-container-low">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+<div class="flex items-center gap-2 text-sm text-on-surface">
+<span class="font-semibold text-on-surface">Tạo đội</span>
+<span class="text-outline-variant">—</span>
+<span>
+<span class="text-on-surface-variant italic font-normal">Người dùng đã xóa</span> trở thành đội trưởng
+                </span>
+</div>
+<time class="text-xs text-on-surface-variant tabular-nums flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                01/10/2026 08:00
+              </time>
+</div>
+<div class="text-xs text-on-surface-variant flex items-start gap-1.5 pt-1">
+<span class="font-medium text-on-surface">Ghi chú:</span>
+<span>Khởi tạo đội bóng</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 7. Phân trang nhỏ ở dưới cùng của thẻ -->
+<div class="mt-8 pt-5 border-t border-outline-variant/20 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Hiển thị 1 - 3 trên tổng số 3</span>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1.5 rounded border border-outline-variant/30 text-on-surface-variant/40 cursor-not-allowed bg-surface-container-low" disabled="" type="button">
+            Trước
+          </button>
+<button class="w-7 h-7 rounded bg-primary text-on-primary font-medium flex items-center justify-center shadow-xs" type="button">
+            1
+          </button>
+<button class="px-2.5 py-1.5 rounded border border-outline-variant/30 text-on-surface-variant/40 cursor-not-allowed bg-surface-container-low" disabled="" type="button">
+            Sau
+          </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

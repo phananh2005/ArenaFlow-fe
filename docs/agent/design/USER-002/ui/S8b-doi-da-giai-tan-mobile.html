@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ArenaFlow — S8b Chi tiết đội ĐÃ GIẢI TÁN (mobile web 390px)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: '#3d6943',
+            'brand-dark': '#2e5134',
+            'bg-page': '#f8faf3',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="bg-[#f8faf3] min-h-screen flex justify-center py-6 px-3">
+  <!-- Mobile Container (390px) -->
+  <main class="w-[390px] bg-[#f8faf3] shadow-lg rounded-2xl overflow-hidden border border-gray-200/60 pb-8 flex flex-col">
+    
+    <!-- 1. Header thu gọn nền trắng -->
+    <header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+      <!-- Nút hamburger menu bên trái -->
+      <button type="button" aria-label="Menu" class="w-9 h-9 flex items-center justify-center text-gray-700 hover:bg-gray-50 rounded-lg active:scale-95 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Logo ArenaFlow ở giữa -->
+      <div class="flex items-center gap-1.5">
+        <svg class="w-6 h-6 text-emerald-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 3a9 9 0 0 0-9 9m18 0a9 9 0 0 0-9-9m0 18a9 9 0 0 0 9-9m-18 0a9 9 0 0 0 9 9" />
+          <path d="m8.5 8.5 7 7m0-7-7 7" stroke-width="1.5" />
+        </svg>
+        <span class="font-bold text-lg text-emerald-900 tracking-tight">ArenaFlow</span>
+      </div>
+
+      <!-- Avatar tròn bên phải -->
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-emerald-100 flex items-center justify-center bg-gray-100">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" alt="Avatar" class="w-full h-full object-cover">
+      </div>
+    </header>
+
+    <!-- 2. Breadcrumb nhỏ -->
+    <nav class="px-4 pt-3 pb-2 text-[13px] text-gray-500 font-medium">
+      <span>Đội của tôi</span>
+      <span class="mx-1 text-gray-400">›</span>
+      <span class="text-gray-700 font-semibold">FC Sấm Sét</span>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <div class="px-4 space-y-3.5 mt-1">
+
+      <!-- 3. Thẻ header đội (tông xám, mờ, căn giữa) KHÔNG có nút thao tác -->
+      <section class="bg-white/80 rounded-[8px] border border-gray-200/80 p-4 text-center shadow-sm">
+        <!-- Logo tròn grayscale (icon tia sét) -->
+        <div class="w-16 h-16 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center mx-auto mb-2.5 text-gray-400">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+
+        <!-- Tên đội + badge Đã giải tán -->
+        <div class="flex items-center justify-center gap-2 mb-1.5">
+          <h1 class="text-lg font-bold text-gray-500 tracking-tight">FC Sấm Sét</h1>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-gray-100 text-gray-500 border border-gray-200">
+            Đã giải tán
+          </span>
+        </div>
+
+        <!-- Thông tin phụ -->
+        <p class="text-[12px] text-gray-400 mb-1">
+          Tạo ngày 01/10/2026 · Người giải tán: <span class="font-medium text-gray-500">Phạm Minh Đức</span>
+        </p>
+
+        <!-- Chip Máu lửa -->
+        <div class="flex justify-center mt-2">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-500">
+            Máu lửa
+          </span>
+        </div>
+      </section>
+
+      <!-- 4. Banner thông tin trung tính (icon info) -->
+      <aside class="bg-[#edf2ea] border border-[#dce5d7] rounded-[8px] p-3 text-[12.5px] text-[#3d5a42] flex items-start gap-2.5 shadow-sm">
+        <svg class="w-4 h-4 text-[#3d6943] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="leading-relaxed">
+          Đội đã giải tán ngày 09/11/2026. Lý do: Đội trưởng giải tán đội
+        </span>
+      </aside>
+
+      <!-- 5. Tabs chia đôi: Thành viên (0) và Lịch sử đội trưởng (đang chọn) -->
+      <div class="grid grid-cols-2 bg-white rounded-[8px] p-1 border border-gray-200/80 text-[13px] font-semibold">
+        <button type="button" class="py-2 text-center text-gray-500 hover:text-gray-700 transition rounded-[6px]">
+          Thành viên (0)
+        </button>
+        <button type="button" class="py-2 text-center bg-[#3d6943] text-white rounded-[6px] shadow-sm">
+          Lịch sử đội trưởng
+        </button>
+      </div>
+
+      <!-- 6. Thẻ Timeline dọc: Nhật ký chuyển giao -->
+      <section class="bg-white rounded-[8px] border border-gray-200/80 p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
+          <h2 class="text-[14px] font-bold text-gray-800">Nhật ký ban cán sự</h2>
+          <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-500">3 bản ghi</span>
+        </div>
+
+        <!-- Timeline dọc, mới nhất ở trên -->
+        <div class="relative pl-6 space-y-5 before:content-[''] before:absolute before:left-[9px] before:top-2 before:bottom-3 before:w-[2px] before:bg-gray-200">
+          
+          <!-- Item 1: Lê Quốc Bảo → Phạm Minh Đức -->
+          <div class="relative">
+            <!-- Node dot -->
+            <span class="absolute -left-[20px] top-1.5 w-3 h-3 rounded-full bg-[#3d6943] ring-4 ring-[#f8faf3]"></span>
+            
+            <div class="flex flex-col gap-0.5">
+              <div class="text-[13px] font-bold text-gray-800 flex items-center flex-wrap gap-1">
+                <span>Lê Quốc Bảo</span>
+                <span class="text-gray-400 font-normal">→</span>
+                <span class="text-[#3d6943]">Phạm Minh Đức</span>
+              </div>
+              <div class="text-[11.5px] text-gray-400 font-medium">
+                20/10/2026 14:00
+              </div>
+              <div class="mt-1 text-[12px] text-gray-600 bg-gray-50/80 p-2 rounded border border-gray-100">
+                <span class="text-gray-500">Lý do:</span> Bận công tác dài ngày
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Người dùng đã xóa → Lê Quốc Bảo -->
+          <div class="relative">
+            <!-- Node dot -->
+            <span class="absolute -left-[20px] top-1.5 w-3 h-3 rounded-full bg-[#3d6943] ring-4 ring-[#f8faf3]"></span>
+            
+            <div class="flex flex-col gap-0.5">
+              <div class="text-[13px] font-bold text-gray-800 flex items-center flex-wrap gap-1">
+                <span class="italic font-normal text-gray-400">Người dùng đã xóa</span>
+                <span class="text-gray-400 font-normal">→</span>
+                <span class="text-[#3d6943]">Lê Quốc Bảo</span>
+              </div>
+              <div class="text-[11.5px] text-gray-400 font-medium">
+                10/10/2026 09:30
+              </div>
+              <div class="mt-1 text-[12px] text-gray-600 bg-gray-50/80 p-2 rounded border border-gray-100">
+                <span class="text-gray-500">Lý do:</span> —
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Tạo đội — Người dùng đã xóa trở thành đội trưởng -->
+          <div class="relative">
+            <!-- Node dot -->
+            <span class="absolute -left-[20px] top-1.5 w-3 h-3 rounded-full bg-gray-400 ring-4 ring-[#f8faf3]"></span>
+            
+            <div class="flex flex-col gap-0.5">
+              <div class="text-[13px] font-bold text-gray-800 flex items-center flex-wrap gap-1">
+                <span>Tạo đội</span>
+                <span class="text-gray-400 font-normal">—</span>
+                <span class="italic font-normal text-gray-400">Người dùng đã xóa</span>
+                <span class="font-normal text-gray-600">trở thành đội trưởng</span>
+              </div>
+              <div class="text-[11.5px] text-gray-400 font-medium">
+                01/10/2026 08:00
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 7. Phân trang nhỏ Trước / 1 / Sau -->
+        <div class="mt-6 pt-3 border-t border-gray-100 flex items-center justify-end gap-1.5 text-[12px]">
+          <button type="button" disabled class="px-2.5 py-1 rounded border border-gray-200 text-gray-300 bg-gray-50/50 cursor-not-allowed">
+            Trước
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded bg-[#3d6943] text-white font-semibold shadow-xs">
+            1
+          </button>
+          <button type="button" disabled class="px-2.5 py-1 rounded border border-gray-200 text-gray-300 bg-gray-50/50 cursor-not-allowed">
+            Sau
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

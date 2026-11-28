@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Đăng nhập - ArenaFlow</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#5c6330",
+            "on-surface-variant": "#596158",
+            "secondary-fixed": "#d4e8d1",
+            "surface-variant": "#dde5d9",
+            "on-error-container": "#6e1400",
+            "secondary-dim": "#465846",
+            "tertiary-fixed-dim": "#e5eead",
+            "inverse-surface": "#0c0f0b",
+            "on-secondary-fixed": "#324433",
+            "error-dim": "#791903",
+            "on-surface": "#2d342c",
+            "on-secondary": "#eaffe7",
+            "on-primary-fixed": "#1c4825",
+            "tertiary-dim": "#505725",
+            "error": "#a73b21",
+            "primary-container": "#bdefbf",
+            "on-primary-fixed-variant": "#39653f",
+            "on-error": "#fff7f6",
+            "inverse-on-surface": "#9b9e98",
+            "primary": "#3d6943",
+            "on-tertiary-fixed-variant": "#656c38",
+            "secondary-container": "#d4e8d1",
+            "primary-dim": "#315c38",
+            "surface-container": "#eaf0e6",
+            "primary-fixed": "#bdefbf",
+            "tertiary-fixed": "#f4fcba",
+            "on-background": "#2d342c",
+            "surface-dim": "#d4dcd1",
+            "surface": "#f8faf3",
+            "primary-fixed-dim": "#afe1b1",
+            "outline": "#757d73",
+            "on-primary-container": "#2f5b36",
+            "background": "#f8faf3",
+            "on-primary": "#e9ffe6",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#526451",
+            "on-tertiary": "#f6ffbc",
+            "surface-container-low": "#f1f5ec",
+            "secondary-fixed-dim": "#c6dac3",
+            "tertiary-container": "#f4fcba",
+            "on-secondary-fixed-variant": "#4e604e",
+            "surface-container-highest": "#dde5d9",
+            "on-tertiary-fixed": "#484f1e",
+            "surface-tint": "#3d6943",
+            "on-secondary-container": "#445645",
+            "surface-container-high": "#e4eae0",
+            "inverse-primary": "#c8fbca",
+            "on-tertiary-container": "#5a612e",
+            "surface-bright": "#f8faf3",
+            "outline-variant": "#acb4a9",
+            "error-container": "#fd795a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro"],
+            "display": ["Be Vietnam Pro"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Be Vietnam Pro"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen bg-surface-container flex justify-center items-start selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Container (Fixed width 390px) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-container-lowest flex flex-col shadow-xl overflow-hidden relative">
+<!-- Top Banner / Header Section (Deep Green #14532D) -->
+<header class="relative bg-[#14532D] text-white pt-10 pb-8 px-6 overflow-hidden flex-shrink-0">
+<!-- Subtle Soccer Pitch Grid Markings / Pattern SVG -->
+<svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none stroke-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line stroke-dasharray="4 4" stroke-width="1.5" x1="0" x2="390" y1="20" y2="20"></line>
+<line stroke-width="1.5" x1="0" x2="390" y1="120" y2="120"></line>
+<circle cx="195" cy="120" r="54" stroke-width="1.5"></circle>
+<circle cx="195" cy="120" fill="white" r="3"></circle>
+<line stroke-width="1.5" x1="195" x2="195" y1="0" y2="260"></line>
+<rect height="48" stroke-width="1.5" width="120" x="135" y="-1"></rect>
+<path d="M 165 47 A 30 30 0 0 0 225 47" stroke-width="1.5"></path>
+<line stroke-dasharray="6 6" stroke-width="1.5" x1="0" x2="390" y1="220" y2="220"></line>
+</svg>
+<!-- Content Container -->
+<div class="relative z-10 flex flex-col">
+<!-- Logo -->
+<div class="flex items-center gap-2.5 mb-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shadow-inner">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="font-display font-bold text-2xl tracking-tight text-white">ArenaFlow</span>
+</div>
+<!-- Headline & Subtitle -->
+<h1 class="font-headline font-bold text-[26px] leading-tight text-white mb-3">
+          Tạo kèo, ghép đội, đá bóng dễ dàng.
+        </h1>
+<p class="font-body text-sm text-white/80 leading-relaxed">
+          Tìm đối thủ ngang trình độ, tuyển thêm người chơi và xây dựng uy tín cho đội của bạn.
+        </p>
+</div>
+</header>
+<!-- Lower Section on White / Light Surface -->
+<section class="flex-1 bg-surface-container-lowest px-6 pt-7 pb-8 flex flex-col">
+<!-- Section Title & Subtitle -->
+<div class="mb-5">
+<h2 class="font-headline font-bold text-xl text-slate-900 mb-1">
+          Đăng nhập hoặc đăng ký
+        </h2>
+<p class="font-body text-sm text-slate-500">
+          Tài khoản mới sẽ được tạo tự động ở lần đăng nhập đầu tiên
+        </p>
+</div>
+<!-- Error Alert -->
+<div class="mb-5 bg-red-50 text-red-700 border border-red-200 rounded-lg p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-red-600 text-xl flex-shrink-0 mt-0.5">error</span>
+<span class="font-body text-sm leading-snug">
+          Đăng ký thất bại, vui lòng thử lại
+        </span>
+</div>
+<!-- Button Stack -->
+<div class="flex flex-col gap-3">
+<!-- Button 1: Tiếp tục với Google (Loading state, Disabled) -->
+<button class="w-full rounded-lg py-3 px-4 border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed flex items-center justify-between font-label text-sm font-medium transition-all" disabled="" type="button">
+<div class="flex items-center gap-3">
+<!-- Google G Logo SVG -->
+<svg class="w-5 h-5 flex-shrink-0 grayscale opacity-60" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Tiếp tục với Google</span>
+</div>
+<!-- Spinning Spinner -->
+<svg class="animate-spin h-5 w-5 text-slate-400" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</button>
+<!-- Button 2: Tiếp tục với Facebook (Disabled) -->
+<button class="w-full rounded-lg py-3 px-4 border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed flex items-center justify-start gap-3 font-label text-sm font-medium transition-all" disabled="" type="button">
+<!-- Facebook 'f' Logo SVG -->
+<svg class="w-5 h-5 flex-shrink-0 grayscale opacity-60 fill-current" viewbox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+<span>Tiếp tục với Facebook</span>
+</button>
+<!-- Button 3: Tiếp tục bằng số điện thoại (Disabled) -->
+<button class="w-full rounded-lg py-3 px-4 border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed flex items-center justify-start gap-3 font-label text-sm font-medium transition-all" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px] text-slate-400 flex-shrink-0">call</span>
+<span>Tiếp tục bằng số điện thoại</span>
+</button>
+</div>
+</section>
+</main>
+</body></html>
