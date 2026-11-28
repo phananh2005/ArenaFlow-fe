@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — S3 Hồ sơ cá nhân (mobile web 390px)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              dark: '#2c4e32',
+              light: '#eaf2ec',
+            },
+            arenaBg: '#f8faf3',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f1f3ee;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 390px;
+      min-height: 100vh;
+      background-color: #f8faf3;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+<meta content="mobile_stack" name="shell-type"/><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#e9ebe6] flex justify-center items-start min-h-screen sm:py-8">
+<!-- Mobile container 390px -->
+<main class="mobile-frame bg-[#f8faf3] text-neutral-800"><div class="flex flex-col w-full pb-12 font-sans text-on-background bg-background">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Menu" class="p-1 rounded-full text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-dark flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-base">sports_soccer</span>
+</div>
+<span class="font-bold text-base tracking-tight text-primary-dark">ArenaFlow</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<button aria-label="Notifications" class="relative p-2 rounded-full text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-error-container text-[10px] font-bold text-on-error-container">4</span>
+</button>
+<span class="absolute top-2 right-2 flex h-3 w-3 -z-10 animate-ping rounded-full bg-error-container/60"></span>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container ring-2 ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="Avatar chân dung của nam cầu thủ trẻ với nụ cười thân thiện, tóc ngắn gọn gàng, mặc áo thể thao xanh lá nhạt, phong cách nhiếp ảnh chân dung chuyên nghiệp ánh sáng tự nhiên ấm áp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdIa_vyruNvVfihR4L5_sbGwqmXn5GaUB23o2W7gdTeHJzgPLWMRzTm31tMoABeX4FoM0mwpwTJpCoHNAMpLZ-DeZ9sXtxS49DM1yjHlsffv8ACGv-wx-LC0YZ8h_KTQp9beIRZtgs4FgBUuTN_nPghmAQ_GujuOilOddp6k-aAfnnsupoG4FQsIgefDAn24KY2m7-H5GuSgJz0bxsQIjF0W1vd9gHuFDrqPp3bpnESUTVvVtFbXQzIIXcHJUAmA"/>
+</div>
+</div>
+</header>
+<!-- Floating Toast Notification -->
+<div class="px-3 mt-3 z-20">
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-lg shadow-md p-3.5 flex gap-3 items-start transition-all duration-300 transform translate-y-0">
+<!-- Left thick accent bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<!-- Icon -->
+<div class="flex-shrink-0 w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary ml-1">
+<span class="material-symbols-outlined text-lg">sports_soccer</span>
+</div>
+<!-- Content -->
+<div class="flex-1 min-w-0 pr-4">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-primary uppercase tracking-wider">Thông báo mới</span>
+<span class="text-[11px] text-on-surface-variant">15:00 · 16/11</span>
+</div>
+<h4 class="text-xs font-bold text-on-surface mt-0.5 mb-1">Yêu cầu ghép kèo được chấp nhận</h4>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Đội FC Sấm Sét đã chấp nhận yêu cầu ghép kèo 18:00 20/11 tại Sân bóng Phú Thọ.</p>
+<div class="mt-2 flex items-center gap-3">
+<button class="text-xs font-semibold text-primary hover:text-primary-dark transition-colors">Xem chi tiết</button>
+</div>
+</div>
+<!-- Close Button -->
+<button aria-label="Đóng thông báo" class="absolute top-2.5 right-2.5 text-outline hover:text-on-surface transition-colors p-1" onclick="this.closest('.relative.overflow-hidden').remove()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Profile Content Section -->
+<div class="px-4 pt-6 flex flex-col items-center">
+<!-- Profile Header Card -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<!-- Decorative background accent blob -->
+<div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary-light/50 blur-xl pointer-events-none"></div>
+<!-- Avatar -->
+<div class="relative mb-4">
+<div class="w-24 h-24 rounded-full overflow-hidden ring-4 ring-primary/10 shadow-md">
+<img class="w-full h-full object-cover" data-alt="Ảnh chân dung cận cảnh Nguyễn Văn A mặc áo thi đấu màu xanh lá đậm của đội bóng, khuôn mặt tự tin, bối cảnh sân cỏ ngoài trời mờ ảo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWYhaSoeVfGco5JarQcUrwTKvg_QTpaWhvduK1WaCGMs4YROiM0bMWaiobfZ6fm2LS9dhIMuOS_ljOC-uv5-04en5MJiu8T9Y97_lQZosShmOGEOJD_8Jxvb7P-N6lXmiQdV9iA3-nc1wkKclcbGN6Jeg-EdrmCssAnzxJmLZmUiJlcxVjU0vvvXVvtSbDFsUQu1DIevnY7lgGkVemWiyPcN7rC1Pa9RO6z8FWCyTk5w0uIxE1OELhwhylpdn10w"/>
+</div>
+<div class="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center ring-2 ring-surface-container-lowest shadow-sm">
+<span class="material-symbols-outlined text-sm">verified</span>
+</div>
+</div>
+<!-- Name -->
+<h1 class="text-xl font-bold text-on-surface tracking-tight">Nguyễn Văn A</h1>
+<p class="text-xs text-on-surface-variant mt-0.5">Thành viên từ Tháng 3/2024</p>
+<!-- Action Button -->
+<button class="mt-4 px-5 py-2 rounded-xl text-xs font-semibold text-primary border border-outline-variant hover:bg-surface-container transition-all shadow-sm">
+        Sửa hồ sơ
+      </button>
+</div>
+<!-- Profile Details Card -->
+<div class="w-full mt-4 bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-4">
+<h3 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3">Thông tin chi tiết</h3>
+<!-- Bio -->
+<div class="flex flex-col gap-1 pb-3 border-b border-surface-variant/40">
+<span class="text-xs text-outline font-medium">TIỂU SỬ</span>
+<p class="text-sm font-medium text-on-surface">Đá sân 7 tối thứ 4, thích đá cánh.</p>
+</div>
+<!-- Preferred Position -->
+<div class="flex flex-col gap-1 pb-3 border-b border-surface-variant/40">
+<span class="text-xs text-outline font-medium">VỊ TRÍ CHƠI ƯA THÍCH</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-lg text-xs font-semibold">
+            Tiền vệ
+          </span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs">
+            Tiền đạo cánh
+          </span>
+</div>
+</div>
+<!-- Birthdate -->
+<div class="flex flex-col gap-1">
+<span class="text-xs text-outline font-medium">NGÀY SINH</span>
+<p class="text-sm font-medium text-on-surface">15/05/1995</p>
+</div>
+</div>
+<!-- Quick Stats Banner -->
+<div class="w-full mt-4 grid grid-cols-3 gap-3">
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl text-center shadow-sm">
+<span class="block text-lg font-bold text-primary">28</span>
+<span class="block text-[11px] text-on-surface-variant mt-0.5">Trận đấu</span>
+</div>
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl text-center shadow-sm">
+<span class="block text-lg font-bold text-primary">14</span>
+<span class="block text-[11px] text-on-surface-variant mt-0.5">Bàn thắng</span>
+</div>
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl text-center shadow-sm">
+<span class="block text-lg font-bold text-primary">9.4</span>
+<span class="block text-[11px] text-on-surface-variant mt-0.5">Điểm Fair-play</span>
+</div>
+</div>
+</div>
+</div></main>
+</body></html>

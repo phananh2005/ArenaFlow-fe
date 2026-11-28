@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — NOTIFICATION-001 S2 Trạng thái danh sách thông báo (desktop)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3d6943',
+              hover: '#315536',
+              light: '#eaf3eb',
+              surface: '#f0f6f1',
+            },
+            appbg: '#f8faf3',
+            error: {
+              DEFAULT: '#a73b21',
+              hover: '#8c2f19',
+              light: '#fdf2f0',
+              surface: '#faeae6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1f2937;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #f1f4ea 25%, #e2e8da 50%, #f1f4ea 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s infinite;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="min-h-screen bg-[#f8faf3] text-[#1e293b]">
+<!-- Top App Bar -->
+<header class="w-full bg-white border-b border-[#e2e8f0] sticky top-0 z-30">
+<div class="max-w-[1280px] mx-auto h-16 px-8 flex items-center justify-between">
+<!-- Left: Logo & Navigation -->
+<div class="flex items-center space-x-8">
+<div class="flex items-center space-x-3 cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-[#3d6943] flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined fill-icon text-[24px]">sports_soccer</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-[#111827]">ArenaFlow</span>
+</div>
+<nav class="flex items-center space-x-2">
+<a class="flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-medium text-[#4b5563] hover:text-[#111827] hover:bg-[#f3f4f6] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span>Đội của tôi</span>
+</a>
+</nav>
+</div>
+<!-- Right: Actions & User Info -->
+<div class="flex items-center space-x-5">
+<!-- Notification button (active, light green circle, NO badge) -->
+<button class="w-10 h-10 rounded-full bg-[#eaf3eb] text-[#3d6943] flex items-center justify-center transition-transform hover:scale-105" title="Thông báo">
+<span class="material-symbols-outlined fill-icon text-[22px]">notifications</span>
+</button>
+<!-- User Profile Pill -->
+<div class="flex items-center space-x-3 pl-2 py-1 pr-1 rounded-full hover:bg-gray-50 cursor-pointer transition-colors">
+<img alt="Nguyễn Văn A" class="w-9 h-9 rounded-full object-cover border border-[#e5e7eb] shadow-xs" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="text-sm font-semibold text-[#1f2937]">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-[18px] text-gray-500">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content: State Sheet Container -->
+<main class="max-w-[1280px] mx-auto px-8 py-8"><div class="flex flex-col w-full">
+<!-- Top Section / Intro banner info -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="text-xs font-semibold tracking-widest uppercase text-outline mb-1">Hệ thống Trạng thái</div>
+<h1 class="text-3xl font-bold tracking-tight text-on-surface">Trạng thái danh sách thông báo</h1>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-xl">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<span class="text-sm text-on-surface-variant font-medium">Hiển thị toàn diện 4 trạng thái giao diện thông báo hệ thống ArenaFlow.</span>
+</div>
+</div>
+<!-- 2x2 Bento Grid for the 4 panels -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<!-- PANEL 1: ĐANG TẢI (Loading State) -->
+<div class="flex flex-col">
+<div class="text-xs font-bold tracking-wider uppercase text-outline mb-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span>1. Đang tải (Loading State)</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col h-[420px] transition-all hover:shadow-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high mb-6">
+<h3 class="text-lg font-bold text-on-surface">Thông báo</h3>
+<button class="text-xs font-semibold text-outline bg-surface-container-high px-3 py-1.5 rounded-lg opacity-60 cursor-not-allowed" disabled="">
+            Đánh dấu tất cả đã đọc
+          </button>
+</div>
+<!-- Tabs -->
+<div class="flex items-center gap-6 mb-6">
+<button class="text-sm font-bold text-primary pb-2 border-b-2 border-primary">Tất cả</button>
+<button class="text-sm font-medium text-outline pb-2">Chưa đọc</button>
+</div>
+<!-- Skeleton Body -->
+<div class="flex flex-col space-y-4 flex-1 justify-center">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full skeleton-shimmer shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 skeleton-shimmer rounded w-3/4"></div>
+<div class="h-3 skeleton-shimmer rounded w-1/2"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full skeleton-shimmer shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 skeleton-shimmer rounded w-full"></div>
+<div class="h-3 skeleton-shimmer rounded w-2/3"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full skeleton-shimmer shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 skeleton-shimmer rounded w-5/6"></div>
+<div class="h-3 skeleton-shimmer rounded w-1/3"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-full skeleton-shimmer shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 skeleton-shimmer rounded w-2/3"></div>
+<div class="h-3 skeleton-shimmer rounded w-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PANEL 2: CHƯA CÓ THÔNG BÁO (Empty State) -->
+<div class="flex flex-col">
+<div class="text-xs font-bold tracking-wider uppercase text-outline mb-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span>2. Chưa có thông báo (Empty State)</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col h-[420px] transition-all hover:shadow-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high mb-6">
+<h3 class="text-lg font-bold text-on-surface">Thông báo</h3>
+<button class="text-xs font-semibold text-outline bg-surface-container-high px-3 py-1.5 rounded-lg opacity-60 cursor-not-allowed" disabled="">
+            Đánh dấu tất cả đã đọc
+          </button>
+</div>
+<!-- Tabs -->
+<div class="flex items-center gap-6 mb-6">
+<button class="text-sm font-bold text-primary pb-2 border-b-2 border-primary">Tất cả</button>
+<button class="text-sm font-medium text-outline pb-2">Chưa đọc</button>
+</div>
+<!-- Empty Body -->
+<div class="flex flex-col items-center justify-center flex-1 text-center px-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-4">
+<span class="material-symbols-outlined text-[32px]">notifications_off</span>
+</div>
+<h4 class="text-base font-bold text-on-surface mb-1">Chưa có thông báo nào</h4>
+<p class="text-sm text-outline max-w-[260px]">Thông báo trong 30 ngày gần nhất sẽ hiển thị ở đây.</p>
+</div>
+</div>
+</div>
+<!-- PANEL 3: ĐÃ ĐỌC HẾT - TAB CHƯA ĐỌC (All Read in Unread Tab) -->
+<div class="flex flex-col">
+<div class="text-xs font-bold tracking-wider uppercase text-outline mb-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>3. Đã đọc hết - Tab Chưa đọc (Zero Unread)</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col h-[420px] transition-all hover:shadow-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high mb-6">
+<h3 class="text-lg font-bold text-on-surface">Thông báo</h3>
+<button class="text-xs font-semibold text-primary bg-primary-container/40 hover:bg-primary-container px-3 py-1.5 rounded-lg transition-colors">
+            Đánh dấu tất cả đã đọc
+          </button>
+</div>
+<!-- Tabs -->
+<div class="flex items-center gap-6 mb-6">
+<button class="text-sm font-medium text-outline pb-2">Tất cả</button>
+<button class="text-sm font-bold text-primary pb-2 border-b-2 border-primary">Chưa đọc</button>
+</div>
+<!-- Zero Unread Body -->
+<div class="flex flex-col items-center justify-center flex-1 text-center px-4">
+<div class="w-16 h-16 rounded-full bg-primary-container/60 flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined fill-icon text-[32px]">done_all</span>
+</div>
+<h4 class="text-base font-bold text-on-surface mb-2">Bạn đã đọc hết thông báo</h4>
+<a class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dim transition-colors group" href="#">
+<span>Xem tất cả thông báo</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- PANEL 4: LỖI TẢI (Error State) -->
+<div class="flex flex-col">
+<div class="text-xs font-bold tracking-wider uppercase text-outline mb-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>4. Lỗi tải (Error State)</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col h-[420px] transition-all hover:shadow-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high mb-6">
+<h3 class="text-lg font-bold text-on-surface">Thông báo</h3>
+<button class="text-xs font-semibold text-outline bg-surface-container-high px-3 py-1.5 rounded-lg opacity-60 cursor-not-allowed" disabled="">
+            Đánh dấu tất cả đã đọc
+          </button>
+</div>
+<!-- Tabs -->
+<div class="flex items-center gap-6 mb-6">
+<button class="text-sm font-bold text-primary pb-2 border-b-2 border-primary">Tất cả</button>
+<button class="text-sm font-medium text-outline pb-2">Chưa đọc</button>
+</div>
+<!-- Error Body -->
+<div class="flex flex-col items-center justify-center flex-1 text-center px-4">
+<div class="w-16 h-16 rounded-full bg-error-light flex items-center justify-center text-error mb-4">
+<span class="material-symbols-outlined text-[32px]">error</span>
+</div>
+<h4 class="text-base font-bold text-on-surface mb-1">Không tải được thông báo</h4>
+<p class="text-sm text-outline mb-6 max-w-[260px]">Đã có lỗi xảy ra. Vui lòng thử lại.</p>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-on-primary text-sm font-semibold shadow-sm transition-transform active:scale-95" onclick="alert('Đang thử kết nối lại...')">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Thử lại</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- System Interaction Rules Footer Box -->
+<div class="bg-surface-container rounded-2xl p-8 mb-12 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">rule</span>
+</div>
+<h3 class="text-base font-bold text-on-surface">Quy tắc tương tác hệ thống thông báo ArenaFlow</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-on-surface-variant">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-xs">
+<span class="font-bold text-on-surface block mb-1">1. Trạng thái tải (Loading)</span>
+        Hiển thị tối đa 4 dòng skeleton khi hệ thống đang fetch dữ liệu API, vô hiệu hóa toàn bộ nút thao tác trên header.
+      </div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-xs">
+<span class="font-bold text-on-surface block mb-1">2. Khoảng thời gian 30 ngày</span>
+        Các thông báo quá hạn hoặc danh sách trống sẽ kích hoạt Empty State kèm hướng dẫn rõ ràng cho người dùng.
+      </div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-xs">
+<span class="font-bold text-on-surface block mb-1">3. Xử lý lỗi &amp; Phục hồi</span>
+        Khi gặp sự cố kết nối, hiển thị icon cảnh báo và nút bấm 'Thử lại' màu chủ đạo để tái kích hoạt yêu cầu mạng.
+      </div>
+</div>
+</div>
+<!-- Standard ArenaFlow Footer -->
+<footer class="w-full border-t border-surface-container-high py-8 flex flex-col md:flex-row items-center justify-between text-xs text-outline gap-4">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined fill-icon text-[14px]">sports_soccer</span>
+</div>
+<span class="font-semibold text-on-surface">ArenaFlow Sports Management Platform</span>
+</div>
+<div class="flex items-center space-x-6">
+<a class="hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a>
+<a class="hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="hover:text-primary transition-colors" href="#">Hỗ trợ kỹ thuật</a>
+</div>
+<div>
+<span>© 2025 ArenaFlow. All rights reserved.</span>
+</div>
+</footer>
+</div></main>
+</body></html>
