@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaFlow — REPUTATION-001 S1 Đánh giá đối phương (desktop)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3d6943',
+              hover: '#315536',
+              light: '#eef5ee',
+            },
+            arenaBg: '#f8faf3',
+            arenaBorder: '#e2e8dc',
+            arenaError: '#a73b21',
+          },
+          borderRadius: {
+            theme: '8px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1e293b;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-flex;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill-current {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden antialiased">
+
+  <!-- ============================================================== -->
+  <!-- BACKGROUND PAGE (Dimmed behind overlay)                        -->
+  <!-- ============================================================== -->
+  <div class="w-full min-h-screen bg-[#f8faf3] flex flex-col select-none filter blur-[1px]">
+    <!-- Top Header -->
+    <header class="w-full bg-white border-b border-[#e2e8dc] px-8 py-3.5 flex items-center justify-between shadow-sm">
+      <div class="flex items-center space-x-8">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2.5">
+          <div class="w-9 h-9 rounded-full bg-[#3d6943] text-white flex items-center justify-center shadow-inner">
+            <span class="material-symbols-outlined text-[20px]">sports_soccer</span>
+          </div>
+          <span class="font-bold text-xl text-[#3d6943] tracking-tight">ArenaFlow</span>
+        </div>
+
+        <!-- Nav Links -->
+        <nav class="flex items-center space-x-6">
+          <a href="#" class="text-sm font-semibold text-[#3d6943] border-b-2 border-[#3d6943] pb-1 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">shield</span>
+            <span>Đội của tôi</span>
+          </a>
+          <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-700 pb-1">Tìm đối</a>
+          <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-700 pb-1">Sân bãi</a>
+          <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-700 pb-1">Cộng đồng</a>
+        </nav>
+      </div>
+
+      <!-- Right Profile -->
+      <div class="flex items-center space-x-3">
+        <button class="w-9 h-9 rounded-full text-slate-500 hover:bg-slate-100 flex items-center justify-center relative">
+          <span class="material-symbols-outlined text-[22px]">notifications</span>
+          <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div class="flex items-center space-x-2.5 pl-2 border-l border-slate-200">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4" alt="Nguyễn Văn A" class="w-8 h-8 rounded-full object-cover border border-[#3d6943]/20 shadow-sm" />
+          <span class="text-sm font-medium text-slate-800">Nguyễn Văn A</span>
+          <span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container Background -->
+    <main class="max-w-5xl w-full mx-auto px-6 py-8 flex-1">
+      <div class="flex items-center gap-2 text-xs text-slate-500 mb-6">
+        <span>Đội của tôi</span>
+        <span>›</span>
+        <span>FC Sao Mai</span>
+        <span>›</span>
+        <span class="text-slate-800 font-medium">Lịch sử thi đấu</span>
+      </div>
+
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-slate-800">Trận đấu vừa kết thúc</h1>
+          <p class="text-sm text-slate-500 mt-1">Đánh giá đối phương để củng cố điểm uy tín cộng đồng phủi</p>
+        </div>
+      </div>
+
+      <!-- Finished Match Card -->
+      <div class="bg-white rounded-[8px] border border-[#e2e8dc] p-6 shadow-sm mb-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
+              Đã kết thúc
+            </span>
+            <span class="text-xs text-slate-400">•</span>
+            <span class="text-xs text-slate-500">Giao lưu 7 người</span>
+          </div>
+          <span class="text-xs text-slate-500 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+            12/11/2026 18:00 – 19:30
+          </span>
+        </div>
+
+        <div class="py-6 flex items-center justify-around">
+          <div class="flex items-center gap-4 text-left">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-[#3d6943] font-bold flex items-center justify-center text-lg shadow-sm">
+              SM
+            </div>
+            <div>
+              <div class="font-bold text-slate-800 text-lg">FC Sao Mai</div>
+              <div class="text-xs text-emerald-600 font-medium">Đội của bạn</div>
+            </div>
+          </div>
+
+          <div class="px-6 py-2 rounded-[8px] bg-slate-50 border border-slate-200 text-center">
+            <span class="text-2xl font-extrabold text-slate-800 tracking-wider">3 - 2</span>
+            <div class="text-[11px] text-slate-400 font-medium uppercase mt-0.5">Tỷ số chung cuộc</div>
+          </div>
+
+          <div class="flex items-center gap-4 text-right flex-row-reverse">
+            <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              SS
+            </div>
+            <div>
+              <div class="font-bold text-slate-800 text-lg">FC Sấm Sét</div>
+              <div class="text-xs text-slate-500 font-medium">Đối thủ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-sm text-slate-600">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-slate-400">location_on</span>
+            <span>Sân bóng Hoa Lư, Cầu Giấy, Hà Nội</span>
+          </div>
+          <button class="px-4 py-1.5 bg-[#3d6943] text-white text-xs font-semibold rounded-[8px]">
+            Đánh giá đối phương
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL BACKDROP OVERLAY                                         -->
+  <!-- ============================================================== -->
+  <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-[2px] z-50 flex items-center justify-center p-4">
+
+    <!-- Modal Dialog Window (width ~560px) -->
+    <div class="w-full max-w-[560px] bg-white rounded-[8px] shadow-2xl border border-[#e2e8dc] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Header -->
+      <div class="px-6 pt-6 pb-4 border-b border-slate-100 flex items-start justify-between relative bg-white">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <span>Đánh giá đội FC Sấm Sét</span>
+          </h2>
+          <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[15px] text-slate-400">event_note</span>
+            <span>Trận 12/11/2026 18:00 · Sân bóng Hoa Lư</span>
+          </p>
+        </div>
+        <button class="w-8 h-8 rounded-[8px] text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-5 overflow-y-auto max-h-[calc(85vh-130px)]">
+
+        <!-- 1) Segmented Control -->
+        <div>
+          <div class="grid grid-cols-2 p-1 bg-slate-100 rounded-[8px] border border-slate-200/70 text-sm font-medium text-slate-600">
+            <button type="button" class="py-2 px-3 rounded-[6px] bg-white text-[#3d6943] font-semibold shadow-sm flex items-center justify-center gap-1.5 transition-all">
+              <span class="material-symbols-outlined text-[18px] text-[#3d6943]">star</span>
+              <span>Chấm sao</span>
+            </button>
+            <button type="button" class="py-2 px-3 rounded-[6px] text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 transition-all">
+              <span class="material-symbols-outlined text-[18px] text-slate-400">person_off</span>
+              <span>Đội kia không đến</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2) Rating Stars -->
+        <div class="bg-[#f8faf3] p-4 rounded-[8px] border border-[#e2e8dc]/70">
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2.5">
+            Số sao <span class="text-[#a73b21]">*</span>
+          </label>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1.5 text-amber-400">
+              <!-- Star 1: Filled -->
+              <button type="button" class="w-9 h-9 rounded-[8px] hover:bg-amber-50 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <span class="material-symbols-outlined fill-current text-[32px] text-amber-400">star</span>
+              </button>
+              <!-- Star 2: Filled -->
+              <button type="button" class="w-9 h-9 rounded-[8px] hover:bg-amber-50 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <span class="material-symbols-outlined fill-current text-[32px] text-amber-400">star</span>
+              </button>
+              <!-- Star 3: Filled -->
+              <button type="button" class="w-9 h-9 rounded-[8px] hover:bg-amber-50 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <span class="material-symbols-outlined fill-current text-[32px] text-amber-400">star</span>
+              </button>
+              <!-- Star 4: Filled -->
+              <button type="button" class="w-9 h-9 rounded-[8px] hover:bg-amber-50 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <span class="material-symbols-outlined fill-current text-[32px] text-amber-400">star</span>
+              </button>
+              <!-- Star 5: Outlined -->
+              <button type="button" class="w-9 h-9 rounded-[8px] hover:bg-slate-200 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <span class="material-symbols-outlined text-[32px] text-slate-300">star</span>
+              </button>
+            </div>
+            <div class="h-6 w-[1px] bg-slate-200 mx-1"></div>
+            <span class="text-base font-bold text-slate-800">4/5</span>
+            <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              Rất tốt
+            </span>
+          </div>
+        </div>
+
+        <!-- 3) Match Score (Optional) -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+            Tỷ số (không bắt buộc)
+          </label>
+          <div class="p-3.5 bg-white border border-[#e2e8dc] rounded-[8px] flex flex-col gap-2">
+            <div class="flex items-center justify-between max-w-sm">
+              <!-- FC Sao Mai side -->
+              <div class="flex items-center gap-2.5 flex-1">
+                <span class="text-xs font-medium text-slate-700 truncate max-w-[100px]" title="FC Sao Mai">FC Sao Mai</span>
+                <input 
+                  type="number" 
+                  value="3" 
+                  class="w-14 h-10 text-center font-bold text-slate-800 text-base border border-slate-300 rounded-[8px] focus:outline-none focus:border-[#3d6943] focus:ring-1 focus:ring-[#3d6943] bg-slate-50"
+                  min="0"
+                />
+              </div>
+
+              <!-- Dash separator -->
+              <div class="px-3 text-slate-400 font-bold text-lg">–</div>
+
+              <!-- FC Sấm Sét side -->
+              <div class="flex items-center gap-2.5 flex-1 justify-end">
+                <input 
+                  type="number" 
+                  value="2" 
+                  class="w-14 h-10 text-center font-bold text-slate-800 text-base border border-slate-300 rounded-[8px] focus:outline-none focus:border-[#3d6943] focus:ring-1 focus:ring-[#3d6943] bg-slate-50"
+                  min="0"
+                />
+                <span class="text-xs font-medium text-slate-700 truncate max-w-[100px]" title="FC Sấm Sét">FC Sấm Sét</span>
+              </div>
+            </div>
+            
+            <p class="text-[11px] text-slate-500 flex items-center gap-1 mt-1">
+              <span class="material-symbols-outlined text-[14px] text-slate-400">info</span>
+              <span>Chỉ để lưu kỷ niệm, không ảnh hưởng điểm uy tín</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 4) Review textarea (Optional) -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+              Nhận xét (không bắt buộc)
+            </label>
+            <span class="text-[11px] text-slate-400">Tối đa 500 ký tự</span>
+          </div>
+          <div class="relative">
+            <textarea 
+              rows="3" 
+              class="w-full px-3.5 py-2.5 text-sm text-slate-800 border border-slate-300 rounded-[8px] focus:outline-none focus:border-[#3d6943] focus:ring-1 focus:ring-[#3d6943] placeholder-slate-400 resize-none"
+              placeholder="Chia sẻ thêm về tinh thần thi đấu, sự chuẩn bị của đối phương..."
+            >Đá đẹp, đúng giờ</textarea>
+            <div class="absolute bottom-2.5 right-3 text-[11px] font-medium text-slate-400">
+              16/500
+            </div>
+          </div>
+        </div>
+
+        <!-- 5) Info Note -->
+        <div class="p-3 bg-amber-50/80 border border-amber-200/80 rounded-[8px] flex items-start gap-2.5 text-xs text-amber-900">
+          <span class="material-symbols-outlined text-[18px] text-amber-600 shrink-0 mt-0.5">info</span>
+          <span class="leading-relaxed">Sau khi gửi, đánh giá không sửa hoặc xoá được.</span>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-3">
+        <button 
+          type="button" 
+          class="px-4 py-2 border border-slate-300 text-slate-700 text-sm font-semibold rounded-[8px] hover:bg-white hover:border-slate-400 active:scale-95 transition-all shadow-sm"
+        >
+          Huỷ
+        </button>
+        <button 
+          type="button" 
+          class="px-5 py-2 bg-[#3d6943] hover:bg-[#315536] text-white text-sm font-semibold rounded-[8px] shadow-sm hover:shadow active:scale-95 transition-all flex items-center gap-1.5"
+        >
+          <span class="material-symbols-outlined text-[18px]">send</span>
+          <span>Gửi đánh giá</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — REPUTATION-001 S3 Khối đánh giá và report của trận (desktop)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              hover: '#315436',
+              light: '#eef5ef',
+              dark: '#1c3420',
+            },
+            arenaBg: '#f8faf3',
+            arenaError: '#a73b21',
+            arenaErrorLight: '#fdf2ef',
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          borderRadius: {
+            DEFAULT: '8px',
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1a201c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="min-h-screen flex flex-col bg-[#f8faf3] text-[#1e2922]">
+<!-- Header: Minimal header -->
+<header class="w-full bg-white border-b border-[#e6ebe3] sticky top-0 z-30">
+<div class="max-w-[1280px] mx-auto px-8 h-16 flex items-center justify-between">
+<!-- Left: Logo & single Nav item -->
+<div class="flex items-center gap-10">
+<!-- Logo -->
+<a class="flex items-center gap-2.5 text-brand group" href="#">
+<div class="w-9 h-9 rounded-lg bg-[#3d6943] text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-[#1e2922] group-hover:text-brand transition-colors">ArenaFlow</span>
+</a>
+<!-- Navigation: Only "Đội của tôi" -->
+<nav class="flex items-center">
+<a class="text-sm font-semibold text-brand border-b-2 border-brand py-5 px-1 flex items-center gap-1.5" href="#">
+            Đội của tôi
+          </a>
+</nav>
+</div>
+<!-- Right: User Avatar + Name (No notification bell, no other nav) -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-slate-50 transition cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-brand font-semibold text-xs overflow-hidden">
+<img alt="Nguyễn Văn A" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="w-full h-full items-center justify-center" style="display:none;">NA</span>
+</div>
+<span class="text-sm font-medium text-[#2d3748]">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-8 py-7"><div class="flex flex-col w-full">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 text-sm mb-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kèo của đội</a>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<span class="font-medium text-on-surface">FC Sao Mai vs FC Sấm Sét</span>
+</nav>
+<!-- Compact Match Summary Card -->
+<div class="bg-surface-container-low rounded-xl p-6 mb-8 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">sports_soccer</span>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-xl font-bold text-on-surface">FC Sao Mai vs FC Sấm Sét</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-container text-on-primary-container">
+            Đã hoàn thành
+          </span>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+            12/11/2026 18:00 – 19:30
+          </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+            Sân bóng Hoa Lư
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Section Header -->
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Đánh giá &amp; report</h2>
+<span class="text-xs font-mono uppercase tracking-wider text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">REPUTATION-001 S3</span>
+</div>
+<!-- Two Columns: Ratings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- Left Box: Đánh giá của đội bạn -->
+<div class="bg-surface-container-lowest rounded-xl p-7 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold uppercase tracking-wider text-on-surface-variant">Đánh giá của đội bạn</span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-primary-container text-on-primary-container">
+            Rất tốt
+          </span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] text-outline-variant">star</span>
+</div>
+<span class="font-bold text-lg text-on-surface">4/5</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-3 mb-4 text-sm font-medium text-on-surface">
+          Tỷ số bạn nhập: <span class="font-bold text-primary">FC Sao Mai 3 – 2 FC Sấm Sét</span>
+</div>
+<p class="text-on-surface italic bg-surface-container-low p-4 rounded-lg text-sm mb-6">
+          “Đá đẹp, đúng giờ”
+        </p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10 text-xs text-on-surface-variant">
+<span>Đã gửi 12/11/2026 21:05</span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+          Đã ghi nhận
+        </span>
+</div>
+</div>
+<!-- Right Box: Đánh giá FC Sấm Sét -->
+<div class="bg-surface-container-lowest rounded-xl p-7 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold uppercase tracking-wider text-on-surface-variant">Đánh giá FC Sấm Sét dành cho đội bạn</span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-primary-container text-on-primary-container">
+            Tuyệt vời
+          </span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-1">star</span>
+</div>
+<span class="font-bold text-lg text-on-surface">5/5</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-3 mb-4 text-sm font-medium text-on-surface">
+          Tỷ số FC Sấm Sét nhập: <span class="font-bold text-primary">FC Sấm Sét 2 – 3 FC Sao Mai</span>
+</div>
+<p class="text-on-surface italic bg-surface-container-low p-4 rounded-lg text-sm mb-6">
+          “Đội bạn chơi fair”
+        </p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10 text-xs text-on-surface-variant">
+<span>Nhận 12/11/2026 21:30</span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+          Khớp kết quả
+        </span>
+</div>
+</div>
+</div>
+<!-- Sub-section: Report đã gửi trong trận này -->
+<div class="bg-surface-container-lowest rounded-xl p-7 shadow-sm mb-6">
+<h3 class="text-base font-bold text-on-surface mb-4">Report đã gửi trong trận này</h3>
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg">
+<div class="flex items-center gap-4">
+<span class="px-3 py-1 rounded-md text-xs font-semibold bg-error-container text-on-error-container">
+          Chơi xấu
+        </span>
+<span class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+          12/11/2026 21:10
+        </span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+        Đã chấp nhận
+      </span>
+</div>
+</div>
+<!-- Bottom Actions & Note -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border-2 border-error text-error hover:bg-error/5 transition font-semibold text-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+      Report FC Sấm Sét
+    </button>
+<p class="text-xs text-on-surface-variant italic">
+      Đánh giá đã gửi không sửa hoặc xoá được.
+    </p>
+</div>
+</div></main>
+<!-- No footer as explicitly requested -->
+</body></html>

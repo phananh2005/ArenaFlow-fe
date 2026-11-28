@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>ArenaFlow — REPUTATION-001 S5 Report giao tiếp tệ qua chat (mobile web 390px)</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Custom Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            arenaPrimary: '#3d6943',
+            arenaBg: '#f8faf3',
+            arenaError: '#a73b21',
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          borderRadius: {
+            'arena': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="custom-styles">
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #121212;
+      color: #1f2937;
+    }
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      background-color: #f8faf3;
+    }
+    /* Custom scrollbar for modal content */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-neutral-900">
+<!-- BEGIN: MobileFrame -->
+<div class="mobile-frame flex flex-col shadow-2xl relative">
+<!-- BEGIN: BackgroundChatRoom -->
+<div class="absolute inset-0 flex flex-col filter blur-[2px] opacity-40 pointer-events-none select-none bg-[#f8faf3]" data-purpose="blurred-background-chat">
+<!-- Top Bar -->
+<header class="bg-white border-b border-neutral-200 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<svg class="w-6 h-6 text-neutral-700" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div>
+<h1 class="text-sm font-bold text-neutral-900">FC Sao Mai ↔ FC Gió Lốc</h1>
+<p class="text-xs text-neutral-500">Kèo 20/11/2026 19:00</p>
+</div>
+</div>
+<button class="p-1 text-arenaError">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" fill-rule="evenodd"></path></svg>
+</button>
+</header>
+<!-- Chat Messages Area -->
+<main class="flex-1 p-4 space-y-4 overflow-hidden">
+<!-- Incoming message -->
+<div class="flex items-start space-x-2">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDKIxTSyvUvBCZedii1QAfIAL_-ZDp1xx9Rv62aVUh3DFH7lslBQtNOumHZM168PERfdvOEIII7wpsWdPKcWZXRy9kHQjfj37z0TvMRm8rEkbGP2f8B889kAv5dxFTXq_9nOc_GULAuKBJI9P67WCS-jk0e9tgYfZMaTLId342WAGW_0HcC8vLlm7U6M5g8YGqlfSwxKX0YoPmvUbEyg-3Ydx59-Kb91vibvQ-HG9nn"/>
+<div class="bg-white p-3 rounded-arena shadow-sm max-w-[75%]">
+<p class="text-xs text-neutral-800">Trận này bên mình tới sân đúng giờ nhé anh em!</p>
+</div>
+</div>
+<!-- Outgoing message -->
+<div class="flex items-start justify-end space-x-2">
+<div class="bg-[#3d6943] text-white p-3 rounded-arena shadow-sm max-w-[75%]">
+<p class="text-xs">Ok đội trưởng, chuẩn bị sẵn sàng rồi.</p>
+</div>
+</div>
+<!-- Toxic/Disputed message context -->
+<div class="flex items-start space-x-2">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDKIxTSyvUvBCZedii1QAfIAL_-ZDp1xx9Rv62aVUh3DFH7lslBQtNOumHZM168PERfdvOEIII7wpsWdPKcWZXRy9kHQjfj37z0TvMRm8rEkbGP2f8B889kAv5dxFTXq_9nOc_GULAuKBJI9P67WCS-jk0e9tgYfZMaTLId342WAGW_0HcC8vLlm7U6M5g8YGqlfSwxKX0YoPmvUbEyg-3Ydx59-Kb91vibvQ-HG9nn"/>
+<div class="bg-red-50 border border-red-200 p-3 rounded-arena shadow-sm max-w-[75%]">
+<p class="text-xs text-red-900">Đá kiểu gì thế hả, chấp nhận kèo xong im lặng không thèm phản hồi gì chán thế!</p>
+</div>
+</div>
+</main>
+<!-- Bottom Chat Input Mock -->
+<div class="p-3 bg-white border-t border-neutral-200 flex items-center space-x-2">
+<div class="flex-1 bg-neutral-100 rounded-full h-10"></div>
+<div class="w-10 h-10 bg-arenaPrimary rounded-full"></div>
+</div>
+</div>
+<!-- END: BackgroundChatRoom -->
+<!-- Backdrop Overlay -->
+<div class="absolute inset-0 bg-black/50 backdrop-blur-[2px] z-10" data-purpose="modal-backdrop"></div>
+<!-- BEGIN: BottomSheetModal -->
+<div class="absolute bottom-0 left-0 right-0 bg-[#f8faf3] rounded-t-[20px] shadow-2xl z-20 flex flex-col max-h-[90%] transform transition-transform duration-300" data-purpose="report-modal">
+<!-- Drag Handle -->
+<div class="w-full pt-3 pb-1 flex justify-center cursor-pointer">
+<div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+</div>
+<!-- Modal Header -->
+<div class="px-5 pb-3 border-b border-neutral-200 flex items-center justify-between relative">
+<div>
+<h2 class="text-base font-bold text-neutral-900">Report giao tiếp tệ</h2>
+<p class="text-xs text-neutral-600 mt-0.5">Đội bị report: <span class="font-semibold text-neutral-900">FC Gió Lốc</span></p>
+</div>
+<!-- Close Button -->
+<button aria-label="Close modal" class="w-8 h-8 rounded-full bg-neutral-200/60 flex items-center justify-center text-neutral-700 hover:bg-neutral-200 transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</button>
+</div>
+<!-- Modal Content Body -->
+<div class="p-5 overflow-y-auto custom-scrollbar space-y-4 flex-1">
+<!-- Read-only Chip / Category Selection -->
+<div class="bg-white border-2 border-arenaError/40 p-3.5 rounded-arena shadow-sm relative" data-purpose="selected-category-chip">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="inline-block w-2 h-2 rounded-full bg-arenaError"></span>
+<span class="text-xs font-bold text-neutral-900 uppercase tracking-wider">Giao tiếp tệ</span>
+</div>
+<span class="text-[10px] bg-red-100 text-arenaError font-medium px-2 py-0.5 rounded">Đã chọn</span>
+</div>
+<p class="text-xs text-neutral-600 mt-2 leading-relaxed">
+            Chửi bới, thiếu tôn trọng trong chat, không phản hồi sau ghép kèo, thiếu hợp tác, ngôn từ khiếm nhã.
+          </p>
+</div>
+<!-- Lý do Textarea Field with Error State -->
+<div class="space-y-1.5" data-purpose="textarea-field-group">
+<label class="block text-xs font-semibold text-neutral-900" for="report-reason">
+            Lý do <span class="text-arenaError">*</span>
+</label>
+<div class="relative">
+<textarea class="w-full text-xs p-3 rounded-arena border-2 border-arenaError bg-white text-neutral-800 focus:outline-none focus:ring-0 resize-none shadow-sm" id="report-reason" rows="4">Đội đối thủ có thái độ cực kỳ bất hợp tác sau khi đã bấm xác nhận ghép kèo trên hệ thống vào lúc 14:30. Khi chúng tôi nhắn hỏi lại lịch cụ thể thì nhận được lời lẽ miệt thị, chửi bới, thiếu tôn trọng từ đội trưởng FC Gió Lốc. Mong ban quản trị ArenaFlow xem xét hình thức xử lý nghiêm khắc để làm sạch môi trường giao lưu thể thao lành mạnh chung...</textarea>
+</div>
+<!-- Error message & character counter row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center space-x-1 text-arenaError">
+<!-- Warning Icon -->
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" fill-rule="evenodd"></path>
+</svg>
+<span class="text-[11px] font-medium">Lý do tối đa 1000 ký tự</span>
+</div>
+<span class="text-[11px] font-bold text-arenaError">1024/1000</span>
+</div>
+</div>
+<!-- Info Note Box -->
+<div class="bg-amber-50 border border-amber-200/80 p-3 rounded-arena flex items-start space-x-2.5" data-purpose="info-note-box">
+<svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<p class="text-[11px] text-amber-900 leading-normal">
+            Mỗi đội chỉ report đội kia <span class="font-semibold">"Giao tiếp tệ"</span> một lần trong mỗi kèo, dù gửi qua chat hay sau trận.
+          </p>
+</div>
+</div>
+<!-- Modal Footer / Actions -->
+<div class="p-4 bg-white border-t border-neutral-200 flex flex-col space-y-2.5" data-purpose="modal-actions">
+<!-- Error Filled Button -->
+<button class="w-full py-3 px-4 bg-arenaError hover:bg-[#92331b] active:scale-[0.99] text-white font-semibold text-xs rounded-arena shadow transition-all flex items-center justify-center space-x-2" type="button">
+<span>Gửi report</span>
+</button>
+<!-- Outlined Cancel Button -->
+<button class="w-full py-2.5 px-4 bg-white border border-neutral-300 hover:bg-neutral-50 active:scale-[0.99] text-neutral-700 font-medium text-xs rounded-arena transition-all flex items-center justify-center" type="button">
+<span>Huỷ</span>
+</button>
+</div>
+</div>
+<!-- END: BottomSheetModal -->
+</div>
+<!-- END: MobileFrame -->
+</body></html>
