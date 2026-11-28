@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ArenaFlow — REPUTATION-001 S2 Gợi ý report bùng (desktop)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3d6943',
+              hover: '#315536',
+              light: '#eaf3eb',
+            },
+            appbg: '#f8faf3',
+            error: {
+              DEFAULT: '#a73b21',
+              hover: '#8c2f19',
+              light: '#fdf2f0',
+            }
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1f2937;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f8faf3] text-[#1e293b] relative overflow-hidden">
+
+  <!-- ================= BACKGROUND CONTENT (DIMMED & BLURRED) ================= -->
+  <div class="filter blur-[3px] select-none pointer-events-none opacity-60 min-h-screen flex flex-col justify-between" aria-hidden="true">
+    <div>
+      <!-- Top App Bar -->
+      <header class="w-full bg-white border-b border-[#e2e8f0]">
+        <div class="max-w-[1280px] mx-auto h-16 px-8 flex items-center justify-between">
+          <!-- Logo & Navigation -->
+          <div class="flex items-center space-x-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-lg bg-[#3d6943] flex items-center justify-center text-white shadow-sm">
+                <span class="material-symbols-outlined fill-icon text-[24px]">sports_soccer</span>
+              </div>
+              <span class="text-xl font-bold tracking-tight text-[#111827]">ArenaFlow</span>
+            </div>
+            <nav class="flex items-center space-x-2">
+              <span class="flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold text-[#3d6943] bg-[#eaf3eb]">
+                <span class="material-symbols-outlined text-[20px]">shield</span>
+                <span>Đội của tôi</span>
+              </span>
+            </nav>
+          </div>
+          <!-- User Info -->
+          <div class="flex items-center space-x-3 pl-2 py-1 pr-1">
+            <img alt="Nguyễn Văn A" class="w-9 h-9 rounded-full object-cover border border-[#e5e7eb]" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+            <span class="text-sm font-semibold text-[#1f2937]">Nguyễn Văn A</span>
+            <span class="material-symbols-outlined text-[18px] text-gray-500">expand_more</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Container -->
+      <main class="max-w-[1280px] mx-auto px-8 py-8">
+        <!-- Breadcrumbs -->
+        <div class="flex items-center gap-2 text-xs text-[#64748b] mb-4">
+          <span>Kèo của đội</span>
+          <span>&rsaquo;</span>
+          <span class="font-medium text-[#1e293b]">FC Sao Mai vs FC Sấm Sét</span>
+        </div>
+
+        <!-- Finished Match Card -->
+        <div class="bg-white rounded-xl border border-[#e2e8f0] p-6 shadow-sm mb-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#eaf3eb] text-[#3d6943] font-bold flex items-center justify-center text-base border border-[#cbe4cf]">
+                SM
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-[#111827]">FC Sao Mai</h3>
+                <span class="text-xs text-[#64748b]">Đội nhà</span>
+              </div>
+            </div>
+
+            <span class="text-xs font-bold px-2 py-1 rounded bg-[#f1f5f9] text-[#64748b]">VS</span>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-[#fef3c7] text-[#92400e] font-bold flex items-center justify-center text-base border border-[#fde68a]">
+                SS
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-[#111827]">FC Sấm Sét</h3>
+                <span class="text-xs text-[#64748b]">Đối thủ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-6 text-sm text-[#4b5563]">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-[#64748b]">calendar_today</span>
+              <span>12/11/2026 18:00 – 19:30</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-[#64748b]">location_on</span>
+              <span>Sân bóng Hoa Lư</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#eaf3eb] text-[#3d6943] border border-[#d1e7d4]">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#3d6943]"></span>
+              Đã hoàn thành
+            </span>
+          </div>
+        </div>
+
+        <!-- Section placeholder below -->
+        <div class="bg-white rounded-xl border border-[#e2e8f0] p-6 shadow-sm">
+          <div class="h-6 w-48 bg-gray-200 rounded mb-4"></div>
+          <div class="h-24 bg-gray-100 rounded-lg"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-white border-t border-[#e2e8f0] py-4 px-8 mt-12">
+      <div class="max-w-[1280px] mx-auto flex items-center justify-between text-xs text-[#64748b]">
+        <span>&copy; 2025 ArenaFlow. Nền tảng kết nối & quản lý kèo bóng đá.</span>
+        <div class="flex items-center space-x-6">
+          <span>Điều khoản</span>
+          <span>Chính sách bảo mật</span>
+          <span>Hỗ trợ</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= OVERLAY BACKDROP ================= -->
+  <div class="fixed inset-0 bg-[#0f172a]/40 backdrop-blur-[1px] z-40 transition-opacity"></div>
+
+  <!-- ================= SUCCESS TOAST (TOP RIGHT) ================= -->
+  <div class="fixed top-6 right-6 z-50 flex items-center gap-2.5 bg-white border border-[#bbf7d0] shadow-lg rounded-[8px] px-4 py-3 animate-fade-in">
+    <div class="w-6 h-6 rounded-full bg-[#dcfce7] text-[#16a34a] flex items-center justify-center flex-shrink-0">
+      <span class="material-symbols-outlined text-[18px] font-bold">check</span>
+    </div>
+    <span class="text-sm font-semibold text-[#15803d]">Đã gửi đánh giá</span>
+    <button class="ml-2 text-gray-400 hover:text-gray-600 transition-colors">
+      <span class="material-symbols-outlined text-[16px]">close</span>
+    </button>
+  </div>
+
+  <!-- ================= FOREGROUND MODAL DIALOG (~440px) ================= -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="w-full max-w-[440px] bg-white rounded-[16px] shadow-2xl border border-gray-100 overflow-hidden transform transition-all p-6 sm:p-7">
+      
+      <!-- Icon at Top -->
+      <div class="flex justify-center mb-4">
+        <div class="w-14 h-14 rounded-full bg-[#fdf2f0] text-[#a73b21] flex items-center justify-center shadow-inner">
+          <span class="material-symbols-outlined text-[28px] fill-icon">flag</span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h2 class="text-xl font-bold text-center text-[#111827] tracking-tight mb-3">
+        Bạn có muốn report bùng không?
+      </h2>
+
+      <!-- Body Copy -->
+      <p class="text-sm text-[#4b5563] text-center leading-relaxed mb-7">
+        Bạn vừa đánh giá FC Sấm Sét là <span class="font-semibold text-[#111827]">"Đội kia không đến"</span>. Đánh giá và report là hai thao tác riêng: report bùng sẽ trừ điểm uy tín của FC Sấm Sét, và đội đó có 24 giờ để tranh chấp.
+      </p>
+
+      <!-- Footer Action Buttons (Right-aligned) -->
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <!-- Outlined "Để sau" button -->
+        <button class="px-5 py-2.5 rounded-[8px] border border-[#d1d5db] text-[#374151] hover:bg-gray-50 active:bg-gray-100 font-medium text-sm transition-colors shadow-xs">
+          Để sau
+        </button>
+
+        <!-- Filled error-color "Report bùng" button (#a73b21) -->
+        <button class="px-5 py-2.5 rounded-[8px] bg-[#a73b21] hover:bg-[#8c2f19] active:scale-[0.98] text-white font-medium text-sm transition-all shadow-sm flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[18px]">report</span>
+          <span>Report bùng</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

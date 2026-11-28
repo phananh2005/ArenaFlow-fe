@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — REPUTATION-001 S4 Report đối phương (desktop)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3d6943',
+              hover: '#315436',
+              light: '#eef5ef',
+              dark: '#1c3420',
+            },
+            arenaBg: '#f8faf3',
+            arenaError: '#a73b21',
+            arenaErrorLight: '#fdf2ef',
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          borderRadius: {
+            DEFAULT: '8px',
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f8faf3;
+      color: #1a201c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="min-h-screen flex flex-col bg-[#f8faf3] text-[#1e2922]">
+<!-- Header: Minimal header -->
+<header class="w-full bg-white border-b border-[#e6ebe3] sticky top-0 z-30">
+<div class="max-w-[1280px] mx-auto px-8 h-16 flex items-center justify-between">
+<!-- Left: Logo & single Nav item -->
+<div class="flex items-center gap-10">
+<!-- Logo -->
+<a class="flex items-center gap-2.5 text-brand group" href="#">
+<div class="w-9 h-9 rounded-lg bg-[#3d6943] text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">sports_soccer</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-[#1e2922] group-hover:text-brand transition-colors">ArenaFlow</span>
+</a>
+<!-- Navigation: Only "Đội của tôi" -->
+<nav class="flex items-center">
+<a class="text-sm font-semibold text-brand border-b-2 border-brand py-5 px-1 flex items-center gap-1.5" href="#">
+            Đội của tôi
+          </a>
+</nav>
+</div>
+<!-- Right: User Avatar + Name (No notification bell, no other nav) -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-slate-50 transition cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-brand font-semibold text-xs overflow-hidden">
+<img alt="Nguyễn Văn A" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="https://lh3.googleusercontent.com/aida/ALJJyrDWZvlB2vLrZd5tXFPULJEV05yE6aEUIMDvhsxIOJXfi3xzZIoWJAgsbc39xT4I1UzgZgsD6jpMQ63yt9pmIC4q1Xhq5QdrBwpMnCpHWlIQpa4A_C9SrVHkvxFtZSiqcQ-Uu-iVuuLwSmry8weQrPa7nc8OYwNWciqDpjhP_TZe0j97mNERVosSHE5Q2nzF7A133E72eZ3U7omDl7gJfmsF0PmmvpTZw5a1m5rZ9UHZLwx4Cf8_rOU-YS4"/>
+<span class="w-full h-full items-center justify-center" style="display:none;">NA</span>
+</div>
+<span class="text-sm font-medium text-[#2d3748]">Nguyễn Văn A</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-8 py-7"><div class="flex flex-col w-full items-center justify-center py-6 relative">
+<!-- Blurred / Dimmed Background Content representing "Đội của tôi" & Match Summary -->
+<div class="w-full max-w-[1000px] opacity-40 filter blur-[2px] pointer-events-none select-none flex flex-col gap-6 mb-[-500px] z-0">
+<div class="flex justify-between items-center bg-surface-container-low p-6 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold text-2xl shadow-sm">SM</div>
+<div>
+<h2 class="text-xl font-bold text-on-background">FC Sao Mai</h2>
+<p class="text-sm text-on-surface-variant">Quản lý đội bóng &amp; Lịch đấu · Hạng Bạc</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-semibold">Tạo trận mới</button>
+</div>
+</div>
+<!-- Match Summary Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Chi tiết trận đấu</span>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-bold rounded-full">Đã hoàn thành</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-6">
+<div class="text-center">
+<p class="font-bold text-lg text-on-background">FC Sao Mai</p>
+<span class="text-2xl font-black text-primary">3</span>
+</div>
+<span class="text-lg font-semibold text-outline">-</span>
+<div class="text-center">
+<p class="font-bold text-lg text-on-background">FC Sấm Sét</p>
+<span class="text-2xl font-black text-on-surface-variant">2</span>
+</div>
+</div>
+<div class="text-right text-sm text-on-surface-variant">
+<p class="font-medium text-on-background">12/11/2026 18:00 – 19:30</p>
+<p class="text-xs">Sân bóng Hoa Lư, Quận 1, TP.HCM</p>
+</div>
+</div>
+</div>
+<!-- Historical matches grid mock -->
+<div class="grid grid-cols-3 gap-4">
+<div class="h-32 bg-surface-container-low rounded-xl"></div>
+<div class="h-32 bg-surface-container-low rounded-xl"></div>
+<div class="h-32 bg-surface-container-low rounded-xl"></div>
+</div>
+</div>
+<!-- Foreground Overlay & Modal Dialog -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+<!-- Modal Card -->
+<div class="bg-surface-container-lowest w-full max-w-[560px] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Header -->
+<div class="px-6 pt-6 pb-4 flex items-start justify-between">
+<div>
+<h2 class="text-xl font-bold text-on-background">Report FC Sấm Sét</h2>
+<p class="text-xs text-on-surface-variant mt-0.5">Trận 12/11/2026 18:00 · Sân bóng Hoa Lư</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="px-6 py-2 flex flex-col gap-5 max-h-[768px] overflow-y-auto">
+<!-- Field 1: Loại report -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-background flex items-center gap-1">
+            Loại report <span class="text-error">*</span>
+</label>
+<div class="flex flex-col gap-2.5">
+<!-- Option 1: Selected -->
+<label class="flex items-start gap-3 p-3.5 rounded-lg border-2 border-primary bg-primary/5 cursor-pointer transition-all">
+<input checked="" class="mt-0.5 accent-primary w-4 h-4" name="report_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-background">Bùng</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Đội không đến trận đã xác nhận. Đội bị report có 24 giờ để tranh chấp.</span>
+</div>
+</label>
+<!-- Option 2: Disabled (Already reported) -->
+<div class="flex items-start justify-between p-3.5 rounded-lg border-2 border-transparent bg-surface-container-low opacity-50 cursor-not-allowed">
+<div class="flex items-start gap-3">
+<input class="mt-0.5 w-4 h-4" disabled="" name="report_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-background">Chơi xấu</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Đá xấu, cố ý phạm lỗi nguy hiểm, gây chấn thương.</span>
+</div>
+</div>
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded">Đã report</span>
+</div>
+<!-- Option 3: Normal -->
+<label class="flex items-start gap-3 p-3.5 rounded-lg border-2 border-surface-container hover:border-outline-variant bg-surface-container-lowest cursor-pointer transition-all">
+<input class="mt-0.5 accent-primary w-4 h-4" name="report_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-background">Giao tiếp tệ</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Chửi bới, thiếu tôn trọng trong chat, không phản hồi sau ghép kèo, thiếu hợp tác, ngôn từ khiếm nhã.</span>
+</div>
+</label>
+<!-- Option 4: Normal -->
+<label class="flex items-start gap-3 p-3.5 rounded-lg border-2 border-surface-container hover:border-outline-variant bg-surface-container-lowest cursor-pointer transition-all">
+<input class="mt-0.5 accent-primary w-4 h-4" name="report_type" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-background">Không đúng trình độ</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Trình độ thực tế không khớp với trình độ đăng ký.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Field 2: Lý do -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-bold text-on-background flex items-center gap-1">
+            Lý do <span class="text-error">*</span>
+</label>
+<div class="relative">
+<textarea class="w-full p-3 rounded-lg border-2 border-error bg-on-error focus:outline-none text-sm text-on-background placeholder:text-outline-variant resize-none" placeholder="Mô tả chi tiết sự việc..." rows="3"></textarea>
+</div>
+<div class="flex justify-between items-center text-xs">
+<div class="flex items-center gap-1 text-error font-medium">
+<span class="material-symbols-outlined text-[14px]">error</span>
+<span>Vui lòng nhập lý do</span>
+</div>
+<span class="text-on-surface-variant">0/1000</span>
+</div>
+</div>
+<!-- Info Note Box -->
+<div class="flex gap-3 p-3.5 rounded-lg bg-tertiary-container/30 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-lg shrink-0 mt-0.5">info</span>
+<p class="text-xs text-on-tertiary-container leading-relaxed">
+            Report được ghi nhận ngay và trừ điểm uy tín của đội bị report. Không sửa hoặc xoá được sau khi gửi.
+          </p>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-6 py-4 bg-surface-container-low flex items-center justify-end gap-3 mt-2">
+<button class="px-5 py-2.5 rounded-lg border border-outline-variant text-on-background text-sm font-semibold hover:bg-surface-container-high transition-colors">
+          Huỷ
+        </button>
+<button class="px-5 py-2.5 rounded-lg bg-error text-on-error text-sm font-semibold hover:bg-error-dim shadow-sm transition-colors">
+          Gửi report
+        </button>
+</div>
+</div>
+</div>
+</div></main>
+<!-- No footer as explicitly requested -->
+</body></html>
