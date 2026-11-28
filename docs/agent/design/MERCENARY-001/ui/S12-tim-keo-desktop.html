@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenaFlow — MERCENARY-001 S12 Tìm kèo mercenary (desktop)</title>
+<!-- Google Fonts: Be Vietnam Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#3d6943',
+              hover: '#315536',
+              light: '#f0f5f1',
+              border: '#c2d6c5'
+            },
+            surface: {
+              bg: '#f8faf8',
+              card: '#ffffff'
+            }
+          },
+          borderRadius: {
+            DEFAULT: '8px',
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f6f8f6;
+      color: #1a201c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-range {
+      accent-color: #3d6943;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f6f8f6] flex flex-col justify-between text-[#1e2722]">
+<!-- Header / Navigation Bar -->
+<header class="bg-white border-b border-[#e5eae6] sticky top-0 z-30">
+<div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Logo & Navigation Links -->
+<div class="flex items-center space-x-8">
+<!-- Logo -->
+<a class="flex items-center space-x-2.5 text-[#3d6943] font-bold text-xl tracking-tight" href="#">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+<path d="M2 12h20"></path>
+</svg>
+<span>ArenaFlow</span>
+</a>
+<!-- Main Navigation Links -->
+<nav class="flex items-center space-x-1 text-sm font-medium">
+<a class="px-3.5 py-2 text-[#4b554e] hover:text-[#1a201c] rounded-[8px] transition-colors" href="#">
+            Đội của tôi
+          </a>
+<a class="px-3.5 py-2 text-[#3d6943] bg-[#f0f5f1] font-semibold rounded-[8px] transition-colors border border-[#d6e4d8]" href="#">
+            Tìm kèo mercenary
+          </a>
+<a class="px-3.5 py-2 text-[#4b554e] hover:text-[#1a201c] rounded-[8px] transition-colors" href="#">
+            Kèo mercenary của tôi
+          </a>
+<a class="px-3.5 py-2 text-[#4b554e] hover:text-[#1a201c] rounded-[8px] transition-colors flex items-center space-x-1.5" href="#">
+<span>Tin nhắn</span>
+<span class="inline-flex items-center justify-center w-4 h-4 text-[10px] font-bold bg-[#3d6943] text-white rounded-full">2</span>
+</a>
+</nav>
+</div>
+<!-- Right User Profile -->
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-full bg-[#e2ede4] text-[#3d6943] border border-[#c6dbc9] flex items-center justify-center font-semibold text-sm shadow-sm overflow-hidden">
+<img alt="Lê Minh Tú" class="w-full h-full object-cover" onerror="this.outerHTML='&lt;span class=\'font-bold text-xs\'&gt;LMT&lt;/span&gt;'" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-sm font-semibold text-[#1e2722]">Lê Minh Tú</span>
+<svg class="w-4 h-4 text-[#758479]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-[1280px] w-full mx-auto px-6 py-8 flex-1">
+<!-- Title & Subtitle -->
+<div class="mb-6">
+<h1 class="text-2xl font-bold text-[#19221c] tracking-tight">Tìm kèo mercenary</h1>
+<p class="text-sm text-[#5f6e63] mt-1">Tìm trận đang cần người đá thuê gần bạn</p>
+</div>
+<!-- Filter Bar Card -->
+<div class="bg-white rounded-[8px] border border-[#e1e7e2] p-5 shadow-sm mb-4">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+<!-- Location Indicator -->
+<div class="md:col-span-4 flex items-center space-x-3 bg-[#f8faf8] border border-[#e2e8e3] rounded-[8px] px-3.5 py-2.5">
+<div class="w-8 h-8 rounded-full bg-[#eaf2eb] text-[#3d6943] flex items-center justify-center flex-shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<div class="text-xs text-[#6e7d72] font-medium leading-none mb-1">Vị trí tìm kiếm</div>
+<div class="text-sm font-semibold text-[#1e2722] truncate flex items-center space-x-1.5">
+<span>Đang dùng vị trí của bạn</span>
+<span class="inline-block w-2 h-2 rounded-full bg-[#3d6943] animate-pulse"></span>
+</div>
+</div>
+</div>
+<!-- Radius Slider -->
+<div class="md:col-span-5 px-2">
+<div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+<span class="text-[#4e5d52]">Bán kính tìm kiếm</span>
+<span class="text-[#3d6943] font-bold bg-[#edf5ef] px-2 py-0.5 rounded-[6px] border border-[#cde0d1]">3 km</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="text-xs text-[#8c9c90] font-medium">1 km</span>
+<input class="w-full h-2 bg-[#e2e9e3] rounded-lg appearance-none cursor-pointer custom-range" max="20" min="1" type="range" value="3"/>
+<span class="text-xs text-[#8c9c90] font-medium">20 km</span>
+</div>
+</div>
+<!-- Position Dropdown / Select -->
+<div class="md:col-span-3">
+<label class="block text-xs font-semibold text-[#4e5d52] mb-1.5">Vị trí cần</label>
+<div class="relative">
+<select class="w-full bg-[#fcfdfc] border border-[#d4ded6] text-[#1e2722] text-sm rounded-[8px] px-3 py-2 pr-9 focus:outline-none focus:ring-2 focus:ring-[#3d6943]/20 focus:border-[#3d6943] transition appearance-none cursor-pointer font-medium">
+<option selected="" value="all">Tất cả vị trí</option>
+<option value="gk">Thủ môn</option>
+<option value="df">Hậu vệ</option>
+<option value="mf">Tiền vệ</option>
+<option value="fw">Tiền đạo</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#6c7c70]">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Note under filter -->
+<div class="flex items-center space-x-2 text-xs text-[#6e7d72] mb-5 pl-1">
+<svg class="w-4 h-4 text-[#8a9b8f] flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Tên sân và địa chỉ chỉ hiện sau khi bạn được duyệt</span>
+</div>
+<!-- Results count and sorting line -->
+<div class="flex items-center justify-between mb-4">
+<div class="text-sm font-semibold text-[#2c372f]">
+        12 kèo trong bán kính 3 km <span class="text-[#8c9c90] font-normal">·</span> <span class="text-[#59695d] font-normal">sắp theo khoảng cách</span>
+</div>
+<div class="text-xs text-[#65766a] flex items-center space-x-1">
+<span>Gần nhất trước</span>
+<svg class="w-3.5 h-3.5 text-[#88998d]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Mercenary Match Cards Grid (2 Columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1: Standard Mercenary Match -->
+<div class="bg-white rounded-[8px] border border-[#e1e7e2] p-5 hover:border-[#3d6943]/50 hover:shadow-md transition-all flex flex-col justify-between relative group">
+<div>
+<!-- Top Row: Position Chip, Slots Needed, Distance -->
+<div class="flex items-start justify-between gap-2 mb-3">
+<div class="flex items-center space-x-2.5 flex-wrap gap-y-1">
+<span class="inline-flex items-center px-3 py-1 rounded-[6px] text-xs font-bold bg-[#eaf2eb] text-[#3d6943] border border-[#c9decb]">
+                Tiền vệ
+              </span>
+<span class="text-xs font-medium text-[#4f5f54] bg-[#f4f7f4] px-2.5 py-1 rounded-[6px] border border-[#e0e7e1]">
+                Cần 2 · đã có 1
+              </span>
+</div>
+<!-- Distance Highlight -->
+<div class="flex items-center space-x-1 text-xs font-bold text-[#3d6943] bg-[#edf6ef] px-2.5 py-1 rounded-[6px] border border-[#cfe2d2] flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>2.5 km từ bạn</span>
+</div>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center space-x-2 text-sm font-semibold text-[#1e2722] mb-1.5">
+<svg class="w-4 h-4 text-[#3d6943]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>18:00 – 19:30 · Thứ Bảy 14/11/2026</span>
+</div>
+<!-- Region / Ward Only (NO stadium name, NO address) -->
+<div class="flex items-center space-x-2 text-xs text-[#526257] mb-3">
+<svg class="w-4 h-4 text-[#829387]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Phường Sài Gòn, TP. Hồ Chí Minh</span>
+</div>
+<!-- Match Specifications: Pitch size & Skill chip -->
+<div class="flex items-center space-x-2 mb-4">
+<span class="text-xs font-medium text-[#46554a] bg-[#f6f8f6] px-2.5 py-1 rounded-[6px] border border-[#e5ebe6]">
+              Sân 7 người
+            </span>
+<span class="text-xs font-medium text-[#7d5a22] bg-[#fbf5eb] px-2.5 py-1 rounded-[6px] border border-[#eddcc4]">
+              Trung bình
+            </span>
+</div>
+</div>
+<!-- Footer of Card: Team Name + Avatar & CTA button -->
+<div class="pt-3 border-t border-[#edf1ee] flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#3d6943]/10 text-[#3d6943] font-bold text-xs flex items-center justify-center border border-[#3d6943]/20">
+              HL
+            </div>
+<span class="text-sm font-bold text-[#1f2823]">FC Hoa Lư</span>
+</div>
+<button class="bg-[#3d6943] hover:bg-[#315536] text-white text-xs font-semibold px-4 py-2 rounded-[8px] transition-colors shadow-sm">
+            Xem chi tiết
+          </button>
+</div>
+</div>
+<!-- Card 2: Outside match (Trận ngoài hệ thống) -->
+<div class="bg-white rounded-[8px] border border-[#e1e7e2] p-5 hover:border-[#3d6943]/50 hover:shadow-md transition-all flex flex-col justify-between relative group">
+<div>
+<!-- Top Row -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center space-x-2.5 flex-wrap gap-y-1">
+<span class="inline-flex items-center px-3 py-1 rounded-[6px] text-xs font-bold bg-[#eaf2eb] text-[#3d6943] border border-[#c9decb]">
+                Hậu vệ
+              </span>
+<span class="text-xs font-medium text-[#4f5f54] bg-[#f4f7f4] px-2.5 py-1 rounded-[6px] border border-[#e0e7e1]">
+                Cần 1 · đã có 0
+              </span>
+</div>
+<!-- Distance Highlight -->
+<div class="flex items-center space-x-1 text-xs font-bold text-[#3d6943] bg-[#edf6ef] px-2.5 py-1 rounded-[6px] border border-[#cfe2d2] flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>1.2 km từ bạn</span>
+</div>
+</div>
+<!-- Outside Match Tag: Trận ngoài hệ thống · Đối thủ: FC Phường 5 -->
+<div class="inline-flex items-center space-x-1.5 text-[11px] font-medium text-[#7a4815] bg-[#fff8eb] px-2.5 py-0.5 rounded-[6px] border border-[#f5dfb8] mb-2.5">
+<svg class="w-3 h-3 text-[#b46b19]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Trận ngoài hệ thống · Đối thủ: FC Phường 5</span>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center space-x-2 text-sm font-semibold text-[#1e2722] mb-1.5">
+<svg class="w-4 h-4 text-[#3d6943]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>19:30 – 21:00 · Thứ Bảy 14/11/2026</span>
+</div>
+<!-- Region / Ward Only -->
+<div class="flex items-center space-x-2 text-xs text-[#526257] mb-3">
+<svg class="w-4 h-4 text-[#829387]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Phường Bến Nghé, TP. Hồ Chí Minh</span>
+</div>
+<!-- Match Specifications -->
+<div class="flex items-center space-x-2 mb-4">
+<span class="text-xs font-medium text-[#46554a] bg-[#f6f8f6] px-2.5 py-1 rounded-[6px] border border-[#e5ebe6]">
+              Sân 7 người
+            </span>
+<span class="text-xs font-medium text-[#2d6b38] bg-[#ebf7ed] px-2.5 py-1 rounded-[6px] border border-[#c6e6cb]">
+              Khá - Nhanh
+            </span>
+</div>
+</div>
+<!-- Footer -->
+<div class="pt-3 border-t border-[#edf1ee] flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#1e40af]/10 text-[#1e40af] font-bold text-xs flex items-center justify-center border border-[#1e40af]/20">
+              DN
+            </div>
+<span class="text-sm font-bold text-[#1f2823]">FC Dragon</span>
+</div>
+<button class="bg-[#3d6943] hover:bg-[#315536] text-white text-xs font-semibold px-4 py-2 rounded-[8px] transition-colors shadow-sm">
+            Xem chi tiết
+          </button>
+</div>
+</div>
+<!-- Card 3: Already Applied (Bạn đã ứng tuyển) -->
+<div class="bg-white rounded-[8px] border border-[#e1e7e2] p-5 hover:border-[#3d6943]/50 hover:shadow-md transition-all flex flex-col justify-between relative group">
+<div>
+<!-- Top Row -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center space-x-2.5 flex-wrap gap-y-1">
+<span class="inline-flex items-center px-3 py-1 rounded-[6px] text-xs font-bold bg-[#eaf2eb] text-[#3d6943] border border-[#c9decb]">
+                Thủ môn
+              </span>
+<span class="text-xs font-medium text-[#4f5f54] bg-[#f4f7f4] px-2.5 py-1 rounded-[6px] border border-[#e0e7e1]">
+                Cần 1 · đã có 1
+              </span>
+</div>
+<!-- Distance Highlight -->
+<div class="flex items-center space-x-1 text-xs font-bold text-[#3d6943] bg-[#edf6ef] px-2.5 py-1 rounded-[6px] border border-[#cfe2d2] flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>1.8 km từ bạn</span>
+</div>
+</div>
+<!-- Applied Tag (Neutral color) -->
+<div class="inline-flex items-center space-x-1.5 text-[11px] font-semibold text-[#505f55] bg-[#edf2ee] px-2.5 py-0.5 rounded-[6px] border border-[#d5ded7] mb-2.5">
+<svg class="w-3 h-3 text-[#3d6943]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Bạn đã ứng tuyển</span>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center space-x-2 text-sm font-semibold text-[#1e2722] mb-1.5">
+<svg class="w-4 h-4 text-[#3d6943]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>20:00 – 21:30 · Chủ Nhật 15/11/2026</span>
+</div>
+<!-- Region / Ward Only -->
+<div class="flex items-center space-x-2 text-xs text-[#526257] mb-3">
+<svg class="w-4 h-4 text-[#829387]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Phường Cầu Ông Lãnh, TP. Hồ Chí Minh</span>
+</div>
+<!-- Match Specifications -->
+<div class="flex items-center space-x-2 mb-4">
+<span class="text-xs font-medium text-[#46554a] bg-[#f6f8f6] px-2.5 py-1 rounded-[6px] border border-[#e5ebe6]">
+              Sân 7 người
+            </span>
+<span class="text-xs font-medium text-[#7d5a22] bg-[#fbf5eb] px-2.5 py-1 rounded-[6px] border border-[#eddcc4]">
+              Trung bình
+            </span>
+</div>
+</div>
+<!-- Footer -->
+<div class="pt-3 border-t border-[#edf1ee] flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#c2410c]/10 text-[#c2410c] font-bold text-xs flex items-center justify-center border border-[#c2410c]/20">
+              PN
+            </div>
+<span class="text-sm font-bold text-[#1f2823]">FC Phù Đổng</span>
+</div>
+<button class="bg-[#f2f6f3] text-[#3d6943] hover:bg-[#e4ede6] border border-[#c4d9c7] text-xs font-semibold px-4 py-2 rounded-[8px] transition-colors">
+            Xem chi tiết
+          </button>
+</div>
+</div>
+<!-- Card 4: Forward Position Match -->
+<div class="bg-white rounded-[8px] border border-[#e1e7e2] p-5 hover:border-[#3d6943]/50 hover:shadow-md transition-all flex flex-col justify-between relative group">
+<div>
+<!-- Top Row -->
+<div class="flex items-start justify-between gap-2 mb-3">
+<div class="flex items-center space-x-2.5 flex-wrap gap-y-1">
+<span class="inline-flex items-center px-3 py-1 rounded-[6px] text-xs font-bold bg-[#eaf2eb] text-[#3d6943] border border-[#c9decb]">
+                Tiền đạo
+              </span>
+<span class="text-xs font-medium text-[#4f5f54] bg-[#f4f7f4] px-2.5 py-1 rounded-[6px] border border-[#e0e7e1]">
+                Cần 1 · đã có 0
+              </span>
+</div>
+<!-- Distance Highlight -->
+<div class="flex items-center space-x-1 text-xs font-bold text-[#3d6943] bg-[#edf6ef] px-2.5 py-1 rounded-[6px] border border-[#cfe2d2] flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>2.9 km từ bạn</span>
+</div>
+</div>
+<!-- Time & Date -->
+<div class="flex items-center space-x-2 text-sm font-semibold text-[#1e2722] mb-1.5">
+<svg class="w-4 h-4 text-[#3d6943]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>17:30 – 19:00 · Chủ Nhật 15/11/2026</span>
+</div>
+<!-- Region / Ward Only -->
+<div class="flex items-center space-x-2 text-xs text-[#526257] mb-3">
+<svg class="w-4 h-4 text-[#829387]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Phường Đa Kao, TP. Hồ Chí Minh</span>
+</div>
+<!-- Match Specifications -->
+<div class="flex items-center space-x-2 mb-4">
+<span class="text-xs font-medium text-[#46554a] bg-[#f6f8f6] px-2.5 py-1 rounded-[6px] border border-[#e5ebe6]">
+              Sân 7 người
+            </span>
+<span class="text-xs font-medium text-[#7d5a22] bg-[#fbf5eb] px-2.5 py-1 rounded-[6px] border border-[#eddcc4]">
+              Trung bình - Vui vẻ
+            </span>
+</div>
+</div>
+<!-- Footer -->
+<div class="pt-3 border-t border-[#edf1ee] flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#047857]/10 text-[#047857] font-bold text-xs flex items-center justify-center border border-[#047857]/20">
+              SL
+            </div>
+<span class="text-sm font-bold text-[#1f2823]">FC Sao La</span>
+</div>
+<button class="bg-[#3d6943] hover:bg-[#315536] text-white text-xs font-semibold px-4 py-2 rounded-[8px] transition-colors shadow-sm">
+            Xem chi tiết
+          </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-8 flex items-center justify-center space-x-1.5">
+<button class="px-3.5 py-1.5 text-xs font-medium text-[#79887e] bg-white border border-[#dce3de] rounded-[8px] cursor-not-allowed opacity-60">
+        Trước
+      </button>
+<button class="px-3.5 py-1.5 text-xs font-bold text-white bg-[#3d6943] border border-[#3d6943] rounded-[8px] shadow-sm">
+        1
+      </button>
+<button class="px-3.5 py-1.5 text-xs font-medium text-[#3b4740] bg-white border border-[#dce3de] hover:bg-[#f2f6f3] rounded-[8px] transition-colors">
+        2
+      </button>
+<button class="px-3.5 py-1.5 text-xs font-medium text-[#3b4740] bg-white border border-[#dce3de] hover:bg-[#f2f6f3] rounded-[8px] transition-colors">
+        Sau
+      </button>
+</div>
+</main>
+<!-- Persistent Light Footer -->
+<footer class="mt-12 border-t border-[#e2e8e3] bg-white py-4 text-xs text-[#708074]">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="flex items-center space-x-2">
+<span class="font-bold text-[#3d6943]">ArenaFlow</span>
+<span>· Nền tảng kết nối &amp; đặt kèo bóng đá phong trào</span>
+</div>
+<div>© 2026 ArenaFlow. Bảo mật vị trí thi đấu cho tới khi khớp kèo.</div>
+</div>
+</footer>
+</body>
+</html>
