@@ -26,6 +26,16 @@ _(Chưa có file kiến trúc/thuật ngữ — thêm khi dự án phát triển
 | Thiết kế giao diện (Stitch MCP) | `.claude/agents/ui-designer.md`, `docs/agent/external-knowledge.md` §3 |
 | Thiết kế kỹ thuật chức năng FE mới | `docs/agent/design-standards.md`, `docs/agent/design/_template/` |
 | Review tài liệu thiết kế | `docs/agent/design-standards.md`, thiết kế đã có trong `docs/agent/design/` |
+| Làm việc với khung ứng dụng dùng chung (App Shell, route, HTTP, session, realtime, slot) | `docs/agent/design/SHARED/APP-SHELL/` |
+| Làm việc với USER-001 (tài khoản & đội) | `docs/agent/design/USER-001/` |
+| Làm việc với USER-002 (giải tán đội, xoá tài khoản đội trưởng) | `docs/agent/design/USER-002/` |
+| Làm việc với USER-003 (tra cứu khu vực, tìm người mời, lời mời & đội của tôi) | `docs/agent/design/USER-003/` |
+| Làm việc với VENUE-001 (địa điểm, bản đồ, upload ảnh sân, report sân) | `docs/agent/design/VENUE-001/` |
+| Làm việc với NOTIFICATION-001 (thông báo in-app & realtime) | `docs/agent/design/NOTIFICATION-001/` |
+| Làm việc với REPUTATION-001 (đánh giá sau trận, report, tranh chấp & uy tín đội) | `docs/agent/design/REPUTATION-001/` |
+| Làm việc với MERCENARY-001 (tuyển cầu thủ đá thuê, ứng tuyển, trận ngoài & uy tín cá nhân) | `docs/agent/design/MERCENARY-001/` |
+| Làm việc với MATCH-001 (kèo luồng A, vòng đời kèo, bộ môn & phòng chat dùng chung) | `docs/agent/design/MATCH-001/` |
+| Làm việc với MATCH-002 (thương lượng ghép kèo luồng B — Pairing) | `docs/agent/design/MATCH-002/` |
 | Rà quyết định kiến trúc (thư viện, lưu token) | `docs/agent/decisions/` |
 | Điều chỉnh cách làm việc agent | `docs/agent/adaptation-rules.md` |
 | Cài hook, ownership, kiểm chứng hạ tầng agent | `docs/agent/README.md` |
